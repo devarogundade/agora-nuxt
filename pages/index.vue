@@ -1,5 +1,5 @@
 <template>
-
+  <CallToAction />
 </template>
 
 <script>
