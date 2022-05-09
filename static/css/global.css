@@ -1,5 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+@import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: 300ms;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #002028;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.app-width {
+    width: 90%;
+    max-width: 1200px;
 }

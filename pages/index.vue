@@ -4,10 +4,9 @@
 
 <script>
 export default {
-    layout: 'landing'
+  layout: 'landing'
 }
 </script>
 
 <style scoped>
-
 </style>
