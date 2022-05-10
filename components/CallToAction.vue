@@ -135,7 +135,10 @@ section {
 
 @media screen and (max-width) {
   .call-to-action {
-    grid-template-columns: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
   }
 }
 </style>
