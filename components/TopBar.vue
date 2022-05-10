@@ -384,7 +384,6 @@ input::placeholder {
     }
 
     .search {
-        margin: 0 15px;
         margin-top: 20px;
     }
 
