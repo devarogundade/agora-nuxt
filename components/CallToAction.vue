@@ -5,8 +5,8 @@
             <div class="text">
                 <h3>The Largest Agriculture Lease Solution</h3>
                 <p>
-                    Rent and Lease your vacant land to promote agriculture.
-                    And start earning every seconds.
+                    Rent and Lease your vacant land to promote agriculture. And start
+                    earning every seconds.
                 </p>
 
                 <div class="actions">
@@ -21,17 +21,17 @@
 
             <div class="model">
                 <model-obj v-if="hasMount" class="object" src="models/call-to-action.obj" mtl="models/call-to-action.mtl" :backgroundColor="bgColor" :controlsOptions="{
-          enablePan,
-          enableZoom,
-          enableRotate,
-        }" />
+              enablePan,
+              enableZoom,
+              enableRotate,
+            }" />
             </div>
         </div>
     </div>
 
     <div class="wave">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#4d727b" fill-opacity="1" d="M0,256L24,240C48,224,96,192,144,170.7C192,149,240,139,288,154.7C336,171,384,213,432,208C480,203,528,149,576,117.3C624,85,672,75,720,80C768,85,816,107,864,138.7C912,171,960,213,1008,234.7C1056,256,1104,256,1152,261.3C1200,267,1248,277,1296,256C1344,235,1392,181,1416,154.7L1440,128L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z" />
+            <path fill="#4d727b" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
     </div>
 </section>
@@ -131,7 +131,7 @@ section {
     top: 250px;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
     .call-to-action {
         display: flex;
         flex-direction: column;
