@@ -296,6 +296,16 @@ section {
         margin-top: -20px;
     }
 
+    .activity {
+      grid-template-columns: 35px auto 80px;
+      column-gap: 10px;
+    }
+
+    .activity i {
+      height: 35px;
+      font-size: 16px;
+    }
+
     .activity .message {
       font-size: 14px;
     }
