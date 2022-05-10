@@ -79,7 +79,7 @@
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
                                                 <h3>Register</h3>
-                                                <p>Get started today. Rent or Lease</p>
+                                                <p>Get started today. Rent or Lease your lands.</p>
                                             </div>
                                         </a>
                                     </li>
