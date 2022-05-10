@@ -57,7 +57,7 @@ section {
 
 @media screen and (max-width: 800px) {
     section {
-        padding: 30px 0;
+        padding: 40px 0;
     }
 
     .ad {

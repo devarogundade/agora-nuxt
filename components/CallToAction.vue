@@ -3,7 +3,7 @@
     <div class="app-width">
         <div class="call-to-action">
             <div class="text">
-                <h3>The Largest Agriculture Land Solution</h3>
+                <h3>The Largest Agriculture Lease Solution</h3>
                 <p>
                     Rent and Lease your vacant land to promote agriculture.
                     And start earning every seconds.
