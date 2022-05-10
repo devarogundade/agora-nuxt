@@ -195,10 +195,10 @@ section {
 }
 
 .title {
-  font-size: 35px;
-  margin-bottom: 20px;
-  font-weight: 500;
-  text-align: center;
+    font-size: 35px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
 }
 
 .swiper-container {
@@ -367,16 +367,16 @@ section {
 }
 
 .action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .action .button {
-  padding: 10px 25px;
-  border-radius: 10px;
-  background: #ffffff;
-  margin: 5px 0;
+    padding: 10px 25px;
+    border-radius: 10px;
+    background: #ffffff;
+    margin: 5px 0;
 }
 </style>
