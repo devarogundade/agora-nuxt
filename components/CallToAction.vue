@@ -122,7 +122,7 @@ section {
     border-radius: 10px;
     color: #161704;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .wave {

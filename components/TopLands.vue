@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-min-width">
+    <div class="app-width">
         <h3 class="title">Marketplace</h3>
 
         <div class="toolbar">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="items">
-            <div class="item" v-for="index in 15" :key="index">
+            <div class="item" v-for="index in 12" :key="index">
                 <div class="action">
                     <div class="button">Rent</div>
                     <div class="button">Lease</div>
@@ -44,6 +44,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="more">
+            <div class="market">
+                Go to Marketplace
+            </div>
+        </div>
     </div>
 </section>
 </template>
@@ -54,7 +60,6 @@ section {
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
-    margin-bottom: 400px;
 }
 
 .title {
@@ -96,7 +101,7 @@ section {
     column-gap: 20px;
     row-gap: 20px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .item {
@@ -206,6 +211,20 @@ section {
     padding: 10px 25px;
     border-radius: 10px;
     background: #ffffff;
+    margin: 5px 0;
+}
+
+.more {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.market {
+    padding: 10px 25px;
+    border-radius: 10px;
+    background: #7be9bb;
+    font-weight: 600;
     margin: 5px 0;
 }
 
