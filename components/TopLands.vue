@@ -21,7 +21,7 @@
         </div>
 
         <div class="items">
-            <div class="item" v-for="index in 15" :key="index">
+            <div class="item" v-for="index in 12" :key="index">
                 <div class="action">
                     <div class="button">Rent</div>
                     <div class="button">Lease</div>
