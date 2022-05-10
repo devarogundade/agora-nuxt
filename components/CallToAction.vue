@@ -134,11 +134,11 @@ section {
 }
 
 @media screen and (max-width) {
-  .call-to-action {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-  }
+    .call-to-action {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
 }
 </style>
