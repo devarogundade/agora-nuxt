@@ -35,3 +35,8 @@ li {
     width: 90%;
     max-width: 1000px;
 }
+
+.app-min2-width {
+    width: 90%;
+    max-width: 800px;
+}

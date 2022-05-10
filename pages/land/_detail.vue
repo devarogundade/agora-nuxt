@@ -55,6 +55,18 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <div class="app-min-width">
+            <div class="activities">
+              <div class="activity" v-for="index in 5" :key="index">
+                <i class="fi fi-rr-paper-plane"></i>
+                <p class="message">Lease out for 2 months</p>
+                <p class="date">1y ago</p>
+              </div>
+            </div>
+        </div>
+    </section>
 </div>
 </template>
 
@@ -226,6 +238,50 @@ section {
     font-weight: 400;
 }
 
+.activities {
+  border-radius: 20px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.activity {
+  border-bottom: #002028 3px solid;
+  background: #00181e;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 40px auto 100px;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.activity .message {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.activity .date {
+  background: #4577ff;
+  padding: 4px 16px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.activity i {
+  height: 40px;
+  background: #00c675;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity:last-child {
+  border: none;
+}
+
 @media screen and (max-width: 900px) {
     .grid {
         grid-template-columns: 100%;
@@ -238,6 +294,14 @@ section {
 
     .grid {
         margin-top: -20px;
+    }
+
+    .activity .message {
+      font-size: 14px;
+    }
+
+    .activity .date {
+      padding: 3px 10px;
     }
 }
 </style>
