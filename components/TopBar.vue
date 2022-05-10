@@ -374,7 +374,7 @@ input::placeholder {
     }
 
     .search {
-      margin: 0 10px;
+      margin: 0 15px;
       margin-top: 40px;
     }
 }
