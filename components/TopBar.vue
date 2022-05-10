@@ -11,7 +11,11 @@
     <section class="header">
         <div class="app-width">
             <div class="header-grid">
-                <div class="logo"></div>
+                <div class="logo">
+                    <a href="/">
+                        <h2>AgoraLease</h2>
+                    </a>
+                </div>
 
                 <div class="menu">
                     <div class="items">
@@ -24,7 +28,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href>
+                                        <a href="/land">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>Lands</h3>
@@ -157,6 +161,17 @@
 
 .purpose:hover {
     background: #4de7a8;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h2 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .header {
@@ -362,20 +377,25 @@ input::placeholder {
     }
 
     .menu .item:last-child {
-      display: none;
+        display: none;
     }
 
     .dropdown {
-      position: fixed;
-      width: 80%;
-      left: 10%;
-      top: 50px;
-      background: #024e61;
+        position: fixed;
+        width: 80%;
+        left: 10%;
+        top: 50px;
+        background: #024e61;
     }
 
     .search {
-      margin: 0 15px;
-      margin-top: 40px;
+        margin: 0 15px;
+        margin-top: 20px;
+    }
+
+    .logo {
+        margin-top: 20px;
+        justify-content: center;
     }
 }
 </style>

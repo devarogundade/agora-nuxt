@@ -23,8 +23,7 @@
         <div class="items">
             <div class="item" v-for="index in 12" :key="index">
                 <div class="action">
-                    <div class="button">Rent</div>
-                    <div class="button">Lease</div>
+                    <a href="/land/123"><div class="button">Rent</div></a>
                 </div>
 
                 <div class="image">
@@ -109,6 +108,10 @@ section {
     border-radius: 20px;
     cursor: pointer;
     position: relative;
+}
+
+.item a {
+  color: #161704;
 }
 
 .item .action {
