@@ -379,4 +379,10 @@ section {
     background: #ffffff;
     margin: 5px 0;
 }
+
+@media screen and (max-width: 700px) {
+    .items {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
 </style>
