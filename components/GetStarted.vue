@@ -383,25 +383,29 @@ section {
 }
 
 @media screen and (max-width: 700px) {
+    section {
+        padding-bottom: 100px;
+    }
+
     .title {
         margin-top: 0;
         font-size: 30px;
     }
 
     .image {
-      height: 150px;
+        height: 150px;
     }
 
     .content h3 {
-      font-size: 24px;
+        font-size: 24px;
     }
 
     .content li {
-      height: 25px;
+        height: 25px;
     }
 
     .content p {
-      font-size: 14px;
+        font-size: 14px;
     }
 
     .items {

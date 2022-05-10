@@ -17,6 +17,7 @@ section {
     justify-content: center;
     padding: 50px 0;
     background: #4d727b;
+    margin-top: -4px;
 }
 
 .ad {
@@ -55,6 +56,10 @@ section {
 }
 
 @media screen and (max-width: 800px) {
+    section {
+        padding: 20px 0;
+    }
+
     .ad {
         flex-direction: column;
         align-items: flex-start;
