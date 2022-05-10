@@ -349,5 +349,9 @@ section {
     .activity .date {
         padding: 3px 10px;
     }
+
+    .activity-text {
+      font-size: 20px;
+    }
 }
 </style>
