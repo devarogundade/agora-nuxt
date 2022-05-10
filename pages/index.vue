@@ -2,6 +2,7 @@
 <div>
     <CallToAction />
     <GetStarted />
+    <LeaseAd />
 </div>
 </template>
 

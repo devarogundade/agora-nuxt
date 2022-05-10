@@ -190,7 +190,7 @@ section {
     flex-direction: column;
     align-items: center;
     margin-top: -15px;
-    background: #fafafa;
+    background: #4d727b;
     padding-bottom: 50px;
 }
 
@@ -199,6 +199,7 @@ section {
     margin-bottom: 20px;
     font-weight: 500;
     text-align: center;
+    color: #ffffff;
     margin-top: -100px;
 }
 

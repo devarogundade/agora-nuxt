@@ -144,14 +144,14 @@
 <style scoped>
 .purpose {
     width: 100%;
-    padding: 8px 10px;
+    padding: 6px;
     background: #00c675;
     text-align: center;
 }
 
 .purpose p {
     color: #161704;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: normal;
 }
 
