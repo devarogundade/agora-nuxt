@@ -271,6 +271,7 @@ section {
 
     .toolbar {
         padding: 5px;
+        column-gap: 5px;
     }
 }
 

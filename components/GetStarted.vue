@@ -348,10 +348,6 @@ section {
 }
 
 @media screen and (max-width: 700px) {
-    section {
-        padding-bottom: 100px;
-    }
-
     .title {
         margin-top: 0;
         font-size: 30px;
