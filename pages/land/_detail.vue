@@ -1,6 +1,6 @@
 <template>
 <div>
-    <section>
+    <section class="f-back">
         <div class="app-min-width">
             <a href="/land">
                 <div class="back">
@@ -87,15 +87,15 @@ section {
 }
 
 .name h3 {
-  font-size: 36px;
-  line-height: 46px;
-  font-weight: 500;
+    font-size: 36px;
+    line-height: 46px;
+    font-weight: 500;
 }
 
 .name p {
-  font-size: 14px;
-  font-weight: 400;
-  opacity: 0.6;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.6;
 }
 
 .image {
@@ -147,5 +147,20 @@ section {
     font-weight: 500;
     margin-top: 20px;
     justify-content: center;
+}
+
+@media screen and (max-width: 900px) {
+    .grid {
+        grid-template-columns: 100%;
+        row-gap: 30px;
+    }
+
+    .f-back {
+      margin-top: 150px;
+    }
+
+    .grid {
+      margin-top: -20px;
+    }
 }
 </style>
