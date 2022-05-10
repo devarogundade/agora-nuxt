@@ -2,7 +2,7 @@ export default {
     target: 'static',
 
     head: {
-        title: 'Agora - Agricultural Marketplace',
+        title: 'AgoraLands - Agricultural Land Leasing Marketplace',
         htmlAttrs: {
             lang: 'en'
         },
