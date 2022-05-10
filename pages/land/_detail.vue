@@ -13,7 +13,9 @@
 
     <section>
         <div class="app-min-width grid">
-            <div class="image"></div>
+            <div class="image">
+              <img src="/images/tractor.png" alt="">
+            </div>
             <div class="text">
                 <div class="name">
                     <h3>CAT 2005</h3>
@@ -28,7 +30,7 @@
                         <p class="fixed">Rate per month</p>
                         <h3>$50.00</h3>
                         <div class="btn">
-                            Request
+                            Rent
                         </div>
                     </div>
                 </div>
@@ -58,12 +60,33 @@
 
     <section>
         <div class="app-min-width">
+            <h3 class="activity-text">Offers</h3>
+
             <div class="activities">
-              <div class="activity" v-for="index in 5" :key="index">
-                <i class="fi fi-rr-paper-plane"></i>
-                <p class="message">Lease out for 2 months</p>
-                <p class="date">1y ago</p>
-              </div>
+                <div class="activity">
+                    <i class="fi fi-rr-dollar"></i>
+                    <p class="message">You requested for 5 months lease</p>
+                    <p class="date">Cancel</p>
+                </div>
+                <div class="activity">
+                    <i class="fi fi-rr-dollar"></i>
+                    <p class="message">John requested for 3 months lease</p>
+                    <p class="date">Cancel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="app-min-width">
+            <h3 class="activity-text">Activities</h3>
+
+            <div class="activities">
+                <div class="activity" v-for="index in 3" :key="index">
+                    <i class="fi fi-rr-upload"></i>
+                    <p class="message">Lease out to John for 2 months</p>
+                    <p class="date">1y ago</p>
+                </div>
             </div>
         </div>
     </section>
@@ -134,6 +157,13 @@ section {
     background: #003543;
     border-radius: 10px;
     height: 450px;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20px;
 }
 
 .price {
@@ -239,47 +269,53 @@ section {
 }
 
 .activities {
-  border-radius: 20px;
-  margin-bottom: 50px;
-  overflow: hidden;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .activity {
-  border-bottom: #002028 3px solid;
-  background: #00181e;
-  padding: 15px;
-  display: grid;
-  grid-template-columns: 40px auto 100px;
-  column-gap: 20px;
-  align-items: center;
+    border-bottom: #002028 3px solid;
+    background: #00181e;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 40px auto 100px;
+    column-gap: 20px;
+    align-items: center;
 }
 
 .activity .message {
-  font-size: 18px;
-  font-weight: 400;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .activity .date {
-  background: #4577ff;
-  padding: 4px 16px;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 12px;
+    background: #4577ff;
+    padding: 4px 16px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 12px;
 }
 
 .activity i {
-  height: 40px;
-  background: #00c675;
-  color: #ffffff;
-  border-radius: 50%;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 40px;
+    background: #00c675;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .activity:last-child {
-  border: none;
+    border: none;
+}
+
+.activity-text {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 900px) {
@@ -297,21 +333,21 @@ section {
     }
 
     .activity {
-      grid-template-columns: 35px auto 80px;
-      column-gap: 10px;
+        grid-template-columns: 35px auto 80px;
+        column-gap: 10px;
     }
 
     .activity i {
-      height: 35px;
-      font-size: 16px;
+        height: 35px;
+        font-size: 16px;
     }
 
     .activity .message {
-      font-size: 14px;
+        font-size: 14px;
     }
 
     .activity .date {
-      padding: 3px 10px;
+        padding: 3px 10px;
     }
 }
 </style>
