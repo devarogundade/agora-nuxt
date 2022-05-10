@@ -371,5 +371,9 @@ input::placeholder {
       top: 50px;
       background: #024e61;
     }
+
+    .search {
+      margin-top: 40px;
+    }
 }
 </style>
