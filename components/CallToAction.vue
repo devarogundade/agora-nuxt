@@ -6,7 +6,7 @@
                 <h3>The Largest Agriculture Land Solution</h3>
                 <p>
                     Rent and Lease your vacant land to promote agriculture.
-                    <br />And start earning every seconds.
+                    And start earning every seconds.
                 </p>
 
                 <div class="actions">
@@ -76,6 +76,7 @@ section {
     justify-content: space-around;
     grid-template-columns: 650px 300px;
     align-items: center;
+    row-gap: 20px;
 }
 
 .text {
@@ -100,20 +101,17 @@ section {
 }
 
 .model {
-    position: relative;
     height: 100%;
 }
 
 .object {
-    position: absolute;
-    top: 0;
-    left: 50px;
+    margin-left: 50px;
 }
 
 .actions {
     display: grid;
-    grid-template-columns: auto auto auto;
-    width: 300px;
+    grid-template-columns: auto auto;
+    width: 250px;
     column-gap: 20px;
     margin-top: 40px;
 }
@@ -133,12 +131,16 @@ section {
     top: 250px;
 }
 
-@media screen and (max-width) {
+@media screen and (max-width:1000px) {
     .call-to-action {
         display: flex;
         flex-direction: column;
         align-content: center;
         justify-content: center;
+    }
+
+    .model {
+      position: unset;
     }
 }
 </style>

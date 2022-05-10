@@ -2,7 +2,7 @@
 <section>
     <div class="app-max-width">
 
-        <h3 class="title">Popular Locations</h3>
+        <h3 class="title">Trending places</h3>
 
         <div class="items">
             <div class="item">
@@ -195,10 +195,11 @@ section {
 }
 
 .title {
-    font-size: 35px;
+    font-size: 45px;
     margin-bottom: 20px;
     font-weight: 500;
     text-align: center;
+    margin-top: -100px;
 }
 
 .swiper-container {
@@ -381,6 +382,27 @@ section {
 }
 
 @media screen and (max-width: 700px) {
+    .title {
+        margin-top: 0;
+        font-size: 30px;
+    }
+
+    .image {
+      height: 150px;
+    }
+
+    .content h3 {
+      font-size: 24px;
+    }
+
+    .content li {
+      height: 25px;
+    }
+
+    .content p {
+      font-size: 14px;
+    }
+
     .items {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 15px;
