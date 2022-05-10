@@ -27,8 +27,8 @@
                                         <a href>
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>IoT</h3>
-                                                <p>Drones, Bots, others..</p>
+                                                <h3>Lands</h3>
+                                                <p>Lagos, Ibadan, and other locations..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -37,8 +37,8 @@
                                         <a href>
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
-                                                <h3>Farm produce</h3>
-                                                <p>Cereals, Tubers, fruits..</p>
+                                                <h3>Best for farming</h3>
+                                                <p>Rich nutrient soil for your crops.</p>
                                             </div>
                                         </a>
                                     </li>
@@ -47,7 +47,7 @@
                                         <a href>
                                             <i class="fi fi-rr-tractor"></i>
                                             <div class="text">
-                                                <h3>Machinery</h3>
+                                                <h3>Poultry</h3>
                                                 <p>Tractors, Ploughs, others..</p>
                                             </div>
                                         </a>
@@ -68,8 +68,8 @@
                                         <router-link to="/profile">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>Buyer</h3>
-                                                <p>Drones, Bots, others..</p>
+                                                <h3>Login</h3>
+                                                <p>Welcome back to AgoraLands..</p>
                                             </div>
                                         </router-link>
                                     </li>
@@ -78,8 +78,8 @@
                                         <a href>
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
-                                                <h3>Seller</h3>
-                                                <p>Cereals, Tubers, fruits..</p>
+                                                <h3>Register</h3>
+                                                <p>Get started today. Rent or Lease</p>
                                             </div>
                                         </a>
                                     </li>

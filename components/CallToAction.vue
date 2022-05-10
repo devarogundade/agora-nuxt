@@ -69,6 +69,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    user-select: none;
 }
 
 .call-to-action {
