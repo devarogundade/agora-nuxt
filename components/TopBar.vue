@@ -1,13 +1,13 @@
 <template>
 <section>
-    <a href="https://agrotech.ng/" target="_blank">
+    <!-- <a href="https://agrotech.ng/" target="_blank">
         <section class="purpose">
             <p>
                 An Agro-Tech Hackathon Project.
                 <b>Learn more</b>
             </p>
         </section>
-    </a>
+    </a> -->
     <section class="header">
         <div class="app-width">
             <div class="header-grid">
