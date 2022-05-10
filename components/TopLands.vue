@@ -1,0 +1,283 @@
+<template>
+<section>
+    <div class="app-min-width">
+        <h3 class="title">Marketplace</h3>
+
+        <div class="toolbar">
+            <select name="" id="">
+                <option value="">State</option>
+                <option value="">Lagos</option>
+                <option value="">Ibadan</option>
+            </select>
+            <select name="" id="">
+                <option value="">Price: Low to High</option>
+                <option value="">Price: High to Low</option>
+            </select>
+            <select name="" id="">
+                <option value="">Land</option>
+                <option value="">Machinery</option>
+                <option value="">IoTs</option>
+            </select>
+        </div>
+
+        <div class="items">
+            <div class="item" v-for="index in 15" :key="index">
+                <div class="action">
+                    <div class="button">Rent</div>
+                    <div class="button">Lease</div>
+                </div>
+
+                <div class="image">
+                    <img src="images/tractor.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Enugu</h3>
+                    <p class="price">starting from $10/month</p>
+
+                    <ul>
+                        <li>
+                            <i class="fi fi-rr-raindrops"></i>
+                            <p>Rain</p>
+                            <div class="progress"></div>
+                        </li>
+
+                        <li>
+                            <i class="fi fi-rr-sun"></i>
+                            <p>Sunlight</p>
+                            <div class="progress"></div>
+                        </li>
+
+                        <li>
+                            <i class="fi fi-rr-humidity"></i>
+                            <p>Humidity</p>
+                            <div class="progress"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</template>
+
+<style scoped>
+section {
+    background: #4d727b;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+    margin-bottom: 400px;
+}
+
+.title {
+    font-size: 45px;
+    margin-bottom: 30px;
+    font-weight: 500;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 30px;
+}
+
+.toolbar {
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #003543;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
+}
+
+.toolbar select {
+    padding: 10px;
+    background: transparent;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    border: none;
+    outline: none;
+}
+
+.toolbar option {
+    color: #161704;
+}
+
+.items {
+    border-radius: 40px;
+    column-gap: 20px;
+    row-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.item {
+    border: 1px solid #003543;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.item .action {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #04323f46;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 20px;
+}
+
+.item:hover .action {
+    opacity: 1;
+}
+
+.image {
+    width: 100%;
+    height: 220px;
+    padding-top: 20px;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.content {
+    padding: 10px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.content h3 {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.content .price {
+    font-size: 12px;
+    font-weight: 300;
+    color: #7be9bb;
+}
+
+.content ul {
+    margin-top: 10px;
+}
+
+.content li {
+    display: grid;
+    grid-template-columns: 40px auto;
+    height: 30px;
+    background: #3f5e66;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.content .progress {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+.content li:first-child .progress {
+    width: 88%;
+    background: #4577ff;
+}
+
+.content li:nth-child(2) .progress {
+    width: 63%;
+    background: #fac20a;
+}
+
+.content li:last-child .progress {
+    width: 80%;
+    background: #99b4ff;
+}
+
+.content li i {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.content li p {
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.action .button {
+    padding: 10px 25px;
+    border-radius: 10px;
+    background: #ffffff;
+    margin: 5px 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 15px;
+        grid-row-gap: 15px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .items {
+        column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+
+    .title {
+        margin-top: 0;
+        font-size: 30px;
+    }
+
+    .image {
+        height: 150px;
+    }
+
+    .content h3 {
+        font-size: 24px;
+    }
+
+    .content li {
+        height: 25px;
+    }
+
+    .content p {
+        font-size: 14px;
+    }
+
+    .toolbar {
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .items {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-row-gap: 15px;
+    }
+}
+</style>

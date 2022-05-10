@@ -3,6 +3,7 @@
     <CallToAction />
     <GetStarted />
     <LeaseAd />
+    <TopLands />
 </div>
 </template>
 

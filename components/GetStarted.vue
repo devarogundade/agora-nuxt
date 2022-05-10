@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-max-width">
+    <div class="app-width">
 
         <h3 class="title">Trending places</h3>
 
@@ -144,41 +144,6 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="item">
-                <div class="action">
-                    <div class="button">Rent</div>
-                    <div class="button">Lease</div>
-                </div>
-
-                <div class="image">
-                    <img src="images/land.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>Enugu</h3>
-                    <p class="price">starting from $10/month</p>
-
-                    <ul>
-                        <li>
-                            <i class="fi fi-rr-raindrops"></i>
-                            <p>Rain</p>
-                            <div class="progress"></div>
-                        </li>
-
-                        <li>
-                            <i class="fi fi-rr-sun"></i>
-                            <p>Sunlight</p>
-                            <div class="progress"></div>
-                        </li>
-
-                        <li>
-                            <i class="fi fi-rr-humidity"></i>
-                            <p>Humidity</p>
-                            <div class="progress"></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -196,7 +161,7 @@ section {
 
 .title {
     font-size: 45px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-weight: 500;
     text-align: center;
     color: #ffffff;
@@ -255,7 +220,7 @@ section {
 
 .items {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 20px;
 }
 
@@ -293,7 +258,7 @@ section {
 .image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .content {
