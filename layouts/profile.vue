@@ -1,6 +1,6 @@
 <template>
 <div>
-    <TopBar />
+    <TopBarProfile />
     <Nuxt />
 </div>
 </template>

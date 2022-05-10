@@ -1,12 +1,12 @@
 <template>
-  <CallToAction />
+<div>
+    <CallToAction />
+    <GetStarted />
+</div>
 </template>
 
 <script>
 export default {
-  layout: 'landing'
-}
+    layout: "landing",
+};
 </script>
-
-<style scoped>
-</style>

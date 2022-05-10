@@ -17,7 +17,7 @@
                     <div class="items">
                         <div class="item">
                             <p class="item-name">
-                                Explore
+                                Marketplace
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
@@ -58,7 +58,7 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Sign in
+                                Investments
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
@@ -89,7 +89,7 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Learn
+                                Activity
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
@@ -120,7 +120,7 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Support
+                                Settings
                                 <i class="fi fi-rr-interrogation"></i>
                             </p>
                         </div>

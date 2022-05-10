@@ -2,7 +2,7 @@ export default {
     target: 'static',
 
     head: {
-        title: 'agora-nuxt',
+        title: 'Agora - Agricultural Marketplace',
         htmlAttrs: {
             lang: 'en'
         },
@@ -14,10 +14,7 @@ export default {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-            {
-                type: 'javascript',
-                href: '../static/js/model-viewer.js'
-            }
+
         ]
     },
 
@@ -25,7 +22,9 @@ export default {
         '@/static/css/global.css'
     ],
 
-    plugins: [],
+    plugins: [
+        { src: '@/plugins/vue-awesome-swiper.js', mode: 'client' }
+    ],
 
     components: true,
 
