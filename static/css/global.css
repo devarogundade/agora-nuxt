@@ -6,6 +6,7 @@
     box-sizing: border-box;
     transition: 300ms;
     font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {

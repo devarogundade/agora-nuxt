@@ -129,7 +129,7 @@
 
                 <div class="search">
                     <div class="input">
-                        <input type="text" placeholder="Search" />
+                        <input type="text" placeholder="Search location, properties.." />
                         <i class="fi fi-rr-microphone">
                             <p>Use voice</p>
                         </i>
@@ -230,6 +230,7 @@
     width: 300px;
     padding: 5px;
     border-radius: 10px;
+    z-index: 2;
 }
 
 .dropdown li {
@@ -351,5 +352,24 @@ input::placeholder {
 
 .input:hover p {
     display: block !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .header-grid {
+        grid-template-columns: 100%;
+        row-gap: 20px;
+    }
+
+    .menu .item:last-child {
+      display: none;
+    }
+
+    .dropdown {
+      position: fixed;
+      width: 80%;
+      left: 10%;
+      top: 50px;
+      background: #024e61;
+    }
 }
 </style>
