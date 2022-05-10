@@ -132,4 +132,10 @@ section {
     height: fit-content;
     top: 250px;
 }
+
+@media screen and (max-width) {
+  .call-to-action {
+    grid-template-columns: auto;
+  }
+}
 </style>
