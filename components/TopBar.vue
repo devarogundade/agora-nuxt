@@ -379,7 +379,7 @@ input::placeholder {
         position: fixed;
         width: 80%;
         left: 10%;
-        top: 50px;
+        top: 110px;
         background: #024e61;
     }
 
