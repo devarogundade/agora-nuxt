@@ -76,7 +76,6 @@ section {
     justify-content: space-around;
     grid-template-columns: 650px 300px;
     align-items: center;
-    row-gap: 20px;
 }
 
 .text {
@@ -140,7 +139,7 @@ section {
     }
 
     .model {
-      position: unset;
+      margin-top: 30px;
     }
 }
 </style>
