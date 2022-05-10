@@ -22,16 +22,16 @@ li {
 }
 
 .app-width {
-    width: 95%;
+    width: 90%;
     max-width: 1200px;
 }
 
 .app-max-width {
-    width: 95%;
+    width: 90%;
     max-width: 1400px;
 }
 
 .app-min-width {
-    width: 95%;
+    width: 90%;
     max-width: 1000px;
 }
