@@ -177,13 +177,8 @@
 .header {
     height: 65px;
     width: 100%;
-    background: transparent;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: 0;
 }
 
 .header-grid {
