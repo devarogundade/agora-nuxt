@@ -139,7 +139,11 @@ section {
     }
 
     .model {
-      margin-top: 30px;
+        margin-top: 30px;
+    }
+
+    .text h3 {
+        font-size: 50px;
     }
 }
 </style>

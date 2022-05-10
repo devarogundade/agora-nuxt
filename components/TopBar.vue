@@ -180,6 +180,7 @@
 
 .menu {
     height: 100%;
+    user-select: none;
 }
 
 .items {
