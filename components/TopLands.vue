@@ -21,7 +21,7 @@
         </div>
 
         <div class="items">
-            <div class="item" v-for="index in 12" :key="index">
+            <div class="item" v-for="index in 15" :key="index">
                 <div class="action">
                     <div class="button">Rent</div>
                     <div class="button">Lease</div>
@@ -31,25 +31,13 @@
                     <img src="images/tractor.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Enugu</h3>
-                    <p class="price">starting from $10/month</p>
+                    <h3>CAT 2005</h3>
+                    <p class="price">value at $100/month</p>
 
                     <ul>
                         <li>
-                            <i class="fi fi-rr-raindrops"></i>
-                            <p>Rain</p>
-                            <div class="progress"></div>
-                        </li>
-
-                        <li>
-                            <i class="fi fi-rr-sun"></i>
-                            <p>Sunlight</p>
-                            <div class="progress"></div>
-                        </li>
-
-                        <li>
-                            <i class="fi fi-rr-humidity"></i>
-                            <p>Humidity</p>
+                            <i class="fi fi-rr-clock"></i>
+                            <p>On lease</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
@@ -186,21 +174,8 @@ section {
     left: 0;
     top: 0;
     border-radius: 10px;
-}
-
-.content li:first-child .progress {
     width: 88%;
     background: #4577ff;
-}
-
-.content li:nth-child(2) .progress {
-    width: 63%;
-    background: #fac20a;
-}
-
-.content li:last-child .progress {
-    width: 80%;
-    background: #99b4ff;
 }
 
 .content li i {
