@@ -405,8 +405,8 @@ section {
 
     .items {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 15px;
-        row-gap: 15px;
+        column-gap: 2.5%;
+        row-gap: 2.5%;
     }
 }
 </style>
