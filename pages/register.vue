@@ -105,6 +105,7 @@ export default {
                 const data = response.data;
 
                 if (data.status) {
+                    setCookie(data.data, 'user')
                     this.$router.push('profile')
                 } else {
                     this.error = data.message

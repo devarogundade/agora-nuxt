@@ -1,34 +1,31 @@
 <template>
 <section>
     <div class="items">
-        <div class="item" v-for="index in 20" :key="index">
-            <div class="action">
-                <div class="button">Rent</div>
-                <div class="button">Lease</div>
-            </div>
+        <a href="/lands/123" v-for="index in 20" :key="index">
+            <div class="item">
+                <div class="image">
+                    <img src="/images/land.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Lagos</h3>
+                    <p class="price">starting from $10/month</p>
 
-            <div class="image">
-                <img src="/images/land.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Lagos</h3>
-                <p class="price">starting from $10/month</p>
+                    <ul>
+                        <li>
+                            <i class="fi fi-rr-raindrops"></i>
+                            <p>Availability</p>
+                            <div class="progress"></div>
+                        </li>
 
-                <ul>
-                    <li>
-                        <i class="fi fi-rr-raindrops"></i>
-                        <p>Availability</p>
-                        <div class="progress"></div>
-                    </li>
-
-                    <li>
-                        <i class="fi fi-rr-sun"></i>
-                        <p>10 plots free</p>
-                        <div class="progress"></div>
-                    </li>
-                </ul>
+                        <li>
+                            <i class="fi fi-rr-sun"></i>
+                            <p>10 plots free</p>
+                            <div class="progress"></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 </section>
 </template>
@@ -37,7 +34,7 @@
 section {
     display: flex;
     justify-content: center;
-    margin: 0;
+    margin: 0 !important;
 }
 
 .items {
@@ -54,24 +51,6 @@ section {
     border-radius: 20px;
     cursor: pointer;
     position: relative;
-}
-
-.item .action {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #04323f46;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 2;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border-radius: 20px;
-}
-
-.item:hover .action {
-    opacity: 1;
 }
 
 .image {
@@ -152,21 +131,6 @@ section {
     font-size: 15px;
     font-weight: 400;
 }
-
-.action {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.action .button {
-    padding: 10px 25px;
-    border-radius: 10px;
-    background: #ffffff;
-    margin: 5px 0;
-}
-
 
 @media screen and (max-width: 700px) {
     .image {

@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-width">
+    <div class="app-width" v-if="user">
         <div class="bio">
             <div class="image">
                 <div class="img">
@@ -33,6 +33,12 @@
 <script>
 export default {
     layout: "profile",
+
+    data() {
+        return {
+            user: true
+        }
+    },
 };
 </script>
 
@@ -157,11 +163,11 @@ section {
     }
 
     .name h3 {
-      font-size: 30px;
+        font-size: 30px;
     }
 
     .options {
-      top: 10px;
+        top: 10px;
     }
 }
 </style>

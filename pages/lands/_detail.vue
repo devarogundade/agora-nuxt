@@ -2,7 +2,7 @@
 <div>
     <section>
         <div class="app-min-width">
-            <a href="/land">
+            <a href="/lands">
                 <div class="back">
                     <i class="fi fi-rr-arrow-small-left"></i>
                     <p>Back to lands</p>
@@ -14,11 +14,11 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-              <img src="/images/tractor.png" alt="">
+                <img src="/images/land.png" alt="">
             </div>
             <div class="text">
                 <div class="name">
-                    <h3>CAT 2005</h3>
+                    <h3>Tractor 2005</h3>
                     <p>Machinery</p>
                 </div>
 
@@ -30,7 +30,7 @@
                         <p class="fixed">Rate per month</p>
                         <h3>$50.00</h3>
                         <div class="btn">
-                            Rent
+                            Make Offer
                         </div>
                     </div>
                 </div>
@@ -63,11 +63,11 @@
                 </div>
                 <div class="body">
                     <ul>
-                      <li>Horsepower: 2</li>
-                      <li>Color: Red, Blue</li>
-                      <li>Engine: Diesel</li>
-                      <li>: 2</li>
-                      <li>Horsepower: 2</li>
+                        <li>Horsepower: 2</li>
+                        <li>Color: Red, Blue</li>
+                        <li>Engine: Diesel</li>
+                        <li>Wheels: 4</li>
+                        <li>Horsepower: 2</li>
                     </ul>
                 </div>
             </div>
@@ -191,10 +191,10 @@ section {
 }
 
 .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
 }
 
 .price {
@@ -343,10 +343,10 @@ section {
 }
 
 .activity-text {
-  font-size: 24px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .others {
@@ -354,9 +354,10 @@ section {
 }
 
 .accordion {
-    border: 1px rgba(0, 0, 0, 0.12) solid;
+    border: 2px #003543 solid;
     border-radius: 10px;
 }
+
 .accordion .head {
     height: 50px;
     display: flex;
@@ -366,13 +367,29 @@ section {
     cursor: pointer;
     user-select: none;
 }
+
 .accordion .body {
     justify-content: space-between;
     padding: 20px;
-    border-top: 1px rgba(0, 0, 0, 0.12) solid;
+    border-top: 2px #003543 solid;
 }
+
 .accordion .body p {
     font-size: 15px;
+}
+
+.accordion ul {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.accordion li {
+  padding: 10px;
+  background: #00dc8027;
+  border: 1px #57e6aa solid;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 900px) {
@@ -404,7 +421,7 @@ section {
     }
 
     .activity-text {
-      font-size: 20px;
+        font-size: 20px;
     }
 }
 </style>

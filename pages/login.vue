@@ -73,7 +73,8 @@ export default {
                 console.log(data);
 
                 if (data.status) {
-                    this.$router.push("profile");
+                    setCookie(data.data, 'user')
+                    this.$router.push("profile")
                 } else {
                     this.error = data.message;
 
