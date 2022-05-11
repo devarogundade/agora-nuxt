@@ -100,11 +100,11 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href>
-                                            <i class="fi fi-rr-comment-alt"></i>
+                                         <a href>
+                                            <i class="fi fi-rr-comments"></i>
                                             <div class="text">
-                                                <h3>Blogs</h3>
-                                                <p>Read news from agora.</p>
+                                                <h3>My Profile</h3>
+                                                <p>Frequently Asked Questions.</p>
                                             </div>
                                         </a>
                                     </li>
@@ -113,7 +113,7 @@
                                         <a href>
                                             <i class="fi fi-rr-comments"></i>
                                             <div class="text">
-                                                <h3>My Profile</h3>
+                                                <h3>Logout</h3>
                                                 <p>Frequently Asked Questions.</p>
                                             </div>
                                         </a>
