@@ -8,7 +8,7 @@
             </div>
 
             <div class="image">
-                <img src="images/land.png" alt="">
+                <img src="/images/land.png" alt="">
             </div>
             <div class="content">
                 <h3>Lagos</h3>
