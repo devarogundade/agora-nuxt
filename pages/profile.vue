@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="options">
-                <i class="fi fi-rr-rotate-right"></i>
+                <i class="fi fi-rr-pencil"></i>
                 <i class="fi fi-rr-share"></i>
                 <i class="fi fi-rr-interrogation"></i>
             </div>
