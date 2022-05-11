@@ -7,22 +7,22 @@
         <div class="form">
             <div class="group">
                 <label for="">FullName</label>
-                <input type="text" placeholder="Enter">
+                <input type="text" placeholder="Enter" v-model="fullName">
             </div>
 
             <div class="group">
                 <label for="">Email Address</label>
-                <input type="text" placeholder="Enter">
+                <input type="text" placeholder="Enter" v-model="emailAddress">
             </div>
 
             <div class="group">
                 <label for="">Password</label>
-                <input type="password" placeholder="Enter">
+                <input type="password" placeholder="Enter" v-model="password">
             </div>
 
             <div class="group">
                 <label for="">Confirm Password</label>
-                <input type="password" placeholder="Enter">
+                <input type="password" placeholder="Enter" v-model="confirmPassword">
             </div>
 
             <!-- just for survey -->
@@ -37,7 +37,8 @@
                 I want to rent properties
             </p>
 
-            <button>Register</button>
+            <button v-on:click="attempt()">Register</button>
+            <a href="/login">Login to an Existing Account</a>
         </div>
 
     </div>
@@ -50,7 +51,34 @@ export default {
 
     data() {
         return {
-            purpose: 0
+            purpose: 0,
+
+            fullName: '',
+            emailAddress: '',
+            password: '',
+            confirmPassword: '',
+        }
+    },
+
+    methods: {
+        attempt() {
+            if (this.fullName == '') {
+                alert('FullName is required')
+            } else if (this.emailAddress == '') {
+                alert('Email Address is required')
+            } else if (this.password == '') {
+                alert('Password is required')
+            } else if (this.confirmPassword == '') {
+                alert('Confirm password is required')
+            } else if (this.password != this.confirmPassword) {
+                alert('Password must be the same')
+            } else {
+              this.register()
+            }
+        },
+
+        register() {
+
         }
     }
 }
@@ -61,7 +89,7 @@ section {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 .app-min-width {
@@ -143,6 +171,7 @@ label {
     line-height: 15px;
     color: #ffffff;
     font-size: 15px;
+    font-weight: 300;
 }
 
 button {
@@ -161,6 +190,16 @@ button {
 input::placeholder {
     color: #ffffff;
     opacity: 0.8;
+}
+
+.form a {
+  margin-top: 30px;
+  color: white;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 4px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 700px) {
