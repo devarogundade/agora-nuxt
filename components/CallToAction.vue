@@ -101,7 +101,7 @@ section {
 }
 
 .model {
-    min-height: 80px;
+  height: 100%;
 }
 
 .object {
