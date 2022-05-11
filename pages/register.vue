@@ -44,6 +44,8 @@
             <a href="/login">Login to an Existing Account</a>
         </div>
     </div>
+
+    <Loading v-if="loading" :message="'Creating an Account'" />
 </section>
 </template>
 
@@ -98,6 +100,8 @@ export default {
                 this.password;
 
             this.$axios.post(url).then((response) => {
+                this.loading = false
+
                 const data = response.data;
 
                 if (data.status) {
@@ -113,13 +117,14 @@ export default {
                         } else if (this.error.password && this.error.password.length > 0) {
                             alert(this.error.password[0])
                         } else {
-                            alert('something went wrong')
+                            alert(this.error);
                         }
+                    } else {
+                        alert("something went wrong");
                     }
                 }
             });
 
-            this.loading = false
         },
     },
 };

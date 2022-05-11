@@ -7,12 +7,12 @@
         <div class="form">
             <div class="group">
                 <label for="">Email Address</label>
-                <input type="text" placeholder="Enter" v-model="emailAddress">
+                <input type="text" placeholder="Enter" v-model="emailAddress" />
             </div>
 
             <div class="group">
                 <label for="">Password</label>
-                <input type="password" placeholder="Enter" v-model="password">
+                <input type="password" placeholder="Enter" v-model="password" />
             </div>
 
             <p :class="remember ? 'purpose checked' : 'purpose'" v-on:click="remember = !remember">
@@ -23,74 +23,76 @@
             <button v-on:click="attempt()">Login</button>
             <a href="/register">Register a New Account</a>
         </div>
-
     </div>
+
+    <Loading v-if="loading" :message="'Authenticating'" />
 </section>
 </template>
 
 <script>
 export default {
-    layout: 'landing',
+    layout: "landing",
 
     data() {
         return {
             remember: false,
 
-            emailAddress: '',
-            password: '',
+            emailAddress: "",
+            password: "",
 
             loading: false,
-        }
+        };
     },
 
     methods: {
         attempt() {
             if (this.loading) {
-                return
+                return;
             }
 
-            if (this.emailAddress == '') {
-                alert('Email Address is required')
-            } else if (this.password == '') {
-                alert('Password is required')
+            if (this.emailAddress == "") {
+                alert("Email Address is required");
+            } else if (this.password == "") {
+                alert("Password is required");
             } else {
-                this.login()
+                this.login();
             }
         },
 
         login() {
-            this.loading = true
+            this.loading = true;
 
             const url =
-                "/login?email=" +
-                this.emailAddress +
-                "&password=" +
-                this.password;
+                "/login?email=" + this.emailAddress + "&password=" + this.password;
 
             this.$axios.post(url).then((response) => {
+                this.loading = false;
+
                 const data = response.data;
 
+                console.log(data);
+
                 if (data.status) {
-                    this.$router.push('profile')
+                    this.$router.push("profile");
                 } else {
-                    this.error = data.message
+                    this.error = data.message;
 
                     if (this.error) {
                         if (this.error.email && this.error.email.length > 0) {
-                            alert(this.error.email[0])
+                            alert(this.error.email[0]);
                         } else if (this.error.password && this.error.password.length > 0) {
-                            alert(this.error.password[0])
+                            alert(this.error.password[0]);
                         } else {
-                            alert('something went wrong')
+                            alert(this.error);
                         }
+                    } else {
+                        alert("something went wrong");
                     }
                 }
-
-                this.loading = false
             });
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style scoped>
@@ -221,6 +223,5 @@ input::placeholder {
         font-size: 16px;
         margin-top: 10px;
     }
-
 }
 </style>

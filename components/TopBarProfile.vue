@@ -31,8 +31,8 @@
                                         <a href="/land">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>Land</h3>
-                                                <p>Lagos, Ibadan, and other locations..</p>
+                                                <h3>All Assets</h3>
+                                                <p>Every assets your own or lease..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -41,8 +41,8 @@
                                         <a href>
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
-                                                <h3>Machinery</h3>
-                                                <p>Rich nutrient soil for your crops.</p>
+                                                <h3>Listed</h3>
+                                                <p>All assets listed for leasing..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -51,8 +51,8 @@
                                         <a href>
                                             <i class="fi fi-rr-tractor"></i>
                                             <div class="text">
-                                                <h3>IoTs</h3>
-                                                <p>Tractors, Ploughs, others..</p>
+                                                <h3>On lease</h3>
+                                                <p>All assets on lease to someone..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -72,39 +72,30 @@
                                         <router-link to="/login">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>Login</h3>
-                                                <p>Welcome back to AgoraLands..</p>
+                                                <h3>Offers</h3>
+                                                <p>Offers in renting your assets..</p>
                                             </div>
                                         </router-link>
                                     </li>
 
-                                    <li>
-                                        <router-link to="/register">
-                                            <i class="fi fi-rr-strawberry"></i>
-                                            <div class="text">
-                                                <h3>Register</h3>
-                                                <p>Get started today. Rent and/or Lease.</p>
-                                            </div>
-                                        </router-link>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="item">
                             <p class="item-name">
-                                Settings
+                                New
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                         <a href>
-                                            <i class="fi fi-rr-comments"></i>
+                                        <a href>
+                                            <i class="fi fi-rr-comment-alt"></i>
                                             <div class="text">
-                                                <h3>My Profile</h3>
-                                                <p>Frequently Asked Questions.</p>
+                                                <h3>Land</h3>
+                                                <p>Register your land for leasing..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -113,8 +104,18 @@
                                         <a href>
                                             <i class="fi fi-rr-comments"></i>
                                             <div class="text">
-                                                <h3>Logout</h3>
-                                                <p>Frequently Asked Questions.</p>
+                                                <h3>Machinery</h3>
+                                                <p>Register your machines for leasing..</p>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href>
+                                            <i class="fi fi-rr-comments"></i>
+                                            <div class="text">
+                                                <h3>IoTs</h3>
+                                                <p>Register your devices for leasing..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -124,8 +125,8 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Support
-                                <i class="fi fi-rr-interrogation"></i>
+                                Log out
+                                <i class="fi fi-rr-sign-out-alt"></i>
                             </p>
                         </div>
                     </div>
@@ -173,7 +174,7 @@
 }
 
 .header {
-    min-height: 70px;
+    min-height: 80px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -310,8 +311,8 @@
     background: #003543;
     border-radius: 200px;
     display: grid;
-    column-gap: 10px;
     grid-template-columns: auto 35px;
+    column-gap: 10px;
     padding: 5px 5px 5px 10px;
 }
 
@@ -384,6 +385,24 @@ input::placeholder {
 
     .search {
         margin-top: 20px;
+    }
+
+    input {
+      font-size: 16px;
+    }
+
+    .input {
+        height: 50px;
+    }
+
+    .input i {
+        width: 40px;
+        margin-left: -10px;
+    }
+
+    .input p {
+        top: 42px;
+        padding: 2px 4px;
     }
 
     .logo {

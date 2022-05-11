@@ -386,6 +386,24 @@ input::placeholder {
         margin-top: 20px;
     }
 
+    input {
+        font-size: 16px;
+    }
+
+    .input {
+        height: 50px;
+    }
+
+    .input i {
+        width: 40px;
+        margin-left: -10px;
+    }
+
+    .input p {
+        top: 42px;
+        padding: 2px 4px;
+    }
+
     .logo {
         margin-top: 20px;
         justify-content: center;

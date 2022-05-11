@@ -168,56 +168,6 @@ section {
     margin-top: -100px;
 }
 
-.swiper-container {
-    overflow-x: hidden;
-    position: relative;
-}
-
-.swiper-wrapper {
-    height: 300px;
-    display: flex;
-    width: 100%;
-}
-
-.slide {
-    border-radius: 20px;
-    background: #345158;
-}
-
-.swiper-button-prev {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #00c675;
-    left: 40px;
-    top: 50%;
-    transform: translate(0, -50%);
-    cursor: pointer;
-}
-
-.swiper-button-prev i,
-.swiper-button-next i {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-}
-
-.swiper-button-next {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #00c675;
-    right: 40px;
-    top: 50%;
-    transform: translate(0, -50%);
-    cursor: pointer;
-}
-
 .items {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));

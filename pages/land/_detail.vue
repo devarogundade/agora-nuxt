@@ -55,6 +55,32 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="accordion">
+                <div class="head">
+                    <p class="title">Attributes</p>
+                    <i class="fi fi-rr-duplicate"></i>
+                </div>
+                <div class="body">
+                    <ul>
+                      <li>Horsepower: 2</li>
+                      <li>Color: Red, Blue</li>
+                      <li>Engine: Diesel</li>
+                      <li>: 2</li>
+                      <li>Horsepower: 2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="head">
+                    <p class="title">Description</p>
+                    <i class="fi fi-rr-duplicate"></i>
+                </div>
+                <div class="body">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, dolor nobis blanditiis veritatis quas commodi sequi suscipit ex magni, nesciunt, eius est. Quia animi libero, quod culpa numquam dolores in.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -143,6 +169,7 @@ section {
     display: grid;
     grid-template-columns: 400px auto;
     column-gap: 40px;
+    row-gap: 40px;
 }
 
 .name h3 {
@@ -324,6 +351,28 @@ section {
 
 .others {
     padding-bottom: 50px;
+}
+
+.accordion {
+    border: 1px rgba(0, 0, 0, 0.12) solid;
+    border-radius: 10px;
+}
+.accordion .head {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    cursor: pointer;
+    user-select: none;
+}
+.accordion .body {
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px rgba(0, 0, 0, 0.12) solid;
+}
+.accordion .body p {
+    font-size: 15px;
 }
 
 @media screen and (max-width: 900px) {
