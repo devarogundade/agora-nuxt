@@ -310,6 +310,7 @@
     background: #003543;
     border-radius: 200px;
     display: grid;
+    column-gap: 10px;
     grid-template-columns: auto 35px;
     padding: 5px 5px 5px 10px;
 }

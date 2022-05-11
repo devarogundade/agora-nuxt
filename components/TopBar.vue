@@ -311,6 +311,7 @@
     border-radius: 200px;
     display: grid;
     grid-template-columns: auto 35px;
+    column-gap: 10px;
     padding: 5px 5px 5px 10px;
 }
 
