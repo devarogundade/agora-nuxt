@@ -1,34 +1,38 @@
 <template>
 <section>
-    <a href="https://agrotech.ng/" target="_blank">
+    <!-- <a href="https://agrotech.ng/" target="_blank">
         <section class="purpose">
             <p>
                 An Agro-Tech Hackathon Project.
                 <b>Learn more</b>
             </p>
         </section>
-    </a>
+    </a> -->
     <section class="header">
         <div class="app-width">
             <div class="header-grid">
-                <div class="logo"></div>
+                <div class="logo">
+                    <a href="/">
+                        <h2>AgoraLease</h2>
+                    </a>
+                </div>
 
                 <div class="menu">
                     <div class="items">
                         <div class="item">
                             <p class="item-name">
-                                Marketplace
+                                My Assets
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href>
+                                        <a href="/land">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>IoT</h3>
-                                                <p>Drones, Bots, others..</p>
+                                                <h3>Land</h3>
+                                                <p>Lagos, Ibadan, and other locations..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -37,8 +41,8 @@
                                         <a href>
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
-                                                <h3>Farm produce</h3>
-                                                <p>Cereals, Tubers, fruits..</p>
+                                                <h3>Machinery</h3>
+                                                <p>Rich nutrient soil for your crops.</p>
                                             </div>
                                         </a>
                                     </li>
@@ -47,7 +51,7 @@
                                         <a href>
                                             <i class="fi fi-rr-tractor"></i>
                                             <div class="text">
-                                                <h3>Machinery</h3>
+                                                <h3>IoTs</h3>
                                                 <p>Tractors, Ploughs, others..</p>
                                             </div>
                                         </a>
@@ -58,30 +62,30 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Investments
+                                Offers
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <router-link to="/profile">
+                                        <router-link to="/login">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>Buyer</h3>
-                                                <p>Drones, Bots, others..</p>
+                                                <h3>Login</h3>
+                                                <p>Welcome back to AgoraLands..</p>
                                             </div>
                                         </router-link>
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <router-link to="/register">
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
-                                                <h3>Seller</h3>
-                                                <p>Cereals, Tubers, fruits..</p>
+                                                <h3>Register</h3>
+                                                <p>Get started today. Rent and/or Lease.</p>
                                             </div>
-                                        </a>
+                                        </router-link>
                                     </li>
                                 </ul>
                             </div>
@@ -89,7 +93,7 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Activity
+                                Settings
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
@@ -109,7 +113,7 @@
                                         <a href>
                                             <i class="fi fi-rr-comments"></i>
                                             <div class="text">
-                                                <h3>Faqs</h3>
+                                                <h3>My Profile</h3>
                                                 <p>Frequently Asked Questions.</p>
                                             </div>
                                         </a>
@@ -120,7 +124,7 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Settings
+                                Support
                                 <i class="fi fi-rr-interrogation"></i>
                             </p>
                         </div>
@@ -129,7 +133,7 @@
 
                 <div class="search">
                     <div class="input">
-                        <input type="text" placeholder="Search" />
+                        <input type="text" placeholder="Search location, properties.." />
                         <i class="fi fi-rr-microphone">
                             <p>Use voice</p>
                         </i>
@@ -144,14 +148,14 @@
 <style scoped>
 .purpose {
     width: 100%;
-    padding: 8px 10px;
+    padding: 6px;
     background: #00c675;
     text-align: center;
 }
 
 .purpose p {
     color: #161704;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: normal;
 }
 
@@ -159,16 +163,22 @@
     background: #4de7a8;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h2 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
 .header {
-    height: 65px;
+    min-height: 70px;
     width: 100%;
-    background: transparent;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: 0;
 }
 
 .header-grid {
@@ -180,6 +190,7 @@
 
 .menu {
     height: 100%;
+    user-select: none;
 }
 
 .items {
@@ -230,6 +241,7 @@
     width: 300px;
     padding: 5px;
     border-radius: 10px;
+    z-index: 2;
 }
 
 .dropdown li {
@@ -351,5 +363,33 @@ input::placeholder {
 
 .input:hover p {
     display: block !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .header-grid {
+        grid-template-columns: 100%;
+        row-gap: 20px;
+    }
+
+    .menu .item:last-child {
+        display: none;
+    }
+
+    .dropdown {
+        position: fixed;
+        width: 80%;
+        left: 10%;
+        top: 110px;
+        background: #024e61;
+    }
+
+    .search {
+        margin-top: 20px;
+    }
+
+    .logo {
+        margin-top: 20px;
+        justify-content: center;
+    }
 }
 </style>

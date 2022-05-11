@@ -13,7 +13,7 @@
             <div class="header-grid">
                 <div class="logo">
                     <a href="/">
-                        <h2>AgoraLease</h2>
+                        <img src="images/logo.png" alt="">
                     </a>
                 </div>
 
@@ -168,14 +168,12 @@
     align-items: center;
 }
 
-.logo h2 {
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: 600;
+.logo img {
+    height: 40px;
 }
 
 .header {
-    min-height: 70px;
+    min-height: 80px;
     width: 100%;
     display: flex;
     justify-content: center;

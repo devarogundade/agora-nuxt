@@ -15,8 +15,6 @@
                 <input type="password" placeholder="Enter" v-model="password">
             </div>
 
-            <!-- just for survey -->
-
             <p :class="remember ? 'purpose checked' : 'purpose'" v-on:click="remember = !remember">
                 <i class="fi fi-rr-check"></i>
                 Remember me
@@ -40,22 +38,56 @@ export default {
 
             emailAddress: '',
             password: '',
+
+            loading: false,
         }
     },
 
     methods: {
         attempt() {
+            if (this.loading) {
+                return
+            }
+
             if (this.emailAddress == '') {
                 alert('Email Address is required')
             } else if (this.password == '') {
                 alert('Password is required')
             } else {
-              this.login()
+                this.login()
             }
         },
 
         login() {
+            this.loading = true
 
+            const url =
+                "/login?email=" +
+                this.emailAddress +
+                "&password=" +
+                this.password;
+
+            this.$axios.post(url).then((response) => {
+                const data = response.data;
+
+                if (data.status) {
+                    this.$router.push('profile')
+                } else {
+                    this.error = data.message
+
+                    if (this.error) {
+                        if (this.error.email && this.error.email.length > 0) {
+                            alert(this.error.email[0])
+                        } else if (this.error.password && this.error.password.length > 0) {
+                            alert(this.error.password[0])
+                        } else {
+                            alert('something went wrong')
+                        }
+                    }
+                }
+
+                this.loading = false
+            });
         }
     }
 }
@@ -170,13 +202,13 @@ input::placeholder {
 }
 
 .form a {
-  margin-top: 30px;
-  color: white;
-  text-align: center;
-  width: 100%;
-  display: block;
-  padding: 4px;
-  font-size: 16px;
+    margin-top: 30px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding: 4px;
+    font-size: 16px;
 }
 
 @media screen and (max-width: 700px) {

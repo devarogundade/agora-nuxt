@@ -2,27 +2,30 @@
 <section>
     <div class="app-min-width">
         <h3 class="title">Join our community of investors and farmers</h3>
-        <p class="desc">You will be able to leased your Lands, Machinery and IoTs to farmers and also promoting agriculture in Nigeria.</p>
+        <p class="desc">
+            You will be able to leased your Lands, Machinery and IoTs to farmers and
+            also promoting agriculture in Nigeria.
+        </p>
 
         <div class="form">
             <div class="group">
                 <label for="">FullName</label>
-                <input type="text" placeholder="Enter" v-model="fullName">
+                <input type="text" placeholder="Enter" v-model="fullName" />
             </div>
 
             <div class="group">
                 <label for="">Email Address</label>
-                <input type="text" placeholder="Enter" v-model="emailAddress">
+                <input type="text" placeholder="Enter" v-model="emailAddress" />
             </div>
 
             <div class="group">
                 <label for="">Password</label>
-                <input type="password" placeholder="Enter" v-model="password">
+                <input type="password" placeholder="Enter" v-model="password" />
             </div>
 
             <div class="group">
                 <label for="">Confirm Password</label>
-                <input type="password" placeholder="Enter" v-model="confirmPassword">
+                <input type="password" placeholder="Enter" v-model="confirmPassword" />
             </div>
 
             <!-- just for survey -->
@@ -40,48 +43,86 @@
             <button v-on:click="attempt()">Register</button>
             <a href="/login">Login to an Existing Account</a>
         </div>
-
     </div>
 </section>
 </template>
 
 <script>
 export default {
-    layout: 'landing',
+    layout: "landing",
 
     data() {
         return {
             purpose: 0,
 
-            fullName: '',
-            emailAddress: '',
-            password: '',
-            confirmPassword: '',
-        }
+            fullName: "",
+            emailAddress: "",
+            password: "",
+            confirmPassword: "",
+
+            error: null,
+            loading: false
+        };
     },
 
     methods: {
         attempt() {
-            if (this.fullName == '') {
-                alert('FullName is required')
-            } else if (this.emailAddress == '') {
-                alert('Email Address is required')
-            } else if (this.password == '') {
-                alert('Password is required')
-            } else if (this.confirmPassword == '') {
-                alert('Confirm password is required')
+            if (this.loading) {
+                return
+            }
+
+            if (this.fullName == "") {
+                alert("FullName is required");
+            } else if (this.emailAddress == "") {
+                alert("Email Address is required");
+            } else if (this.password == "") {
+                alert("Password is required");
+            } else if (this.confirmPassword == "") {
+                alert("Confirm password is required");
             } else if (this.password != this.confirmPassword) {
-                alert('Password must be the same')
+                alert("Password must be the same");
             } else {
-              this.register()
+                this.register();
             }
         },
 
         register() {
+            this.loading = true
 
-        }
-    }
-}
+            const url =
+                "/register?name=" +
+                this.fullName +
+                "&email=" +
+                this.emailAddress +
+                "&password=" +
+                this.password;
+
+            this.$axios.post(url).then((response) => {
+                const data = response.data;
+
+                if (data.status) {
+                    this.$router.push('profile')
+                } else {
+                    this.error = data.message
+
+                    if (this.error) {
+                        if (this.error.name && this.error.namw.length > 0) {
+                            alert(this.error.name[0])
+                        } else if (this.error.email && this.error.email.length > 0) {
+                            alert(this.error.email[0])
+                        } else if (this.error.password && this.error.password.length > 0) {
+                            alert(this.error.password[0])
+                        } else {
+                            alert('something went wrong')
+                        }
+                    }
+                }
+            });
+
+            this.loading = false
+        },
+    },
+};
 </script>
 
 <style scoped>
@@ -193,13 +234,13 @@ input::placeholder {
 }
 
 .form a {
-  margin-top: 30px;
-  color: white;
-  text-align: center;
-  width: 100%;
-  display: block;
-  padding: 4px;
-  font-size: 16px;
+    margin-top: 30px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding: 4px;
+    font-size: 16px;
 }
 
 @media screen and (max-width: 700px) {
@@ -212,6 +253,5 @@ input::placeholder {
         font-size: 16px;
         margin-top: 10px;
     }
-
 }
 </style>
