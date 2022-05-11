@@ -146,5 +146,9 @@ section {
     .text h3 {
         font-size: 50px;
     }
+
+    section {
+      margin-top: 60px;
+    }
 }
 </style>

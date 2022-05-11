@@ -1,6 +1,6 @@
 <template>
 <div>
-    <section class="f-back">
+    <section>
         <div class="app-min-width">
             <a href="/land">
                 <div class="back">
@@ -89,6 +89,10 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="others">
+
     </section>
 </div>
 </template>
@@ -318,14 +322,14 @@ section {
   margin-bottom: 15px;
 }
 
+.others {
+    padding-bottom: 50px;
+}
+
 @media screen and (max-width: 900px) {
     .grid {
         grid-template-columns: 100%;
         row-gap: 30px;
-    }
-
-    .f-back {
-        margin-top: 150px;
     }
 
     .grid {

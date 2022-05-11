@@ -69,7 +69,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <router-link to="/profile">
+                                        <router-link to="/login">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>Login</h3>
@@ -79,13 +79,13 @@
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <router-link to="/register">
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
                                                 <h3>Register</h3>
-                                                <p>Get started today. Rent or Lease your lands.</p>
+                                                <p>Get started today. Rent and/or Lease.</p>
                                             </div>
-                                        </a>
+                                        </router-link>
                                     </li>
                                 </ul>
                             </div>
@@ -175,7 +175,7 @@
 }
 
 .header {
-    height: 65px;
+    min-height: 65px;
     width: 100%;
     display: flex;
     justify-content: center;
