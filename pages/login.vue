@@ -1,8 +1,8 @@
 <template>
 <section>
     <div class="app-min-width">
-        <h3 class="title">Join our community of investors and farmers</h3>
-        <p class="desc">You will be able to leased your Lands, Machinery and IoTs to farmers and also promoting agriculture in Nigeria.</p>
+        <h3 class="title">Welcome back to AgoraLease</h3>
+        <p class="desc">Keep your password safe.</p>
 
         <div class="form">
             <div class="group">
