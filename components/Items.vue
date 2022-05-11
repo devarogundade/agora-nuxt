@@ -23,7 +23,7 @@
 
                     <li>
                         <i class="fi fi-rr-sun"></i>
-                        <p>10 of 50 free plots</p>
+                        <p>10 plots free</p>
                         <div class="progress"></div>
                     </li>
                 </ul>
@@ -129,11 +129,6 @@ section {
 .content li:first-child .progress {
     width: 88%;
     background: #4577ff;
-}
-
-.content li:nth-child(2) .progress {
-    width: 63%;
-    background: #fac20a;
 }
 
 .content li:last-child .progress {

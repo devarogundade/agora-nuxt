@@ -156,6 +156,10 @@ section {
         width: 150px;
     }
 
+    .name h3 {
+      font-size: 30px;
+    }
+
     .options {
       top: 10px;
     }
