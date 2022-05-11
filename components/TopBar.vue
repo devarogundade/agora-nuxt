@@ -175,7 +175,7 @@
 }
 
 .header {
-    min-height: 65px;
+    min-height: 70px;
     width: 100%;
     display: flex;
     justify-content: center;
