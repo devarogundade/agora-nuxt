@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-width">
+    <div class="app-min-width">
         <div class="call-to-action">
             <div class="text">
                 <h3>The Largest Agriculture Lease Solution</h3>
@@ -102,10 +102,6 @@ section {
 
 .model {
   height: 100%;
-}
-
-.object {
-    margin-left: 50px;
 }
 
 .actions {

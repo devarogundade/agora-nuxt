@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-min-width">
+    <div class="app-min2-width">
         <div class="ad">
             <p>Do you have a land? Why not lease to farming and start earning monthly.</p>
             <a href="">
@@ -32,7 +32,7 @@ section {
     justify-content: space-between;
     padding: 24px;
     background-image: url('/images/leaf.png');
-    background-position: 200px;
+    background-position: center center;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;

@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-width">
+    <div class="app-min-width">
 
         <h3 class="title">Trending places</h3>
 
