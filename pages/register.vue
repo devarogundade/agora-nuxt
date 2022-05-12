@@ -105,7 +105,8 @@ export default {
                 const data = response.data;
 
                 if (data.status) {
-                    setCookie(data.data, 'user')
+                    this.$cache.set('token', data.data.token)
+                    this.$axios.setToken(data.data.token, 'Bearer')
                     this.$router.push('profile')
                 } else {
                     this.error = data.message

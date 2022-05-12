@@ -32,13 +32,29 @@ export default {
     buildModules: [],
 
     modules: [
-        '@nuxtjs/axios',
+        '@nuxtjs/axios', ['cookie-universal-nuxt', { alias: 'cache', parseJSON: true }],
+        '@nuxtjs/auth-next'
     ],
 
     axios: {
         baseURL: 'http://127.0.0.1:8000/api/',
     },
 
+    auth: {
+        strategies: {
+            local: {
+                endpoints: {
+                    login: { url: '/login', method: 'post', propertyName: 'access_token' },
+                    logout: { url: '/logout', method: 'post' },
+                    user: { url: '/user', method: 'get', propertyName: false }
+                },
+                tokenRequired: true,
+                tokenType: 'Bearer',
+                globalToken: true,
+                autoFetchUser: false
+            }
+        }
+    },
 
     build: {}
 }

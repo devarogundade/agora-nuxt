@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="item">
+                        <div class="item" v-on:click="logOut()">
                             <p class="item-name">
                                 Log out
                                 <i class="fi fi-rr-sign-out-alt"></i>
@@ -145,6 +145,19 @@
     </section>
 </section>
 </template>
+
+<script>
+export default {
+    methods: {
+        logOut() {
+            this.$cache.removeAll()
+            this.$axios.setToken(null, 'Bearer')
+
+            this.$router.push('/login')
+        }
+    }
+}
+</script>
 
 <style scoped>
 .purpose {
@@ -388,7 +401,7 @@ input::placeholder {
     }
 
     input {
-      font-size: 16px;
+        font-size: 16px;
     }
 
     .input {

@@ -8,12 +8,12 @@
                 </div>
             </div>
             <div class="name">
-                <h3>Arogundade Ibrahim</h3>
-                <p>arogundade@gmail.com</p>
+                <h3>{{ user.name }}</h3>
+                <p>{{ user.email.toLowerCase() }}</p>
 
-                <div class="verified yes">
+                <div :class="user.verified_at != null ? 'verified yes' : 'verified no'">
                     <i class="fi fi-rr-shield-check"></i>
-                    Verified
+                    {{ user.verified_at != null ? 'Verified' : 'Not Verified' }}
                 </div>
             </div>
             <div class="options">
@@ -27,18 +27,49 @@
 
         <Items />
     </div>
+
+    <Loading v-if="loading" :message="'Loading profile'" />
 </section>
 </template>
 
 <script>
 export default {
     layout: "profile",
+    middleware: "auth",
 
     data() {
         return {
-            user: true
+            user: null,
+
+            loading: true
         }
     },
+
+    methods: {
+        getUser() {
+            const token = this.$cache.get('token')
+
+            this.loading = true
+            const url = '/user'
+
+            this.$axios.setToken(token, 'Bearer')
+            this.$axios.get(url).then(response => {
+                this.loading = false
+
+                const data = response.data
+
+                if (data.status) {
+                    this.user = data.data
+                } else {
+                    alert('something went wrong')
+                }
+            })
+        }
+    },
+
+    created() {
+      this.getUser()
+    }
 };
 </script>
 
@@ -103,6 +134,10 @@ section {
 
 .yes {
     background: #003543;
+}
+
+.no {
+    background: #a14f55;
 }
 
 .verified i {

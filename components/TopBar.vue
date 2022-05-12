@@ -28,7 +28,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href="/land">
+                                        <a href="/lands">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>Lands</h3>
@@ -60,7 +60,7 @@
                             </div>
                         </div>
 
-                        <div class="item">
+                        <div class="item" v-if="!$auth.loggedIn">
                             <p class="item-name">
                                 Sign in
                                 <i class="fi fi-rr-angle-small-down"></i>
@@ -83,6 +83,47 @@
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
                                                 <h3>Register</h3>
+                                                <p>Get started today. Rent and/or Lease.</p>
+                                            </div>
+                                        </router-link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item" v-else>
+                            <p class="item-name">
+                                My Profile
+                                <i class="fi fi-rr-angle-small-down"></i>
+                            </p>
+
+                            <div class="dropdown">
+                                <ul>
+                                    <li>
+                                        <router-link to="/profile">
+                                            <i class="fi fi-rr-data-transfer"></i>
+                                            <div class="text">
+                                                <h3>Profile</h3>
+                                                <p>Welcome back to AgoraLands..</p>
+                                            </div>
+                                        </router-link>
+                                    </li>
+
+                                    <li>
+                                        <router-link to="/profile">
+                                            <i class="fi fi-rr-strawberry"></i>
+                                            <div class="text">
+                                                <h3>Assets</h3>
+                                                <p>Get started today. Rent and/or Lease.</p>
+                                            </div>
+                                        </router-link>
+                                    </li>
+
+                                    <li>
+                                        <router-link to="/profile/offers">
+                                            <i class="fi fi-rr-strawberry"></i>
+                                            <div class="text">
+                                                <h3>Offers</h3>
                                                 <p>Get started today. Rent and/or Lease.</p>
                                             </div>
                                         </router-link>

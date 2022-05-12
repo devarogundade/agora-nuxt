@@ -4,3 +4,4 @@
     <Nuxt />
 </div>
 </template>
+

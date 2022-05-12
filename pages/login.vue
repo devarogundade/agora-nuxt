@@ -59,21 +59,25 @@ export default {
             }
         },
 
-        login() {
+        async login() {
             this.loading = true;
 
-            const url =
-                "/login?email=" + this.emailAddress + "&password=" + this.password;
+            const credential = {
+                email: this.emailAddress,
+                password: this.password
+            }
 
-            this.$axios.post(url).then((response) => {
+            try {
+                const response = await this.$auth.loginWith('local', {data: credential})
                 this.loading = false;
 
                 const data = response.data;
 
-                console.log(data);
+                console.log(data.status);
 
                 if (data.status) {
-                    setCookie(data.data, 'user')
+                    this.$cache.set('token', data.data.token)
+                    this.$axios.setToken(data.data.token, 'Bearer')
                     this.$router.push("profile")
                 } else {
                     this.error = data.message;
@@ -90,7 +94,9 @@ export default {
                         alert("something went wrong");
                     }
                 }
-            });
+            } catch (error) {
+                alert("something went wrong");
+            }
         },
     },
 };
