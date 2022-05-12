@@ -57,6 +57,7 @@ section {
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
+    margin-top: -5px;
 }
 
 .title {

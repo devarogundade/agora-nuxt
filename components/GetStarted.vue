@@ -165,7 +165,7 @@ section {
     font-weight: 500;
     text-align: center;
     color: #ffffff;
-    margin-top: -100px;
+    margin-top: -180px;
 }
 
 .items {
@@ -299,7 +299,7 @@ section {
 
 @media screen and (max-width: 700px) {
     .title {
-        margin-top: 0;
+        margin-top: -90px;
         font-size: 30px;
     }
 
