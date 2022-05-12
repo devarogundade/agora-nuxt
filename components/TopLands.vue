@@ -21,27 +21,25 @@
         </div>
 
         <div class="items">
-            <div class="item" v-for="index in 12" :key="index">
-                <div class="action">
-                    <a href="/land/123"><div class="button">Rent</div></a>
-                </div>
+            <a href="/lands/123" v-for="index in 12" :key="index">
+                <div class="item">
+                    <div class="image">
+                        <img src="images/tractor.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>CAT 2005</h3>
+                        <p class="price">value at $100/month</p>
 
-                <div class="image">
-                    <img src="images/tractor.png" alt="">
+                        <ul>
+                            <li>
+                                <i class="fi fi-rr-clock"></i>
+                                <p>On lease</p>
+                                <div class="progress"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="content">
-                    <h3>CAT 2005</h3>
-                    <p class="price">value at $100/month</p>
-
-                    <ul>
-                        <li>
-                            <i class="fi fi-rr-clock"></i>
-                            <p>On lease</p>
-                            <div class="progress"></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </a>
         </div>
 
         <div class="more">
@@ -111,7 +109,7 @@ section {
 }
 
 .item a {
-  color: #161704;
+    color: #161704;
 }
 
 .item .action {

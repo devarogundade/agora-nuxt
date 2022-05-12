@@ -1,7 +1,7 @@
 <template>
 <div class="loading">
     <div class="lds-dual-ring"></div>
-    <p>{{ message + '..' }}</p>
+    <p>{{ message ? message : 'Loading' }}</p>
 </div>
 </template>
 
@@ -27,24 +27,28 @@ export default {
     border: 6px solid #fff;
     border-color: #fff transparent #fff transparent;
     animation: lds-dual-ring 1.2s linear infinite;
+    margin-left: -6px;
 }
 
 .loading {
-  display: grid;
-  grid-template-columns: 20px auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  border-radius: 20px;
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  top: 50%;
+  left: 50%;
   width: fit-content;
-  max-width: calc(100% - 80px);
-  padding: 8px 10px;
-  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.295);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 p {
-  margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 16px;
   font-weight: 400;
   color: #ffffff;

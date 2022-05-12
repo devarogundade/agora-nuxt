@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if="land">
     <section>
         <div class="app-min-width">
             <a href="/lands">
@@ -18,8 +18,8 @@
             </div>
             <div class="text">
                 <div class="name">
-                    <h3>Tractor 2005</h3>
-                    <p>Machinery</p>
+                    <h3>Land at {{ land.state }}</h3>
+                    <p>{{ land.location }}</p>
                 </div>
 
                 <div class="price">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per month</p>
-                        <h3>$50.00</h3>
+                        <h3>₦{{ land.price.toFixed(2) }} / 24hr</h3>
                         <div class="btn">
                             Make Offer
                         </div>
@@ -63,11 +63,9 @@
                 </div>
                 <div class="body">
                     <ul>
-                        <li>Horsepower: 2</li>
-                        <li>Color: Red, Blue</li>
-                        <li>Engine: Diesel</li>
-                        <li>Wheels: 4</li>
-                        <li>Horsepower: 2</li>
+                        <li v-for="meta in JSON.parse(land.metadata)" :key="meta">
+                            {{ Object.keys(meta) + ' : ' +Object.values(meta)}}
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -78,7 +76,23 @@
                     <i class="fi fi-rr-duplicate"></i>
                 </div>
                 <div class="body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, dolor nobis blanditiis veritatis quas commodi sequi suscipit ex magni, nesciunt, eius est. Quia animi libero, quod culpa numquam dolores in.</p>
+                    <p>{{ land.about }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="drone" v-if="land.images.length > 0">
+        <div class="app-min-width">
+            <div class="accordion">
+                <div class="head">
+                    <p class="title">Drone footages</p>
+                    <!-- <i class="fi fi-rr-duplicate"></i> -->
+                </div>
+                <div class="body">
+                    <div class="images">
+                        <img v-for="image in land.images" :key="image.id" :src="image.url" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,11 +135,44 @@
 
     </section>
 </div>
+
+<Loading v-else :message="'Fetching for land'" />
 </template>
 
 <script>
 export default {
     layout: "landing",
+
+    data() {
+        return {
+            loading: true,
+            land: null
+        }
+    },
+
+    methods: {
+        getLand() {
+            const url = 'get/land?id=' + this.$route.params.detail
+
+            this.$axios.get(url).then((response) => {
+                this.loading = false
+                const data = response.data
+
+                if (data.status) {
+                    this.land = data.data
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+        }
+    },
+
+    created() {
+        this.getLand()
+    }
 };
 </script>
 
@@ -299,6 +346,23 @@ section {
     font-weight: 400;
 }
 
+.drone {
+    width: 100%;
+}
+
+.drone .accordion {
+    width: 100%;
+}
+
+.accordion .body .images {
+    display: flex;
+    overflow: auto;
+}
+
+.accordion img {
+    height: 400px;
+}
+
 .activities {
     border-radius: 20px;
     overflow: hidden;
@@ -380,17 +444,17 @@ section {
 }
 
 .accordion ul {
-  display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 10px;
-  row-gap: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 
 .accordion li {
-  padding: 10px;
-  background: #00dc8027;
-  border: 1px #57e6aa solid;
-  border-radius: 10px;
+    padding: 10px;
+    background: #00dc8027;
+    border: 1px #57e6aa solid;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 900px) {
