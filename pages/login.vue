@@ -32,13 +32,14 @@
 <script>
 export default {
     layout: "landing",
+    auth: "guest",
 
     data() {
         return {
             remember: false,
 
-            emailAddress: "",
-            password: "",
+            emailAddress: "arogundade@gmail.com",
+            password: "adegbola",
 
             loading: false,
         };
@@ -68,34 +69,31 @@ export default {
             }
 
             try {
-                const response = await this.$auth.loginWith('local', {data: credential})
+                const response = await this.$auth.loginWith('local', {
+                    data: credential
+                })
                 this.loading = false;
 
                 const data = response.data;
-
-                console.log(data.status);
-
                 if (data.status) {
-                    this.$cache.set('token', data.data.token)
-                    this.$axios.setToken(data.data.token, 'Bearer')
                     this.$router.push("profile")
                 } else {
                     this.error = data.message;
 
                     if (this.error) {
                         if (this.error.email && this.error.email.length > 0) {
-                            alert(this.error.email[0]);
+                            alert(this.error.email[0])
                         } else if (this.error.password && this.error.password.length > 0) {
-                            alert(this.error.password[0]);
+                            alert(this.error.password[0])
                         } else {
-                            alert(this.error);
+                            alert(this.error)
                         }
                     } else {
-                        alert("something went wrong");
+                        alert("something went wrong")
                     }
                 }
             } catch (error) {
-                alert("something went wrong");
+                alert("Cannot connect to our server")
             }
         },
     },

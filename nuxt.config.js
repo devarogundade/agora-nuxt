@@ -44,14 +44,18 @@ export default {
         strategies: {
             local: {
                 endpoints: {
-                    login: { url: '/login', method: 'post', propertyName: 'access_token' },
-                    logout: { url: '/logout', method: 'post' },
-                    user: { url: '/user', method: 'get', propertyName: false }
+                    login: { url: '/login', method: 'post' },
+                    user: { url: '/user', method: 'get' },
+                    logout: false
                 },
-                tokenRequired: true,
-                tokenType: 'Bearer',
-                globalToken: true,
-                autoFetchUser: false
+                token: {
+                    property: 'data.token',
+                    type: 'Bearer',
+                    required: true,
+                },
+                user: {
+                    property: 'data'
+                }
             }
         }
     },

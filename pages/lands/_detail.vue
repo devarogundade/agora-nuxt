@@ -356,6 +356,7 @@ section {
 .accordion {
     border: 2px #003543 solid;
     border-radius: 10px;
+    height: fit-content;
 }
 
 .accordion .head {

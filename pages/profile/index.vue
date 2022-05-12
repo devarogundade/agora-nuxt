@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-width" v-if="user">
+    <div class="app-min-width" v-if="user">
         <div class="bio">
             <div class="image">
                 <div class="img">
@@ -17,59 +17,49 @@
                 </div>
             </div>
             <div class="options">
-                <i class="fi fi-rr-pencil"></i>
-                <i class="fi fi-rr-share"></i>
-                <i class="fi fi-rr-interrogation"></i>
+                <a href="/profile/edit"><i class="fi fi-rr-pencil"></i></a>
+                <a href="/profile/share"><i class="fi fi-rr-share"></i></a>
+                <a href="/support"><i class="fi fi-rr-interrogation"></i></a>
             </div>
         </div>
 
-        <Tabs />
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="item">
+                    <i class="fi fi-rr-apps"></i>
+                    <p>Lands</p>
+                    <div class="indicator"></div>
+                </div>
+
+                <div class="item">
+                    <i class="fi fi-rr-clock"></i>
+                    <p>Machineries</p>
+                    <!-- <div class="indicator"></div> -->
+                </div>
+
+                <div class="item">
+                    <i class="fi fi-rr-clock"></i>
+                    <p>IoTs</p>
+                    <!-- <div class="indicator"></div> -->
+                </div>
+            </div>
+        </div>
 
         <Items />
     </div>
-
-    <Loading v-if="loading" :message="'Loading profile'" />
 </section>
 </template>
 
 <script>
 export default {
     layout: "profile",
-    middleware: "auth",
 
     data() {
         return {
-            user: null,
-
-            loading: true
+            user: this.$auth.user,
         }
     },
 
-    methods: {
-        getUser() {
-            const token = this.$cache.get('token')
-
-            this.loading = true
-            const url = '/user'
-
-            this.$axios.setToken(token, 'Bearer')
-            this.$axios.get(url).then(response => {
-                this.loading = false
-
-                const data = response.data
-
-                if (data.status) {
-                    this.user = data.data
-                } else {
-                    alert('something went wrong')
-                }
-            })
-        }
-    },
-
-    created() {
-      this.getUser()
-    }
 };
 </script>
 
@@ -172,8 +162,8 @@ section {
     color: #ffffff;
 }
 
-.options i:last-child {
-    border: none;
+.options a:last-child i {
+    border: none !important;
 }
 
 .options i:hover {

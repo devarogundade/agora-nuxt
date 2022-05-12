@@ -40,3 +40,56 @@ li {
     width: 92%;
     max-width: 800px;
 }
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px #003543 solid;
+    margin-top: 40px;
+    position: sticky;
+    /* top: 70px; */
+    /* z-index: 10; */
+    background: #002028;
+    height: fit-content;
+}
+
+.tab-container .tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-container .tabs .item {
+    padding: 0 20px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    color: white;
+}
+
+.tab-container .tabs i {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-container .tabs .item p {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.tab-container .tabs .indicator {
+    height: 5px;
+    width: 100%;
+    background: #003543;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: absolute;
+    bottom: 0;
+}

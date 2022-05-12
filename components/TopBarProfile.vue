@@ -28,7 +28,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href="/land">
+                                        <a href="/profile">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>All Assets</h3>
@@ -38,7 +38,7 @@
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <a href="/profile/listed">
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
                                                 <h3>Listed</h3>
@@ -48,7 +48,7 @@
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <a href="/profile/lease">
                                             <i class="fi fi-rr-tractor"></i>
                                             <div class="text">
                                                 <h3>On lease</h3>
@@ -69,7 +69,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <router-link to="/login">
+                                        <router-link to="/profile/offers">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>Offers</h3>
@@ -91,7 +91,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href>
+                                        <a href="/profile/list/land">
                                             <i class="fi fi-rr-comment-alt"></i>
                                             <div class="text">
                                                 <h3>Land</h3>
@@ -101,7 +101,7 @@
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <a href="/profile/list/machineries">
                                             <i class="fi fi-rr-comments"></i>
                                             <div class="text">
                                                 <h3>Machinery</h3>
@@ -111,7 +111,7 @@
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <a href="/profile/list/iots">
                                             <i class="fi fi-rr-comments"></i>
                                             <div class="text">
                                                 <h3>IoTs</h3>
@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="item" v-on:click="logOut()">
+                        <div class="item" v-on:click="logout()">
                             <p class="item-name">
                                 Log out
                                 <i class="fi fi-rr-sign-out-alt"></i>
@@ -149,10 +149,8 @@
 <script>
 export default {
     methods: {
-        logOut() {
-            this.$cache.removeAll()
-            this.$axios.setToken(null, 'Bearer')
-
+        logout() {
+            this.$auth.logout()
             this.$router.push('/login')
         }
     }
@@ -160,6 +158,16 @@ export default {
 </script>
 
 <style scoped>
+section {
+    height: fit-content;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background: #00202836;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
 .purpose {
     width: 100%;
     padding: 6px;
@@ -253,7 +261,7 @@ export default {
     width: 300px;
     padding: 5px;
     border-radius: 10px;
-    z-index: 2;
+    z-index: 20;
 }
 
 .dropdown li {
@@ -379,6 +387,10 @@ input::placeholder {
 }
 
 @media screen and (max-width: 1000px) {
+    section {
+        top: -130px;
+    }
+
     .header-grid {
         grid-template-columns: 100%;
         row-gap: 20px;
@@ -392,12 +404,12 @@ input::placeholder {
         position: fixed;
         width: 80%;
         left: 10%;
-        top: 110px;
+        top: 120px;
         background: #024e61;
     }
 
     .search {
-        margin-top: 20px;
+        margin: 10px 0;
     }
 
     input {
@@ -421,6 +433,12 @@ input::placeholder {
     .logo {
         margin-top: 20px;
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .search {
+        margin: 5px 0;
     }
 }
 </style>
