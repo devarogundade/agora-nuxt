@@ -31,27 +31,27 @@
                                         <a href="/profile">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>All Assets</h3>
+                                                <h3>Lands</h3>
                                                 <p>Every assets your own or lease..</p>
                                             </div>
                                         </a>
                                     </li>
 
                                     <li>
-                                        <a href="/profile/listed">
+                                        <a href="/profile/machineries">
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
-                                                <h3>Listed</h3>
+                                                <h3>Machineries</h3>
                                                 <p>All assets listed for leasing..</p>
                                             </div>
                                         </a>
                                     </li>
 
                                     <li>
-                                        <a href="/profile/lease">
+                                        <a href="/profile/iots">
                                             <i class="fi fi-rr-tractor"></i>
                                             <div class="text">
-                                                <h3>On lease</h3>
+                                                <h3>IoTs</h3>
                                                 <p>All assets on lease to someone..</p>
                                             </div>
                                         </a>
@@ -72,7 +72,27 @@
                                         <router-link to="/profile/offers">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>Offers</h3>
+                                                <h3>Lands</h3>
+                                                <p>Offers in renting your assets..</p>
+                                            </div>
+                                        </router-link>
+                                    </li>
+
+                                    <li>
+                                        <router-link to="/profile/offers">
+                                            <i class="fi fi-rr-data-transfer"></i>
+                                            <div class="text">
+                                                <h3>Machineries</h3>
+                                                <p>Offers in renting your assets..</p>
+                                            </div>
+                                        </router-link>
+                                    </li>
+
+                                    <li>
+                                        <router-link to="/profile/offers">
+                                            <i class="fi fi-rr-data-transfer"></i>
+                                            <div class="text">
+                                                <h3>IoTs</h3>
                                                 <p>Offers in renting your assets..</p>
                                             </div>
                                         </router-link>

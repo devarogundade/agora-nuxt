@@ -14,7 +14,8 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img src="/images/land.png" alt="">
+                <img class="image-found" v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
+                <img v-else src="/images/land.png" alt="">
             </div>
             <div class="text">
                 <div class="name">
@@ -24,12 +25,16 @@
 
                 <div class="price">
                     <div class="stock">
-                        Availability <span>In stock</span>
+                        Available <span>{{ land.available }} plots</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
                         <h3>₦{{ land.price.toFixed(2) }}</h3>
-                        <div class="btn">
+                        <div class="btn" v-if="creatingOffer">
+                            Creating
+                            <Loading :message="'Creating offer'" />
+                        </div>
+                        <div class="btn" v-else v-on:click="promptCreateOffer()">
                             Make Offer
                         </div>
                     </div>
@@ -86,7 +91,7 @@
         <div class="app-min-width">
             <div class="accordion">
                 <div class="head">
-                    <p class="title">Drone footages</p>
+                    <p class="title">Images</p>
                     <!-- <i class="fi fi-rr-duplicate"></i> -->
                 </div>
                 <div class="body">
@@ -104,14 +109,22 @@
 
             <div class="activities" v-if="land.offers.length > 0">
                 <div class="activity" v-for="offer in land.offers" :key="offer.id">
-                    <i class="fi fi-rr-dollar"></i>
+                    <i class="fi fi-rr-time-quarter-to pending" v-if="offer.status == 'pending'">
+                        <span>Pending</span>
+                    </i>
+                    <i class="fi fi-rr-check accepted" v-if="offer.status == 'accepted'">
+                        <span>Accepted</span>
+                    </i>
+                    <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
+                        <span>Rejected</span>
+                    </i>
                     <p class="message">{{ author ? 'You' : offer.user.name }} </p>
                     <p class="quantity">{{ offer.quantity }} plots</p>
                     <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
                     <p class="duration">{{ offer.duration }} days</p>
 
-
-                    <p class="date" v-if="author">Accept</p>
+                    <p class="date" v-if="author && offer.status == 'pending'">Accept</p>
+                    <p class="date" v-if="author && offer.status == 'accepted'">Ends at 30 Mar</p>
                     <p class="date" v-if="!author && author">Cancel</p>
                 </div>
             </div>
@@ -122,6 +135,8 @@
     <section class="others">
 
     </section>
+
+    <NewOffer v-on:cancel="newOffer = null" v-on:create="createOffer($event)" v-if="newOffer" :data="newOffer" />
 </div>
 
 <Loading v-else :message="'Fetching land'" />
@@ -135,7 +150,10 @@ export default {
         return {
             loading: true,
             land: null,
-            author: false
+            author: false,
+
+            newOffer: null,
+            creatingOffer: false
         }
     },
 
@@ -153,6 +171,7 @@ export default {
                     if (this.$auth.loggedIn && this.land.user_id == this.$auth.user.id) {
                         this.author = true
                     }
+
                 } else {
                     alert(data.message)
                 }
@@ -161,6 +180,47 @@ export default {
                 console.log(err);
                 alert('Cannot connect to our server')
             });
+        },
+
+        promptCreateOffer() {
+            if (this.author) {
+                alert('You cannot make offer to your assets')
+                return
+            }
+
+            this.newOffer = {
+                name: this.land.location,
+                image: this.land.images.length > 0 ? 'http://127.0.0.1:8000/images' + this.land.images[0].url : '/images/land.ong',
+                price: this.land.price,
+                duration: '365',
+                quantity: this.land.plot,
+                quantityHint: 'Plots',
+            }
+        },
+
+        createOffer(offer) {
+            this.creatingOffer = true
+            const url = 'create/user/land?id=' + this.land.id +
+                '&duration=' + offer.duration +
+                '&price=' + offer.price +
+                '&plot=' + offer.quantity
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.creatingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('created')
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+
         }
     },
 
@@ -228,6 +288,7 @@ section {
 .image {
     background: #003543;
     border-radius: 10px;
+    overflow: hidden;
     height: 450px;
 }
 
@@ -235,7 +296,10 @@ section {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    padding: 20px;
+}
+
+.image .image-found {
+    object-fit: cover;
 }
 
 .price {
@@ -354,7 +418,13 @@ section {
 }
 
 .accordion img {
-    height: 400px;
+    height: 350px;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+.accordion img:last-child {
+    margin: 0;
 }
 
 .activities {
@@ -387,13 +457,41 @@ section {
 
 .activity i {
     height: 40px;
-    background: #00c675;
     color: #ffffff;
     border-radius: 50%;
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.activity i span {
+    position: absolute;
+    z-index: 2;
+    left: 45px;
+    background: #4577ff;
+    font-size: 15px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+.activity i:hover span {
+    opacity: 1;
+}
+
+.pending {
+    background: #888888;
+}
+
+.rejected {
+    background: #a14f55;
+}
+
+.accepted {
+    background: #00c675;
 }
 
 .empty {
