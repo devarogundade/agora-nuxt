@@ -1,7 +1,7 @@
 <template>
-<section>
+<section v-if="!loading">
     <div class="app-min-width">
-        <h3 class="title">Marketplace</h3>
+        <h3 class="title">Lands</h3>
 
         <div class="toolbar">
             <select name="" id="">
@@ -20,12 +20,11 @@
             </select>
         </div>
 
-        <div class="items" v-if="topLands.length > 0">
-            <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
+        <div class="items" v-if="lands.length > 0">
+            <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
-                        <img class="image-found" v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
-                        <img v-else src="/images/land.png" alt="">
+                        <img src="images/tractor.png" alt="">
                     </div>
                     <div class="content">
                         <h3>{{ land.location }}</h3>
@@ -45,34 +44,36 @@
 
         <div class="more">
             <div class="market">
-                Go to Marketplace
+                Load more
             </div>
         </div>
     </div>
 </section>
+
+<Loading v-else :message="'Loading machineries'" />
 </template>
 
 <script>
 export default {
     data() {
         return {
-            topLands: [],
-            loadingTopLands: true
+            lands: [],
+            loading: true
         }
     },
 
     methods: {
-        getTopLands() {
-            this.loadingTopLands = true
+        getLands() {
+            this.loading = true
             const url = 'top/land'
 
             this.$axios.get(url).then((response) => {
 
-                this.loadingTopLands = false
+                this.loading = false
                 const data = response.data
 
                 if (data.status) {
-                    this.topLands = data.data
+                    this.lands = data.data
                 } else {
                     alert(data.message)
                 }
@@ -84,14 +85,13 @@ export default {
     },
 
     created() {
-        this.getTopLands()
+        this.getLands()
     }
 }
 </script>
 
 <style scoped>
 section {
-    background: #4d727b;
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
@@ -145,7 +145,6 @@ section {
     border-radius: 20px;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
 }
 
 .item a {
@@ -173,18 +172,13 @@ section {
 .image {
     width: 100%;
     height: 220px;
+    padding-top: 20px;
 }
 
 .image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
-
-.image .image-found {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .content {

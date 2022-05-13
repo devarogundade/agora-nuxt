@@ -1,6 +1,6 @@
 <template>
 <div>
-<Lands />
+<Machineries />
 </div>
 </template>
 
