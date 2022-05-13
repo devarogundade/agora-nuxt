@@ -1,22 +1,16 @@
 <template>
 <section>
     <div class="items">
-        <a href="/lands/123" v-for="index in 20" :key="index">
+        <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
             <div class="item">
                 <div class="image">
                     <img src="/images/land.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Lagos</h3>
-                    <p class="price">starting from $10/month</p>
+                    <h3>{{ land.location }}</h3>
+                    <p class="price">Owned by You</p>
 
                     <ul>
-                        <li>
-                            <i class="fi fi-rr-raindrops"></i>
-                            <p>Availability</p>
-                            <div class="progress"></div>
-                        </li>
-
                         <li>
                             <i class="fi fi-rr-sun"></i>
                             <p>10 plots free</p>
@@ -29,6 +23,45 @@
     </div>
 </section>
 </template>
+
+<script>
+export default {
+    props: ['endpoint'],
+
+    data() {
+        return {
+            lands: [],
+            loading: true
+        }
+    },
+
+    methods: {
+        getLands() {
+            this.loading = true
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(this.endpoint).then((response) => {
+
+                this.loading = false
+                const data = response.data
+
+                if (data.status) {
+                    this.lands = data.data
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+        },
+    },
+
+    created() {
+        this.getLands()
+    }
+}
+</script>
 
 <style scoped>
 section {
@@ -72,8 +105,9 @@ section {
 }
 
 .content h3 {
-    font-size: 26px;
+    font-size: 16px;
     font-weight: 500;
+    height: 50px;
 }
 
 .content .price {
@@ -105,14 +139,9 @@ section {
     border-radius: 10px;
 }
 
-.content li:first-child .progress {
+.content li .progress {
     width: 88%;
     background: #4577ff;
-}
-
-.content li:last-child .progress {
-    width: 80%;
-    background: #99b4ff;
 }
 
 .content li i {

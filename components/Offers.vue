@@ -1,43 +1,102 @@
 <template>
-<div class="items">
-    <div class="item" v-for="index in 4" :key="index">
-        <div class="status">
-            <i class="fi fi-rr-caret-down"></i>
-            <p>Received new offer from Joy</p>
-        </div>
+<section>
+    <div class="items" v-if="!loading">
+        <div v-if="offers.length > 0" class="wrapper">
+            <div class="item" v-for="offer in offers" :key="offer.id">
+                <div class="status">
+                    <i class="fi fi-rr-caret-down"></i>
+                    <p v-if="$auth.user.id == offer.offerable.user_id">Sent offer to land at {{ offer.offerable.location }}</p>
+                    <p v-else>Received offer for land at {{ offer.offerable.location }}</p>
+                </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <td>Size (plot)</td>
-                    <td>Duration (day)</td>
-                    <td>Rate ($ per day)</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>100</td>
-                    <td>365</td>
-                    <td>$1</td>
-                </tr>
-            </tbody>
-        </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Size (plot)</td>
+                            <td>Duration (day)</td>
+                            <td>Rate ($ per day)</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ offer.quantity }}</td>
+                            <td>{{ offer.duration }}</td>
+                            <td>₦{{ (offer.price / offer.duration).toFixed(2) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        <div class="accept">
-            <div class="button">Reject</div>
-            <div class="button">Accept</div>
+                <div class="accept" v-if="$auth.user.id == offer.offerable.user_id">
+                    <div class="button cancel">Cancel Offer</div>
+                </div>
+                <div class="accept" v-else>
+                    <div class="button">Reject</div>
+                    <div class="button">Accept</div>
+                </div>
+            </div>
         </div>
+        <p v-else>No offers</p>
     </div>
-</div>
+
+    <Loading :message="'Loading offers'" v-else />
+</section>
 </template>
 
+<script>
+export default {
+    props: ['endpoint'],
+
+    data() {
+        return {
+            offers: [],
+            loading: true
+        }
+    },
+
+    methods: {
+        getOffers() {
+            const url = this.endpoint
+            this.loading = true
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+                this.loading = false
+                const data = response.data
+
+                if (data.status) {
+                    this.offers = data.data
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert("Cannot connect to our server")
+            });
+        }
+    },
+
+    created() {
+        this.getOffers()
+    }
+}
+</script>
+
 <style scoped>
+section {
+    padding: 0 !important;
+}
+
 .items {
     padding: 40px 20px;
-    grid-template-columns: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 600px;
+    max-width: 100%;
+}
+
+.wrapper {
+    width: 100%;
 }
 
 .item {
@@ -45,12 +104,11 @@
     background: #003543;
     padding: 10px 15px;
     margin-bottom: 20px;
-    width: 600px;
-    max-width: 100%;
+    width: 100%;
 }
 
 .item:last-child {
-  margin: 0;
+    margin: 0;
 }
 
 .status {
@@ -105,6 +163,10 @@ td {
     justify-content: flex-end;
 }
 
+.cancel {
+    background: #4d727b !important;
+}
+
 .accept .button {
     padding: 8px 30px;
     font-size: 16px;
@@ -123,8 +185,8 @@ td {
 }
 
 @media screen and (max-width: 700px) {
-  .items {
-    padding: 20px 0;
-  }
+    .items {
+        padding: 20px 0;
+    }
 }
 </style>

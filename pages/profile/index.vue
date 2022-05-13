@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <Items />
+        <Items :endpoint="'all/user/land'" />
     </div>
 </section>
 </template>

@@ -97,12 +97,15 @@ export default {
                 "&email=" +
                 this.emailAddress +
                 "&password=" +
-                this.password;
+                this.password +
+                "&purpose=" +
+                this.purpose;
 
             this.$axios.post(url).then((response) => {
                 this.loading = false
 
                 const data = response.data;
+                console.log(data);
 
                 if (data.status) {
                     this.$router.push('login')
@@ -110,7 +113,7 @@ export default {
                     this.error = data.message
 
                     if (this.error) {
-                        if (this.error.name && this.error.namw.length > 0) {
+                        if (this.error.name && this.error.name.length > 0) {
                             alert(this.error.name[0])
                         } else if (this.error.email && this.error.email.length > 0) {
                             alert(this.error.email[0])

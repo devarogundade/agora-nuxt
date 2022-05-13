@@ -1,7 +1,7 @@
 <template>
-<section>
+<section v-if="!loading">
     <div class="app-min-width">
-        <h3 class="title">Marketplace</h3>
+        <h3 class="title">Lands</h3>
 
         <div class="toolbar">
             <select name="" id="">
@@ -20,8 +20,8 @@
             </select>
         </div>
 
-        <div class="items" v-if="topLands.length > 0">
-            <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
+        <div class="items" v-if="lands.length > 0">
+            <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
                         <img src="images/tractor.png" alt="">
@@ -44,34 +44,36 @@
 
         <div class="more">
             <div class="market">
-                Go to Marketplace
+                Load more
             </div>
         </div>
     </div>
 </section>
+
+<Loading v-else :message="'Loading lands'" />
 </template>
 
 <script>
 export default {
     data() {
         return {
-            topLands: [],
-            loadingTopLands: true
+            lands: [],
+            loading: true
         }
     },
 
     methods: {
-        getTopLands() {
-            this.loadingTopLands = true
+        getLands() {
+            this.loading = true
             const url = 'top/land'
 
             this.$axios.get(url).then((response) => {
 
-                this.loadingTopLands = false
+                this.loading = false
                 const data = response.data
 
                 if (data.status) {
-                    this.topLands = data.data
+                    this.lands = data.data
                 } else {
                     alert(data.message)
                 }
@@ -83,14 +85,13 @@ export default {
     },
 
     created() {
-        this.getTopLands()
+        this.getLands()
     }
 }
 </script>
 
 <style scoped>
 section {
-    background: #4d727b;
     display: flex;
     justify-content: center;
     padding-bottom: 50px;

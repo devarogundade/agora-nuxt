@@ -38,17 +38,17 @@
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <a href="/machineries">
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
-                                                <h3>Best for farming</h3>
+                                                <h3>Machineries</h3>
                                                 <p>Rich nutrient soil for your crops.</p>
                                             </div>
                                         </a>
                                     </li>
 
                                     <li>
-                                        <a href>
+                                        <a href="/iots">
                                             <i class="fi fi-rr-tractor"></i>
                                             <div class="text">
                                                 <h3>Poultry</h3>
