@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="textbox">
-                    <label for="">Price per day</label>
+                    <label for="">₦ Price per day</label>
                     <input class="price" type="number" v-model="price" placeholder="0.00">
                 </div>
 

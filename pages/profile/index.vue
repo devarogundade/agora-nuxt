@@ -15,11 +15,15 @@
                     <i class="fi fi-rr-shield-check"></i>
                     {{ user.verified_at != null ? 'Verified' : 'Not Verified' }}
                 </div>
+
+                <div class="balance">
+                  ₦ {{ user.balance.toFixed(2) }}
+                </div>
             </div>
             <div class="options">
                 <a href="/profile/edit"><i class="fi fi-rr-pencil"></i></a>
-                <a href="/profile/share"><i class="fi fi-rr-share"></i></a>
-                <a href="/support"><i class="fi fi-rr-interrogation"></i></a>
+                <a href="/withdraw"><i class="fi fi-rr-angle-circle-up"></i></a>
+                <a href="/deposit"><i class="fi fi-rr-bank"></i></a>
             </div>
         </div>
 
@@ -173,6 +177,11 @@ section {
 .options i:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+
+.balance {
+  margin-top: 10px;
+  font-style: 14px;
 }
 
 @media screen and (max-width: 1000px) {

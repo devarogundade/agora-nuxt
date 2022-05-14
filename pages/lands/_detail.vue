@@ -130,9 +130,9 @@
                     <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
                     <p class="duration">{{ offer.duration }} days</p>
 
-                    <p class="date" v-if="author && offer.status == 'pending'">Accept</p>
+                    <p class="date" v-if="author && offer.status == 'pending'" v-on:click="accept(offer)">Accept</p>
                     <p class="date" v-if="author && offer.status == 'accepted'">Ends at 30 Mar</p>
-                    <p class="date" v-if="!author && $auth.user.id == offer.user_id">Cancel</p>
+                    <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id" v-on:click="cancel(offer)">Cancel</p>
                 </div>
             </div>
             <div class="empty" v-else>No offers</div>
@@ -143,6 +143,7 @@
 
     </section>
 
+    <Loading v-if="acceptingOffer" :message="'Accepting offer'" />
     <NewOffer v-on:cancel="newOffer = null" v-on:create="createOffer($event)" v-if="newOffer" :data="newOffer" />
 </div>
 
@@ -160,7 +161,8 @@ export default {
             author: false,
 
             newOffer: null,
-            creatingOffer: false
+            creatingOffer: false,
+            acceptingOffer: false,
         }
     },
 
@@ -227,6 +229,33 @@ export default {
             }).catch((err) => {
                 alert('Cannot connect to our server')
             });
+
+        },
+
+        accept(offer) {
+            this.acceptingOffer = true
+
+            const url = 'accept/user/offer?id=' + this.land.id +
+                '&offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.acceptingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('offer accepted')
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+        },
+
+        cancel() {
 
         }
     },
