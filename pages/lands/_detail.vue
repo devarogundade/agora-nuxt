@@ -34,8 +34,15 @@
                             Creating
                             <Loading :message="'Creating offer'" />
                         </div>
-                        <div class="btn" v-else v-on:click="promptCreateOffer()">
-                            Make Offer
+                        <div v-else>
+                            <div class="btn" v-if="$auth.loggedIn" v-on:click="promptCreateOffer()">
+                                Make Offer
+                            </div>
+                            <a href="/login" v-else>
+                                <div class="btn">
+                                    Make Offer
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +76,7 @@
                 <div class="body">
                     <ul>
                         <li v-for="(meta, index) in JSON.parse(land.metadata)" :key="index">
-                            {{ Object.keys(meta) + ' : ' +Object.values(meta)}}
+                            {{ meta.name + ' : ' + meta.value }}
                         </li>
                     </ul>
                 </div>
@@ -118,14 +125,14 @@
                     <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
                         <span>Rejected</span>
                     </i>
-                    <p class="message">{{ author ? 'You' : offer.user.name }} </p>
+                    <p class="message">{{ offer.user.name }} </p>
                     <p class="quantity">{{ offer.quantity }} plots</p>
                     <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
                     <p class="duration">{{ offer.duration }} days</p>
 
                     <p class="date" v-if="author && offer.status == 'pending'">Accept</p>
                     <p class="date" v-if="author && offer.status == 'accepted'">Ends at 30 Mar</p>
-                    <p class="date" v-if="!author && author">Cancel</p>
+                    <p class="date" v-if="!author && $auth.user.id == offer.user_id">Cancel</p>
                 </div>
             </div>
             <div class="empty" v-else>No offers</div>
@@ -193,7 +200,7 @@ export default {
                 image: this.land.images.length > 0 ? 'http://127.0.0.1:8000/images' + this.land.images[0].url : '/images/land.ong',
                 price: this.land.price,
                 duration: '365',
-                quantity: this.land.plot,
+                quantity: this.land.available,
                 quantityHint: 'Plots',
             }
         },
@@ -470,11 +477,13 @@ section {
 .activity i span {
     position: absolute;
     z-index: 2;
-    left: 45px;
-    background: #4577ff;
+    left: 0;
     font-size: 15px;
-    padding: 2px 10px;
-    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-radius: 100px;
     opacity: 0;
 }
 
@@ -482,15 +491,18 @@ section {
     opacity: 1;
 }
 
-.pending {
+.pending,
+.pending span {
     background: #888888;
 }
 
-.rejected {
+.rejected,
+.rejected span {
     background: #a14f55;
 }
 
-.accepted {
+.accepted,
+.accepted span {
     background: #00c675;
 }
 
