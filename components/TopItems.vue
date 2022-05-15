@@ -51,7 +51,7 @@
                         <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
-                        <h3>{{ iot.name }}</h3>
+                        <h3>{{ machinery.name }}</h3>
                         <p class="price">value at $ {{ machinery.price }} / 24hr</p>
 
                         <ul>
@@ -148,7 +148,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.topIots = data.data
+                    this.topMachineries = data.data
                 } else {
                     alert(data.message)
                 }

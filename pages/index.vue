@@ -1,9 +1,9 @@
 <template>
 <div>
     <CallToAction />
-    <GetStarted />
+    <TopLocation />
     <LeaseAd />
-    <Top />
+    <TopItems />
 </div>
 </template>
 
