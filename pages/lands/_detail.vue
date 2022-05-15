@@ -125,6 +125,7 @@
                     <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
                         <span>Rejected</span>
                     </i>
+
                     <p class="message">{{ offer.user.name }} </p>
                     <p class="quantity">{{ offer.quantity }} plots</p>
                     <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
@@ -132,7 +133,7 @@
 
                     <p class="date" v-if="author && offer.status == 'pending'" v-on:click="accept(offer)">Accept</p>
                     <p class="date" v-if="author && offer.status == 'accepted'">Ends at {{ offer.expires_at }}</p>
-                    <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id" v-on:click="cancel(offer)">Cancel</p>
+                    <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id && offer.status == 'pending'" v-on:click="cancel(offer)">Cancel</p>
                 </div>
             </div>
             <div class="empty" v-else>No offers</div>
@@ -234,6 +235,11 @@ export default {
         },
 
         accept(offer) {
+            if (prompt("Type ACCEPT to confirm") != "ACCEPT") {
+                alert("Wrong confirmation")
+                return
+            }
+
             this.acceptingOffer = true
 
             const url = 'accept/user/offer?id=' + this.land.id +
@@ -258,6 +264,11 @@ export default {
         },
 
         cancel(offer) {
+            if (prompt("Type CANCEL to confirm") != "CANCEL") {
+                alert("Wrong confirmation")
+                return
+            }
+
             this.cancellingOffer = true
 
             const url = 'cancel/user/offer?id=' + this.land.id +
@@ -630,7 +641,8 @@ section {
     }
 
     .activity {
-        grid-template-columns: 35px auto 120px 120px 80px;
+        grid-template-columns: 35px 150px 100px 160px 160px 100px;
+        overflow: auto;
         column-gap: 10px;
     }
 

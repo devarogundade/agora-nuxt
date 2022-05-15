@@ -4,7 +4,16 @@
         <div v-if="offers.length > 0" class="wrapper">
             <div class="item" v-for="offer in offers" :key="offer.id">
                 <div class="status">
-                    <i class="fi fi-rr-caret-down"></i>
+                    <i class="fi fi-rr-time-quarter-to pending" v-if="offer.status == 'pending'">
+                        <span>Pending</span>
+                    </i>
+                    <i class="fi fi-rr-check accepted" v-if="offer.status == 'accepted'">
+                        <span>Accepted</span>
+                    </i>
+                    <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
+                        <span>Rejected</span>
+                    </i>
+
                     <p v-if="$auth.user.id == offer.offerable.user_id">Sent offer to land at {{ offer.offerable.location }}</p>
                     <p v-else>Received offer for land at {{ offer.offerable.location }}</p>
                 </div>
@@ -26,10 +35,10 @@
                     </tbody>
                 </table>
 
-                <div class="accept" v-if="$auth.user.id == offer.offerable.user_id">
+                <div class="accept" v-if="$auth.user.id == offer.user_id && offer.status == 'pending'">
                     <div class="button cancel">Cancel Offer</div>
                 </div>
-                <div class="accept" v-else>
+                <div class="accept" v-if="offer.offerable.user_id == $auth.user.id">
                     <div class="button">Reject</div>
                     <div class="button">Accept</div>
                 </div>
@@ -111,6 +120,51 @@ section {
     margin: 0;
 }
 
+.item i {
+    height: 40px;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.item i span {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    font-size: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-radius: 100px;
+    opacity: 0;
+}
+
+.item i:hover span {
+    opacity: 1;
+}
+
+.pending,
+.pending span {
+    background: #888888;
+}
+
+.rejected,
+.rejected span {
+    background: #a14f55;
+}
+
+.accepted,
+.accepted span {
+    background: #00c675;
+}
+
+
 .status {
     display: grid;
     height: 40px;
@@ -124,7 +178,6 @@ section {
 
 .status i {
     height: 22px;
-    background: #00dc82;
     border-radius: 50%;
     display: flex;
     align-items: center;
