@@ -2,7 +2,7 @@
 <section>
     <div class="app-min3-width">
         <div class="list">
-            <h3 class="title">List your machine</h3>
+            <h3 class="title">List your IoT</h3>
             <div class="images">
                 <img v-for="image in images" :key="image.id" :src="'http://127.0.0.1:8000' + image.url" alt="">
                 <div class="input">
@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="textbox">
-                    <label for="">Machine location</label>
+                    <label for="">IoT location</label>
                     <textarea placeholder="Enter a full location address" v-model="location" cols="30" rows="3"></textarea>
                 </div>
 
                 <div class="textbox">
-                    <label for="">Write about this machine</label>
+                    <label for="">Write about this IoT</label>
                     <textarea placeholder="Enter a full location address" v-model="about" cols="30" rows="3"></textarea>
                 </div>
 
@@ -53,7 +53,7 @@
                 <div class="textbox">
                     <p :class="agree1  ? 'purpose checked' : 'purpose'" v-on:click="agree1 = !agree1">
                         <i class="fi fi-rr-check"></i>
-                        I agree this machine is real
+                        I agree this IoT is real
                     </p>
 
                     <p :class="agree2  ? 'purpose checked' : 'purpose'" v-on:click="agree2 = !agree2">

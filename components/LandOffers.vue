@@ -14,7 +14,7 @@
                         <span>Rejected</span>
                     </i>
 
-                    <p v-if="$auth.user.id == offer.offerable.user_id">Sent offer to land at {{ offer.offerable.location }}</p>
+                    <p v-if="$auth.user.id == offer.user_id">Sent offer to land at {{ offer.offerable.location }}</p>
                     <p v-else>Received offer for land at {{ offer.offerable.location }}</p>
                 </div>
 
@@ -93,7 +93,7 @@ export default {
 
             this.acceptingOffer = true
 
-            const url = 'accept/user/offer?id=' + this.land.id +
+            const url = 'accept/user/land/offer?id=' + offer.offerable.id +
                 '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
@@ -122,8 +122,7 @@ export default {
 
             this.cancellingOffer = true
 
-            const url = 'cancel/user/offer?id=' + this.land.id +
-                '&offer_id=' + offer.id;
+            const url = 'cancel/user/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {

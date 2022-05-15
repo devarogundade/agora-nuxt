@@ -271,8 +271,7 @@ export default {
 
             this.cancellingOffer = true
 
-            const url = 'cancel/user/offer?id=' + this.land.id +
-                '&offer_id=' + offer.id;
+            const url = 'cancel/user/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {

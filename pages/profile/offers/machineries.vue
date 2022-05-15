@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <Offers :endpoint="'get/user/offers?type=machinery'" />
+        <MachineryOffers :endpoint="'get/user/offers?type=machinery'" />
     </div>
 </section>
 </template>

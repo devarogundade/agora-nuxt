@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <Offers :endpoint="'get/user/offers?type=land'" />
+        <LandOffers :endpoint="'get/user/offers?type=land'" />
     </div>
 </section>
 </template>

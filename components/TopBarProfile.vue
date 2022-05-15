@@ -121,7 +121,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="/profile/list/machineries">
+                                        <a href="/profile/list/machinery">
                                             <i class="fi fi-rr-comments"></i>
                                             <div class="text">
                                                 <h3>Machinery</h3>
@@ -131,7 +131,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="/profile/list/iots">
+                                        <a href="/profile/list/iot">
                                             <i class="fi fi-rr-comments"></i>
                                             <div class="text">
                                                 <h3>IoTs</h3>
