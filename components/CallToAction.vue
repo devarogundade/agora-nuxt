@@ -141,6 +141,7 @@ section {
 
     .text h3 {
         font-size: 50px;
+        line-height: 60px;
     }
 
     section {
