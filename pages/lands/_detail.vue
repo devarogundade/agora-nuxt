@@ -14,7 +14,7 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img class="image-found" v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
+                <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
                 <img v-else src="/images/land.png" alt="">
             </div>
             <div class="text">
@@ -363,10 +363,6 @@ section {
 .image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-}
-
-.image .image-found {
     object-fit: cover;
 }
 

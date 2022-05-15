@@ -24,7 +24,7 @@
             <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
-                        <img class="image-found" v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
+                        <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
@@ -141,7 +141,7 @@ section {
 }
 
 .item {
-    border: 1px solid #003543;
+    background: #003543;
     border-radius: 20px;
     cursor: pointer;
     position: relative;
@@ -176,12 +176,6 @@ section {
 }
 
 .image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.image .image-found {
     width: 100%;
     height: 100%;
     object-fit: cover;

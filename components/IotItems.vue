@@ -1,20 +1,20 @@
 <template>
 <section>
     <div class="items">
-        <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
+        <a v-for="iot in iots" :key="iot.id" :href="'/lands/' + iot.id">
             <div class="item">
                 <div class="image">
-                    <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
+                    <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/images' + iot.images[0].url" alt="">
                     <img v-else src="/images/land.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>{{ land.location }}</h3>
+                    <h3>{{ iot.name }}</h3>
                     <p class="price">Owned by You</p>
 
                     <ul>
                         <li>
                             <i class="fi fi-rr-sun"></i>
-                            <p>10 plots free</p>
+                            <p>10 unit free</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
@@ -31,7 +31,7 @@ export default {
 
     data() {
         return {
-            lands: [],
+            iots: [],
             loading: true
         }
     },
@@ -47,7 +47,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.lands = data.data
+                    this.iots = data.data
                 } else {
                     alert(data.message)
                 }
