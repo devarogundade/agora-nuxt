@@ -183,6 +183,8 @@
             </div>
         </div>
     </section>
+
+    <VoiceToText />
 </section>
 </template>
 
