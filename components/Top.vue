@@ -13,14 +13,14 @@
                 <option value="">Price: Low to High</option>
                 <option value="">Price: High to Low</option>
             </select>
-            <select name="" id="">
-                <option value="">Land</option>
-                <option value="">Machinery</option>
-                <option value="">IoTs</option>
+            <select name="" id="" v-on:change="changeScope($event)">
+                <option value="land">Land</option>
+                <option value="machinery">Machinery</option>
+                <option value="iot">IoTs</option>
             </select>
         </div>
 
-        <div class="items" v-if="topLands.length > 0">
+        <div class="items" v-if="topLands.length > 0 && scope == 'land'">
             <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
@@ -30,6 +30,52 @@
                     <div class="content">
                         <h3>{{ land.location }}</h3>
                         <p class="price">value at $ {{ land.price }} / 24hr</p>
+
+                        <ul>
+                            <li>
+                                <i class="fi fi-rr-clock"></i>
+                                <p>On lease</p>
+                                <div class="progress"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="items" v-if="topMachineries.length > 0 && scope == 'machinery'">
+            <a v-for="machinery in topMachineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
+                <div class="item">
+                    <div class="image">
+                        <img v-if="machinery.images.length > 0" :src="'http://127.0.0.1:8000/images' + machinery.images[0].url" alt="">
+                        <img v-else src="/images/tractor.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{ iot.name }}</h3>
+                        <p class="price">value at $ {{ machinery.price }} / 24hr</p>
+
+                        <ul>
+                            <li>
+                                <i class="fi fi-rr-clock"></i>
+                                <p>On lease</p>
+                                <div class="progress"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="items" v-if="topIots.length > 0 && scope == 'iot'">
+            <a v-for="iot in topIots" :key="iot.id" :href="'/iots/' + iot.id">
+                <div class="item">
+                    <div class="image">
+                        <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/images' + iot.images[0].url" alt="">
+                        <img v-else src="/images/iot.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{ iot.name }}</h3>
+                        <p class="price">value at $ {{ iot.price }} / 24hr</p>
 
                         <ul>
                             <li>
@@ -57,11 +103,21 @@ export default {
     data() {
         return {
             topLands: [],
-            loadingTopLands: true
+            topIots: [],
+            topMachineries: [],
+            loadingTopLands: true,
+            loadingTopIots: true,
+            loadingTopMachineries: true,
+
+            scope: 'land'
         }
     },
 
     methods: {
+        changeScope(event) {
+            this.scope = event.target.value
+        },
+
         getTopLands() {
             this.loadingTopLands = true
             const url = 'top/land'
@@ -80,11 +136,53 @@ export default {
             }).catch((err) => {
                 alert("Cannot connect to our server")
             });
+        },
+
+        getTopMachineries() {
+            this.loadingTopMachineries = true
+            const url = 'top/machinery'
+
+            this.$axios.get(url).then((response) => {
+
+                this.loadingTopMachineries = false
+                const data = response.data
+
+                if (data.status) {
+                    this.topIots = data.data
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert("Cannot connect to our server")
+            });
+        },
+
+        getTopIots() {
+            this.loadingTopIots = true
+            const url = 'top/iot'
+
+            this.$axios.get(url).then((response) => {
+
+                this.loadingTopIots = false
+                const data = response.data
+
+                if (data.status) {
+                    this.topIots = data.data
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert("Cannot connect to our server")
+            });
         }
     },
 
     created() {
         this.getTopLands()
+        this.getTopMachineries()
+        this.getTopIots()
     }
 }
 </script>

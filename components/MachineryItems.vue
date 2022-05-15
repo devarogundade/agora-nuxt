@@ -5,10 +5,10 @@
             <div class="item">
                 <div class="image">
                     <img v-if="machinery.images.length > 0" :src="'http://127.0.0.1:8000/images' + machinery.images[0].url" alt="">
-                    <img v-else src="/images/machinery.png" alt="">
+                    <img v-else src="/images/tractor.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>{{ iot.name }}</h3>
+                    <h3>{{ machinery.name }}</h3>
                     <p class="price">Owned by You</p>
 
                     <ul>
