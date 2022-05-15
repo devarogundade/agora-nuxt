@@ -179,6 +179,7 @@ section {
     border-radius: 20px;
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 }
 
 .item .action {
@@ -202,13 +203,12 @@ section {
 .image {
     width: 100%;
     height: 200px;
-    padding-top: 20px;
 }
 
 .image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .content {
