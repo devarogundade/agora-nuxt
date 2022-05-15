@@ -38,7 +38,7 @@
                 <div class="accept" v-if="$auth.user.id == offer.user_id && offer.status == 'pending'">
                     <div class="button cancel">Cancel Offer</div>
                 </div>
-                <div class="accept" v-if="offer.offerable.user_id == $auth.user.id">
+                <div class="accept" v-if="offer.offerable.user_id == $auth.user.id  && offer.status == 'pending'">
                     <div class="button">Reject</div>
                     <div class="button">Accept</div>
                 </div>
@@ -163,7 +163,6 @@ section {
 .accepted span {
     background: #00c675;
 }
-
 
 .status {
     display: grid;
