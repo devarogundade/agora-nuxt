@@ -76,7 +76,7 @@ export default {
 
                 const data = response.data;
                 if (data.status) {
-                    this.$router.push("profile")
+                    this.$router.push("/profile")
                 } else {
                     this.error = data.message;
 

@@ -108,7 +108,7 @@ export default {
                 console.log(data);
 
                 if (data.status) {
-                    this.$router.push('login')
+                    this.$router.push('/login')
                 } else {
                     this.error = data.message
 
