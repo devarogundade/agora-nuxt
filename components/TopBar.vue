@@ -51,8 +51,8 @@
                                         <a href="/iots">
                                             <i class="fi fi-rr-tractor"></i>
                                             <div class="text">
-                                                <h3>Poultry</h3>
-                                                <p>Tractors, Ploughs, others..</p>
+                                                <h3>IoTs</h3>
+                                                <p>Drone, Ploughs, others..</p>
                                             </div>
                                         </a>
                                     </li>

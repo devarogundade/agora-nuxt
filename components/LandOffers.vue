@@ -30,7 +30,7 @@
                         <tr>
                             <td>{{ offer.quantity }}</td>
                             <td>{{ offer.duration }}</td>
-                            <td>₦{{ (offer.price / offer.duration).toFixed(2) }}</td>
+                            <td>₦{{ (offer.price).toFixed(2) }}</td>
                         </tr>
                     </tbody>
                 </table>

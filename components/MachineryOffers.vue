@@ -15,13 +15,13 @@
                     </i>
 
                     <p v-if="$auth.user.id == offer.user_id">Sent offer to {{ offer.offerable.name }}</p>
-                    <p v-else>Received offer for {{ offer.offerable.name }}</p>
+                    <p v-else>Received offer for land at {{ offer.offerable.location }}</p>
                 </div>
 
                 <table>
                     <thead>
                         <tr>
-                            <td>Unit (number)</td>
+                            <td>Size (plot)</td>
                             <td>Duration (day)</td>
                             <td>Rate ($ per day)</td>
                         </tr>
@@ -30,7 +30,7 @@
                         <tr>
                             <td>{{ offer.quantity }}</td>
                             <td>{{ offer.duration }}</td>
-                            <td>₦{{ (offer.price / offer.duration).toFixed(2) }}</td>
+                            <td>₦{{ (offer.price).toFixed(2) }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -93,7 +93,7 @@ export default {
 
             this.acceptingOffer = true
 
-            const url = 'accept/user/machinery/offer?id=' + offer.offerable.id +
+            const url = 'accept/user/offer?id=' + this.land.id +
                 '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
@@ -150,7 +150,7 @@ export default {
 
             this.rejectingOffer = true
 
-            const url = 'cancel/user/offer?id=' + this.land.id +
+            const url = 'cancel/user/offer?id=' + offer.offerable.id +
                 '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)

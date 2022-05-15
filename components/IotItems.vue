@@ -1,7 +1,7 @@
 <template>
 <section>
     <div class="items">
-        <a v-for="iot in iots" :key="iot.id" :href="'/lands/' + iot.id">
+        <a v-for="iot in iots" :key="iot.id" :href="'/iots/' + iot.id">
             <div class="item">
                 <div class="image">
                     <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/images' + iot.images[0].url" alt="">
@@ -37,7 +37,7 @@ export default {
     },
 
     methods: {
-        getLands() {
+        getIots() {
             this.loading = true
 
             this.$axios.setToken(this.$auth.token)
@@ -59,7 +59,7 @@ export default {
     },
 
     created() {
-        this.getLands()
+        this.getIots()
     }
 }
 </script>

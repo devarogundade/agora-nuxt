@@ -1,11 +1,11 @@
 <template>
-<div v-if="land">
+<div v-if="iot">
     <section>
         <div class="app-min-width">
-            <a href="/lands">
+            <a href="/iots">
                 <div class="back">
                     <i class="fi fi-rr-arrow-small-left"></i>
-                    <p>Back to lands</p>
+                    <p>Back to iots</p>
                 </div>
             </a>
         </div>
@@ -14,23 +14,35 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img src="/images/land.png" alt="">
+                <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/images' + iot.images[0].url" alt="">
+                <img v-else src="/images/iot.jpg" alt="">
             </div>
             <div class="text">
                 <div class="name">
-                    <h3>Land at {{ land.state }}</h3>
-                    <p>{{ land.location }}</p>
+                    <h3>{{ iot.name }}</h3>
+                    <p>{{ iot.location }}</p>
                 </div>
 
                 <div class="price">
                     <div class="stock">
-                        Availability <span>In stock</span>
+                        Available <span>{{ iot.available }} units</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
-                        <h3>₦{{ land.price.toFixed(2) }}</h3>
-                        <div class="btn">
-                            Make Offer
+                        <h3>₦{{ iot.price.toFixed(2) }}</h3>
+                        <div class="btn" v-if="creatingOffer">
+                            Creating
+                            <Loading :message="'Creating offer'" />
+                        </div>
+                        <div v-else>
+                            <div class="btn" v-if="$auth.loggedIn" v-on:click="promptCreateOffer()">
+                                Make Offer
+                            </div>
+                            <a href="/login" v-else>
+                                <div class="btn">
+                                    Make Offer
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -63,8 +75,8 @@
                 </div>
                 <div class="body">
                     <ul>
-                        <li v-for="(meta, index) in JSON.parse(land.metadata)" :key="index">
-                            {{ Object.keys(meta) + ' : ' +Object.values(meta)}}
+                        <li v-for="(meta, index) in JSON.parse(iot.metadata)" :key="index">
+                            {{ meta.name + ' : ' + meta.value }}
                         </li>
                     </ul>
                 </div>
@@ -76,22 +88,22 @@
                     <i class="fi fi-rr-duplicate"></i>
                 </div>
                 <div class="body">
-                    <p>{{ land.about }}</p>
+                    <p>{{ iot.about }}</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="drone" v-if="land.images.length > 0">
+    <section class="drone" v-if="iot.images.length > 0">
         <div class="app-min-width">
             <div class="accordion">
                 <div class="head">
-                    <p class="title">Drone footages</p>
+                    <p class="title">Images</p>
                     <!-- <i class="fi fi-rr-duplicate"></i> -->
                 </div>
                 <div class="body">
                     <div class="images">
-                        <img v-for="image in land.images" :key="image.id" :src="'http://127.0.0.1:8000/images' + image.url" alt="">
+                        <img v-for="image in iot.images" :key="image.id" :src="'http://127.0.0.1:8000/images' + image.url" alt="">
                     </div>
                 </div>
             </div>
@@ -102,17 +114,26 @@
         <div class="app-min-width">
             <h3 class="activity-text">Offers</h3>
 
-            <div class="activities" v-if="land.offers.length > 0">
-                <div class="activity" v-for="offer in land.offers" :key="offer.id">
-                    <i class="fi fi-rr-dollar"></i>
-                    <p class="message">{{ author ? 'You' : offer.user.name }} </p>
+            <div class="activities" v-if="iot.offers.length > 0">
+                <div class="activity" v-for="offer in iot.offers" :key="offer.id">
+                    <i class="fi fi-rr-time-quarter-to pending" v-if="offer.status == 'pending'">
+                        <span>Pending</span>
+                    </i>
+                    <i class="fi fi-rr-check accepted" v-if="offer.status == 'accepted'">
+                        <span>Accepted</span>
+                    </i>
+                    <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
+                        <span>Rejected</span>
+                    </i>
+
+                    <p class="message">{{ offer.user.name }} </p>
                     <p class="quantity">{{ offer.quantity }} plots</p>
                     <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
                     <p class="duration">{{ offer.duration }} days</p>
 
-
-                    <p class="date" v-if="author">Accept</p>
-                    <p class="date" v-if="!author && author">Cancel</p>
+                    <p class="date" v-if="author && offer.status == 'pending'" v-on:click="accept(offer)">Accept</p>
+                    <p class="date" v-if="author && offer.status == 'accepted'">Ends at {{ offer.expires_at }}</p>
+                    <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id && offer.status == 'pending'" v-on:click="cancel(offer)">Cancel</p>
                 </div>
             </div>
             <div class="empty" v-else>No offers</div>
@@ -122,9 +143,12 @@
     <section class="others">
 
     </section>
+
+    <Loading v-if="acceptingOffer" :message="'Accepting offer'" />
+    <NewOffer v-on:cancel="newOffer = null" v-on:create="createOffer($event)" v-if="newOffer" :data="newOffer" />
 </div>
 
-<Loading v-else :message="'Fetching land'" />
+<Loading v-else :message="'Fetching iot'" />
 </template>
 
 <script>
@@ -134,38 +158,142 @@ export default {
     data() {
         return {
             loading: true,
-            land: null,
-            author: false
+            iot: null,
+            author: false,
+
+            newOffer: null,
+            creatingOffer: false,
+            acceptingOffer: false,
+            cancellingOffer: false,
         }
     },
 
     methods: {
-        getLand() {
-            const url = 'get/land?id=' + this.$route.params.detail
+        getIot() {
+            const url = 'get/iot?id=' + this.$route.params.detail
 
             this.$axios.get(url).then((response) => {
                 this.loading = false
                 const data = response.data
 
                 if (data.status) {
-                    this.land = data.data
+                    this.iot = data.data
 
-                    if (this.$auth.loggedIn && this.land.user_id == this.$auth.user.id) {
+                    if (this.$auth.loggedIn && this.iot.user_id == this.$auth.user.id) {
                         this.author = true
                     }
+
                 } else {
                     alert(data.message)
                 }
 
             }).catch((err) => {
-                console.log(err);
+                alert('Cannot connect to our server')
+            });
+        },
+
+        promptCreateOffer() {
+            if (this.author) {
+                alert('You cannot make offer to your assets')
+                return
+            }
+
+            this.newOffer = {
+                name: this.iot.location,
+                image: this.iot.images.length > 0 ? 'http://127.0.0.1:8000/images' + this.iot.images[0].url : '/images/iot.ong',
+                price: this.iot.price,
+                duration: '365',
+                quantity: this.iot.available,
+                quantityHint: 'Units',
+            }
+        },
+
+        createOffer(offer) {
+            this.creatingOffer = true
+            const url = 'create/user/iot?id=' + this.iot.id +
+                '&duration=' + offer.duration +
+                '&price=' + offer.price +
+                '&plot=' + offer.quantity
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.creatingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('created')
+                    this.getIot()
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+
+        },
+
+        accept(offer) {
+            if (prompt("Type ACCEPT to confirm") != "ACCEPT") {
+                alert("Wrong confirmation")
+                return
+            }
+
+            this.acceptingOffer = true
+
+            const url = 'accept/user/offer?id=' + this.iot.id +
+                '&offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.acceptingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('offer accepted')
+                    this.getIot()
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+        },
+
+        cancel(offer) {
+            if (prompt("Type CANCEL to confirm") != "CANCEL") {
+                alert("Wrong confirmation")
+                return
+            }
+
+            this.cancellingOffer = true
+
+            const url = 'cancel/user/offer?offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.cancellingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('offer cancelled')
+                    this.getIot()
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
                 alert('Cannot connect to our server')
             });
         }
     },
 
     created() {
-        this.getLand()
+        this.getIot()
     }
 };
 </script>
@@ -228,14 +356,14 @@ section {
 .image {
     background: #003543;
     border-radius: 10px;
+    overflow: hidden;
     height: 450px;
 }
 
 .image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 20px;
+    object-fit: cover;
 }
 
 .price {
@@ -354,7 +482,13 @@ section {
 }
 
 .accordion img {
-    height: 400px;
+    height: 350px;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+.accordion img:last-child {
+    margin: 0;
 }
 
 .activities {
@@ -383,17 +517,51 @@ section {
     border-radius: 6px;
     text-align: center;
     font-size: 12px;
+    cursor: pointer;
 }
 
 .activity i {
     height: 40px;
-    background: #00c675;
     color: #ffffff;
     border-radius: 50%;
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.activity i span {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    font-size: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-radius: 100px;
+    opacity: 0;
+}
+
+.activity i:hover span {
+    opacity: 1;
+}
+
+.pending,
+.pending span {
+    background: #888888;
+}
+
+.rejected,
+.rejected span {
+    background: #a14f55;
+}
+
+.accepted,
+.accepted span {
+    background: #00c675;
 }
 
 .empty {
@@ -468,7 +636,8 @@ section {
     }
 
     .activity {
-        grid-template-columns: 35px auto 120px 120px 80px;
+        grid-template-columns: 35px 150px 100px 160px 160px 100px;
+        overflow: auto;
         column-gap: 10px;
     }
 

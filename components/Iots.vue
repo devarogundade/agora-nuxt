@@ -1,7 +1,7 @@
 <template>
 <section v-if="!loading">
     <div class="app-min-width">
-        <h3 class="title">Lands</h3>
+        <h3 class="title">IoTs</h3>
 
         <div class="toolbar">
             <select name="" id="">
@@ -15,20 +15,20 @@
             </select>
             <select name="" id="">
                 <option value="">All</option>
-                <option value="">Not Occupied</option>
+                <option value="">Available</option>
             </select>
         </div>
 
-        <div class="items" v-if="lands.length > 0">
-            <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
+        <div class="items" v-if="iots.length > 0">
+            <a v-for="iot in iots" :key="iot.id" :href="'/iots/' + iot.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
-                        <img v-else src="/images/land.png" alt="">
+                        <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/images' + iot.images[0].url" alt="">
+                        <img v-else src="/images/iot.jpg" alt="">
                     </div>
                     <div class="content">
-                        <h3>{{ land.location }}</h3>
-                        <p class="price">value at $ {{ land.price }} / 24hr</p>
+                        <h3>{{ iot.name }}</h3>
+                        <p class="price">value at $ {{ iot.price }} / 24hr</p>
 
                         <ul>
                             <li>
@@ -63,9 +63,9 @@ export default {
     },
 
     methods: {
-        getLands() {
+        getIots() {
             this.loading = true
-            const url = 'top/land'
+            const url = 'top/iot'
 
             this.$axios.get(url).then((response) => {
 
@@ -73,7 +73,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.lands = data.data
+                    this.iots = data.data
                 } else {
                     alert(data.message)
                 }
@@ -85,7 +85,7 @@ export default {
     },
 
     created() {
-        this.getLands()
+        this.getIots()
     }
 }
 </script>

@@ -14,7 +14,7 @@
                         <span>Rejected</span>
                     </i>
 
-                    <p v-if="$auth.user.id == offer.user_id">Sent offer to land at {{ offer.offerable.location }}</p>
+                    <p v-if="$auth.user.id == offer.user_id">Sent offer to {{ offer.offerable.name }}</p>
                     <p v-else>Received offer for land at {{ offer.offerable.location }}</p>
                 </div>
 
@@ -30,7 +30,7 @@
                         <tr>
                             <td>{{ offer.quantity }}</td>
                             <td>{{ offer.duration }}</td>
-                            <td>₦{{ (offer.price / offer.duration).toFixed(2) }}</td>
+                            <td>₦{{ (offer.price).toFixed(2) }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -122,7 +122,7 @@ export default {
 
             this.cancellingOffer = true
 
-            const url = 'cancel/user/iot/offer?offer_id=' + offer.id;
+            const url = 'cancel/user/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {

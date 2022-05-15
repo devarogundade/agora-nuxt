@@ -29,23 +29,29 @@
 
         <div class="tab-container">
             <div class="tabs">
-                <div class="item">
-                    <i class="fi fi-rr-apps"></i>
-                    <p>Lands</p>
-                    <!-- <div class="indicator"></div> -->
-                </div>
+                <a href="/profile">
+                    <div class="item">
+                        <i class="fi fi-rr-apps"></i>
+                        <p>Lands</p>
+                        <!-- <div class="indicator"></div> -->
+                    </div>
+                </a>
 
-                <div class="item">
-                    <i class="fi fi-rr-clock"></i>
-                    <p>Machineries</p>
-                    <!-- <div class="indicator"></div> -->
-                </div>
+                <a href="/profile/machineries">
+                    <div class="item">
+                        <i class="fi fi-rr-clock"></i>
+                        <p>Machineries</p>
+                        <!-- <div class="indicator"></div> -->
+                    </div>
+                </a>
 
-                <div class="item">
-                    <i class="fi fi-rr-clock"></i>
-                    <p>IoTs</p>
-                    <div class="indicator"></div>
-                </div>
+                <a href="/profile/iots">
+                    <div class="item">
+                        <i class="fi fi-rr-clock"></i>
+                        <p>IoTs</p>
+                        <div class="indicator"></div>
+                    </div>
+                </a>
             </div>
         </div>
 

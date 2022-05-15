@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="balance">
-                  ₦ {{ user.balance.toFixed(2) }}
+                    ₦ {{ user.balance.toFixed(2) }}
                 </div>
             </div>
             <div class="options">
@@ -29,23 +29,29 @@
 
         <div class="tab-container">
             <div class="tabs">
-                <div class="item">
-                    <i class="fi fi-rr-apps"></i>
-                    <p>Lands</p>
-                    <div class="indicator"></div>
-                </div>
+                <a href="/profile">
+                    <div class="item">
+                        <i class="fi fi-rr-apps"></i>
+                        <p>Lands</p>
+                        <div class="indicator"></div>
+                    </div>
+                </a>
 
-                <div class="item">
-                    <i class="fi fi-rr-clock"></i>
-                    <p>Machineries</p>
-                    <!-- <div class="indicator"></div> -->
-                </div>
+                <a href="/profile/machineries">
+                    <div class="item">
+                        <i class="fi fi-rr-clock"></i>
+                        <p>Machineries</p>
+                        <!-- <div class="indicator"></div> -->
+                    </div>
+                </a>
 
-                <div class="item">
-                    <i class="fi fi-rr-clock"></i>
-                    <p>IoTs</p>
-                    <!-- <div class="indicator"></div> -->
-                </div>
+                <a href="/profile/iots">
+                    <div class="item">
+                        <i class="fi fi-rr-clock"></i>
+                        <p>IoTs</p>
+                        <!-- <div class="indicator"></div> -->
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -180,8 +186,8 @@ section {
 }
 
 .balance {
-  margin-top: 10px;
-  font-style: 14px;
+    margin-top: 10px;
+    font-style: 14px;
 }
 
 @media screen and (max-width: 1000px) {
