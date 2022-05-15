@@ -79,7 +79,7 @@
                                     </li>
 
                                     <li>
-                                        <router-link to="/profile/offers">
+                                        <router-link to="/profile/offers/machineries">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>Machineries</h3>
@@ -89,7 +89,7 @@
                                     </li>
 
                                     <li>
-                                        <router-link to="/profile/offers">
+                                        <router-link to="/profile/offers/iots">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>IoTs</h3>

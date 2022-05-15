@@ -1,10 +1,11 @@
 <template>
-  <section></section>
+<section>
+    <p>Edit</p>
+</section>
 </template>
-
 
 <script>
 export default {
-  layout: "profile"
+    layout: "profile"
 }
 </script>

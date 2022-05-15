@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    <Loading :message="'Listing your land'" v-if="loading" />
+    <Loading :message="'Listing your iot'" v-if="loading" />
 </section>
 </template>
 

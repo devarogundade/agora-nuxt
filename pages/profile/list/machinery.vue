@@ -22,6 +22,11 @@
                 </div>
 
                 <div class="textbox">
+                    <label for="">Machine Name</label>
+                    <input placeholder="Enter machine name" v-model="name" />
+                </div>
+
+                <div class="textbox">
                     <label for="">Machine location</label>
                     <textarea placeholder="Enter a full location address" v-model="location" cols="30" rows="3"></textarea>
                 </div>
@@ -38,7 +43,7 @@
 
                 <div class="textbox">
                     <label for="">Quantity</label>
-                    <input class="price" type="number" v-model="plots" placeholder="1">
+                    <input class="price" type="number" v-model="quantity" placeholder="1">
                 </div>
 
                 <div class="textbox">
@@ -72,7 +77,7 @@
         </div>
     </div>
 
-    <Loading :message="'Listing your land'" v-if="loading" />
+    <Loading :message="'Listing your machine'" v-if="loading" />
 </section>
 </template>
 
@@ -91,10 +96,11 @@ export default {
             agree2: false,
             agree3: false,
             state: 1,
+            name: '',
             location: '',
             about: '',
             price: '',
-            plots: '',
+            quantity: '',
             loading: false,
             states: [
                 'Lagos',
@@ -113,13 +119,15 @@ export default {
         },
 
         attempt() {
-            if (this.location == '' || this.location.length < 15) {
+            if (this.name == '') {
+                alert("Please enter a name")
+            } else if (this.location == '' || this.location.length < 15) {
                 alert("Please enter a long location")
             } else if (this.about == '' || this.about.length < 15) {
                 alert("Please enter a long text about this land")
             } else if (this.price == '') {
                 alert("Enter a price")
-            } else if (this.plots == '') {
+            } else if (this.quantity == '') {
                 alert("Enter plots")
             } else if (!this.agree1) {
                 alert("You have to check the agreements to complete your listing")
@@ -135,11 +143,12 @@ export default {
         list() {
             this.loading = true
 
-            const url = "create/land?state=" + this.states[this.state] +
+            const url = "create/machine?state=" + this.states[this.state] +
+                '&name=' + this.name +
                 '&location=' + this.location +
                 '&about=' + this.about +
                 '&price=' + this.price +
-                '&plot=' + this.plots +
+                '&quantity=' + this.quantity +
                 '&metadata=' + JSON.stringify(this.metadata);
 
             this.$axios.setToken(this.$auth.token)
@@ -150,7 +159,7 @@ export default {
 
                 if (data.status) {
                     alert("Listing completed")
-                    this.$router.push("/profile")
+                    this.$router.push("/profile/machineries")
                 } else {
                     alert(data.message)
                 }
