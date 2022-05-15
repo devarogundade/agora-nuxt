@@ -5,16 +5,24 @@
 
         <div class="toolbar">
             <select name="" id="">
-                <option value="">State</option>
-                <option value="">Lagos</option>
-                <option value="">Ibadan</option>
+                <option disabled>Select a state</option>
+                <option selected value="all">All states</option>
+                <option value="lagos">Lagos</option>
+                <option value="ogun">Ogun</option>
+                <option value="oyo">Oyo</option>
+                <option value="enugu">Enugu</option>
             </select>
             <select name="" id="">
-                <option value="">Price: Low to High</option>
-                <option value="">Price: High to Low</option>
+                <option disabled>Sort by</option>
+                <option selected value="all">Recently listed</option>
+                <option value="price-low-to-high">Price: Low to High</option>
+                <option value="price-high-to-low">Price: High to Low</option>
+                <option value="offer-low-to-high">Offer: Low to High</option>
+                <option value="offer-high-to-low">Offer: High to Low</option>
             </select>
             <select name="" id="" v-on:change="changeScope($event)">
-                <option value="land">Land</option>
+                <option disabled>Category</option>
+                <option selected value="land">Land</option>
                 <option value="machinery">Machinery</option>
                 <option value="iot">IoTs</option>
             </select>
@@ -24,7 +32,7 @@
             <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/images' + land.images[0].url" alt="">
+                        <img v-if="land.images.length > 0" :src="'https://dashboard.heroku.com/images' + land.images[0].url" alt="">
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
@@ -47,7 +55,7 @@
             <a v-for="machinery in topMachineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="machinery.images.length > 0" :src="'http://127.0.0.1:8000/images' + machinery.images[0].url" alt="">
+                        <img v-if="machinery.images.length > 0" :src="'https://dashboard.heroku.com/images' + machinery.images[0].url" alt="">
                         <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
@@ -70,7 +78,7 @@
             <a v-for="iot in topIots" :key="iot.id" :href="'/iots/' + iot.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/images' + iot.images[0].url" alt="">
+                        <img v-if="iot.images.length > 0" :src="'https://dashboard.heroku.com/images' + iot.images[0].url" alt="">
                         <img v-else src="/images/iot.jpg" alt="">
                     </div>
                     <div class="content">
