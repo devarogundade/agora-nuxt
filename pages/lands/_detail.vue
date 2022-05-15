@@ -131,7 +131,7 @@
                     <p class="duration">{{ offer.duration }} days</p>
 
                     <p class="date" v-if="author && offer.status == 'pending'" v-on:click="accept(offer)">Accept</p>
-                    <p class="date" v-if="author && offer.status == 'accepted'">Ends at 30 Mar</p>
+                    <p class="date" v-if="author && offer.status == 'accepted'">Ends at {{ offer.expires_at }}</p>
                     <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id" v-on:click="cancel(offer)">Cancel</p>
                 </div>
             </div>
@@ -163,6 +163,7 @@ export default {
             newOffer: null,
             creatingOffer: false,
             acceptingOffer: false,
+            cancellingOffer: false,
         }
     },
 
@@ -186,7 +187,6 @@ export default {
                 }
 
             }).catch((err) => {
-                console.log(err);
                 alert('Cannot connect to our server')
             });
         },
@@ -222,6 +222,7 @@ export default {
 
                 if (data.status) {
                     alert('created')
+                    this.getLand()
                 } else {
                     alert(data.message)
                 }
@@ -246,6 +247,7 @@ export default {
 
                 if (data.status) {
                     alert('offer accepted')
+                    this.getLand()
                 } else {
                     alert(data.message)
                 }
@@ -255,8 +257,28 @@ export default {
             });
         },
 
-        cancel() {
+        cancel(offer) {
+            this.cancellingOffer = true
 
+            const url = 'cancel/user/offer?id=' + this.land.id +
+                '&offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.cancellingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('offer cancelled')
+                    this.getLand()
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
         }
     },
 
@@ -489,6 +511,7 @@ section {
     border-radius: 6px;
     text-align: center;
     font-size: 12px;
+    cursor: pointer;
 }
 
 .activity i {
