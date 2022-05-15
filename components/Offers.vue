@@ -36,15 +36,18 @@
                 </table>
 
                 <div class="accept" v-if="$auth.user.id == offer.user_id && offer.status == 'pending'">
-                    <div class="button cancel">Cancel Offer</div>
+                    <div class="button cancel" v-on:click="cancel(offer)">Cancel Offer</div>
                 </div>
                 <div class="accept" v-if="offer.offerable.user_id == $auth.user.id  && offer.status == 'pending'">
-                    <div class="button">Reject</div>
-                    <div class="button">Accept</div>
+                    <div class="button" v-on:click="reject(offer)">Reject</div>
+                    <div class="button" v-on:click="accept(offer)">Accept</div>
                 </div>
             </div>
         </div>
         <p v-else>No offers</p>
+        <Loading :message="'Accepting offer'" v-if="acceptingOffer" />
+        <Loading :message="'Cancelling offer'" v-if="cancellingOffer" />
+        <Loading :message="'Rejecting offer'" v-if="rejectingOffer" />
     </div>
 
     <Loading :message="'Loading offers'" v-else />
@@ -65,7 +68,6 @@ export default {
     methods: {
         getOffers() {
             const url = this.endpoint
-            this.loading = true
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
@@ -81,10 +83,98 @@ export default {
             }).catch((err) => {
                 alert("Cannot connect to our server")
             });
+        },
+
+        accept(offer) {
+            if (prompt("Type ACCEPT to confirm") != "ACCEPT") {
+                alert("Wrong confirmation")
+                return
+            }
+
+            this.acceptingOffer = true
+
+            const url = 'accept/user/offer?id=' + this.land.id +
+                '&offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.acceptingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('offer accepted')
+                    this.getOffers()
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+        },
+
+        cancel(offer) {
+            if (prompt("Type CANCEL to confirm") != "CANCEL") {
+                alert("Wrong confirmation")
+                return
+            }
+
+            this.cancellingOffer = true
+
+            const url = 'cancel/user/offer?id=' + this.land.id +
+                '&offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.cancellingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('offer cancelled')
+                    this.getOffers()
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
+        },
+
+        reject(offer) {
+            if (prompt("Type REJECT to confirm") != "REJECT") {
+                alert("Wrong confirmation")
+                return
+            }
+
+            this.rejectingOffer = true
+
+            const url = 'cancel/user/offer?id=' + this.land.id +
+                '&offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.rejectingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    alert('offer cancelled')
+                    this.getOffers()
+                } else {
+                    alert(data.message)
+                }
+
+            }).catch((err) => {
+                alert('Cannot connect to our server')
+            });
         }
     },
 
     created() {
+        this.loading = true
         this.getOffers()
     }
 }
