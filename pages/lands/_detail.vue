@@ -14,7 +14,7 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img v-if="land.images.length > 0" :src="'https://dashboard.heroku.com/images' + land.images[0].url" alt="">
+                <img v-if="land.images.length > 0" :src="'https://agoralease.herokuapp.com/images' + land.images[0].url" alt="">
                 <img v-else src="/images/land.png" alt="">
             </div>
             <div class="text">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="body">
                     <div class="images">
-                        <img v-for="image in land.images" :key="image.id" :src="'https://dashboard.heroku.com/images' + image.url" alt="">
+                        <img v-for="image in land.images" :key="image.id" :src="'https://agoralease.herokuapp.com/images' + image.url" alt="">
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@ export default {
 
             this.newOffer = {
                 name: this.land.location,
-                image: this.land.images.length > 0 ? 'https://dashboard.heroku.com/images' + this.land.images[0].url : '/images/land.ong',
+                image: this.land.images.length > 0 ? 'https://agoralease.herokuapp.com/images' + this.land.images[0].url : '/images/land.ong',
                 price: this.land.price,
                 duration: '365',
                 quantity: this.land.available,

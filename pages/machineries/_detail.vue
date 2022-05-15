@@ -91,7 +91,7 @@
                 </div>
                 <div class="body">
                     <div class="images">
-                        <img v-for="image in land.images" :key="image.id" :src="'https://dashboard.heroku.com/images' + image.url" alt="">
+                        <img v-for="image in land.images" :key="image.id" :src="'https://agoralease.herokuapp.com/images' + image.url" alt="">
                     </div>
                 </div>
             </div>

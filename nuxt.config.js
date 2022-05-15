@@ -37,7 +37,7 @@ export default {
     ],
 
     axios: {
-        baseURL: 'https://dashboard.heroku.com/api/',
+        baseURL: 'https://agoralease.herokuapp.com/api/',
     },
 
     auth: {

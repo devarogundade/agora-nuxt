@@ -4,7 +4,7 @@
         <div class="list">
             <h3 class="title">List your land</h3>
             <div class="images">
-                <img v-for="image in images" :key="image.id" :src="'https://dashboard.heroku.com' + image.url" alt="">
+                <img v-for="image in images" :key="image.id" :src="'https://agoralease.herokuapp.com' + image.url" alt="">
                 <div class="input">
                     <input type="file" name="" id="">
                     <i class="fi fi-rr-picture"></i>
