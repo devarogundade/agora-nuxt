@@ -32,7 +32,7 @@
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
                                                 <h3>Lands</h3>
-                                                <p>Lagos, Ibadan, and other locations..</p>
+                                                <p>Lagos, Oyo, and other locations..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -42,7 +42,7 @@
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
                                                 <h3>Machineries</h3>
-                                                <p>Rich nutrient soil for your crops.</p>
+                                                <p>Tractors, Caterpillar, Ploughs.</p>
                                             </div>
                                         </a>
                                     </li>
@@ -141,11 +141,11 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href>
+                                        <a href="https://dev-arogundade.gitbook.io/agoralease/" target="_blank">
                                             <i class="fi fi-rr-comment-alt"></i>
                                             <div class="text">
-                                                <h3>Blogs</h3>
-                                                <p>Read news from agora.</p>
+                                                <h3>Documentation</h3>
+                                                <p>Read about from agora.</p>
                                             </div>
                                         </a>
                                     </li>

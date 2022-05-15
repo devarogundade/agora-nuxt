@@ -399,7 +399,7 @@ section {
     }
 
     .content h3 {
-        font-size: 24px;
+        font-size: 14px;
     }
 
     .content li {
