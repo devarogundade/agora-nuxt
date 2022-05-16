@@ -13,7 +13,7 @@
             <div class="header-grid">
                 <div class="logo">
                     <a href="/">
-                        <img src="/light-logo.png" alt="">
+                        <img src="/images/light-logo.png" alt="">
                     </a>
                 </div>
 
