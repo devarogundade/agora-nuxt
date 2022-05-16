@@ -31,7 +31,7 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 24px;
-    background-image: url('/leaf.png');
+    background-image: url('/images/leaf.png');
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;

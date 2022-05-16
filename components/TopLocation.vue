@@ -7,12 +7,19 @@
         <div class="items">
             <div class="item">
                 <div class="action">
-                    <div class="button">Rent</div>
-                    <div class="button">Lease</div>
+                    <router-link to="/locations/lagos">
+                        <div class="button">Lands</div>
+                    </router-link>
+                    <router-link to="/locations/lagos/machineries">
+                        <div class="button">Machineries</div>
+                    </router-link>
+                    <router-link to="/locations/lagos/iots">
+                        <div class="button">Iots</div>
+                    </router-link>
                 </div>
 
                 <div class="image">
-                    <img src="images/images/land.png" alt="">
+                    <img src="/images/lagos.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Lagos</h3>
@@ -42,15 +49,22 @@
 
             <div class="item">
                 <div class="action">
-                    <div class="button">Rent</div>
-                    <div class="button">Lease</div>
+                    <router-link to="/locations/enugu">
+                        <div class="button">Lands</div>
+                    </router-link>
+                    <router-link to="/locations/ibadan/machineries">
+                        <div class="button">Machineries</div>
+                    </router-link>
+                    <router-link to="/locations/ibadan/iots">
+                        <div class="button">Iots</div>
+                    </router-link>
                 </div>
 
                 <div class="image">
-                    <img src="images/images/land.png" alt="">
+                    <img src="/images/enugu.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Abeokuta</h3>
+                    <h3>Enugu</h3>
                     <p class="price">starting from ₦10/month</p>
 
                     <ul>
@@ -77,15 +91,22 @@
 
             <div class="item">
                 <div class="action">
-                    <div class="button">Rent</div>
-                    <div class="button">Lease</div>
+                    <router-link to="/locations/oyo">
+                        <div class="button">Lands</div>
+                    </router-link>
+                    <router-link to="/locations/oyo/machineries">
+                        <div class="button">Machineries</div>
+                    </router-link>
+                    <router-link to="/locations/oyo/iots">
+                        <div class="button">Iots</div>
+                    </router-link>
                 </div>
 
                 <div class="image">
-                    <img src="images/images/land.png" alt="">
+                    <img src="/images/oyo.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Ibadan</h3>
+                    <h3>Oyo</h3>
                     <p class="price">starting from ₦10/month</p>
 
                     <ul>
@@ -112,12 +133,19 @@
 
             <div class="item">
                 <div class="action">
-                    <div class="button">Rent</div>
-                    <div class="button">Lease</div>
+                    <router-link to="/locations/sokoto">
+                        <div class="button">Lands</div>
+                    </router-link>
+                    <router-link to="/locations/sokoto/machineries">
+                        <div class="button">Machineries</div>
+                    </router-link>
+                    <router-link to="/locations/sokoto/iots">
+                        <div class="button">Iots</div>
+                    </router-link>
                 </div>
 
                 <div class="image">
-                    <img src="images/images/land.png" alt="">
+                    <img src="/images/sokoto.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Sokoto</h3>
