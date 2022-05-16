@@ -37,7 +37,6 @@ export default {
     ],
 
     axios: {
-        // baseURL: 'https://agora-lease.herokuapp.com/api/',
         baseURL: 'https://agoralease.herokuapp.com/api/',
     },
 
