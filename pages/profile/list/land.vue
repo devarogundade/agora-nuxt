@@ -4,11 +4,11 @@
         <div class="list">
             <h3 class="title">List your land</h3>
             <div class="images">
-                <img v-for="image in images" :key="image.id" :src="'https://agoralease.herokuapp.com' + image.url" alt="">
-                <div class="input">
-                    <input type="file" name="" id="">
+                <div class="input" v-if="images.length < 3">
+                    <input type="file" name="" id="" v-on:change="onImageSelected($event)">
                     <i class="fi fi-rr-picture"></i>
                 </div>
+                <img v-for="(image, index) in images" :key="index" :ref="'image' + index" src="" alt="">
             </div>
 
             <div class="detail">
@@ -80,6 +80,15 @@
 export default {
     layout: "profile",
 
+    watch: {
+        images: {
+            handler() {
+                this.readImages()
+            },
+            deep: true
+        }
+    },
+
     data() {
         return {
             images: [],
@@ -132,8 +141,29 @@ export default {
             }
         },
 
+        onImageSelected(event) {
+            this.images.push(event.target.files[0])
+        },
+
+        readImages() {
+            for (let index = 0; index < this.images.length; index++) {
+                const reader = new FileReader();
+                const dom = this.$refs["image" + index]
+                reader.onload = function () {
+                    console.log(dom);
+                    dom.src = reader.result;
+                };
+                reader.readAsDataURL(this.images[index]);
+            }
+        },
+
         list() {
             this.loading = true
+
+            let formData = new FormData()
+            for (let index = 0; index < this.images.length; index++) {
+                formData.append('image' + index, this.images[index])
+            }
 
             const url = "create/land?state=" + this.states[this.state] +
                 '&location=' + this.location +
@@ -159,7 +189,7 @@ export default {
                 alert("Cannot connect to our server")
             });
         }
-    }
+    },
 }
 </script>
 
@@ -177,9 +207,12 @@ section {
 }
 
 .images {
-    display: flex;
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    column-gap: 20px;
     margin-top: 40px;
     width: 100%;
+    overflow-x: auto;
 }
 
 .images img,
@@ -190,10 +223,6 @@ section {
     background: #4d727b;
 }
 
-.images img {
-    margin-right: 20px;
-}
-
 .input {
     position: relative;
 }
@@ -201,7 +230,11 @@ section {
 .images input {
     width: 100%;
     height: 100%;
+    position: absolute;
     opacity: 0;
+    top: 0;
+    left: 0;
+    z-index: 2;
     cursor: pointer;
 }
 
