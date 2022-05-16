@@ -154,7 +154,7 @@
 
                 <div class="search">
                     <div class="input">
-                        <input type="text" placeholder="Search location, properties.." />
+                        <input type="text" placeholder="Search location, properties.." v-model="text" />
                         <i class="fi fi-rr-microphone" v-on:click="voice = true">
                             <p>Use voice</p>
                         </i>
@@ -164,7 +164,7 @@
         </div>
     </section>
 
-    <VoiceToText v-if="voice" v-on:exit="voice = false" />
+    <VoiceToText v-if="voice" v-on:exit="voice = false" v-on:search="searchFromVoice($event)" />
 </section>
 </template>
 
@@ -172,7 +172,15 @@
 export default {
     data() {
         return {
-            voice: false
+            voice: false,
+            text: ''
+        }
+    },
+
+    methods: {
+        searchFromVoice(text) {
+            this.voice = false
+            this.text = text
         }
     }
 }

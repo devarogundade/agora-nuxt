@@ -3,7 +3,7 @@
     <div class="app-min-width">
         <div class="bottom-bar">
             <p>Having trouble using this website?</p>
-            <a href="">Read our documentation</a>
+            <a href="https://dev-arogundade.gitbook.io/agoralease/" target="_blank">Read our documentation</a>
         </div>
     </div>
 </section>

@@ -4,12 +4,33 @@
         <p>I'm listening..</p>
         <div class="input">
             <input type="text" placeholder="Text" v-model="text" id="" />
-            <div class="button">Search</div>
+            <div class="button" v-on:click="search()">Search</div>
         </div>
         <i class="fi fi-rr-cross" v-on:click="$emit('exit')"></i>
     </div>
 </section>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            text: ''
+        }
+    },
+
+    methods: {
+        search() {
+            if (this.text == '') {
+                alert('Say something to your mic')
+                return
+            }
+
+            this.$emit('search', this.text)
+        }
+    }
+}
+</script>
 
 <style scoped>
 section {
