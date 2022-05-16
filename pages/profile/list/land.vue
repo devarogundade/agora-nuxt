@@ -206,7 +206,7 @@ section {
 
 .images {
     display: grid;
-    grid-template-columns: 250px 250px 250px;
+    grid-template-columns: auto auto auto;
     column-gap: 20px;
     margin-top: 40px;
     width: 100%;
@@ -223,6 +223,7 @@ section {
 
 .input {
     position: relative;
+    width: 250px;
 }
 
 .images input {
