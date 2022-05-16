@@ -1,7 +1,7 @@
 <template>
 <section v-if="!loading">
     <div class="app-min-width">
-        <h3 class="title">Lands</h3>
+        <h3 class="title">Machineries</h3>
 
         <div class="toolbar">
             <select name="" id="">
@@ -14,26 +14,26 @@
                 <option value="">Price: High to Low</option>
             </select>
             <select name="" id="">
-                <option value="">Land</option>
-                <option value="">Machinery</option>
-                <option value="">IoTs</option>
+                <option value="">All</option>
+                <option value="">Not Occupied</option>
             </select>
         </div>
 
-        <div class="items" v-if="lands.length > 0">
-            <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
+        <div class="items" v-if="machineries.length > 0">
+            <a v-for="machinery in machineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
                 <div class="item">
                     <div class="image">
-                        <img src="images/images/tractor.png" alt="">
+                        <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + land.images[0].url" alt="">
+                        <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
-                        <h3 class="ellipsis">{{ land.location }}</h3>
-                        <p class="price">value at $ {{ land.price }} / 24hr</p>
+                        <h3 class="ellipsis">{{ machinery.name }}</h3>
+                        <p class="price">value at $ {{ machinery.price }} / 24hr</p>
 
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>On lease</p>
+                                <p>80% leased out</p>
                                 <div class="progress"></div>
                             </li>
                         </ul>
@@ -50,22 +50,22 @@
     </div>
 </section>
 
-<Loading v-else :message="'Loading machineries'" />
+<Loading v-else :message="'Loading lands'" />
 </template>
 
 <script>
 export default {
     data() {
         return {
-            lands: [],
+            machineries: [],
             loading: true
         }
     },
 
     methods: {
-        getLands() {
+        getMachineries() {
             this.loading = true
-            const url = 'all/land'
+            const url = 'all/machineries'
 
             this.$axios.get(url).then((response) => {
 
@@ -73,7 +73,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.lands = data.data
+                    this.machineries = data.data
                 } else {
                     alert(data.message)
                 }
@@ -85,7 +85,7 @@ export default {
     },
 
     created() {
-        this.getLands()
+        this.getMachineries()
     }
 }
 </script>
@@ -141,9 +141,10 @@ section {
 }
 
 .item {
-    border: 1px solid #003543;
+    background: #003543;
     border-radius: 20px;
     cursor: pointer;
+    overflow: hidden;
     position: relative;
 }
 
@@ -172,13 +173,12 @@ section {
 .image {
     width: 100%;
     height: 220px;
-    padding-top: 20px;
 }
 
 .image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .content {
