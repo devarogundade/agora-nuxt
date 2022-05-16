@@ -15,7 +15,7 @@
                 <div class="textbox">
                     <label for="">Select land state</label>
                     <select name="" id="">
-                        <option v-for="(s, index) in states" :key="index" :value="index" v-on:change="state = index">
+                        <option v-for="(s, index) in states" :key="index" :value="index" v-on:change="state = $event.target.value">
                             {{ s }}
                         </option>
                     </select>
