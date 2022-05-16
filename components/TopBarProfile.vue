@@ -375,7 +375,7 @@ input::placeholder {
 
 @media screen and (max-width: 1000px) {
     section {
-        top: -130px;
+        top: -132px;
     }
 
     .header-grid {
