@@ -171,7 +171,8 @@ export default {
                 '&metadata=' + JSON.stringify(this.metadata);
 
             this.$axios.setToken(this.$auth.token)
-            this.$axios.get(url).then((response) => {
+            this.$axios.setHeader('Content-Type', 'multipart/form-data')
+            this.$axios.post(url, formData).then((response) => {
 
                 this.loading = false
                 const data = response.data

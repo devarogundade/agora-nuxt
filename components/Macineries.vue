@@ -24,7 +24,7 @@
             <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
-                        <img src="images/tractor.png" alt="">
+                        <img src="images/images/tractor.png" alt="">
                     </div>
                     <div class="content">
                         <h3>{{ land.location }}</h3>
