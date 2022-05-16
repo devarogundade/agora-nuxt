@@ -23,7 +23,7 @@
             <a v-for="machinery in machineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + land.images[0].url" alt="">
+                        <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + machinery.images[0].url" alt="">
                         <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
@@ -33,8 +33,8 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>80% leased out</p>
-                                <div class="progress"></div>
+                                <p>{{ machinery.occupied }} leased out</p>
+                                <div :style="'width: ' + (machinery.occupied / machinery.quantity) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
                     </div>
@@ -67,7 +67,7 @@ export default {
     methods: {
         getMachineries() {
             this.loading = true
-            const url = 'all/machineries'
+            const url = 'all/machinery'
 
             this.$axios.get(url).then((response) => {
 
@@ -222,7 +222,6 @@ section {
     left: 0;
     top: 0;
     border-radius: 10px;
-    width: 88%;
     background: #4577ff;
 }
 
