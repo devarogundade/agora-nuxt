@@ -50,7 +50,7 @@
     </div>
 </section>
 
-<Loading v-else :message="'Loading lands'" />
+<Loading v-else :message="'Loading iots'" />
 </template>
 
 <script>
@@ -284,7 +284,6 @@ section {
     }
 
     .title {
-        margin-top: 0;
         font-size: 30px;
     }
 
