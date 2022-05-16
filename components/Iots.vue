@@ -65,7 +65,7 @@ export default {
     methods: {
         getIots() {
             this.loading = true
-            const url = 'top/iot'
+            const url = 'all/iot'
 
             this.$axios.get(url).then((response) => {
 

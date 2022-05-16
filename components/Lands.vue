@@ -65,7 +65,7 @@ export default {
     methods: {
         getLands() {
             this.loading = true
-            const url = 'top/land'
+            const url = 'all/land'
 
             this.$axios.get(url).then((response) => {
 

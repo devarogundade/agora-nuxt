@@ -128,7 +128,7 @@ export default {
 
         getTopLands() {
             this.loadingTopLands = true
-            const url = 'top/land'
+            const url = 'all/land'
 
             this.$axios.get(url).then((response) => {
 
@@ -148,7 +148,7 @@ export default {
 
         getTopMachineries() {
             this.loadingTopMachineries = true
-            const url = 'top/machinery'
+            const url = 'all/machinery'
 
             this.$axios.get(url).then((response) => {
 
@@ -168,7 +168,7 @@ export default {
 
         getTopIots() {
             this.loadingTopIots = true
-            const url = 'top/iot'
+            const url = 'all/iot'
 
             this.$axios.get(url).then((response) => {
 
