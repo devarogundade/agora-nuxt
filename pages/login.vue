@@ -38,8 +38,8 @@ export default {
         return {
             remember: false,
 
-            emailAddress: "arogundade@gmail.com",
-            password: "adegbola",
+            emailAddress: "",
+            password: "",
 
             loading: false,
         };

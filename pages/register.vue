@@ -57,10 +57,10 @@ export default {
         return {
             purpose: 0,
 
-            fullName: "arogundade seun",
-            emailAddress: "arogundade@gmail.com",
-            password: "adegbola",
-            confirmPassword: "adegbola",
+            fullName: "",
+            emailAddress: "",
+            password: "",
+            confirmPassword: "",
 
             error: null,
             loading: false

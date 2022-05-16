@@ -2,5 +2,6 @@
 <div>
     <TopBar />
     <Nuxt />
+    <BottomBar />
 </div>
 </template>
