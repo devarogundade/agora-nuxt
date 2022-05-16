@@ -8,7 +8,7 @@
                     <input type="file" name="" id="" v-on:change="onImageSelected($event)">
                     <i class="fi fi-rr-picture"></i>
                 </div>
-                <img v-for="(image, index) in images" :key="index" :ref="'image' + index" src="" alt="">
+                <img v-for="(image, index) in images" :key="index" :id="'image' + index" src="" alt="">
             </div>
 
             <div class="detail">
@@ -148,10 +148,8 @@ export default {
         readImages() {
             for (let index = 0; index < this.images.length; index++) {
                 const reader = new FileReader();
-                const dom = this.$refs["image" + index]
                 reader.onload = function () {
-                    console.log(dom);
-                    dom.src = reader.result;
+                    document.getElementById('image' + index).src = reader.result;
                 };
                 reader.readAsDataURL(this.images[index]);
             }
