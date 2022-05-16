@@ -23,7 +23,7 @@
                         <tr>
                             <td>Size (plot)</td>
                             <td>Duration (day)</td>
-                            <td>Rate ($ per day)</td>
+                            <td>Rate (₦ per day)</td>
                         </tr>
                     </thead>
                     <tbody>

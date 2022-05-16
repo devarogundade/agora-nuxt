@@ -28,7 +28,7 @@
                     </div>
                     <div class="content">
                         <h3 class="ellipsis">{{ iot.name }}</h3>
-                        <p class="price">value at $ {{ iot.price }} / 24hr</p>
+                        <p class="price">value at ₦{{ iot.price }} / 24hr</p>
 
                         <ul>
                             <li>

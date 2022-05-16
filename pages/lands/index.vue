@@ -28,7 +28,7 @@
                     </div>
                     <div class="content">
                         <h3 class="ellipsis">{{ land.location }}</h3>
-                        <p class="price">value at $ {{ land.price }} / 24hr</p>
+                        <p class="price">value at ₦{{ land.price }} / 24hr</p>
 
                         <ul>
                             <li>

@@ -16,7 +16,7 @@
                 </div>
                 <div class="content">
                     <h3>Lagos</h3>
-                    <p class="price">starting from $10/month</p>
+                    <p class="price">starting from ₦10/month</p>
 
                     <ul>
                         <li>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="content">
                     <h3>Abeokuta</h3>
-                    <p class="price">starting from $10/month</p>
+                    <p class="price">starting from ₦10/month</p>
 
                     <ul>
                         <li>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="content">
                     <h3>Ibadan</h3>
-                    <p class="price">starting from $10/month</p>
+                    <p class="price">starting from ₦10/month</p>
 
                     <ul>
                         <li>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="content">
                     <h3>Sokoto</h3>
-                    <p class="price">starting from $10/month</p>
+                    <p class="price">starting from ₦10/month</p>
 
                     <ul>
                         <li>
