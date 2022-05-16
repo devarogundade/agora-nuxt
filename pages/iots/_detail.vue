@@ -14,7 +14,7 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + iot.images[0].url" alt="">
+                <img v-if="iot.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + iot.images[0].url" alt="">
                 <img v-else src="/images/iot.jpg" alt="">
             </div>
             <div class="text">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="body">
                     <div class="images">
-                        <img v-for="image in iot.images" :key="image.id" :src="'http://127.0.0.1:8000/storage/' + image.url" alt="">
+                        <img v-for="image in iot.images" :key="image.id" :src="'https://agoralease.herokuapp.com/storage/' + image.url" alt="">
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@ export default {
 
             this.newOffer = {
                 name: this.iot.location,
-                image: this.iot.images.length > 0 ? 'http://127.0.0.1:8000/' + this.iot.images[0].url : '/iot.ong',
+                image: this.iot.images.length > 0 ? 'https://agoralease.herokuapp.com/' + this.iot.images[0].url : '/iot.ong',
                 price: this.iot.price,
                 duration: '365',
                 quantity: this.iot.quantity - this.iot.occupied,

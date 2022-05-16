@@ -14,7 +14,7 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img v-if="machinery.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + machinery.images[0].url" alt="">
+                <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + machinery.images[0].url" alt="">
                 <img v-else src="/images/machinery.jpg" alt="">
             </div>
             <div class="text">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="body">
                     <div class="images">
-                        <img v-for="image in machinery.images" :key="image.id" :src="'http://127.0.0.1:8000/storage/' + image.url" alt="">
+                        <img v-for="image in machinery.images" :key="image.id" :src="'https://agoralease.herokuapp.com/storage/' + image.url" alt="">
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@ export default {
 
             this.newOffer = {
                 name: this.machinery.location,
-                image: this.machinery.images.length > 0 ? 'http://127.0.0.1:8000/' + this.machinery.images[0].url : '/images/machinery.jpg',
+                image: this.machinery.images.length > 0 ? 'https://agoralease.herokuapp.com/' + this.machinery.images[0].url : '/images/machinery.jpg',
                 price: this.machinery.price,
                 duration: '365',
                 quantity: this.machinery.quantity - this.machinery.occupied,

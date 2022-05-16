@@ -4,7 +4,7 @@
         <a v-for="machinery in machineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
             <div class="item">
                 <div class="image">
-                    <img v-if="machinery.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + machinery.images[0].url" alt="">
+                    <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + machinery.images[0].url" alt="">
                     <img v-else src="/images/tractor.jpg" alt="">
                 </div>
                 <div class="content">

@@ -32,7 +32,7 @@
             <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + land.images[0].url" alt="">
+                        <img v-if="land.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + land.images[0].url" alt="">
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
@@ -55,7 +55,7 @@
             <a v-for="machinery in topMachineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="machinery.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + machinery.images[0].url" alt="">
+                        <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + machinery.images[0].url" alt="">
                         <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
@@ -78,7 +78,7 @@
             <a v-for="iot in topIots" :key="iot.id" :href="'/iots/' + iot.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + iot.images[0].url" alt="">
+                        <img v-if="iot.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + iot.images[0].url" alt="">
                         <img v-else src="/images/iot.jpg" alt="">
                     </div>
                     <div class="content">
