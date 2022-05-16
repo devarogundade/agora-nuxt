@@ -210,10 +210,10 @@ export default {
 
         createOffer(offer) {
             this.creatingOffer = true
-            const url = 'create/user/iot?id=' + this.iot.id +
+            const url = 'create/offer/iot?id=' + this.iot.id +
                 '&duration=' + offer.duration +
                 '&price=' + offer.price +
-                '&plot=' + offer.quantity
+                '&quantity=' + offer.quantity
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {

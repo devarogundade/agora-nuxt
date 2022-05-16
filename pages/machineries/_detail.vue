@@ -200,7 +200,7 @@ export default {
 
             this.newOffer = {
                 name: this.machinery.location,
-                image: this.machinery.images.length > 0 ? 'http://127.0.0.1:8000/' + this.machinery.images[0].url : '/machinery.ong',
+                image: this.machinery.images.length > 0 ? 'http://127.0.0.1:8000/' + this.machinery.images[0].url : '/images/machinery.jpg',
                 price: this.machinery.price,
                 duration: '365',
                 quantity: this.machinery.quantity - this.machinery.occupied,
@@ -210,10 +210,10 @@ export default {
 
         createOffer(offer) {
             this.creatingOffer = true
-            const url = 'create/user/machinery?id=' + this.machinery.id +
+            const url = 'create/offer/machinery?id=' + this.machinery.id +
                 '&duration=' + offer.duration +
                 '&price=' + offer.price +
-                '&plot=' + offer.quantity
+                '&quantity=' + offer.quantity
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {

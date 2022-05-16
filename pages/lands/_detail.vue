@@ -211,7 +211,7 @@ export default {
 
         createOffer(offer) {
             this.creatingOffer = true
-            const url = 'create/user/land?id=' + this.land.id +
+            const url = 'create/offer/land?id=' + this.land.id +
                 '&duration=' + offer.duration +
                 '&price=' + offer.price +
                 '&plot=' + offer.quantity
