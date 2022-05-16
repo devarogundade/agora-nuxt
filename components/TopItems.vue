@@ -42,8 +42,8 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>On lease</p>
-                                <div class="progress"></div>
+                                <p>{{ (land.occupied / land.plot) * 100 }}% plots on lease</p>
+                                <div :style="'width: ' + (land.occupied / land.plot) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
                     </div>
@@ -65,8 +65,8 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>On lease</p>
-                                <div class="progress"></div>
+                                <p>{{ machinery.occupied }} units on lease</p>
+                                <div :style="'width: ' + (machinery.occupied / machinery.quantity) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
                     </div>
@@ -88,8 +88,8 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>On lease</p>
-                                <div class="progress"></div>
+                                <p>{{ iot.occupied }} units on lease</p>
+                                <div :style="'width: ' + (iot.occupied / iot.quantity) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
                     </div>
@@ -184,7 +184,7 @@ export default {
             }).catch((err) => {
                 alert("Cannot connect to our server")
             });
-        }
+        },
     },
 
     created() {
@@ -326,7 +326,6 @@ section {
     left: 0;
     top: 0;
     border-radius: 10px;
-    width: 88%;
     background: #4577ff;
 }
 

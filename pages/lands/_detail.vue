@@ -25,7 +25,7 @@
 
                 <div class="price">
                     <div class="stock">
-                        Available <span>{{ land.plots - land.occupied }} plots</span>
+                        Available <span>{{ land.plot - land.occupied }} plots</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
@@ -50,7 +50,7 @@
                 <ul>
                     <li>
                         <i class="fi fi-rr-time-past"></i>
-                        <p>5 leases</p>
+                        <p>{{ land.occupied }} plots on lease</p>
                         <div class="progress"></div>
                     </li>
 
@@ -62,7 +62,8 @@
 
                     <li>
                         <i class="fi fi-rr-shield-check"></i>
-                        <p>Verified item</p>
+                        <p v-if="land.verified_at">Verified item</p>
+                        <p v-else>Not verified item</p>
                         <div class="progress"></div>
                     </li>
                 </ul>
@@ -203,7 +204,7 @@ export default {
                 image: this.land.images.length > 0 ? 'https://agoralease.herokuapp.com/images' + this.land.images[0].url : '/images/land.ong',
                 price: this.land.price,
                 duration: '365',
-                quantity: this.land.plots - this.land.occupied,
+                quantity: this.land.plot - this.land.occupied,
                 quantityHint: 'Plots',
             }
         },
@@ -447,7 +448,7 @@ section {
 }
 
 .text li:last-child .progress {
-    width: 70%;
+    width: 100%;
     background: #99b4ff;
 }
 
