@@ -20,44 +20,11 @@
                 <div class="menu">
                     <div class="items">
                         <div class="item">
-                            <p class="item-name">
-                                My Assets
-                                <i class="fi fi-rr-angle-small-down"></i>
-                            </p>
-
-                            <div class="dropdown">
-                                <ul>
-                                    <li>
-                                        <a href="/profile">
-                                            <i class="fi fi-rr-data-transfer"></i>
-                                            <div class="text">
-                                                <h3>Lands</h3>
-                                                <p>Every assets your own or lease..</p>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/profile/machineries">
-                                            <i class="fi fi-rr-strawberry"></i>
-                                            <div class="text">
-                                                <h3>Machineries</h3>
-                                                <p>All assets listed for leasing..</p>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/profile/iots">
-                                            <i class="fi fi-rr-tractor"></i>
-                                            <div class="text">
-                                                <h3>IoTs</h3>
-                                                <p>All assets on lease to someone..</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <router-link to="/profile">
+                                <p class="item-name">
+                                    My Assets
+                                </p>
+                            </router-link>
                         </div>
 
                         <div class="item">
