@@ -1,20 +1,20 @@
 <template>
 <section>
     <div class="items">
-        <a v-for="machinery in machineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
+        <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
             <div class="item">
                 <div class="image">
-                    <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + machinery.images[0].url" alt="">
-                    <img v-else src="/images/tractor.jpg" alt="">
+                    <img v-if="land.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + land.images[0].url" alt="">
+                    <img v-else src="/images/land.png" alt="">
                 </div>
                 <div class="content">
-                    <h3 class="ellipsis">{{ machinery.name }}</h3>
+                    <h3 class="ellipsis">{{ land.location }}</h3>
                     <p class="price">Owned by You</p>
 
                     <ul>
                         <li>
-                            <i class="fi fi-rr-sun"></i>
-                            <p class="single">10 unit free</p>
+                            <i class="fi fi-rr-"></i>
+                            <p>10 plots free</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
@@ -31,13 +31,13 @@ export default {
 
     data() {
         return {
-            machineries: [],
+            lands: [],
             loading: true
         }
     },
 
     methods: {
-        getMachineries() {
+        getLands() {
             this.loading = true
 
             this.$axios.setToken(this.$auth.token)
@@ -47,7 +47,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.machineries = data.data
+                    this.lands = data.data
                 } else {
                     alert(data.message)
                 }
@@ -59,7 +59,7 @@ export default {
     },
 
     created() {
-        this.getMachineries()
+        this.getLands()
     }
 }
 </script>
@@ -165,10 +165,6 @@ section {
 @media screen and (max-width: 700px) {
     .image {
         height: 150px;
-    }
-
-    .content h3 {
-        font-size: 24px;
     }
 
     .content li {

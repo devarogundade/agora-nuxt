@@ -167,10 +167,6 @@ section {
         height: 150px;
     }
 
-    .content h3 {
-        font-size: 24px;
-    }
-
     .content li {
         height: 25px;
     }
