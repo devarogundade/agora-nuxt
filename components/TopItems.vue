@@ -1,7 +1,7 @@
 <template>
 <section>
     <div class="app-min-width">
-        <h3 class="title">Marketplace</h3>
+        <h3 class="title">Recommended</h3>
 
         <div class="toolbar">
             <select name="" id="">
@@ -98,9 +98,21 @@
         </div>
 
         <div class="more">
-            <div class="market">
-                Go to Marketplace
-            </div>
+            <router-view v-if="scope == 'land'" to="/lands">
+                <div class="market">
+                    More
+                </div>
+            </router-view>
+            <router-view v-if="scope == 'machinery'" to="/machineries">
+                <div class="market">
+                    More
+                </div>
+            </router-view>
+            <router-view v-if="scope == 'iots'" to="/iots">
+                <div class="market">
+                    More
+                </div>
+            </router-view>
         </div>
     </div>
 </section>
