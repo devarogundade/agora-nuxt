@@ -2,7 +2,7 @@
 <div v-if="machinery">
     <section>
         <div class="app-min-width">
-            <a href="/machinerys">
+            <a href="/machineries">
                 <div class="back">
                     <i class="fi fi-rr-arrow-small-left"></i>
                     <p>Back to machineries</p>
