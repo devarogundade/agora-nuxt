@@ -25,7 +25,7 @@
 
                 <div class="price">
                     <div class="stock">
-                        Available <span>{{ iot.available }} units</span>
+                        Available <span>{{ iot.quantity - iot.occupied }} units</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
@@ -203,7 +203,7 @@ export default {
                 image: this.iot.images.length > 0 ? 'https://agoralease.herokuapp.com/images' + this.iot.images[0].url : '/images/iot.ong',
                 price: this.iot.price,
                 duration: '365',
-                quantity: this.iot.available,
+                quantity: this.iot.quantity - this.iot.occupied,
                 quantityHint: 'Units',
             }
         },

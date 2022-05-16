@@ -25,7 +25,7 @@
 
                 <div class="price">
                     <div class="stock">
-                        Available <span>{{ land.available }} plots</span>
+                        Available <span>{{ land.plots - land.occupied }} plots</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
@@ -203,7 +203,7 @@ export default {
                 image: this.land.images.length > 0 ? 'https://agoralease.herokuapp.com/images' + this.land.images[0].url : '/images/land.ong',
                 price: this.land.price,
                 duration: '365',
-                quantity: this.land.available,
+                quantity: this.land.plots - this.land.occupied,
                 quantityHint: 'Plots',
             }
         },

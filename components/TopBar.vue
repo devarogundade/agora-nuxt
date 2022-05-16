@@ -184,7 +184,7 @@
         </div>
     </section>
 
-    <VoiceToText />
+    <!-- <VoiceToText /> -->
 </section>
 </template>
 

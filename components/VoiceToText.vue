@@ -3,7 +3,7 @@
     <div class="voice-to-text">
         <p>I'm listening..</p>
         <div class="input">
-            <input type="text" placeholder="Text" id="" />
+            <input type="text" placeholder="Text" v-model="text" id="" />
             <div class="button">Search</div>
         </div>
         <i class="fi fi-rr-cross"></i>
@@ -17,7 +17,7 @@ section {
     align-items: center;
     justify-content: center;
     position: fixed;
-    background: #000000e1;
+    background: #000000ee;
     width: 100%;
     height: 100vh;
     z-index: 30;
@@ -70,7 +70,7 @@ p {
     height: 35px;
     border-radius: 50%;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 40px;
+    right: 40px;
 }
 </style>
