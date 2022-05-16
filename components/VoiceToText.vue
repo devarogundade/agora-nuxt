@@ -6,7 +6,7 @@
             <input type="text" placeholder="Text" v-model="text" id="" />
             <div class="button">Search</div>
         </div>
-        <i class="fi fi-rr-cross"></i>
+        <i class="fi fi-rr-cross" v-on:click="$emit('exit')"></i>
     </div>
 </section>
 </template>

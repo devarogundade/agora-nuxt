@@ -155,7 +155,7 @@
                 <div class="search">
                     <div class="input">
                         <input type="text" placeholder="Search location, properties.." />
-                        <i class="fi fi-rr-microphone">
+                        <i class="fi fi-rr-microphone" v-on:click="voice = true">
                             <p>Use voice</p>
                         </i>
                     </div>
@@ -164,9 +164,19 @@
         </div>
     </section>
 
-    <!-- <VoiceToText /> -->
+    <VoiceToText v-if="voice" v-on:exit="voice = false" />
 </section>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            voice: false
+        }
+    }
+}
+</script>
 
 <style scoped>
 section {
