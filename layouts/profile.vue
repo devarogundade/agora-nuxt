@@ -2,6 +2,7 @@
 <div>
     <TopBarProfile />
     <Nuxt />
+    <BottomBarProfile />
 </div>
 </template>
 
