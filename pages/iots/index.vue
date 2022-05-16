@@ -33,7 +33,7 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>{{ iot.occupied }} leased out</p>
+                                <p class="single">{{ iot.occupied }} on lease</p>
                                 <div :style="'width: ' + (iot.occupied / iot.quantity) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>

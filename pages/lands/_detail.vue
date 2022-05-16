@@ -19,7 +19,7 @@
             </div>
             <div class="text">
                 <div class="name">
-                    <h3>Land at {{ land.state }}</h3>
+                    <h3>{{ land.state }}</h3>
                     <p>{{ land.location }}</p>
                 </div>
 

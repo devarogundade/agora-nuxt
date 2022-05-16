@@ -33,7 +33,7 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>{{ land.plot }} plots leased out</p>
+                                <p class="single">{{ land.plot }} plots on lease</p>
                                 <div :style="'width: ' + (land.occupied / land.plot) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>

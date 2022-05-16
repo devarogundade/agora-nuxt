@@ -33,7 +33,7 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>{{ machinery.occupied }} leased out</p>
+                                <p class="single">{{ machinery.occupied }} on lease</p>
                                 <div :style="'width: ' + (machinery.occupied / machinery.quantity) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>

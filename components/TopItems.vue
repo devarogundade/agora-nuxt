@@ -42,7 +42,7 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>{{ (land.occupied / land.plot) * 100 }}% plots on lease</p>
+                                <p class="single">{{ (land.occupied / land.plot) * 100 }}% plots on lease</p>
                                 <div :style="'width: ' + (land.occupied / land.plot) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
@@ -65,7 +65,7 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>{{ machinery.occupied }} units on lease</p>
+                                <p class="single">{{ machinery.occupied }} units on lease</p>
                                 <div :style="'width: ' + (machinery.occupied / machinery.quantity) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
@@ -88,7 +88,7 @@
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p>{{ iot.occupied }} units on lease</p>
+                                <p class="single">{{ iot.occupied }} units on lease</p>
                                 <div :style="'width: ' + (iot.occupied / iot.quantity) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
