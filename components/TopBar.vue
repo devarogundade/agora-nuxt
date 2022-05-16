@@ -101,16 +101,6 @@
                                 <ul>
                                     <li>
                                         <router-link to="/profile">
-                                            <i class="fi fi-rr-data-transfer"></i>
-                                            <div class="text">
-                                                <h3>Profile</h3>
-                                                <p>Welcome back to AgoraLands..</p>
-                                            </div>
-                                        </router-link>
-                                    </li>
-
-                                    <li>
-                                        <router-link to="/profile">
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
                                                 <h3>Assets</h3>
@@ -146,16 +136,6 @@
                                             <div class="text">
                                                 <h3>Documentation</h3>
                                                 <p>Read about from agora.</p>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href>
-                                            <i class="fi fi-rr-comments"></i>
-                                            <div class="text">
-                                                <h3>Faqs</h3>
-                                                <p>Frequently Asked Questions.</p>
                                             </div>
                                         </a>
                                     </li>

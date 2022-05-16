@@ -27,7 +27,7 @@
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
-                        <h3>{{ land.location }}</h3>
+                        <h3 class="ellipsis">{{ land.location }}</h3>
                         <p class="price">value at $ {{ land.price }} / 24hr</p>
 
                         <ul>

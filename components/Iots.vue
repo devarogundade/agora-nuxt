@@ -27,7 +27,7 @@
                         <img v-else src="/images/iot.jpg" alt="">
                     </div>
                     <div class="content">
-                        <h3>{{ iot.name }}</h3>
+                        <h3 class="ellipsis">{{ iot.name }}</h3>
                         <p class="price">value at $ {{ iot.price }} / 24hr</p>
 
                         <ul>

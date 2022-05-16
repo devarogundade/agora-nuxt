@@ -8,12 +8,12 @@
                     <img v-else src="/images/land.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>{{ land.location }}</h3>
+                    <h3 class="ellipsis">{{ land.location }}</h3>
                     <p class="price">Owned by You</p>
 
                     <ul>
                         <li>
-                            <i class="fi fi-rr-sun"></i>
+                            <i class="fi fi-rr-"></i>
                             <p>10 plots free</p>
                             <div class="progress"></div>
                         </li>

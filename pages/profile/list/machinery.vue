@@ -4,11 +4,11 @@
         <div class="list">
             <h3 class="title">List your machine</h3>
             <div class="images">
-                <img v-for="image in images" :key="image.id" :src="'http://127.0.0.1:8000' + image.url" alt="">
-                <div class="input">
-                    <input type="file" name="" id="">
+                <div class="input" v-if="images.length < 3">
+                    <input type="file" name="" id="" v-on:change="onImageSelected($event)">
                     <i class="fi fi-rr-picture"></i>
                 </div>
+                <img v-for="(image, index) in images" :key="index" :id="'image' + index" src="" alt="">
             </div>
 
             <div class="detail">
@@ -85,6 +85,15 @@
 export default {
     layout: "profile",
 
+    watch: {
+        images: {
+            handler() {
+                this.readImages()
+            },
+            deep: true
+        }
+    },
+
     data() {
         return {
             images: [],
@@ -140,8 +149,27 @@ export default {
             }
         },
 
+        onImageSelected(event) {
+            this.images.push(event.target.files[0])
+        },
+
+        readImages() {
+            for (let index = 0; index < this.images.length; index++) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    document.getElementById('image' + index).src = reader.result;
+                };
+                reader.readAsDataURL(this.images[index]);
+            }
+        },
+
         list() {
             this.loading = true
+
+            let formData = new FormData()
+            for (let index = 0; index < this.images.length; index++) {
+                formData.append('image' + index, this.images[index])
+            }
 
             const url = "create/machine?state=" + this.states[this.state] +
                 '&name=' + this.name +
@@ -152,7 +180,8 @@ export default {
                 '&metadata=' + JSON.stringify(this.metadata);
 
             this.$axios.setToken(this.$auth.token)
-            this.$axios.get(url).then((response) => {
+            this.$axios.setHeader('Content-Type', 'multipart/form-data')
+            this.$axios.post(url, formData).then((response) => {
 
                 this.loading = false
                 const data = response.data
@@ -186,9 +215,12 @@ section {
 }
 
 .images {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
     margin-top: 40px;
     width: 100%;
+    overflow-x: auto;
 }
 
 .images img,
@@ -199,18 +231,19 @@ section {
     background: #4d727b;
 }
 
-.images img {
-    margin-right: 20px;
-}
-
 .input {
     position: relative;
+    width: 250px;
 }
 
 .images input {
     width: 100%;
     height: 100%;
+    position: absolute;
     opacity: 0;
+    top: 0;
+    left: 0;
+    z-index: 2;
     cursor: pointer;
 }
 
@@ -284,6 +317,7 @@ textarea {
     column-gap: 10px;
     margin-top: 10px;
     width: 400px;
+    height: fit-content;
 }
 
 .add {

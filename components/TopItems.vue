@@ -36,7 +36,7 @@
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
-                        <h3>{{ land.location }}</h3>
+                        <h3 class="ellipsis">{{ land.location }}</h3>
                         <p class="price">value at $ {{ land.price }} / 24hr</p>
 
                         <ul>
@@ -59,7 +59,7 @@
                         <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
-                        <h3>{{ machinery.name }}</h3>
+                        <h3 class="ellipsis">{{ machinery.name }}</h3>
                         <p class="price">value at $ {{ machinery.price }} / 24hr</p>
 
                         <ul>
@@ -82,7 +82,7 @@
                         <img v-else src="/images/iot.jpg" alt="">
                     </div>
                     <div class="content">
-                        <h3>{{ iot.name }}</h3>
+                        <h3 class="ellipsis">{{ iot.name }}</h3>
                         <p class="price">value at $ {{ iot.price }} / 24hr</p>
 
                         <ul>

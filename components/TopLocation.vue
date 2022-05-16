@@ -21,19 +21,19 @@
                     <ul>
                         <li>
                             <i class="fi fi-rr-raindrops"></i>
-                            <p>Rain</p>
+                            <p class="single">Rain</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-sun"></i>
-                            <p>Sunlight</p>
+                            <p class="single">Sunlight</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-humidity"></i>
-                            <p>Humidity</p>
+                            <p class="single">Humidity</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
@@ -56,19 +56,19 @@
                     <ul>
                         <li>
                             <i class="fi fi-rr-raindrops"></i>
-                            <p>Rain</p>
+                            <p class="single">Rain</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-sun"></i>
-                            <p>Sunlight</p>
+                            <p class="single">Sunlight</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-humidity"></i>
-                            <p>Humidity</p>
+                            <p class="single">Humidity</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
@@ -91,19 +91,19 @@
                     <ul>
                         <li>
                             <i class="fi fi-rr-raindrops"></i>
-                            <p>Rain</p>
+                            <p class="single">Rain</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-sun"></i>
-                            <p>Sunlight</p>
+                            <p class="single">Sunlight</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-humidity"></i>
-                            <p>Humidity</p>
+                            <p class="single">Humidity</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
@@ -126,19 +126,19 @@
                     <ul>
                         <li>
                             <i class="fi fi-rr-raindrops"></i>
-                            <p>Rain</p>
+                            <p class="single">Rain</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-sun"></i>
-                            <p>Sunlight</p>
+                            <p class="single">Sunlight</p>
                             <div class="progress"></div>
                         </li>
 
                         <li>
                             <i class="fi fi-rr-humidity"></i>
-                            <p>Humidity</p>
+                            <p class="single">Humidity</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
