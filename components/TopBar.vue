@@ -134,7 +134,7 @@
 
                 <div class="search">
                     <div class="input">
-                        <input type="text" placeholder="Search location, properties.." v-model="text" />
+                        <input type="text" placeholder="Search location, properties.." v-on:keyup.enter="search()" v-model="text" />
                         <i class="fi fi-rr-microphone" v-on:click="voice = true">
                             <p>Use voice</p>
                         </i>
@@ -161,6 +161,14 @@ export default {
         searchFromVoice(text) {
             this.voice = false
             this.text = text
+        },
+
+        search() {
+            if (this.text == '') {
+                return
+            }
+
+            window.open('/search?text=' + this.text, "_self")
         }
     }
 }

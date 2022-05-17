@@ -24,6 +24,7 @@
 
                     <p><b>State :</b> {{ asset.state }}</p>
                     <p><b>Location :</b> {{ asset.location }}</p>
+                    <p><b>Category :</b> {{ asset.type }}</p>
                 </div>
 
                 <div class="price">
