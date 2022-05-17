@@ -19,13 +19,16 @@
             </div>
             <div class="text">
                 <div class="name">
-                    <h3>{{ asset.state }}</h3>
-                    <p>{{ asset.location }}</p>
+                    <h3 v-if="asset.type == 'land'">Land</h3>
+                    <h3 v-else>{{ asset.name }}</h3>
+
+                    <p><b>State :</b> {{ asset.state }}</p>
+                    <p><b>Location :</b> {{ asset.location }}</p>
                 </div>
 
                 <div class="price">
                     <div class="stock">
-                        Available <span>{{ asset.plot - asset.occupied }} plots</span>
+                        Available <span>{{ asset.unit - asset.occupied }} plots</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
