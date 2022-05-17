@@ -5,9 +5,11 @@
 
         <div class="toolbar">
             <select name="" id="">
-                <option value="">State</option>
-                <option value="">Lagos</option>
-                <option value="">Ibadan</option>
+                <option value="all">All State</option>
+                <option value="lagos">Lagos</option>
+                <option value="enugu">Enugu</option>
+                <option value="oyo">Oyo</option>
+                <option value="sokoto">Sokoto</option>
             </select>
             <select name="" id="">
                 <option value="">Price: Low to High</option>
