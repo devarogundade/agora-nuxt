@@ -29,7 +29,7 @@
         </div>
 
         <div class="items" v-if="topLands.length > 0 && scope == 'land'">
-            <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
+            <a v-for="land in topLands" :key="land.id" :href="'/assets/' + land.id">
                 <div class="item">
                     <div class="image">
                         <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + land.images[0].url" alt="">
@@ -98,17 +98,7 @@
         </div>
 
         <div class="more">
-            <router-view v-if="scope == 'land'" to="/lands">
-                <div class="market">
-                    More
-                </div>
-            </router-view>
-            <router-view v-if="scope == 'machinery'" to="/machineries">
-                <div class="market">
-                    More
-                </div>
-            </router-view>
-            <router-view v-if="scope == 'iots'" to="/iots">
+            <router-view to="/assets">
                 <div class="market">
                     More
                 </div>

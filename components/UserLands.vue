@@ -1,7 +1,7 @@
 <template>
 <section>
     <div class="items">
-        <a v-for="land in lands" :key="land.id" :href="'/lands/' + land.id">
+        <a v-for="land in lands" :key="land.id" :href="'/assets/' + land.id">
             <div class="item">
                 <div class="image">
                     <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + land.images[0].url" alt="">

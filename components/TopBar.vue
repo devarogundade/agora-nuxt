@@ -28,31 +28,11 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href="/lands">
+                                        <a href="/assets">
                                             <i class="fi fi-rr-data-transfer"></i>
                                             <div class="text">
-                                                <h3>Lands</h3>
-                                                <p>Lagos, Oyo, and other locations..</p>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/machineries">
-                                            <i class="fi fi-rr-strawberry"></i>
-                                            <div class="text">
-                                                <h3>Machineries</h3>
-                                                <p>Tractors, Caterpillar, Ploughs.</p>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/iots">
-                                            <i class="fi fi-rr-tractor"></i>
-                                            <div class="text">
-                                                <h3>IoTs</h3>
-                                                <p>Drone, Ploughs, others..</p>
+                                                <h3>Assets</h3>
+                                                <p>Lands, Machineries, and IoTs</p>
                                             </div>
                                         </a>
                                     </li>
