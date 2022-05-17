@@ -13,9 +13,9 @@
 
                     <ul>
                         <li>
-                            <i class="fi fi-rr-"></i>
-                            <p>10 plots free</p>
-                            <div class="progress"></div>
+                            <i class="fi fi-rr-clock"></i>
+                            <p class="single">{{ land.plot }} plots on lease</p>
+                            <div :style="'width: ' + (land.occupied / land.plot) * 100 + '%;'" class="progress"></div>
                         </li>
                     </ul>
                 </div>
@@ -137,12 +137,8 @@ section {
     height: 100%;
     left: 0;
     top: 0;
-    border-radius: 10px;
-}
-
-.content li .progress {
     width: 88%;
-    background: #4577ff;
+    border-radius: 10px;
 }
 
 .content li i {

@@ -13,9 +13,9 @@
 
                     <ul>
                         <li>
-                            <i class="fi fi-rr-sun"></i>
-                            <p class="single">10 unit free</p>
-                            <div class="progress"></div>
+                            <i class="fi fi-rr-clock"></i>
+                            <p class="single">{{ iot.occupied }} on lease</p>
+                            <div :style="'width: ' + (iot.occupied / iot.quantity) * 100 + '%;'" class="progress"></div>
                         </li>
                     </ul>
                 </div>
@@ -138,10 +138,6 @@ section {
     left: 0;
     top: 0;
     border-radius: 10px;
-}
-
-.content li .progress {
-    width: 88%;
     background: #4577ff;
 }
 
