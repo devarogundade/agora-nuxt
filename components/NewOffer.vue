@@ -18,7 +18,7 @@
                 <p v-on:click="oneYear()">1 year</p>
             </div>
             <div class="input">
-                <input type="number" :placeholder="data.quantityHint" v-model="quantity">
+                <input type="number" placeholder="Unit" v-model="unit">
                 <p v-on:click="maxQuantity()">Max</p>
             </div>
 
@@ -43,7 +43,7 @@ export default {
         return {
             price: '',
             duration: '',
-            quantity: ''
+            unit: ''
         }
     },
 
@@ -55,7 +55,7 @@ export default {
             this.duration = this.data.duration
         },
         maxQuantity() {
-            this.quantity = this.data.quantity
+            this.unit = this.data.unit
         },
 
         createOffer() {
@@ -63,16 +63,16 @@ export default {
                 alert('Price is required')
             } else if (this.duration == '') {
                 alert('Duration is required')
-            } else if (this.quantity == '') {
-                alert(this.data.quantityHint + ' is required')
-            } else if (this.quantity > this.data.quantity) {
+            } else if (this.unit == '') {
+                alert('Unit is required')
+            } else if (this.unit > this.data.unit) {
                 alert('Owner do not have up to this amount of ' + this.data.quantityHint + '. Use max to be precise')
             } else if (this.price > this.data.price) {
                 if (prompt("You are offering more than owner's request. Type CONFIRM to continue") == 'CONFIRM') {
                     this.$emit('create', {
                         price: this.price,
                         duration: this.duration,
-                        quantity: this.quantity
+                        unit: this.unit
                     })
                     this.$emit('cancel')
                 } else {
@@ -82,7 +82,7 @@ export default {
                 this.$emit('create', {
                     price: this.price,
                     duration: this.duration,
-                    quantity: this.quantity
+                    unit: this.unit
                 })
                 this.$emit('cancel')
             }

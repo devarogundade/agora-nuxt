@@ -37,8 +37,8 @@
                 </div>
 
                 <div class="textbox">
-                    <label for="">Plots</label>
-                    <input class="price" type="number" v-model="plots" placeholder="100">
+                    <label for="">Unit (plot)</label>
+                    <input class="price" type="number" v-model="unit" placeholder="100">
                 </div>
 
                 <div class="textbox">
@@ -103,7 +103,7 @@ export default {
             location: '',
             about: '',
             price: '',
-            plots: '',
+            unit: '',
             loading: false,
             states: [
                 'Lagos',
@@ -129,7 +129,7 @@ export default {
                 alert("Please enter a long text about this land")
             } else if (this.price == '') {
                 alert("Enter a price")
-            } else if (this.plots == '') {
+            } else if (this.unit == '') {
                 alert("Enter plots")
             } else if (!this.agree1) {
                 alert("You have to check the agreements to complete your listing")
@@ -164,11 +164,11 @@ export default {
                 formData.append('image' + index, this.images[index])
             }
 
-            const url = "create/asset?type=land&state=" + this.states[this.state] +
+            const url = "create/asset?type=land&name=No name for land&state=" + this.states[this.state] +
                 '&location=' + this.location +
                 '&about=' + this.about +
                 '&price=' + this.price +
-                '&plot=' + this.plots +
+                '&unit=' + this.unit +
                 '&metadata=' + JSON.stringify(this.metadata);
 
             this.$axios.setToken(this.$auth.token)

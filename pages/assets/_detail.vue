@@ -1,11 +1,11 @@
 <template>
-<div v-if="land">
+<div v-if="asset">
     <section>
         <div class="app-min-width">
             <a href="/assets">
                 <div class="back">
                     <i class="fi fi-rr-arrow-small-left"></i>
-                    <p>Back to lands</p>
+                    <p>Back to assets</p>
                 </div>
             </a>
         </div>
@@ -14,22 +14,22 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + land.images[0].url" alt="">
+                <img v-if="asset.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + asset.images[0].url" alt="">
                 <img v-else src="/images/land.png" alt="">
             </div>
             <div class="text">
                 <div class="name">
-                    <h3>{{ land.state }}</h3>
-                    <p>{{ land.location }}</p>
+                    <h3>{{ asset.state }}</h3>
+                    <p>{{ asset.location }}</p>
                 </div>
 
                 <div class="price">
                     <div class="stock">
-                        Available <span>{{ land.plot - land.occupied }} plots</span>
+                        Available <span>{{ asset.plot - asset.occupied }} plots</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
-                        <h3>₦{{ land.price.toFixed(2) }}</h3>
+                        <h3>₦{{ asset.price.toFixed(2) }}</h3>
                         <div class="btn" v-if="creatingOffer">
                             Creating
                             <Loading :message="'Creating offer'" />
@@ -50,7 +50,7 @@
                 <ul>
                     <li>
                         <i class="fi fi-rr-time-past"></i>
-                        <p>{{ land.occupied }} plots on lease</p>
+                        <p>{{ asset.occupied }} plots on lease</p>
                         <div class="progress"></div>
                     </li>
 
@@ -62,8 +62,8 @@
 
                     <li>
                         <i class="fi fi-rr-shield-check"></i>
-                        <p v-if="land.verified_at">Verified item</p>
-                        <p v-else>Not verified item</p>
+                        <p v-if="asset.verified_at">Verified asset</p>
+                        <p v-else>Not verified asset</p>
                         <div class="progress"></div>
                     </li>
                 </ul>
@@ -72,11 +72,11 @@
             <div class="accordion">
                 <div class="head">
                     <p class="title">Attributes</p>
-                    <i class="fi fi-rr-duplicate"></i>
+                    <!-- <i class="fi fi-rr-duplicate"></i> -->
                 </div>
                 <div class="body">
                     <ul>
-                        <li v-for="(meta, index) in JSON.parse(land.metadata)" :key="index">
+                        <li v-for="(meta, index) in JSON.parse(asset.metadata)" :key="index">
                             {{ meta.name + ' : ' + meta.value }}
                         </li>
                     </ul>
@@ -89,13 +89,13 @@
                     <i class="fi fi-rr-duplicate"></i>
                 </div>
                 <div class="body">
-                    <p>{{ land.about }}</p>
+                    <p>{{ asset.about }}</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="drone" v-if="land.images.length > 0">
+    <section class="drone" v-if="asset.images.length > 0">
         <div class="app-min-width">
             <div class="accordion">
                 <div class="head">
@@ -104,7 +104,7 @@
                 </div>
                 <div class="body">
                     <div class="images">
-                        <img v-for="image in land.images" :key="image.id" :src="'http://127.0.0.1:8000/storage/' + image.url" alt="">
+                        <img v-for="image in asset.images" :key="image.id" :src="'http://127.0.0.1:8000/storage/' + image.url" alt="">
                     </div>
                 </div>
             </div>
@@ -115,8 +115,8 @@
         <div class="app-min-width">
             <h3 class="activity-text">Offers</h3>
 
-            <div class="activities" v-if="land.offers.length > 0">
-                <div class="activity" v-for="offer in land.offers" :key="offer.id">
+            <div class="activities" v-if="asset.offers.length > 0">
+                <div class="activity" v-for="offer in asset.offers" :key="offer.id">
                     <i class="fi fi-rr-time-quarter-to pending" v-if="offer.status == 'pending'">
                         <span>Pending</span>
                     </i>
@@ -128,7 +128,7 @@
                     </i>
 
                     <p class="message">{{ offer.user.name }} </p>
-                    <p class="quantity">{{ offer.quantity }} plots</p>
+                    <p class="quantity">{{ offer.unit }} plots</p>
                     <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
                     <p class="duration">{{ offer.duration }} days</p>
 
@@ -149,7 +149,7 @@
     <NewOffer v-on:cancel="newOffer = null" v-on:create="createOffer($event)" v-if="newOffer" :data="newOffer" />
 </div>
 
-<Loading v-else :message="'Fetching land'" />
+<Loading v-else :message="'Fetching asset'" />
 </template>
 
 <script>
@@ -159,7 +159,7 @@ export default {
     data() {
         return {
             loading: true,
-            land: null,
+            asset: null,
             author: false,
 
             newOffer: null,
@@ -171,16 +171,16 @@ export default {
 
     methods: {
         getLand() {
-            const url = 'get/land?id=' + this.$route.params.detail
+            const url = 'asset?id=' + this.$route.params.detail
 
             this.$axios.get(url).then((response) => {
                 this.loading = false
                 const data = response.data
 
                 if (data.status) {
-                    this.land = data.data
+                    this.asset = data.data
 
-                    if (this.$auth.loggedIn && this.land.user_id == this.$auth.user.id) {
+                    if (this.$auth.loggedIn && this.asset.user_id == this.$auth.user.id) {
                         this.author = true
                     }
 
@@ -200,21 +200,20 @@ export default {
             }
 
             this.newOffer = {
-                name: this.land.location,
-                image: this.land.images.length > 0 ? 'http://127.0.0.1:8000/' + this.land.images[0].url : '/land.ong',
-                price: this.land.price,
+                name: this.asset.location,
+                image: this.asset.images.length > 0 ? 'http://127.0.0.1:8000/' + this.asset.images[0].url : '/land.png',
+                price: this.asset.price,
                 duration: '365',
-                quantity: this.land.plot - this.land.occupied,
-                quantityHint: 'Plots',
+                unit: this.asset.unit - this.asset.occupied
             }
         },
 
         createOffer(offer) {
             this.creatingOffer = true
-            const url = 'create/offer/land?id=' + this.land.id +
+            const url = 'create/offer?id=' + this.asset.id +
                 '&duration=' + offer.duration +
                 '&price=' + offer.price +
-                '&plot=' + offer.quantity
+                '&unit=' + offer.unit
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
@@ -243,7 +242,7 @@ export default {
 
             this.acceptingOffer = true
 
-            const url = 'accept/user/offer?id=' + this.land.id +
+            const url = 'accept/user/offer?id=' + this.asset.id +
                 '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)

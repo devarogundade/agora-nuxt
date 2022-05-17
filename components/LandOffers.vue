@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ offer.quantity }}</td>
+                            <td>{{ offer.unit }}</td>
                             <td>{{ offer.duration }}</td>
                             <td>₦{{ (offer.price).toFixed(2) }}</td>
                         </tr>

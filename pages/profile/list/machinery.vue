@@ -43,7 +43,7 @@
 
                 <div class="textbox">
                     <label for="">Quantity</label>
-                    <input class="price" type="number" v-model="quantity" placeholder="1">
+                    <input class="price" type="number" v-model="unit" placeholder="1">
                 </div>
 
                 <div class="textbox">
@@ -109,7 +109,7 @@ export default {
             location: '',
             about: '',
             price: '',
-            quantity: '',
+            unit: '',
             loading: false,
             states: [
                 'Lagos',
@@ -137,8 +137,8 @@ export default {
                 alert("Please enter a long text about this land")
             } else if (this.price == '') {
                 alert("Enter a price")
-            } else if (this.quantity == '') {
-                alert("Enter plots")
+            } else if (this.unit == '') {
+                alert("Enter unit")
             } else if (!this.agree1) {
                 alert("You have to check the agreements to complete your listing")
             } else if (!this.agree2) {
@@ -177,7 +177,7 @@ export default {
                 '&location=' + this.location +
                 '&about=' + this.about +
                 '&price=' + this.price +
-                '&quantity=' + this.quantity +
+                '&unit=' + this.unit +
                 '&metadata=' + JSON.stringify(this.metadata);
 
             this.$axios.setToken(this.$auth.token)
