@@ -134,7 +134,7 @@
 
                 <div class="search">
                     <div class="input">
-                        <input type="text" placeholder="Search location, properties.." v-on:keyup.enter="search()" v-model="text" />
+                        <input type="search" placeholder="Search location, properties.." v-on:keyup.enter="search()" v-model="text" />
                         <i class="fi fi-rr-microphone" v-on:click="voice = true">
                             <p>Use voice</p>
                         </i>
