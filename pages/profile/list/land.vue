@@ -309,7 +309,7 @@ textarea {
     column-gap: 10px;
     margin-top: 10px;
     width: 400px;
-    height: fit-content;
+    height: 50px;
 }
 
 .add {
