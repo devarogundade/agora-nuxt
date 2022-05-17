@@ -98,8 +98,8 @@ export default {
         return {
             images: [],
             metadata: [{
-                name: 'PH',
-                value: '7'
+                name: 'Engine',
+                value: 'Gasoline'
             }],
             agree1: false,
             agree2: false,
@@ -318,6 +318,7 @@ textarea {
     column-gap: 10px;
     margin-top: 10px;
     width: 400px;
+    max-width: 100%;
     height: 50px;
 }
 
