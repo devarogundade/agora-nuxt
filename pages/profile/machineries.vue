@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <UserMachineries :endpoint="'all/user/machinery'" />
+        <UserMachineries :endpoint="'user/assets?type=machinery'" />
     </div>
 </section>
 </template>

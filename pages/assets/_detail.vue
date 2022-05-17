@@ -1,11 +1,11 @@
 <template>
-<div v-if="machinery">
+<div v-if="land">
     <section>
         <div class="app-min-width">
-            <a href="/machineries">
+            <a href="/assets">
                 <div class="back">
                     <i class="fi fi-rr-arrow-small-left"></i>
-                    <p>Back to machineries</p>
+                    <p>Back to lands</p>
                 </div>
             </a>
         </div>
@@ -14,22 +14,22 @@
     <section>
         <div class="app-min-width grid">
             <div class="image">
-                <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + machinery.images[0].url" alt="">
-                <img v-else src="/images/machinery.jpg" alt="">
+                <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + land.images[0].url" alt="">
+                <img v-else src="/images/land.png" alt="">
             </div>
             <div class="text">
                 <div class="name">
-                    <h3>{{ machinery.name }}</h3>
-                    <p>{{ machinery.location }}</p>
+                    <h3>{{ land.state }}</h3>
+                    <p>{{ land.location }}</p>
                 </div>
 
                 <div class="price">
                     <div class="stock">
-                        Available <span>{{ machinery.quantity - machinery.occupied }} units</span>
+                        Available <span>{{ land.plot - land.occupied }} plots</span>
                     </div>
                     <div class="amount">
                         <p class="fixed">Rate per day</p>
-                        <h3>₦{{ machinery.price.toFixed(2) }}</h3>
+                        <h3>₦{{ land.price.toFixed(2) }}</h3>
                         <div class="btn" v-if="creatingOffer">
                             Creating
                             <Loading :message="'Creating offer'" />
@@ -50,7 +50,7 @@
                 <ul>
                     <li>
                         <i class="fi fi-rr-time-past"></i>
-                        <p>5 leases</p>
+                        <p>{{ land.occupied }} plots on lease</p>
                         <div class="progress"></div>
                     </li>
 
@@ -62,7 +62,8 @@
 
                     <li>
                         <i class="fi fi-rr-shield-check"></i>
-                        <p>Verified item</p>
+                        <p v-if="land.verified_at">Verified item</p>
+                        <p v-else>Not verified item</p>
                         <div class="progress"></div>
                     </li>
                 </ul>
@@ -75,7 +76,7 @@
                 </div>
                 <div class="body">
                     <ul>
-                        <li v-for="(meta, index) in JSON.parse(machinery.metadata)" :key="index">
+                        <li v-for="(meta, index) in JSON.parse(land.metadata)" :key="index">
                             {{ meta.name + ' : ' + meta.value }}
                         </li>
                     </ul>
@@ -88,13 +89,13 @@
                     <i class="fi fi-rr-duplicate"></i>
                 </div>
                 <div class="body">
-                    <p>{{ machinery.about }}</p>
+                    <p>{{ land.about }}</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="drone" v-if="machinery.images.length > 0">
+    <section class="drone" v-if="land.images.length > 0">
         <div class="app-min-width">
             <div class="accordion">
                 <div class="head">
@@ -103,7 +104,7 @@
                 </div>
                 <div class="body">
                     <div class="images">
-                        <img v-for="image in machinery.images" :key="image.id" :src="'https://agoralease.herokuapp.com/storage/' + image.url" alt="">
+                        <img v-for="image in land.images" :key="image.id" :src="'http://127.0.0.1:8000/storage/' + image.url" alt="">
                     </div>
                 </div>
             </div>
@@ -114,8 +115,8 @@
         <div class="app-min-width">
             <h3 class="activity-text">Offers</h3>
 
-            <div class="activities" v-if="machinery.offers.length > 0">
-                <div class="activity" v-for="offer in machinery.offers" :key="offer.id">
+            <div class="activities" v-if="land.offers.length > 0">
+                <div class="activity" v-for="offer in land.offers" :key="offer.id">
                     <i class="fi fi-rr-time-quarter-to pending" v-if="offer.status == 'pending'">
                         <span>Pending</span>
                     </i>
@@ -148,7 +149,7 @@
     <NewOffer v-on:cancel="newOffer = null" v-on:create="createOffer($event)" v-if="newOffer" :data="newOffer" />
 </div>
 
-<Loading v-else :message="'Fetching machinery'" />
+<Loading v-else :message="'Fetching land'" />
 </template>
 
 <script>
@@ -158,7 +159,7 @@ export default {
     data() {
         return {
             loading: true,
-            machinery: null,
+            land: null,
             author: false,
 
             newOffer: null,
@@ -169,17 +170,17 @@ export default {
     },
 
     methods: {
-        getIot() {
-            const url = 'get/machinery?id=' + this.$route.params.detail
+        getLand() {
+            const url = 'get/land?id=' + this.$route.params.detail
 
             this.$axios.get(url).then((response) => {
                 this.loading = false
                 const data = response.data
 
                 if (data.status) {
-                    this.machinery = data.data
+                    this.land = data.data
 
-                    if (this.$auth.loggedIn && this.machinery.user_id == this.$auth.user.id) {
+                    if (this.$auth.loggedIn && this.land.user_id == this.$auth.user.id) {
                         this.author = true
                     }
 
@@ -199,21 +200,21 @@ export default {
             }
 
             this.newOffer = {
-                name: this.machinery.location,
-                image: this.machinery.images.length > 0 ? 'https://agoralease.herokuapp.com/' + this.machinery.images[0].url : '/images/machinery.jpg',
-                price: this.machinery.price,
+                name: this.land.location,
+                image: this.land.images.length > 0 ? 'http://127.0.0.1:8000/' + this.land.images[0].url : '/land.ong',
+                price: this.land.price,
                 duration: '365',
-                quantity: this.machinery.quantity - this.machinery.occupied,
-                quantityHint: 'Units',
+                quantity: this.land.plot - this.land.occupied,
+                quantityHint: 'Plots',
             }
         },
 
         createOffer(offer) {
             this.creatingOffer = true
-            const url = 'create/offer/machinery?id=' + this.machinery.id +
+            const url = 'create/offer/land?id=' + this.land.id +
                 '&duration=' + offer.duration +
                 '&price=' + offer.price +
-                '&quantity=' + offer.quantity
+                '&plot=' + offer.quantity
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
@@ -223,7 +224,7 @@ export default {
 
                 if (data.status) {
                     alert('created')
-                    this.getIot()
+                    this.getLand()
                 } else {
                     alert(data.message)
                 }
@@ -242,7 +243,7 @@ export default {
 
             this.acceptingOffer = true
 
-            const url = 'accept/user/offer?id=' + this.machinery.id +
+            const url = 'accept/user/offer?id=' + this.land.id +
                 '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
@@ -253,7 +254,7 @@ export default {
 
                 if (data.status) {
                     alert('offer accepted')
-                    this.getIot()
+                    this.getLand()
                 } else {
                     alert(data.message)
                 }
@@ -281,7 +282,7 @@ export default {
 
                 if (data.status) {
                     alert('offer cancelled')
-                    this.getIot()
+                    this.getLand()
                 } else {
                     alert(data.message)
                 }
@@ -293,7 +294,7 @@ export default {
     },
 
     created() {
-        this.getIot()
+        this.getLand()
     }
 };
 </script>
@@ -447,7 +448,7 @@ section {
 }
 
 .text li:last-child .progress {
-    width: 70%;
+    width: 100%;
     background: #99b4ff;
 }
 

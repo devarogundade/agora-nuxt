@@ -4,7 +4,8 @@
         <p>I'm listening..</p>
         <div class="input">
             <input type="text" placeholder="Text" v-model="text" id="" />
-            <div class="button" v-on:click="search()">Search</div>
+            <div class="button" v-on:click="readFile()">Test</div>
+            <!-- <div class="button" v-on:click="search()">Search</div> -->
         </div>
         <i class="fi fi-rr-cross" v-on:click="$emit('exit')"></i>
     </div>
@@ -27,6 +28,44 @@ export default {
             }
 
             this.$emit('search', this.text)
+        },
+
+        readFile() {
+            const sdk = require("microsoft-cognitiveservices-speech-sdk");
+            const speechConfig = sdk.SpeechConfig.fromSubscription("9a6e6f80-18ea-4c82-af12-782b237e84a3", "	en-US");
+            speechConfig.speechRecognitionLanguage = "en-US";
+
+            const reader = new FileReader()
+            reader.onload = (res) => {
+                console.log(res.target.result);
+            }
+            reader.onerror = (err) => console.log(err);
+            reader.readAsText(this.file);
+
+            let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("test.wav"));
+
+            const speechRecognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+            speechRecognizer.recognizeOnceAsync(result => {
+                switch (result.reason) {
+                    case sdk.ResultReason.RecognizedSpeech:
+                        this.text = result.text
+                        break;
+                    case sdk.ResultReason.NoMatch:
+                        alert("NOMATCH: Speech could not be recognized.");
+                        break;
+                    case sdk.ResultReason.Canceled:
+                        const cancellation = sdk.CancellationDetails.fromResult(result);
+                        alert(`CANCELED: Reason=${cancellation.reason}`);
+
+                        if (cancellation.reason == sdk.CancellationReason.Error) {
+                            console.log(`CANCELED: ErrorCode=${cancellation.ErrorCode}`);
+                            console.log(`CANCELED: ErrorDetails=${cancellation.errorDetails}`);
+                            alert("CANCELED: Did you set the speech resource key and region values?");
+                        }
+                        break;
+                }
+                speechRecognizer.close();
+            });
         }
     }
 }

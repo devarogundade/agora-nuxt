@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <UserIots :endpoint="'all/user/iot'" />
+        <UserIots :endpoint="'user/assets?type=iot'" />
     </div>
 </section>
 </template>

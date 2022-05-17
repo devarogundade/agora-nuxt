@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <UserLands :endpoint="'all/user/land'" />
+        <UserLands :endpoint="'user/assets?type=land'" />
     </div>
 </section>
 </template>

@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <IotOffers :endpoint="'get/user/offers?type=iot'" />
+        <IotOffers :endpoint="'user/offers?type=iot'" />
     </div>
 </section>
 </template>

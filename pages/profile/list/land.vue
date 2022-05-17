@@ -164,7 +164,7 @@ export default {
                 formData.append('image' + index, this.images[index])
             }
 
-            const url = "create/land?state=" + this.states[this.state] +
+            const url = "create/asset?type=land&state=" + this.states[this.state] +
                 '&location=' + this.location +
                 '&about=' + this.about +
                 '&price=' + this.price +

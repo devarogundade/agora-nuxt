@@ -1,7 +1,7 @@
 <template>
 <section v-if="!loading">
     <div class="app-min-width">
-        <h3 class="title">IoTs</h3>
+        <h3 class="title">Assets</h3>
 
         <div class="toolbar">
             <select name="" id="">
@@ -17,26 +17,26 @@
             </select>
             <select name="" id="">
                 <option value="">All</option>
-                <option value="">Available</option>
+                <option value="">Not Occupied</option>
             </select>
         </div>
 
-        <div class="items" v-if="iots.length > 0">
-            <a v-for="iot in iots" :key="iot.id" :href="'/iots/' + iot.id">
+        <div class="items" v-if="assets.length > 0">
+            <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="iot.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + iot.images[0].url" alt="">
-                        <img v-else src="/images/iot.jpg" alt="">
+                        <img v-if="asset.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + asset.images[0].url" alt="">
+                        <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
-                        <h3 class="ellipsis">{{ iot.name }}</h3>
-                        <p class="price">value at ₦{{ iot.price }} / 24hr</p>
+                        <h3 class="ellipsis">{{ asset.location }}</h3>
+                        <p class="price">value at ₦{{ asset.price }} / 24hr</p>
 
                         <ul>
                             <li>
                                 <i class="fi fi-rr-clock"></i>
-                                <p class="single">{{ iot.occupied }} on lease</p>
-                                <div :style="'width: ' + (iot.occupied / iot.quantity) * 100 + '%;'" class="progress"></div>
+                                <p class="single">{{ asset.occupied }} plots on lease</p>
+                                <div :style="'width: ' + (asset.occupied / asset.unit) * 100 + '%;'" class="progress"></div>
                             </li>
                         </ul>
                     </div>
@@ -52,7 +52,7 @@
     </div>
 </section>
 
-<Loading v-else :message="'Loading iots'" />
+<Loading v-else :message="'Loading assets'" />
 </template>
 
 <script>
@@ -61,15 +61,17 @@ export default {
 
     data() {
         return {
-            lands: [],
+            assets: [],
             loading: true
         }
     },
 
     methods: {
-        getIots() {
+        getLands() {
             this.loading = true
-            const url = 'all/iot'
+
+            const type = this.$route.query.type && this.$route.query.type != '' ? this.$route.query.type : 'land'
+            const url = 'all/assets?type=' + type
 
             this.$axios.get(url).then((response) => {
 
@@ -77,7 +79,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.iots = data.data
+                    this.assets = data.data
                 } else {
                     alert(data.message)
                 }
@@ -89,7 +91,7 @@ export default {
     },
 
     created() {
-        this.getIots()
+        this.getLands()
     }
 }
 </script>

@@ -32,7 +32,7 @@
             <a v-for="land in topLands" :key="land.id" :href="'/lands/' + land.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="land.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + land.images[0].url" alt="">
+                        <img v-if="land.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + land.images[0].url" alt="">
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
@@ -55,7 +55,7 @@
             <a v-for="machinery in topMachineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="machinery.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + machinery.images[0].url" alt="">
+                        <img v-if="machinery.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + machinery.images[0].url" alt="">
                         <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
@@ -78,7 +78,7 @@
             <a v-for="iot in topIots" :key="iot.id" :href="'/iots/' + iot.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="iot.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + iot.images[0].url" alt="">
+                        <img v-if="iot.images.length > 0" :src="'http://127.0.0.1:8000/storage/' + iot.images[0].url" alt="">
                         <img v-else src="/images/iot.jpg" alt="">
                     </div>
                     <div class="content">
@@ -140,7 +140,7 @@ export default {
 
         getTopLands() {
             this.loadingTopLands = true
-            const url = 'all/land'
+            const url = 'assets?type=land'
 
             this.$axios.get(url).then((response) => {
 
@@ -160,7 +160,7 @@ export default {
 
         getTopMachineries() {
             this.loadingTopMachineries = true
-            const url = 'all/machinery'
+            const url = 'assets?type=machinery'
 
             this.$axios.get(url).then((response) => {
 
@@ -180,7 +180,7 @@ export default {
 
         getTopIots() {
             this.loadingTopIots = true
-            const url = 'all/iot'
+            const url = 'assets?type=iot'
 
             this.$axios.get(url).then((response) => {
 

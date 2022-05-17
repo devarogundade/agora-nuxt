@@ -172,7 +172,7 @@ export default {
                 formData.append('image' + index, this.images[index])
             }
 
-            const url = "create/iot?state=" + this.states[this.state] +
+            const url = "create/asset?type=iot&state=" + this.states[this.state] +
                 '&name=' + this.name +
                 '&location=' + this.location +
                 '&about=' + this.about +
