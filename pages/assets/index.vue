@@ -70,8 +70,8 @@ export default {
         getLands() {
             this.loading = true
 
-            const type = this.$route.query.type && this.$route.query.type != '' ? this.$route.query.type : 'land'
-            const url = 'all/assets?type=' + type
+            const type = this.$route.query.type ? this.$route.query.type : 'all'
+            const url = 'assets?type=' + type
 
             this.$axios.get(url).then((response) => {
 

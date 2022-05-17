@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div class="app-min-width">
+    <div class="app-min2-width">
         <h3 class="title">Join our community of investors and farmers</h3>
         <p class="desc">
             You will be able to leased your Lands, Machinery and IoTs to farmers and
@@ -141,7 +141,7 @@ section {
     padding-bottom: 50px;
 }
 
-.app-min-width {
+.app-min2-width {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,7 +1,7 @@
 <template>
 <div>
     <TopBarProfile />
-    <Nuxt />
+    <Nuxt class="nuxt-app" />
     <BottomBarProfile />
 </div>
 </template>
