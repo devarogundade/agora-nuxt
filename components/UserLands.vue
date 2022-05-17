@@ -14,7 +14,7 @@
                     <ul>
                         <li>
                             <i class="fi fi-rr-clock"></i>
-                            <p class="single">{{ land.plot }} plots on lease</p>
+                            <p class="single">{{ land.occupied }} plots on lease</p>
                             <div :style="'width: ' + (land.occupied / land.plot) * 100 + '%;'" class="progress"></div>
                         </li>
                     </ul>
