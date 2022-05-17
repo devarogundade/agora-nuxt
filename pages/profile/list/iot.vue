@@ -4,11 +4,11 @@
         <div class="list">
             <h3 class="title">List your IoT</h3>
             <div class="images">
+                <img v-for="(image, index) in images" :key="index" :id="'image' + index" src="" alt="">
                 <div class="input" v-if="images.length < 3">
                     <input type="file" name="" id="" v-on:change="onImageSelected($event)">
                     <i class="fi fi-rr-picture"></i>
                 </div>
-                <img v-for="(image, index) in images" :key="index" :id="'image' + index" src="" alt="">
             </div>
 
             <div class="detail">
