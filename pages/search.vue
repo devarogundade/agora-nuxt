@@ -210,4 +210,47 @@ section {
     font-size: 15px;
     font-weight: 400;
 }
+
+@media screen and (max-width: 1000px) {
+    .items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 15px;
+        grid-row-gap: 15px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .items {
+        column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+
+    .title {
+        margin-top: 0;
+        font-size: 30px;
+    }
+
+    .image {
+        height: 150px;
+    }
+
+    .content h3 {
+        font-size: 14px;
+    }
+
+    .content li {
+        height: 25px;
+    }
+
+    .content p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .items {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-row-gap: 15px;
+    }
+}
 </style>
