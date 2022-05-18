@@ -12,24 +12,11 @@
                 <div class="menu">
                     <div class="items">
                         <div class="item">
-                            <p class="item-name">
-                                Explore
-                                <i class="fi fi-rr-angle-small-down"></i>
-                            </p>
-
-                            <div class="dropdown">
-                                <ul>
-                                    <li>
-                                        <a href="/assets">
-                                            <i class="fi fi-rr-data-transfer"></i>
-                                            <div class="text">
-                                                <h3>Assets</h3>
-                                                <p>Lands, Machineries, and IoTs</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <router-link to="/assets">
+                                <p class="item-name">
+                                    Explore
+                                </p>
+                            </router-link>
                         </div>
 
                         <div class="item" v-if="!$auth.loggedIn">
