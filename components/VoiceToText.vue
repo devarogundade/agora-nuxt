@@ -77,7 +77,7 @@ section {
     align-items: center;
     justify-content: center;
     position: fixed;
-    background: #000000ee;
+    background: #000000b7;
     width: 100%;
     height: 100vh;
     z-index: 30;
