@@ -10,10 +10,10 @@
                 </p>
 
                 <div class="actions">
-                    <router-link to>
+                    <router-link to="/rent">
                         <div class="button">Rent</div>
                     </router-link>
-                    <router-link to>
+                    <router-link to="/lease">
                         <div class="button">Lease</div>
                     </router-link>
                 </div>
