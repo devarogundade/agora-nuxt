@@ -90,12 +90,12 @@ section {
 .title {
   font-size: 30px;
   line-height: 35px;
+  text-transform: capitalize;
 }
 
 .desc {
   font-size: 14px;
 }
-
 
 .items {
     border-radius: 40px;
