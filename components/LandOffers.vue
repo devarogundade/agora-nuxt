@@ -93,7 +93,7 @@ export default {
 
             this.acceptingOffer = true
 
-            const url = 'accept/user/land/offer?id=' + offer.offerable.id +
+            const url = 'accept/offer?id=' + offer.offerable.id +
                 '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
@@ -122,7 +122,7 @@ export default {
 
             this.cancellingOffer = true
 
-            const url = 'cancel/user/offer?offer_id=' + offer.id;
+            const url = 'cancel/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
@@ -150,8 +150,7 @@ export default {
 
             this.rejectingOffer = true
 
-            const url = 'cancel/user/offer?id=' + this.land.id +
-                '&offer_id=' + offer.id;
+            const url = 'cancel/offer?&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
