@@ -14,16 +14,16 @@
                         <span>Rejected</span>
                     </i>
 
-                    <p v-if="$auth.user.id == offer.user_id">Sent offer to {{ offer.asset.name }}</p>
+                    <p v-if="$auth.user.id == offer.user_id">Sent offer to land at {{ offer.asset.location }}</p>
                     <p v-else>Received offer for land at {{ offer.asset.location }}</p>
                 </div>
 
                 <table>
                     <thead>
                         <tr>
-                            <td>Quantity (unit)</td>
+                            <td>Size (plot)</td>
                             <td>Duration (day)</td>
-                            <td>Rate ($ per day)</td>
+                            <td>Rate (₦ per day)</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,8 +56,6 @@
 
 <script>
 export default {
-    props: ['endpoint'],
-
     data() {
         return {
             offers: [],
@@ -67,7 +65,7 @@ export default {
 
     methods: {
         getOffers() {
-            const url = this.endpoint
+            const url = 'user/offers'
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
@@ -93,7 +91,8 @@ export default {
 
             this.acceptingOffer = true
 
-            const url = 'accept/offer?&offer_id=' + offer.id;
+            const url = 'accept/offer?id=' + offer.asset.id +
+                '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
@@ -121,7 +120,7 @@ export default {
 
             this.cancellingOffer = true
 
-            const url = 'cancel/user/offer?offer_id=' + offer.id;
+            const url = 'cancel/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
