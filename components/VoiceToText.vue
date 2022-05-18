@@ -1,12 +1,12 @@
 <template>
 <section>
     <div class="voice-to-text">
-        <p>I'm listening..</p>
+        <p class="title">I'm listening..</p>
         <div class="input">
-            <input type="text" placeholder="Text" v-model="text" id="" />
-            <!-- <div class="button" v-on:click="readFile()">Test</div> -->
+            <input type="text" placeholder="Text" disabled v-model="text" id="" />
             <div class="button" v-on:click="search()">Search</div>
         </div>
+        <p class="sample">Try saying 'I need a land at enugu around 100 Naira per day'</p>
         <i class="fi fi-rr-cross" v-on:click="$emit('exit')"></i>
     </div>
 </section>
@@ -97,17 +97,21 @@ input {
     padding: 5px 15px;
     border-radius: 10px;
     border: none;
+    background: #ffffff;
     outline: none;
     font-size: 16px;
 }
 
-p {
+.title {
     font-size: 24px;
 }
 
 .voice-to-text {
     color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .button {
@@ -132,5 +136,18 @@ p {
     position: absolute;
     top: 40px;
     right: 40px;
+}
+
+.sample {
+  font-size: 12px;
+  margin-top: 10px;
+  background: rgba(245, 230, 230, 0.747);
+  border-radius: 10px;
+  padding: 3px 6px;
+  color: #000;
+  width: 300px;
+  max-width: 100%;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 </style>
