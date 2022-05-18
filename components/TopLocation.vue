@@ -8,13 +8,7 @@
             <div class="item">
                 <div class="action">
                     <router-link to="/locations/lagos">
-                        <div class="button">Lands</div>
-                    </router-link>
-                    <router-link to="/locations/lagos/machineries">
-                        <div class="button">Machineries</div>
-                    </router-link>
-                    <router-link to="/locations/lagos/iots">
-                        <div class="button">Iots</div>
+                        <div class="button">Explore</div>
                     </router-link>
                 </div>
 
@@ -50,13 +44,7 @@
             <div class="item">
                 <div class="action">
                     <router-link to="/locations/enugu">
-                        <div class="button">Lands</div>
-                    </router-link>
-                    <router-link to="/locations/ibadan/machineries">
-                        <div class="button">Machineries</div>
-                    </router-link>
-                    <router-link to="/locations/ibadan/iots">
-                        <div class="button">Iots</div>
+                        <div class="button">Explore</div>
                     </router-link>
                 </div>
 
@@ -92,13 +80,7 @@
             <div class="item">
                 <div class="action">
                     <router-link to="/locations/oyo">
-                        <div class="button">Lands</div>
-                    </router-link>
-                    <router-link to="/locations/oyo/machineries">
-                        <div class="button">Machineries</div>
-                    </router-link>
-                    <router-link to="/locations/oyo/iots">
-                        <div class="button">Iots</div>
+                        <div class="button">Explore</div>
                     </router-link>
                 </div>
 
@@ -134,13 +116,7 @@
             <div class="item">
                 <div class="action">
                     <router-link to="/locations/sokoto">
-                        <div class="button">Lands</div>
-                    </router-link>
-                    <router-link to="/locations/sokoto/machineries">
-                        <div class="button">Machineries</div>
-                    </router-link>
-                    <router-link to="/locations/sokoto/iots">
-                        <div class="button">Iots</div>
+                        <div class="button">Explore</div>
                     </router-link>
                 </div>
 
