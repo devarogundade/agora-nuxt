@@ -47,7 +47,7 @@ export default {
 
     methods: {
         getAssets() {
-            const url = 'assets'
+            const url = 'assets/location?state=' + this.$route.params.state
 
             this.loading = true
             this.$axios.get(url).then((response) => {
