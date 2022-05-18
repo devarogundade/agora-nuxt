@@ -246,7 +246,7 @@ export default {
 
             this.acceptingOffer = true
 
-            const url = 'accept/user/offer?id=' + this.asset.id +
+            const url = 'accept/offer?id=' + this.asset.id +
                 '&offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
