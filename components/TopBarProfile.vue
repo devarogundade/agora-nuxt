@@ -20,45 +20,11 @@
                         </div>
 
                         <div class="item">
-                            <p class="item-name">
-                                Offers
-                                <i class="fi fi-rr-angle-small-down"></i>
-                            </p>
-
-                            <div class="dropdown">
-                                <ul>
-                                    <li>
-                                        <router-link to="/profile/offers">
-                                            <i class="fi fi-rr-data-transfer"></i>
-                                            <div class="text">
-                                                <h3>Lands</h3>
-                                                <p>Offers in renting your assets..</p>
-                                            </div>
-                                        </router-link>
-                                    </li>
-
-                                    <li>
-                                        <router-link to="/profile/offers/machineries">
-                                            <i class="fi fi-rr-data-transfer"></i>
-                                            <div class="text">
-                                                <h3>Machineries</h3>
-                                                <p>Offers in renting your assets..</p>
-                                            </div>
-                                        </router-link>
-                                    </li>
-
-                                    <li>
-                                        <router-link to="/profile/offers/iots">
-                                            <i class="fi fi-rr-data-transfer"></i>
-                                            <div class="text">
-                                                <h3>IoTs</h3>
-                                                <p>Offers in renting your assets..</p>
-                                            </div>
-                                        </router-link>
-                                    </li>
-
-                                </ul>
-                            </div>
+                            <router-link to="/profile/offers">
+                                <p class="item-name">
+                                    My Offers
+                                </p>
+                            </router-link>
                         </div>
 
                         <div class="item">
