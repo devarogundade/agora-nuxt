@@ -1,13 +1,5 @@
 <template>
 <section>
-    <!-- <a href="https://agrotech.ng/" target="_blank">
-        <section class="purpose">
-            <p>
-                An Agro-Tech Hackathon Project.
-                <b>Learn more</b>
-            </p>
-        </section>
-    </a> -->
     <section class="header">
         <div class="app-width">
             <div class="header-grid">
@@ -153,23 +145,6 @@ section {
     background: #00202836;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-}
-
-.purpose {
-    width: 100%;
-    padding: 6px;
-    background: #00c675;
-    text-align: center;
-}
-
-.purpose p {
-    color: #161704;
-    font-size: 14px;
-    font-weight: normal;
-}
-
-.purpose:hover {
-    background: #4de7a8;
 }
 
 .logo {
