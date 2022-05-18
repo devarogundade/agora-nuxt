@@ -23,10 +23,6 @@ export default {
         '@/static/css/global.css'
     ],
 
-    plugins: [
-        { src: '@/plugins/vue-awesome-swiper.js', mode: 'client' }
-    ],
-
     components: true,
 
     buildModules: [],
