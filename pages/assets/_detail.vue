@@ -1,6 +1,6 @@
 <template>
 <section>
-    <div v-if="asset">
+    <div v-if="asset" class="asset">
         <section>
             <div class="app-min-width">
                 <a href="/assets">
@@ -304,6 +304,10 @@ export default {
 </script>
 
 <style scoped>
+.asset {
+  max-width: 100%;
+}
+
 section {
     display: flex;
     justify-content: center;
