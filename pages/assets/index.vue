@@ -1,6 +1,6 @@
 <template>
-<section v-if="!loading">
-    <div class="app-min-width">
+<section >
+    <div class="app-min-width" v-if="!loading">
         <h3 class="title">Assets</h3>
 
         <div class="toolbar">
@@ -51,10 +51,9 @@
         </div>
     </div>
 
+    <Loading v-else :message="'Loading assets'" />
     <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
-
-<Loading v-else :message="'Loading assets'" />
 </template>
 
 <script>

@@ -1,160 +1,158 @@
 <template>
-<div v-if="asset">
-    <section>
-        <div class="app-min-width">
-            <a href="/assets">
-                <div class="back">
-                    <i class="fi fi-rr-arrow-small-left"></i>
-                    <p>Back to assets</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <section>
-        <div class="app-min-width grid">
-            <div class="image">
-                <img v-if="asset.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + asset.images[0].url" alt="">
-                <img v-else src="/images/land.png" alt="">
-            </div>
-            <div class="text">
-                <div class="name">
-                    <h3 v-if="asset.type == 'land'">Land</h3>
-                    <h3 v-else>{{ asset.name }}</h3>
-
-                    <p><b>State :</b> {{ asset.state }}</p>
-                    <p><b>Location :</b> {{ asset.location }}</p>
-                    <p><b>Category :</b> {{ asset.type }}</p>
-                </div>
-
-                <div class="price">
-                    <div class="stock">
-                        Available <span>{{ asset.unit - asset.occupied }} plots</span>
+<section>
+    <div v-if="asset">
+        <section>
+            <div class="app-min-width">
+                <a href="/assets">
+                    <div class="back">
+                        <i class="fi fi-rr-arrow-small-left"></i>
+                        <p>Back to assets</p>
                     </div>
-                    <div class="amount">
-                        <p class="fixed">Rate per day</p>
-                        <h3>₦{{ asset.price.toFixed(2) }}</h3>
-                        <div class="btn" v-if="creatingOffer">
-                            Creating
-                            <Loading :message="'Creating offer'" />
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <div class="app-min-width grid">
+                <div class="image">
+                    <img v-if="asset.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + asset.images[0].url" alt="">
+                    <img v-else src="/images/land.png" alt="">
+                </div>
+                <div class="text">
+                    <div class="name">
+                        <h3 v-if="asset.type == 'land'">Land</h3>
+                        <h3 v-else>{{ asset.name }}</h3>
+
+                        <p><b>State :</b> {{ asset.state }}</p>
+                        <p><b>Location :</b> {{ asset.location }}</p>
+                        <p><b>Category :</b> {{ asset.type }}</p>
+                    </div>
+
+                    <div class="price">
+                        <div class="stock">
+                            Available <span>{{ asset.unit - asset.occupied }} plots</span>
                         </div>
-                        <div v-else>
-                            <div class="btn" v-if="$auth.loggedIn" v-on:click="promptCreateOffer()">
-                                Make Offer
+                        <div class="amount">
+                            <p class="fixed">Rate per day</p>
+                            <h3>₦{{ asset.price.toFixed(2) }}</h3>
+                            <div class="btn" v-if="creatingOffer">
+                                Creating
+                                <Loading :message="'Creating offer'" />
                             </div>
-                            <a href="/login" v-else>
-                                <div class="btn">
+                            <div v-else>
+                                <div class="btn" v-if="$auth.loggedIn" v-on:click="promptCreateOffer()">
                                     Make Offer
                                 </div>
-                            </a>
+                                <a href="/login" v-else>
+                                    <div class="btn">
+                                        Make Offer
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <ul>
-                    <li>
-                        <i class="fi fi-rr-time-past"></i>
-                        <p>{{ asset.occupied }} plots on lease</p>
-                        <div class="progress"></div>
-                    </li>
-
-                    <li>
-                        <i class="fi fi-rr-star"></i>
-                        <p>4 of 5 star</p>
-                        <div class="progress"></div>
-                    </li>
-
-                    <li>
-                        <i class="fi fi-rr-shield-check"></i>
-                        <p v-if="asset.verified_at">Verified asset</p>
-                        <p v-else>Not verified asset</p>
-                        <div class="progress"></div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="accordion">
-                <div class="head">
-                    <p class="title">Attributes</p>
-                    <!-- <i class="fi fi-rr-duplicate"></i> -->
-                </div>
-                <div class="body">
                     <ul>
-                        <li v-for="(meta, index) in JSON.parse(asset.metadata)" :key="index">
-                            {{ meta.name + ' : ' + meta.value }}
+                        <li>
+                            <i class="fi fi-rr-time-past"></i>
+                            <p>{{ asset.occupied }} plots on lease</p>
+                            <div class="progress"></div>
+                        </li>
+
+                        <li>
+                            <i class="fi fi-rr-star"></i>
+                            <p>4 of 5 star</p>
+                            <div class="progress"></div>
+                        </li>
+
+                        <li>
+                            <i class="fi fi-rr-shield-check"></i>
+                            <p v-if="asset.verified_at">Verified asset</p>
+                            <p v-else>Not verified asset</p>
+                            <div class="progress"></div>
                         </li>
                     </ul>
                 </div>
-            </div>
 
-            <div class="accordion">
-                <div class="head">
-                    <p class="title">Description</p>
-                    <i class="fi fi-rr-duplicate"></i>
+                <div class="accordion">
+                    <div class="head">
+                        <p class="title">Attributes</p>
+                        <!-- <i class="fi fi-rr-duplicate"></i> -->
+                    </div>
+                    <div class="body">
+                        <ul>
+                            <li v-for="(meta, index) in JSON.parse(asset.metadata)" :key="index">
+                                {{ meta.name + ' : ' + meta.value }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="body">
-                    <p>{{ asset.about }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="drone" v-if="asset.images.length > 0">
-        <div class="app-min-width">
-            <div class="accordion">
-                <div class="head">
-                    <p class="title">Images</p>
-                    <!-- <i class="fi fi-rr-duplicate"></i> -->
-                </div>
-                <div class="body">
-                    <div class="images">
-                        <img v-for="image in asset.images" :key="image.id" :src="'https://agoralease.herokuapp.com/storage/' + image.url" alt="">
+                <div class="accordion">
+                    <div class="head">
+                        <p class="title">Description</p>
+                        <i class="fi fi-rr-duplicate"></i>
+                    </div>
+                    <div class="body">
+                        <p>{{ asset.about }}</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section>
-        <div class="app-min-width">
-            <h3 class="activity-text">Offers</h3>
-
-            <div class="activities" v-if="asset.offers.length > 0">
-                <div class="activity" v-for="offer in asset.offers" :key="offer.id">
-                    <i class="fi fi-rr-time-quarter-to pending" v-if="offer.status == 'pending'">
-                        <span>Pending</span>
-                    </i>
-                    <i class="fi fi-rr-check accepted" v-if="offer.status == 'accepted'">
-                        <span>Accepted</span>
-                    </i>
-                    <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
-                        <span>Rejected</span>
-                    </i>
-
-                    <p class="message">{{ offer.user.name }} </p>
-                    <p class="quantity">{{ offer.unit }} plots</p>
-                    <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
-                    <p class="duration">{{ offer.duration }} days</p>
-
-                    <p class="date" v-if="author && offer.status == 'pending'" v-on:click="accept(offer)">Accept</p>
-                    <p class="date" v-if="author && offer.status == 'accepted'">Ends at {{ offer.expires_at }}</p>
-                    <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id && offer.status == 'pending'" v-on:click="cancel(offer)">Cancel</p>
+        <section class="drone" v-if="asset.images.length > 0">
+            <div class="app-min-width">
+                <div class="accordion">
+                    <div class="head">
+                        <p class="title">Images</p>
+                        <!-- <i class="fi fi-rr-duplicate"></i> -->
+                    </div>
+                    <div class="body">
+                        <div class="images">
+                            <img v-for="image in asset.images" :key="image.id" :src="'https://agoralease.herokuapp.com/storage/' + image.url" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="empty" v-else>No offers</div>
-        </div>
-    </section>
+        </section>
 
-    <section class="others">
+        <section>
+            <div class="app-min-width">
+                <h3 class="activity-text">Offers</h3>
 
-    </section>
+                <div class="activities" v-if="asset.offers.length > 0">
+                    <div class="activity" v-for="offer in asset.offers" :key="offer.id">
+                        <i class="fi fi-rr-time-quarter-to pending" v-if="offer.status == 'pending'">
+                            <span>Pending</span>
+                        </i>
+                        <i class="fi fi-rr-check accepted" v-if="offer.status == 'accepted'">
+                            <span>Accepted</span>
+                        </i>
+                        <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
+                            <span>Rejected</span>
+                        </i>
+
+                        <p class="message">{{ offer.user.name }} </p>
+                        <p class="quantity">{{ offer.unit }} plots</p>
+                        <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
+                        <p class="duration">{{ offer.duration }} days</p>
+
+                        <p class="date" v-if="author && offer.status == 'pending'" v-on:click="accept(offer)">Accept</p>
+                        <p class="date" v-if="author && offer.status == 'accepted'">Ends at {{ offer.expires_at }}</p>
+                        <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id && offer.status == 'pending'" v-on:click="cancel(offer)">Cancel</p>
+                    </div>
+                </div>
+                <div class="empty" v-else>No offers</div>
+            </div>
+        </section>
+    </div>
+
+    <Loading v-else :message="'Fetching asset'" />
 
     <Loading v-if="acceptingOffer" :message="'Accepting offer'" />
     <NewOffer v-on:cancel="newOffer = null" v-on:create="createOffer($event)" v-if="newOffer" :data="newOffer" />
     <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
-</div>
-
-<Loading v-else :message="'Fetching asset'" />
+</section>
 </template>
 
 <script>

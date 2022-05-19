@@ -17,6 +17,12 @@
 </section>
 </template>
 
+<script>
+export default {
+    layout: 'landing'
+}
+</script>
+
 <style scoped>
 section {
     display: flex;
