@@ -13,6 +13,7 @@
     </div>
 
     <Loading :message="'Depositing'" v-if="loading" />
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -23,14 +24,16 @@ export default {
     data() {
         return {
             loading: false,
-            amount: ''
+            amount: '',
+
+            alertMessage: ''
         }
     },
 
     methods: {
         attempt() {
             if (this.amount == '') {
-                alert("Enter amount")
+                this.alertMessage = "Enter amount"
             } else {
                 this.deposit()
             }
@@ -48,14 +51,14 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert('Deposit success')
+                    this.alertMessage = 'Deposit success'
                     this.amount = ''
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = 'Cannot connect to our server'
             });
         }
     }

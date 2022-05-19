@@ -151,6 +151,7 @@
 
     <Loading v-if="acceptingOffer" :message="'Accepting offer'" />
     <NewOffer v-on:cancel="newOffer = null" v-on:create="createOffer($event)" v-if="newOffer" :data="newOffer" />
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </div>
 
 <Loading v-else :message="'Fetching asset'" />
@@ -170,6 +171,8 @@ export default {
             creatingOffer: false,
             acceptingOffer: false,
             cancellingOffer: false,
+
+            alertMessage: ''
         }
     },
 
@@ -189,17 +192,17 @@ export default {
                     }
 
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = 'Cannot connect to our server'
             });
         },
 
         promptCreateOffer() {
             if (this.author) {
-                alert('You cannot make offer to your assets')
+                this.alertMessage = 'You cannot make offer to your assets'
                 return
             }
 
@@ -226,21 +229,21 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert('created')
+                    this.alertMessage = 'created'
                     this.getLand()
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = "Cannot connect to our server"
             });
 
         },
 
         accept(offer) {
             if (prompt("Type ACCEPT to confirm") != "ACCEPT") {
-                alert("Wrong confirmation")
+                this.alertMessage = "Wrong confirmation"
                 return
             }
 
@@ -256,20 +259,20 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert('offer accepted')
+                    this.alertMessage = 'offer accepted'
                     this.getLand()
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = 'Cannot connect to our server'
             });
         },
 
         cancel(offer) {
             if (prompt("Type CANCEL to confirm") != "CANCEL") {
-                alert("Wrong confirmation")
+                this.alertMessage = "Wrong confirmation"
                 return
             }
 
@@ -284,14 +287,14 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert('offer cancelled')
+                    this.alertMessage = 'offer cancelled'
                     this.getLand()
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = 'Cannot connect to our server'
             });
         }
     },

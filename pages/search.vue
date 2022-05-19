@@ -31,6 +31,8 @@
             </div>
         </div>
     </div>
+
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -41,7 +43,9 @@ export default {
     data() {
         return {
             assets: [],
-            loading: true
+            loading: true,
+
+            alertMessage: ''
         }
     },
 
@@ -62,11 +66,11 @@ export default {
                 if (data.status) {
                     this.assets = data.data
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert("Cannot connect to our server")
+                this.alertMessage = "Cannot connect to our server"
             });
         }
     },

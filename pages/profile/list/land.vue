@@ -73,6 +73,7 @@
     </div>
 
     <Loading :message="'Listing your land'" v-if="loading" />
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -110,7 +111,8 @@ export default {
                 'Enugu',
                 'Oyo',
                 'Sokoto',
-            ]
+            ],
+            alertMessage: ''
         }
     },
 
@@ -124,19 +126,19 @@ export default {
 
         attempt() {
             if (this.location == '' || this.location.length < 15) {
-                alert("Please enter a long location")
+                this.alertMessage = "Please enter a long location"
             } else if (this.about == '' || this.about.length < 15) {
-                alert("Please enter a long text about this land")
+                this.alertMessage = "Please enter a long text about this land"
             } else if (this.price == '') {
-                alert("Enter a price")
+                this("Enter a price")
             } else if (this.unit == '') {
-                alert("Enter plots")
+                this.alertMessage = "Enter units"
             } else if (!this.agree1) {
-                alert("You have to check the agreements to complete your listing")
+                this.alertMessage = "You have to check the agreements to complete your listing"
             } else if (!this.agree2) {
-                alert("You have to check the agreements to complete your listing")
+                this.alertMessage = "You have to check the agreements to complete your listing"
             } else if (!this.agree3) {
-                alert("You have to check the agreements to complete your listing")
+                this.alertMessage = "You have to check the agreements to complete your listing"
             } else {
                 this.list()
             }
@@ -179,14 +181,14 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert("Listing completed")
+                    this.alertMessage = "Listing completed"
                     this.$router.push("/profile")
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert("Cannot connect to our server")
+                this.alertMessage = "Cannot connect to our server"
             });
         }
     },
