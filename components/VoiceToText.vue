@@ -9,6 +9,8 @@
         <p class="sample">Try saying 'I need a land at enugu around 100 Naira per day'</p>
         <i class="fi fi-rr-cross" v-on:click="$emit('exit')"></i>
     </div>
+
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -16,14 +18,16 @@
 export default {
     data() {
         return {
-            text: ''
+            text: '',
+
+            alertMessage: ''
         }
     },
 
     methods: {
         search() {
             if (this.text == '') {
-                alert('Say something to your mic')
+                this.alertMessage = 'Say something to your mic'
                 return
             }
 

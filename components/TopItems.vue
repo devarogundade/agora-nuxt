@@ -105,6 +105,8 @@
             </router-view>
         </div>
     </div>
+
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -119,7 +121,9 @@ export default {
             loadingTopIots: true,
             loadingTopMachineries: true,
 
-            scope: 'land'
+            scope: 'land',
+
+            alertMessage: ''
         }
     },
 
@@ -140,11 +144,11 @@ export default {
                 if (data.status) {
                     this.topLands = data.data
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert("Cannot connect to our server")
+                this.alertMessage = "Cannot connect to our server"
             });
         },
 
@@ -160,11 +164,11 @@ export default {
                 if (data.status) {
                     this.topMachineries = data.data
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert("Cannot connect to our server")
+                this.alertMessage = "Cannot connect to our server"
             });
         },
 
@@ -180,11 +184,11 @@ export default {
                 if (data.status) {
                     this.topIots = data.data
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert("Cannot connect to our server")
+                this.alertMessage = "Cannot connect to our server"
             });
         },
     },

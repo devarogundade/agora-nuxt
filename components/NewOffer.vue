@@ -32,6 +32,8 @@
             </div>
         </div>
     </div>
+
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -43,7 +45,9 @@ export default {
         return {
             price: '',
             duration: '',
-            unit: ''
+            unit: '',
+
+            alertMessage: ''
         }
     },
 
@@ -60,13 +64,13 @@ export default {
 
         createOffer() {
             if (this.price == '') {
-                alert('Price is required')
+                this.alertMessage = 'Price is required'
             } else if (this.duration == '') {
-                alert('Duration is required')
+                this.alertMessage = 'Duration is required'
             } else if (this.unit == '') {
-                alert('Unit is required')
+                this.alertMessage = 'Unit is required'
             } else if (this.unit > this.data.unit) {
-                alert('Owner do not have up to this amount of ' + this.data.quantityHint + '. Use max to be precise')
+                this.alertMessage = 'Owner do not have up to this amount of ' + this.data.quantityHint + '. Use max to be precise'
             } else if (this.price > this.data.price) {
                 if (prompt("You are offering more than owner's request. Type CONFIRM to continue") == 'CONFIRM') {
                     this.$emit('create', {
@@ -76,7 +80,7 @@ export default {
                     })
                     this.$emit('cancel')
                 } else {
-                    alert('Incorrect confirmation')
+                    this.alertMessage = 'Incorrect confirmation'
                 }
             } else {
                 this.$emit('create', {
