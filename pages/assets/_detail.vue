@@ -306,6 +306,7 @@ export default {
 <style scoped>
 .asset {
   max-width: 100%;
+  margin-bottom: 50px;
 }
 
 section {
