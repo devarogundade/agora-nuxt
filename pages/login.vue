@@ -26,6 +26,7 @@
     </div>
 
     <Loading v-if="loading" :message="'Authenticating'" />
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -42,6 +43,7 @@ export default {
             password: "",
 
             loading: false,
+            alertMessage: ''
         };
     },
 
@@ -52,9 +54,9 @@ export default {
             }
 
             if (this.emailAddress == "") {
-                alert("Email Address is required");
+                this.alertMessage = "Email Address is required"
             } else if (this.password == "") {
-                alert("Password is required");
+                this.alertMessage = "Password is required"
             } else {
                 this.login();
             }
@@ -82,18 +84,18 @@ export default {
 
                     if (this.error) {
                         if (this.error.email && this.error.email.length > 0) {
-                            alert(this.error.email[0])
+                            this.alertMessage = this.error.email[0]
                         } else if (this.error.password && this.error.password.length > 0) {
-                            alert(this.error.password[0])
+                            this.alertMessage = this.error.password[0]
                         } else {
-                            alert(this.error)
+                            this.alertMessage = this.error
                         }
                     } else {
-                        alert("something went wrong")
+                        this.alertMessage = "something went wrong"
                     }
                 }
             } catch (error) {
-                alert("Cannot connect to our server")
+                this.alertMessage = "Cannot connect to our server"
             }
         },
     },

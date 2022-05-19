@@ -46,6 +46,7 @@
     </div>
 
     <Loading v-if="loading" :message="'Creating an Account'" />
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -63,7 +64,8 @@ export default {
             confirmPassword: "",
 
             error: null,
-            loading: false
+            loading: false,
+            alertMessage: ''
         };
     },
 
@@ -74,15 +76,15 @@ export default {
             }
 
             if (this.fullName == "") {
-                alert("FullName is required");
+                this.alertMessage = "FullName is required"
             } else if (this.emailAddress == "") {
-                alert("Email Address is required");
+                this.alertMessage = "Email Address is required"
             } else if (this.password == "") {
-                alert("Password is required");
+                this.alertMessage = "Password is required"
             } else if (this.confirmPassword == "") {
-                alert("Confirm password is required");
+                this.alertMessage = "Confirm password is required"
             } else if (this.password != this.confirmPassword) {
-                alert("Password must be the same");
+                this.alertMessage = "Password must be the same"
             } else {
                 this.register();
             }
@@ -114,16 +116,16 @@ export default {
 
                     if (this.error) {
                         if (this.error.name && this.error.name.length > 0) {
-                            alert(this.error.name[0])
+                            this.alertMessage = this.error.name[0]
                         } else if (this.error.email && this.error.email.length > 0) {
-                            alert(this.error.email[0])
+                            this.alertMessage = this.error.email[0]
                         } else if (this.error.password && this.error.password.length > 0) {
-                            alert(this.error.password[0])
+                            this.alertMessage = this.error.password[0]
                         } else {
-                            alert(this.error);
+                            this.alertMessage = this.error
                         }
                     } else {
-                        alert("something went wrong");
+                        this.alertMessage = "something went wrong"
                     }
                 }
             });

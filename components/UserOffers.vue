@@ -51,6 +51,7 @@
     </div>
 
     <Loading :message="'Loading offers'" v-else />
+    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
@@ -59,7 +60,8 @@ export default {
     data() {
         return {
             offers: [],
-            loading: true
+            loading: true,
+            alertMessage: ''
         }
     },
 
@@ -75,17 +77,17 @@ export default {
                 if (data.status) {
                     this.offers = data.data
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert("Cannot connect to our server")
+                this.alertMessage = "Cannot connect to our server"
             });
         },
 
         accept(offer) {
             if (prompt("Type ACCEPT to confirm") != "ACCEPT") {
-                alert("Wrong confirmation")
+                this.alertMessage = "Wrong confirmation"
                 return
             }
 
@@ -101,20 +103,20 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert('offer accepted')
+                    this.alertMessage = 'offer accepted'
                     this.getOffers()
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = 'Cannot connect to our server'
             });
         },
 
         cancel(offer) {
             if (prompt("Type CANCEL to confirm") != "CANCEL") {
-                alert("Wrong confirmation")
+                this.alertMessage = "Wrong confirmation"
                 return
             }
 
@@ -129,20 +131,20 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert('offer cancelled')
+                    this.alertMessage = 'offer cancelled'
                     this.getOffers()
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = 'Cannot connect to our server'
             });
         },
 
         reject(offer) {
             if (prompt("Type REJECT to confirm") != "REJECT") {
-                alert("Wrong confirmation")
+                this.alertMessage = "Wrong confirmation"
                 return
             }
 
@@ -157,14 +159,14 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    alert('offer cancelled')
+                    this.alertMessage = 'offer cancelled'
                     this.getOffers()
                 } else {
-                    alert(data.message)
+                    this.alertMessage = data.message
                 }
 
             }).catch((err) => {
-                alert('Cannot connect to our server')
+                this.alertMessage = 'Cannot connect to our server'
             });
         }
     },
