@@ -7,7 +7,7 @@
             </div>
             <div class="content">
                 <h3>Lands</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <p>Let your unused spaces work for you. Lease out your land to farmers and earn passively on your used spaces.</p>
                 <div class="actions">
                     <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
@@ -20,7 +20,7 @@
             </div>
             <div class="content">
                 <h3>Machineries</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <p>Lease out tractors, tractor couples, processing machines and others to farmers. In a stress pattern design for you.</p>
                 <div class="actions">
                     <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="content">
                 <h3>IoTs</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <p>Internet of things as become an essential part in Agriculture. Take the opportunity to start your agro investment today.</p>
                 <div class="actions">
                     <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="content">
                 <h3>Trucks</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <p>Transport for farmers.</p>
                 <div class="actions">
                     <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
