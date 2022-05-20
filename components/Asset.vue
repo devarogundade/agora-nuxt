@@ -14,7 +14,7 @@
             <li>
                 <i class="fi fi-rr-clock"></i>
                 <p class="single" v-if="asset.type.toLowerCase() == 'land'">{{ asset.occupied }} plots on lease</p>
-                <p class="single" v-else>{{ asset.occupied }} unit on lease</p>
+                <p class="single" v-else>{{ asset.occupied }} units on lease</p>
                 <div :style="'width: ' + (asset.occupied / asset.unit) * 100 + '%;'" class="progress"></div>
             </li>
         </ul>
