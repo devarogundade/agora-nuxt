@@ -213,7 +213,7 @@ section {
 
 .item-name {
     color: #000;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     display: flex;
     align-items: center;

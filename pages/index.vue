@@ -4,6 +4,7 @@
     <TopLocation />
     <LeaseAd />
     <TopItems />
+    <Faq />
 </div>
 </template>
 

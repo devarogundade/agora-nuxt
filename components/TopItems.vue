@@ -46,7 +46,7 @@
             </div>
             <div class="content">
                 <h3>Trucks</h3>
-                <p>Transport for farmers.</p>
+                <p>Provide transport support for farmers and also earn back in return.</p>
                 <div class="actions">
                     <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
