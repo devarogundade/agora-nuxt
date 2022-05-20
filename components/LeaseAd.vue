@@ -33,7 +33,6 @@ section {
     padding: 24px;
     background-image: url('/images/leaf.png');
     background-position: center center;
-    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
 }

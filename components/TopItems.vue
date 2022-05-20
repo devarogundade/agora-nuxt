@@ -1,290 +1,95 @@
 <template>
 <section>
-    <div class="app-min-width">
-        <h3 class="title">Recommended</h3>
-
-        <div class="toolbar">
-            <select name="" id="">
-                <option disabled>Select a state</option>
-                <option selected value="all">All states</option>
-                <option value="lagos">Lagos</option>
-                <option value="ogun">Ogun</option>
-                <option value="oyo">Oyo</option>
-                <option value="enugu">Enugu</option>
-            </select>
-            <select name="" id="">
-                <option disabled>Sort by</option>
-                <option selected value="all">Recently listed</option>
-                <option value="price-low-to-high">Price: Low to High</option>
-                <option value="price-high-to-low">Price: High to Low</option>
-                <option value="offer-low-to-high">Offer: Low to High</option>
-                <option value="offer-high-to-low">Offer: High to Low</option>
-            </select>
-            <select name="" id="" v-on:change="changeScope($event)">
-                <option disabled>Category</option>
-                <option selected value="land">Land</option>
-                <option value="machinery">Machinery</option>
-                <option value="iot">IoTs</option>
-            </select>
-        </div>
-
-        <div class="items" v-if="topLands.length > 0 && scope == 'land'">
-            <a v-for="land in topLands" :key="land.id" :href="'/assets/' + land.id">
-                <div class="item">
-                    <div class="image">
-                        <img v-if="land.images.length > 0" :src="land.images[0].url" alt="">
-                        <img v-else src="/images/land.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3 class="ellipsis">{{ land.location }}</h3>
-                        <p class="price">value at ₦{{ land.price }} / 24hr</p>
-
-                        <ul>
-                            <li>
-                                <i class="fi fi-rr-clock"></i>
-                                <p class="single">{{ land.occupied }} plots on lease</p>
-                                <div :style="'width: ' + (land.occupied / land.unit) * 100 + '%;'" class="progress"></div>
-                            </li>
-                        </ul>
-                    </div>
+    <div class="app-width">
+        <div class="item">
+            <div class="image">
+                <img src="https://images.pexels.com/photos/259280/pexels-photo-259280.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </div>
+            <div class="content">
+                <h3>Lands</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <div class="actions">
+                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
-            </a>
+            </div>
         </div>
 
-        <div class="items" v-if="topMachineries.length > 0 && scope == 'machinery'">
-            <a v-for="machinery in topMachineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
-                <div class="item">
-                    <div class="image">
-                        <img v-if="machinery.images.length > 0" :src="machinery.images[0].url" alt="">
-                        <img v-else src="/images/tractor.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h3 class="ellipsis">{{ machinery.name }}</h3>
-                        <p class="price">value at ₦{{ machinery.price }} / 24hr</p>
-
-                        <ul>
-                            <li>
-                                <i class="fi fi-rr-clock"></i>
-                                <p class="single">{{ machinery.occupied }} units on lease</p>
-                                <div :style="'width: ' + (machinery.occupied / machinery.unit) * 100 + '%;'" class="progress"></div>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="item reserve">
+            <div class="image">
+                <img src="https://images.unsplash.com/photo-1594771804886-a933bb2d609b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFybSUyMHRyYWN0b3J8ZW58MHx8MHx8&w=1000&q=80" alt="">
+            </div>
+            <div class="content">
+                <h3>Machineries</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <div class="actions">
+                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
-            </a>
+            </div>
         </div>
 
-        <div class="items" v-if="topIots.length > 0 && scope == 'iot'">
-            <a v-for="iot in topIots" :key="iot.id" :href="'/iots/' + iot.id">
-                <div class="item">
-                    <div class="image">
-                        <img v-if="iot.images.length > 0" :src="iot.images[0].url" alt="">
-                        <img v-else src="/images/iot.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h3 class="ellipsis">{{ iot.name }}</h3>
-                        <p class="price">value at ₦{{ iot.price }} / 24hr</p>
-
-                        <ul>
-                            <li>
-                                <i class="fi fi-rr-clock"></i>
-                                <p class="single">{{ iot.occupied }} units on lease</p>
-                                <div :style="'width: ' + (iot.occupied / iot.unit) * 100 + '%;'" class="progress"></div>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="item">
+            <div class="image">
+                <img src="https://d3hid44mqnfbhw.cloudfront.net/precisagms/wp-content/uploads/2021/09/Drones-Transforming-the-Agritech-Industry.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>IoTs</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <div class="actions">
+                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
-            </a>
+            </div>
         </div>
 
-        <div class="more">
-            <router-view to="/assets">
-                <div class="market">
-                    More
+        <div class="item reserve">
+            <div class="image">
+                <img src="https://t3.ftcdn.net/jpg/01/66/62/52/360_F_166625272_XAgrTz23fjKavhMaxekP036kPqXvIfTg.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Trucks</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas delectus non illum cum, voluptatibus quisquam qui magni veniam obcaecati quod.</p>
+                <div class="actions">
+                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                 </div>
-            </router-view>
+            </div>
         </div>
+
     </div>
-
-    <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            topLands: [],
-            topIots: [],
-            topMachineries: [],
-            loadingTopLands: true,
-            loadingTopIots: true,
-            loadingTopMachineries: true,
-
-            scope: 'land',
-
-            alertMessage: ''
-        }
-    },
-
-    methods: {
-        changeScope(event) {
-            this.scope = event.target.value
-        },
-
-        getTopLands() {
-            this.loadingTopLands = true
-            const url = 'assets?type=land'
-
-            this.$axios.get(url).then((response) => {
-
-                this.loadingTopLands = false
-                const data = response.data
-
-                if (data.status) {
-                    this.topLands = data.data
-                } else {
-                    this.alertMessage = data.message
-                }
-
-            }).catch((err) => {
-                this.alertMessage = "Cannot connect to our server"
-            });
-        },
-
-        getTopMachineries() {
-            this.loadingTopMachineries = true
-            const url = 'assets?type=machinery'
-
-            this.$axios.get(url).then((response) => {
-
-                this.loadingTopMachineries = false
-                const data = response.data
-
-                if (data.status) {
-                    this.topMachineries = data.data
-                } else {
-                    this.alertMessage = data.message
-                }
-
-            }).catch((err) => {
-                this.alertMessage = "Cannot connect to our server"
-            });
-        },
-
-        getTopIots() {
-            this.loadingTopIots = true
-            const url = 'assets?type=iot'
-
-            this.$axios.get(url).then((response) => {
-
-                this.loadingTopIots = false
-                const data = response.data
-
-                if (data.status) {
-                    this.topIots = data.data
-                } else {
-                    this.alertMessage = data.message
-                }
-
-            }).catch((err) => {
-                this.alertMessage = "Cannot connect to our server"
-            });
-        },
-    },
-
-    created() {
-        this.getTopLands()
-        this.getTopMachineries()
-        this.getTopIots()
-    }
-}
-</script>
-
 <style scoped>
 section {
-    background: #fff;
     display: flex;
     justify-content: center;
-    padding-bottom: 50px;
-    margin-top: -5px;
-}
-
-.title {
-    font-size: 45px;
-    margin-bottom: 30px;
-    font-weight: 500;
-    text-align: center;
-    color: #000;
-    margin-top: 30px;
-}
-
-.toolbar {
-    padding: 10px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    background: #003543;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 20px;
-}
-
-.toolbar select {
-    padding: 10px;
-    background: transparent;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #ffffff;
-    border: none;
-    outline: none;
-}
-
-.toolbar option {
-    color: #161704;
-}
-
-.items {
-    border-radius: 40px;
-    column-gap: 20px;
-    row-gap: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .item {
-    background: #ebebeb;
-    border-radius: 20px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.item a {
-    color: #161704;
-}
-
-.item .action {
-    position: absolute;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px #ccc solid;
+    padding: 50px 20px;
+    column-gap: 40px;
     width: 100%;
-    height: 100%;
-    background: #04323f46;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 2;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border-radius: 20px;
 }
 
-.item:hover .action {
-    opacity: 1;
+.item:last-child {
+    border-bottom: none;
+}
+
+.reserve {
+    flex-direction: row-reverse;
 }
 
 .image {
-    width: 100%;
-    height: 220px;
+    height: 500px;
+    width: calc(100% - 450px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: -5px 10px 15px #ccc;
+}
+
+.content {
+    width: 450px;
 }
 
 .image img {
@@ -293,131 +98,59 @@ section {
     object-fit: cover;
 }
 
-.content {
-    padding: 10px;
-    text-align: center;
-    color: #000;
-}
-
-.content h3 {
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 500;
-}
-
-.content .price {
-    font-size: 14px;
-    color: #0e5336;
-    margin-top: 10px;
-}
-
-.content ul {
-    margin-top: 10px;
-}
-
-.content li {
-    display: grid;
-    grid-template-columns: 40px auto;
-    height: 35px;
-    background: rgb(170, 170, 170);
-    margin-bottom: 5px;
-    border-radius: 10px;
-    position: relative;
-    color: #fff;
-    overflow: hidden;
-}
-
-.content .progress {
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-    background: #4577ff;
-}
-
-.content li i {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.content li p {
-    z-index: 1;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    font-weight: 400;
-}
-
-.action {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.action .button {
-    padding: 10px 25px;
-    border-radius: 10px;
-    background: #ffffff;
-    margin: 5px 0;
-}
-
-.more {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-}
-
-.market {
-    padding: 10px 25px;
-    border-radius: 10px;
-    background: #7be9bb;
+.item h3 {
+    font-size: 36px;
     font-weight: 600;
-    margin: 5px 0;
+}
+
+.item p {
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.actions .button {
+    padding: 8px 20px;
+    border-radius: 10px;
+    background: #00303c;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.actions .button i {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.button:hover i {
+    margin-left: 15px;
 }
 
 @media screen and (max-width: 1000px) {
-    .items {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 15px;
-        grid-row-gap: 15px;
-    }
-}
+  .item {
+    flex-direction: column;
+    padding: 30px 10px;
+  }
 
-@media screen and (max-width: 700px) {
-    .items {
-        column-gap: 10px;
-        grid-row-gap: 10px;
-    }
+  .image {
+    width: 100%;
+    height: 400px;
+  }
 
-    .title {
-        margin-top: 0;
-        font-size: 30px;
-    }
-
-    .image {
-        height: 270px;
-    }
-
-    .content p {
-        font-size: 14px;
-    }
-
-    .toolbar {
-        padding: 5px;
-        column-gap: 5px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .items {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        grid-row-gap: 15px;
-    }
+  .content {
+    margin-top: 20px;
+    width: 100%;
+  }
 }
 </style>
