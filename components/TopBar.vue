@@ -5,7 +5,7 @@
             <div class="header-grid">
                 <div class="logo">
                     <a href="/">
-                        <img src="/images/light-logo.png" alt="">
+                        <img src="/images/logo.png" alt="">
                     </a>
                 </div>
 

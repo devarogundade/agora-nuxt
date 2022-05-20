@@ -215,7 +215,7 @@ section {
     margin-bottom: 30px;
     font-weight: 500;
     text-align: center;
-    color: #ffffff;
+    color: #000;
     margin-top: 30px;
 }
 
@@ -223,7 +223,7 @@ section {
     padding: 10px;
     border-radius: 20px;
     margin-bottom: 20px;
-    border: 1px solid #003543;
+    background: #003543;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 20px;
@@ -300,15 +300,15 @@ section {
 }
 
 .content h3 {
-    font-size: 16px;
-    height: 50px;
+    font-size: 20px;
+    line-height: 24px;
     font-weight: 500;
 }
 
 .content .price {
-    font-size: 12px;
-    font-weight: 300;
-    color: #7be9bb;
+    font-size: 14px;
+    color: #0e5336;
+    margin-top: 10px;
 }
 
 .content ul {
@@ -318,7 +318,7 @@ section {
 .content li {
     display: grid;
     grid-template-columns: 40px auto;
-    height: 30px;
+    height: 35px;
     background: rgb(170, 170, 170);
     margin-bottom: 5px;
     border-radius: 10px;
@@ -401,15 +401,7 @@ section {
     }
 
     .image {
-        height: 250px;
-    }
-
-    .content h3 {
-        font-size: 18px;
-    }
-
-    .content li {
-        height: 25px;
+        height: 270px;
     }
 
     .content p {
