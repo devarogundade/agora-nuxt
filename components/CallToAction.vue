@@ -5,15 +5,15 @@
             <div class="text">
                 <h3>The Largest Agriculture Lease Solution</h3>
                 <p>
-                    Rent and Lease your vacant land to promote agriculture. And start
-                    earning every seconds.
+                    Rent and Lease your vacant lands and others to promote Agriculture. And start
+                    earning from it.
                 </p>
 
                 <div class="actions">
-                    <router-link to="/rent">
+                    <router-link to="/assets">
                         <div class="button">Rent</div>
                     </router-link>
-                    <router-link to="/lease">
+                    <router-link to="/profile">
                         <div class="button">Lease</div>
                     </router-link>
                 </div>

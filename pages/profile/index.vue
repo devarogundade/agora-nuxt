@@ -54,6 +54,7 @@
         </div>
 
         <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
+        <Loading v-if="loading" :message="'Loading your assets'" />
     </div>
 </section>
 </template>

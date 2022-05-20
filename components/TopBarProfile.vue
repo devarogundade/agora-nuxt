@@ -59,7 +59,7 @@
 
                 <div class="search">
                     <div class="input">
-                        <input type="text" placeholder="Search location, properties.." />
+                        <input type="text" placeholder="Search anything.." />
                         <i class="fi fi-rr-microphone">
                             <p>Use voice</p>
                         </i>

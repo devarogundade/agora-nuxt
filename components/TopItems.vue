@@ -9,7 +9,9 @@
                 <h3>Lands</h3>
                 <p>Let your unused spaces work for you. Lease out your land to farmers and earn passively on your used spaces.</p>
                 <div class="actions">
-                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    <a href="/asset?type=land">
+                        <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -22,7 +24,9 @@
                 <h3>Machineries</h3>
                 <p>Lease out tractors, tractor couples, processing machines and others to farmers. In a stress pattern design for you.</p>
                 <div class="actions">
-                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    <a href="/asset?type=machinery">
+                        <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -35,7 +39,9 @@
                 <h3>IoTs</h3>
                 <p>Internet of things as become an essential part in Agriculture. Take the opportunity to start your agro investment today.</p>
                 <div class="actions">
-                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    <a href="/asset?type=iot">
+                        <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -48,7 +54,9 @@
                 <h3>Trucks</h3>
                 <p>Provide transport support for farmers and also earn back in return.</p>
                 <div class="actions">
-                    <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    <a href="/asset?type=truck">
+                        <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -138,19 +146,19 @@ section {
 }
 
 @media screen and (max-width: 1000px) {
-  .item {
-    flex-direction: column;
-    padding: 30px 10px;
-  }
+    .item {
+        flex-direction: column;
+        padding: 30px 10px;
+    }
 
-  .image {
-    width: 100%;
-    height: 400px;
-  }
+    .image {
+        width: 100%;
+        height: 400px;
+    }
 
-  .content {
-    margin-top: 20px;
-    width: 100%;
-  }
+    .content {
+        margin-top: 20px;
+        width: 100%;
+    }
 }
 </style>
