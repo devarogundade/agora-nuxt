@@ -55,7 +55,13 @@
             </div>
         </div>
 
-        <UserLands :endpoint="'user/assets?type=land'" />
+        <div class="items">
+            <a v-for="land in lands" :key="land.id" :href="'/assets/' + land.id">
+                <Asset :asset="land" />
+            </a>
+        </div>
+
+        <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
     </div>
 </section>
 </template>
@@ -66,10 +72,40 @@ export default {
 
     data() {
         return {
+            assets: [],
+            loading: true,
+
+            alertMessage: '',
             user: this.$auth.user,
         }
     },
 
+    methods: {
+        getAssets() {
+            this.loading = true
+            const url = 'user/assets'
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.loading = false
+                const data = response.data
+
+                if (data.status) {
+                    this.assets = data.data
+                } else {
+                    this.alertMessage = data.message
+                }
+
+            }).catch((err) => {
+                this.alertMessage = 'Cannot connect to our server'
+            });
+        },
+    },
+
+    created() {
+        this.getAssets()
+    }
 };
 </script>
 
@@ -188,6 +224,15 @@ section {
 .balance {
     margin-top: 10px;
     font-style: 14px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 20px;
+    width: 100%;
+    padding: 40px 20px;
 }
 
 @media screen and (max-width: 1000px) {
