@@ -158,8 +158,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -15px;
-    background: #4d727b;
+    margin-top: -8px;
+    background: #ebebeb;
     padding-bottom: 50px;
 }
 
@@ -168,7 +168,7 @@ section {
     margin-bottom: 30px;
     font-weight: 500;
     text-align: center;
-    color: #ffffff;
+    color: #000;
     margin-top: -180px;
 }
 

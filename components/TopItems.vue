@@ -203,7 +203,7 @@ export default {
 
 <style scoped>
 section {
-    background: #4d727b;
+    background: #fff;
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
@@ -249,11 +249,11 @@ section {
     column-gap: 20px;
     row-gap: 20px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .item {
-    background: #003543;
+    background: #ebebeb;
     border-radius: 20px;
     cursor: pointer;
     position: relative;
@@ -296,7 +296,7 @@ section {
 .content {
     padding: 10px;
     text-align: center;
-    color: #ffffff;
+    color: #000;
 }
 
 .content h3 {
@@ -319,10 +319,11 @@ section {
     display: grid;
     grid-template-columns: 40px auto;
     height: 30px;
-    background: #3f5e66;
+    background: rgb(170, 170, 170);
     margin-bottom: 5px;
     border-radius: 10px;
     position: relative;
+    color: #fff;
     overflow: hidden;
 }
 
@@ -400,11 +401,11 @@ section {
     }
 
     .image {
-        height: 150px;
+        height: 250px;
     }
 
     .content h3 {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .content li {
@@ -421,7 +422,7 @@ section {
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
     .items {
         grid-template-columns: repeat(1, minmax(0, 1fr));
         grid-row-gap: 15px;

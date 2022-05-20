@@ -159,7 +159,7 @@ section {
     position: sticky;
     z-index: 10;
     top: 0;
-    background: #00202836;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
@@ -212,7 +212,7 @@ section {
 }
 
 .item-name {
-    color: #ffffff;
+    color: #000;
     font-size: 15px;
     font-weight: 500;
     display: flex;

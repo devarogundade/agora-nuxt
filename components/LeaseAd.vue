@@ -16,7 +16,7 @@ section {
     display: flex;
     justify-content: center;
     padding: 50px 0;
-    background: #4d727b;
+    background: linear-gradient(to bottom, #ebebeb, #FFF);
     margin-top: -4px;
 }
 
