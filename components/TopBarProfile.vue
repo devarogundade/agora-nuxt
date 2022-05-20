@@ -5,7 +5,7 @@
             <div class="header-grid">
                 <div class="logo">
                     <a href="/">
-                        <img src="/images/light-logo.png" alt="">
+                        <img src="/images/logo.png" alt="">
                     </a>
                 </div>
 
@@ -14,7 +14,7 @@
                         <div class="item">
                             <router-link to="/profile">
                                 <p class="item-name">
-                                    My Assets
+                                    My Profile
                                 </p>
                             </router-link>
                         </div>
@@ -29,7 +29,7 @@
 
                         <div class="item">
                             <p class="item-name">
-                                New
+                                Create
                                 <i class="fi fi-rr-angle-small-down"></i>
                             </p>
 
@@ -39,28 +39,8 @@
                                         <a href="/profile/list/land">
                                             <i class="fi fi-rr-comment-alt"></i>
                                             <div class="text">
-                                                <h3>Land</h3>
-                                                <p>Register your land for leasing..</p>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/profile/list/machinery">
-                                            <i class="fi fi-rr-comments"></i>
-                                            <div class="text">
-                                                <h3>Machinery</h3>
-                                                <p>Register your machines for leasing..</p>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/profile/list/iot">
-                                            <i class="fi fi-rr-comments"></i>
-                                            <div class="text">
-                                                <h3>IoTs</h3>
-                                                <p>Register your devices for leasing..</p>
+                                                <h3>New asset</h3>
+                                                <p>Register your asset for leasing..</p>
                                             </div>
                                         </a>
                                     </li>
@@ -102,7 +82,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 section {
     height: fit-content;
@@ -133,7 +112,7 @@ section {
 .header-grid {
     display: grid;
     height: 100%;
-    grid-template-columns: 150px auto 150px;
+    grid-template-columns: 200px auto 200px;
     column-gap: 50px;
 }
 

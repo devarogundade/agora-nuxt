@@ -21,7 +21,7 @@
             </select>
         </div>
 
-        <div class="items" v-if="assets.length > 0">
+        <div class="asset-items" v-if="assets.length > 0">
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
                 <Asset :asset="asset" />
             </a>
@@ -123,27 +123,6 @@ section {
     color: #161704;
 }
 
-.items {
-    border-radius: 40px;
-    column-gap: 20px;
-    row-gap: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.action {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.action .button {
-    padding: 10px 25px;
-    border-radius: 10px;
-    background: #ffffff;
-    margin: 5px 0;
-}
 
 .more {
     margin-top: 40px;
@@ -159,20 +138,8 @@ section {
     margin: 5px 0;
 }
 
-@media screen and (max-width: 1000px) {
-    .items {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 15px;
-        grid-row-gap: 15px;
-    }
-}
 
 @media screen and (max-width: 700px) {
-    .items {
-        column-gap: 10px;
-        grid-row-gap: 10px;
-    }
-
     .title {
         font-size: 30px;
     }
@@ -180,13 +147,6 @@ section {
     .toolbar {
         padding: 5px;
         column-gap: 5px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .items {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        grid-row-gap: 15px;
     }
 }
 </style>

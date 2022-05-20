@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="balance">
-                    ₦ {{ user.balance.toFixed(2) }}
+                    <b>Balance:</b> ₦ {{ user.balance.toFixed(2) }} <a href="/deposit">Deposit</a>  <a href="/withdraw">Withdraw</a>
                 </div>
             </div>
             <div class="options">
@@ -32,30 +32,22 @@
                 <a href="/profile">
                     <div class="item">
                         <i class="fi fi-rr-apps"></i>
-                        <p>Lands</p>
+                        <p>Assets</p>
                         <div class="indicator"></div>
                     </div>
                 </a>
 
-                <a href="/profile/machineries">
+                <a href="/profile/edit">
                     <div class="item">
                         <i class="fi fi-rr-clock"></i>
-                        <p>Machineries</p>
-                        <!-- <div class="indicator"></div> -->
-                    </div>
-                </a>
-
-                <a href="/profile/iots">
-                    <div class="item">
-                        <i class="fi fi-rr-clock"></i>
-                        <p>IoTs</p>
+                        <p>Settings</p>
                         <!-- <div class="indicator"></div> -->
                     </div>
                 </a>
             </div>
         </div>
 
-        <div class="items">
+        <div class="asset-items">
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
                 <Asset :asset="asset" />
             </a>
@@ -152,7 +144,6 @@ section {
 .name p {
     font-size: 15px;
     opacity: 0.8;
-    font-weight: 300;
 }
 
 .verified {
@@ -205,7 +196,7 @@ section {
     justify-content: center;
     cursor: pointer;
     height: 100%;
-    color: #ffffff;
+    color: #000;
 }
 
 .options a:last-child i {
@@ -226,13 +217,11 @@ section {
     font-style: 14px;
 }
 
-.items {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 20px;
-    row-gap: 20px;
-    width: 100%;
-    padding: 40px 20px;
+.balance a {
+  font-size: 14px;
+  margin-left: 10px;
+  text-decoration: underline;
+  color: #003543;
 }
 
 @media screen and (max-width: 1000px) {

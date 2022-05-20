@@ -6,7 +6,7 @@
     </div>
     <div class="content">
         <h3 class="ellipsis">{{ asset.location }}</h3>
-        <p class="state">{{ asset.state }}</p>
+        <p class="state">{{ asset.type + ' in ' + asset.state }}</p>
 
         <p class="price">₦{{ asset.price }} / 24hr</p>
 
@@ -58,11 +58,13 @@ export default {
     height: 50px;
     font-weight: 500;
     margin: 0 10px;
+    text-transform: capitalize;
 }
 
 .content .state {
     font-size: 12px;
     color: #00303c;
+    text-transform: capitalize;
     margin: 10px;
 }
 
