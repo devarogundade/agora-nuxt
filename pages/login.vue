@@ -119,14 +119,14 @@ section {
 .title {
     font-size: 40px;
     font-weight: 600;
-    color: #ffffff;
+    color: #000;
     text-align: center;
 }
 
 .desc {
     font-size: 20px;
     font-weight: 400;
-    color: #ffffff;
+    color: #000;
     text-align: center;
     opacity: 0.8;
 }
@@ -212,7 +212,7 @@ input::placeholder {
 
 .form a {
     margin-top: 30px;
-    color: white;
+    color: #000;
     text-align: center;
     width: 100%;
     display: block;

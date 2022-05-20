@@ -56,8 +56,8 @@
         </div>
 
         <div class="items">
-            <a v-for="land in lands" :key="land.id" :href="'/assets/' + land.id">
-                <Asset :asset="land" />
+            <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
+                <Asset :asset="asset" />
             </a>
         </div>
 
