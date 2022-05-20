@@ -4,7 +4,7 @@
         <a v-for="land in lands" :key="land.id" :href="'/assets/' + land.id">
             <div class="item">
                 <div class="image">
-                    <img v-if="land.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + land.images[0].url" alt="">
+                    <img v-if="land.images.length > 0" :src="'https://agoralease.s3.amazonaws.com/' + land.images[0].url" alt="">
                     <img v-else src="/images/land.png" alt="">
                 </div>
                 <div class="content">

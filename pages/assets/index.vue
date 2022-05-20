@@ -25,7 +25,7 @@
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="asset.images.length > 0" :src="'https://agoralease.herokuapp.com/storage/' + asset.images[0].url" alt="">
+                        <img v-if="asset.images.length > 0" :src="'https://agoralease.s3.amazonaws.com/' + asset.images[0].url" alt="">
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
