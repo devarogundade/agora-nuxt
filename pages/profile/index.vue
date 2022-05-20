@@ -188,7 +188,7 @@ section {
     width: 150px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border: 2px #003543 solid;
+    border: 1px #ccc solid;
     border-radius: 10px;
     height: 50px;
     position: absolute;
@@ -201,7 +201,7 @@ section {
     width: 100%;
     padding: 15px;
     align-items: center;
-    border-right: 2px #003543 solid;
+    border-right: 1px #ccc solid;
     justify-content: center;
     cursor: pointer;
     height: 100%;
@@ -213,7 +213,7 @@ section {
 }
 
 .options i:hover {
-    box-shadow: 0 0 15px #003543;
+    box-shadow: 0 0 15px #ccc;
 }
 
 .options i:first-child {
