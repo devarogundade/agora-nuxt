@@ -127,6 +127,7 @@ section {
 
 .create h3 {
     font-size: 40px;
+    color: #fff;
 }
 
 .item {
@@ -179,6 +180,7 @@ section {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 200px;
     right: 0;
+    color: #fff;
     margin: 10px;
 }
 

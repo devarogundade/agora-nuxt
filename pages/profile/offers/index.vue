@@ -25,6 +25,6 @@ section {
 .title {
     text-align: center;
     font-size: 40px;
-    color: #ffffff;
+    color: #000;
 }
 </style>

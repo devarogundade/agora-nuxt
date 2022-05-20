@@ -23,6 +23,7 @@ export default {
     z-index: 100;
     padding: 20px;
     background: #e6fcf3;
+    box-shadow: -5px 5px 10px #ccc;
 }
 
 p {

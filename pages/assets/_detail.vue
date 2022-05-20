@@ -20,7 +20,7 @@
                 </div>
                 <div class="text">
                     <div class="name">
-                        <h3 v-if="asset.type == 'land'">Land</h3>
+                        <h3 v-if="asset.type.toLowerCase() == 'land'">Land</h3>
                         <h3 v-else>{{ asset.name }}</h3>
 
                         <p><b>State :</b> {{ asset.state }}</p>
@@ -205,7 +205,7 @@ export default {
 
             this.newOffer = {
                 name: this.asset.location,
-                image: this.asset.images.length > 0 ? 'https://agoralease.herokuapp.com/' + this.asset.images[0].url : '/land.png',
+                image: this.asset.images.length > 0 ? this.asset.images[0].url : '/land.png',
                 price: this.asset.price,
                 duration: '365',
                 unit: this.asset.unit - this.asset.occupied
@@ -226,7 +226,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.alertMessage = 'created'
+                    this.alertMessage = 'Offer created'
                     this.getLand()
                 } else {
                     this.alertMessage = data.message
@@ -304,8 +304,8 @@ export default {
 
 <style scoped>
 .asset {
-  max-width: 100%;
-  margin-bottom: 50px;
+    max-width: 100%;
+    margin-bottom: 50px;
 }
 
 section section {
@@ -500,13 +500,12 @@ section section {
 }
 
 .activities {
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 .activity {
-    border-bottom: #ccc 1px solid;
-    background: #00181e;
+    background: #ccc;
     padding: 15px;
     display: grid;
     grid-template-columns: 40px auto 100px 160px 160px 100px;
@@ -525,6 +524,7 @@ section section {
     border-radius: 6px;
     text-align: center;
     font-size: 12px;
+    color: #ffffff;
     cursor: pointer;
 }
 

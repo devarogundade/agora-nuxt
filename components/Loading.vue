@@ -24,7 +24,7 @@ export default {
     width: fit-content;
     transform: translate(-50%, -50%);
     padding: 20px 30px;
-    background: rgba(0, 0, 0, 0.295);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     height: 100px;
