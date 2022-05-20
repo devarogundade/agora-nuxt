@@ -4,7 +4,7 @@
         <a v-for="iot in iots" :key="iot.id" :href="'/iots/' + iot.id">
             <div class="item">
                 <div class="image">
-                    <img v-if="iot.images.length > 0" :src="'https://agoralease.s3.amazonaws.com/' + iot.images[0].url" alt="">
+                    <img v-if="iot.images.length > 0" :src="iot.images[0].url" alt="">
                     <img v-else src="/images/land.png" alt="">
                 </div>
                 <div class="content">

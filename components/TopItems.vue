@@ -32,7 +32,7 @@
             <a v-for="land in topLands" :key="land.id" :href="'/assets/' + land.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="land.images.length > 0" :src="'https://agoralease.s3.amazonaws.com/' + land.images[0].url" alt="">
+                        <img v-if="land.images.length > 0" :src="land.images[0].url" alt="">
                         <img v-else src="/images/land.png" alt="">
                     </div>
                     <div class="content">
@@ -55,7 +55,7 @@
             <a v-for="machinery in topMachineries" :key="machinery.id" :href="'/machineries/' + machinery.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="machinery.images.length > 0" :src="'https://agoralease.s3.amazonaws.com/' + machinery.images[0].url" alt="">
+                        <img v-if="machinery.images.length > 0" :src="machinery.images[0].url" alt="">
                         <img v-else src="/images/tractor.jpg" alt="">
                     </div>
                     <div class="content">
@@ -78,7 +78,7 @@
             <a v-for="iot in topIots" :key="iot.id" :href="'/iots/' + iot.id">
                 <div class="item">
                     <div class="image">
-                        <img v-if="iot.images.length > 0" :src="'https://agoralease.s3.amazonaws.com/' + iot.images[0].url" alt="">
+                        <img v-if="iot.images.length > 0" :src="iot.images[0].url" alt="">
                         <img v-else src="/images/iot.jpg" alt="">
                     </div>
                     <div class="content">
