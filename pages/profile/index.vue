@@ -141,7 +141,7 @@ section {
 }
 
 .name {
-    color: #ffffff;
+    color: #000;
     padding: 10px 0;
 }
 
