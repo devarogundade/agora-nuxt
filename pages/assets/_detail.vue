@@ -308,11 +308,11 @@ export default {
   margin-bottom: 50px;
 }
 
-section {
+section section {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    color: #ffffff;
+    color: #000;
 }
 
 .back {
@@ -377,7 +377,7 @@ section {
 
 .price {
     margin-top: 20px;
-    border: 1px #003543 solid;
+    border: 1px #ccc solid;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -387,7 +387,7 @@ section {
     padding: 0 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px #003543 solid;
+    border-bottom: 1px #ccc solid;
     font-size: 14px;
 }
 
@@ -401,7 +401,6 @@ section {
 
 .amount {
     padding: 20px;
-    background: #003543;
 }
 
 .btn {
@@ -506,7 +505,7 @@ section {
 }
 
 .activity {
-    border-bottom: #002028 3px solid;
+    border-bottom: #ccc 1px solid;
     background: #00181e;
     padding: 15px;
     display: grid;
@@ -595,7 +594,7 @@ section {
 }
 
 .accordion {
-    border: 2px #003543 solid;
+    border: 1px #ccc solid;
     border-radius: 10px;
     height: fit-content;
 }
@@ -613,7 +612,7 @@ section {
 .accordion .body {
     justify-content: space-between;
     padding: 20px;
-    border-top: 2px #003543 solid;
+    border-top: 1px #ccc solid;
 }
 
 .accordion .body p {
