@@ -13,7 +13,7 @@
 
             <div class="detail">
                 <div class="textbox">
-                    <label for="">Select land state</label>
+                    <label for="">Select asset state</label>
                     <select name="" id="" v-on:change="onStateChanged($event)">
                         <option v-for="(s, index) in states" :key="index" :value="index">
                             {{ s }}
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="textbox">
-                    <label for="">Write about this land</label>
+                    <label for="">Write about this asset</label>
                     <textarea placeholder="Enter a full location address" v-model="about" cols="30" rows="3"></textarea>
                 </div>
 
@@ -67,7 +67,7 @@
                 <div class="textbox">
                     <p :class="agree1  ? 'purpose checked' : 'purpose'" v-on:click="agree1 = !agree1">
                         <i class="fi fi-rr-check"></i>
-                        I agree this land is real
+                        I agree this asset is real
                     </p>
 
                     <p :class="agree2  ? 'purpose checked' : 'purpose'" v-on:click="agree2 = !agree2">
@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <Loading :message="'Listing your land'" v-if="loading" />
+    <Loading :message="'Creating your asset'" v-if="loading" />
     <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
 </section>
 </template>
@@ -153,7 +153,7 @@ export default {
             if (this.location == '' || this.location.length < 15) {
                 this.alertMessage = "Please enter a long location"
             } else if (this.about == '' || this.about.length < 15) {
-                this.alertMessage = "Please enter a long text about this land"
+                this.alertMessage = "Please enter a long text about this asset"
             } else if (this.price == '') {
                 this("Enter a price")
             } else if (this.unit == '') {

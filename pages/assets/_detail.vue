@@ -30,7 +30,7 @@
 
                     <div class="price">
                         <div class="stock">
-                            Available <span>{{ asset.unit - asset.occupied }} plots</span>
+                            Available <span>{{ asset.unit - asset.occupied }} units</span>
                         </div>
                         <div class="amount">
                             <p class="fixed">Rate per day</p>
@@ -55,7 +55,7 @@
                     <ul>
                         <li>
                             <i class="fi fi-rr-time-past"></i>
-                            <p>{{ asset.occupied }} plots on lease</p>
+                            <p>{{ asset.occupied }} units on lease</p>
                             <div class="progress"></div>
                         </li>
 
