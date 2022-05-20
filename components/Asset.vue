@@ -49,7 +49,7 @@ export default {
 
 .content {
     text-align: center;
-    color: #000;
+    color: #27272a;
     margin-top: 10px;
 }
 

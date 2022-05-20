@@ -212,7 +212,7 @@ section {
 }
 
 .item-name {
-    color: #000;
+    color: #27272a;
     font-size: 16px;
     font-weight: 500;
     display: flex;

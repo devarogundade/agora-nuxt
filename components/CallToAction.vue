@@ -80,7 +80,7 @@ section {
 }
 
 .text {
-    color: #000;
+    color: #27272a;
     display: flex;
     flex-direction: column;
     text-align: center;

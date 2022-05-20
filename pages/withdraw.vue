@@ -74,7 +74,7 @@ section {
 
 .title {
     font-size: 30px;
-    color: #ffffff;
+    color: #27272a;
     text-align: center;
 }
 

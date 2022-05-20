@@ -120,7 +120,7 @@ input {
 
 .button {
     background: #00c675;
-    color: #000;
+    color: #27272a;
     padding: 5px 15px;
     font-size: 16px;
     border-radius: 10px;
@@ -132,7 +132,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #000;
+    color: #27272a;
     background: #ffffff;
     width: 35px;
     height: 35px;
@@ -148,7 +148,7 @@ input {
   background: rgba(245, 230, 230, 0.747);
   border-radius: 10px;
   padding: 3px 6px;
-  color: #000;
+  color: #27272a;
   width: 300px;
   max-width: 100%;
   backdrop-filter: blur(4px);

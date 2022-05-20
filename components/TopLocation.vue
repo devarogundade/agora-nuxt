@@ -168,7 +168,7 @@ section {
     margin-bottom: 30px;
     font-weight: 500;
     text-align: center;
-    color: #000;
+    color: #27272a;
     margin-top: -180px;
 }
 

@@ -46,7 +46,7 @@ section {
 }
 
 p {
-    color: #000;
+    color: #27272a;
     font-size: 16px;
     text-align: center;
 }

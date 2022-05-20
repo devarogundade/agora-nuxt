@@ -2,7 +2,7 @@
 <section>
     <div class="app-min3-width">
         <div class="list">
-            <h3 class="title">List your land</h3>
+            <h3 class="title">Lease your asset</h3>
             <div class="images">
                 <img v-for="(image, index) in images" :key="index" :id="'image' + index" src="" alt="">
                 <div class="input" v-if="images.length < 3">
@@ -14,11 +14,25 @@
             <div class="detail">
                 <div class="textbox">
                     <label for="">Select land state</label>
-                    <select name="" id="" v-on:change="state = $event.target.value">
+                    <select name="" id="" v-on:change="onStateChanged($event)">
                         <option v-for="(s, index) in states" :key="index" :value="index">
                             {{ s }}
                         </option>
                     </select>
+                </div>
+
+                <div class="textbox">
+                    <label for="">Select asset type</label>
+                    <select name="" id="" v-on:change="onTypeChanged($event)">
+                        <option v-for="(t, index) in types" :key="index" :value="index">
+                            {{ t }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="textbox" v-if="showName">
+                    <label for="">Asset name</label>
+                    <input placeholder="Enter asset name" v-model="name" />
                 </div>
 
                 <div class="textbox">
@@ -92,6 +106,7 @@ export default {
 
     data() {
         return {
+            showName: false,
             images: [],
             metadata: [{
                 name: 'PH',
@@ -102,6 +117,7 @@ export default {
             agree3: false,
             state: 1,
             location: '',
+            name: '',
             about: '',
             price: '',
             unit: '',
@@ -112,6 +128,15 @@ export default {
                 'Oyo',
                 'Sokoto',
             ],
+            types: [
+                'Land',
+                'Machinery',
+                'IoT',
+                'Truck',
+                'Others'
+            ],
+            selectedType: 0,
+            selectedState: 0,
             alertMessage: ''
         }
     },
@@ -148,6 +173,15 @@ export default {
             this.images.push(event.target.files[0])
         },
 
+        onTypeChanged(event) {
+            this.selectedType = event.target.value
+            this.showName = this.selectedType != 0
+        },
+
+        onStateChanged(event) {
+            this.selectedState = event.target.value
+        },
+
         readImages() {
             for (let index = 0; index < this.images.length; index++) {
                 const reader = new FileReader();
@@ -166,7 +200,11 @@ export default {
                 formData.append('image' + index, this.images[index])
             }
 
-            const url = "create/asset?type=land&name=No name for land&state=" + this.states[this.state] +
+            const name = this.name != '' ? this.name : 'No name'
+
+            const url = "create/asset?state=" + this.states[this.selectedState] +
+                '&type=' + this.types[this.selectedType] +
+                '&name=' + name +
                 '&location=' + this.location +
                 '&about=' + this.about +
                 '&price=' + this.price +
@@ -204,7 +242,7 @@ section {
 
 .title {
     font-size: 40px;
-    color: #ffffff;
+    color: #27272a;
     text-align: center;
 }
 
@@ -220,14 +258,14 @@ section {
 .images img,
 .input {
     height: 250px;
-    border-radius: 20px;
     object-fit: cover;
-    background: #4d727b;
+    background: #ebebeb;
 }
 
 .input {
     position: relative;
     width: 250px;
+    border: 1px #ccc solid;
 }
 
 .images input {
@@ -279,22 +317,22 @@ textarea {
     width: 100%;
     height: 50px;
     height: 100%;
-    border-radius: 20px;
-    background: #4d727b;
-    color: #ffffff;
+    background: #ebebeb;
+    border: 1px #ccc solid;
+    color: #27272a;
     padding: 12px;
     resize: none;
 }
 
 .textbox label {
-    color: #ffffff;
+    color: #27272a;
     font-size: 18px;
     margin-bottom: 10px;
 }
 
 .textbox input::placeholder,
 .textbox textarea::placeholder {
-    color: #ffffff;
+    color: #27272a;
     opacity: 0.6;
 }
 

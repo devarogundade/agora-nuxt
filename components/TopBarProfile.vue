@@ -36,7 +36,7 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href="/profile/list/land">
+                                        <a href="/profile/list">
                                             <i class="fi fi-rr-comment-alt"></i>
                                             <div class="text">
                                                 <h3>New asset</h3>
@@ -141,7 +141,7 @@ section {
 }
 
 .item-name {
-    color: #000;
+    color: #27272a;
     font-size: 16px;
     font-weight: 500;
     display: flex;

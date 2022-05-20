@@ -133,7 +133,7 @@ section {
 }
 
 .name {
-    color: #000;
+    color: #27272a;
     padding: 10px 0;
 }
 
@@ -196,7 +196,7 @@ section {
     justify-content: center;
     cursor: pointer;
     height: 100%;
-    color: #000;
+    color: #27272a;
 }
 
 .options a:last-child i {

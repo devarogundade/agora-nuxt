@@ -95,7 +95,7 @@ section {
     margin-bottom: 30px;
     font-weight: 500;
     text-align: center;
-    color: #000;
+    color: #27272a;
     margin-top: 30px;
 }
 
@@ -114,7 +114,7 @@ section {
     border-radius: 15px;
     font-size: 16px;
     font-weight: 400;
-    color: #000;
+    color: #27272a;
     border: none;
     outline: none;
 }

@@ -312,7 +312,7 @@ section section {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    color: #000;
+    color: #27272a;
 }
 
 .back {
