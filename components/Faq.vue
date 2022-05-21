@@ -4,9 +4,11 @@
         <h3 class="title">FAQs</h3>
         <div class="faqs">
             <div class="faq">
-                <div class="head">
-                    <p>What is AgoraLease?</p> <i class="fi fi-rr-arrow-small-right"></i>
-                </div>
+                <a href="https://dev-arogundade.gitbook.io/agoralease/" target="_blank">
+                    <div class="head">
+                        <p>What is AgoraLease?</p> <i class="fi fi-rr-arrow-small-right"></i>
+                    </div>
+                </a>
                 <div class="body">
                     <p>
                         We are building a platform that helps farmers to have access to farm machines, IoTs, lands and other farm requirements in a very affordable way by renting for a certain period of time instead of buying them, and also creating an investment platform for investors or institutions.
@@ -14,9 +16,11 @@
                 </div>
             </div>
             <div class="faq">
-                <div class="head">
-                    <p>How safe am I?</p> <i class="fi fi-rr-arrow-small-right"></i>
-                </div>
+                <a href="https://dev-arogundade.gitbook.io/agoralease/" target="_blank">
+                    <div class="head">
+                        <p>How safe am I?</p> <i class="fi fi-rr-arrow-small-right"></i>
+                    </div>
+                </a>
                 <div class="body">
                     <p>
                         The AgoraLease Team verifies the land, to reduce fraudulent activities as possible on the platform.
@@ -24,9 +28,11 @@
                 </div>
             </div>
             <div class="faq">
-                <div class="head">
-                    <p>How to rent on AgoraLease</p> <i class="fi fi-rr-arrow-small-right"></i>
-                </div>
+                <a href="https://dev-arogundade.gitbook.io/agoralease/" target="_blank">
+                    <div class="head">
+                        <p>How to rent on AgoraLease</p> <i class="fi fi-rr-arrow-small-right"></i>
+                    </div>
+                </a>
                 <div class="body">
                     <p>
                         An interested farmer would place an offer with price per unit(plot) per day, duration in days and unit (for land plots). So it's possible for farmers to rent a portion of the land (and other category items like IoT).
@@ -79,5 +85,9 @@ section {
 
 .faq:last-child .body {
     border-bottom: none;
+}
+
+a {
+  color: #000;
 }
 </style>
