@@ -32,6 +32,8 @@
                             <td>{{ offer.duration }}</td>
                             <td>₦{{ (offer.price).toFixed(2) }}</td>
                         </tr>
+
+                        <LeaseTimeline v-on:exit="showOffer = -1" v-if="showOffer == offer.id" :offer="offer" />
                     </tbody>
                 </table>
 
@@ -41,6 +43,9 @@
                 <div class="accept" v-if="offer.asset.user_id == $auth.user.id  && offer.status == 'pending'">
                     <div class="button" v-on:click="reject(offer)">Reject</div>
                     <div class="button" v-on:click="accept(offer)">Accept</div>
+                </div>
+                <div class="accept" v-if="offer.status == 'accepted'">
+                    <div class="button" v-on:click="showOffer = offer.id">View status</div>
                 </div>
             </div>
         </div>
@@ -61,7 +66,8 @@ export default {
         return {
             offers: [],
             loading: true,
-            alertMessage: ''
+            alertMessage: '',
+            showOffer: -1
         }
     },
 
