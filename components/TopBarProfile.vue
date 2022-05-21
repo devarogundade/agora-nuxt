@@ -37,7 +37,7 @@
                                 <ul>
                                     <li>
                                         <a href="/profile/list">
-                                            <i class="fi fi-rr-comment-alt"></i>
+                                            <i class="fi fi-rr-add"></i>
                                             <div class="text">
                                                 <h3>New asset</h3>
                                                 <p>Register your asset for leasing..</p>

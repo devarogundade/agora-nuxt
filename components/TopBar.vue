@@ -29,7 +29,7 @@
                                 <ul>
                                     <li>
                                         <router-link to="/login">
-                                            <i class="fi fi-rr-data-transfer"></i>
+                                            <i class="fi fi-rr-user"></i>
                                             <div class="text">
                                                 <h3>Login</h3>
                                                 <p>Welcome back to AgoraLands..</p>
@@ -39,7 +39,7 @@
 
                                     <li>
                                         <router-link to="/register">
-                                            <i class="fi fi-rr-strawberry"></i>
+                                            <i class="fi fi-rr-user-add"></i>
                                             <div class="text">
                                                 <h3>Register</h3>
                                                 <p>Get started today. Rent and/or Lease.</p>
@@ -70,7 +70,7 @@
 
                                     <li>
                                         <router-link to="/profile/offers">
-                                            <i class="fi fi-rr-strawberry"></i>
+                                            <i class="fi fi-rr-dollar"></i>
                                             <div class="text">
                                                 <h3>Offers</h3>
                                                 <p>Get started today. Rent and/or Lease.</p>

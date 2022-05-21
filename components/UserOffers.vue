@@ -254,7 +254,6 @@ section {
 
 .status {
     display: grid;
-    height: 40px;
     border-radius: 6px;
     width: fit-content;
     grid-template-columns: 22px auto;
