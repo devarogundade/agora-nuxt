@@ -9,7 +9,7 @@
                 <h3>Lands</h3>
                 <p>Let your unused spaces work for you. Lease out your land to farmers and earn passively on your used spaces.</p>
                 <div class="actions">
-                    <a href="/asset?type=land">
+                    <a href="/assets?type=land">
                         <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                     </a>
                 </div>
@@ -24,7 +24,7 @@
                 <h3>Machineries</h3>
                 <p>Lease out tractors, tractor couples, processing machines and others to farmers. In a stress pattern design for you.</p>
                 <div class="actions">
-                    <a href="/asset?type=machinery">
+                    <a href="/assets?type=machinery">
                         <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                     </a>
                 </div>
@@ -39,7 +39,7 @@
                 <h3>IoTs</h3>
                 <p>Internet of things as become an essential part in Agriculture. Take the opportunity to start your agro investment today.</p>
                 <div class="actions">
-                    <a href="/asset?type=iot">
+                    <a href="/assets?type=iot">
                         <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                     </a>
                 </div>
@@ -54,7 +54,7 @@
                 <h3>Trucks</h3>
                 <p>Provide transport support for farmers and also earn back in return.</p>
                 <div class="actions">
-                    <a href="/asset?type=truck">
+                    <a href="/assets?type=truck">
                         <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
                     </a>
                 </div>

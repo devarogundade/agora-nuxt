@@ -2,7 +2,7 @@
 <section>
     <div class="app-min-width">
         <div class="search">
-            <h3 class="title">Search result</h3>
+            <h3 class="title">{{ $route.params.state }}</h3>
             <p class="desc" v-if="loading">..finding relevant assets..</p>
             <p class="desc" v-else>{{ assets.length }} results found</p>
 
@@ -32,12 +32,8 @@ export default {
     },
 
     methods: {
-        search() {
-            if (this.text == '') {
-                return
-            }
-
-            const url = 'search?text=' + this.text
+        getAssets() {
+            const url = 'assets/location?state=' + this.$route.params.state
 
             this.loading = true
             this.$axios.get(url).then((response) => {
@@ -58,8 +54,7 @@ export default {
     },
 
     created() {
-        this.text = this.$route.query.text
-        this.search()
+        this.getAssets()
     }
 }
 </script>
@@ -81,6 +76,7 @@ section {
 .title {
     font-size: 30px;
     line-height: 35px;
+    text-transform: capitalize;
 }
 
 .desc {
