@@ -4,7 +4,7 @@
         <h3 class="title">Assets</h3>
 
         <div class="toolbar">
-            <select name="" id="">
+            <select name="" id="" v-on:change="onStateChanged($event)">
                 <option value="all">All State</option>
                 <option value="lagos">Lagos</option>
                 <option value="enugu">Enugu</option>
@@ -61,7 +61,8 @@ export default {
             this.loading = true
 
             const type = this.$route.query.type ? this.$route.query.type : 'all'
-            const url = 'assets?type=' + type
+            const state = this.$route.query.state ? this.$route.query.state : 'all'
+            const url = 'assets?type=' + type + '&state=' + state
 
             this.$axios.get(url).then((response) => {
 
@@ -81,6 +82,26 @@ export default {
 
         onCategoryChanged(event) {
             const url = 'assets?type=' + event.target.value
+            this.$router.push('/assets?type=' + event.target.value)
+
+            this.$axios.get(url).then((response) => {
+                const data = response.data
+
+                if (data.status) {
+                    this.assets = data.data
+                } else {
+                    this.alertMessage = data.message
+                }
+
+            }).catch((err) => {
+                this.alertMessage = "Cannot connect to our server"
+            });
+        },
+
+        onStateChanged(event) {
+            const url = 'assets?state=' + event.target.value
+            this.$router.push('/assets?state=' + event.target.value)
+
             this.$axios.get(url).then((response) => {
                 const data = response.data
 
