@@ -9,6 +9,7 @@
         <p class="state">{{ asset.type + ' in ' + asset.state }}</p>
 
         <p class="price">₦{{ asset.price }} / 24hr</p>
+        <i v-if="trash" class="fi fi-rr-trash trash"></i>
 
         <ul>
             <li>
@@ -24,7 +25,7 @@
 
 <script>
 export default {
-    props: ['asset']
+    props: ['asset', 'trash']
 }
 </script>
 
@@ -113,6 +114,18 @@ export default {
     right: 10px;
     z-index: 10px;
     background: rgba(0, 0, 0, 0.3);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.trash {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10px;
+    background: rgba(231, 72, 72, 0.3);
     padding: 2px 10px;
     border-radius: 10px;
     font-size: 14px;

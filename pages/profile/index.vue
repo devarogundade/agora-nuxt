@@ -49,7 +49,7 @@
 
         <div class="asset-items">
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
-                <Asset :asset="asset" />
+                <Asset :asset="asset" :trash="true" />
             </a>
         </div>
 
