@@ -19,10 +19,6 @@
                 <option value="truck">Truck</option>
                 <option value="others">Others</option>
             </select>
-            <select name="" id="">
-                <option value="">All</option>
-                <option value="">Not Occupied</option>
-            </select>
         </div>
 
         <div class="asset-items" v-if="assets.length > 0">
@@ -146,7 +142,7 @@ section {
     margin-bottom: 20px;
     background: rgb(228, 228, 228);
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 20px;
 }
 
