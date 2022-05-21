@@ -12,8 +12,12 @@
                 <option value="sokoto">Sokoto</option>
             </select>
             <select name="" id="">
-                <option value="">Price: Low to High</option>
-                <option value="">Price: High to Low</option>
+                <option value="all">All Category</option>
+                <option value="land">Land</option>
+                <option value="machinery">Machinery</option>
+                <option value="iot">IoT</option>
+                <option value="truck">Truck</option>
+                <option value="others">Others</option>
             </select>
             <select name="" id="">
                 <option value="">All</option>
@@ -103,7 +107,7 @@ section {
     padding: 10px;
     border-radius: 20px;
     margin-bottom: 20px;
-    border: 1px solid #003543;
+    background: rgb(228, 228, 228);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 20px;
@@ -115,6 +119,7 @@ section {
     font-size: 16px;
     font-weight: 400;
     color: #27272a;
+    background: none;
     border: none;
     outline: none;
 }
