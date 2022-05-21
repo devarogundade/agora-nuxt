@@ -23,7 +23,7 @@
                 </a>
                 <div class="body">
                     <p>
-                        The AgoraLease Team verifies the land, to reduce fraudulent activities as possible on the platform.
+                        The AgoraLease Team verifies the lands and other assets, to reduce fraudulent activities as possible on the platform.
                     </p>
                 </div>
             </div>
