@@ -1,5 +1,5 @@
 <template>
-<section >
+<section>
     <div class="app-min-width" v-if="!loading">
         <h3 class="title">Assets</h3>
 
@@ -11,7 +11,7 @@
                 <option value="oyo">Oyo</option>
                 <option value="sokoto">Sokoto</option>
             </select>
-            <select name="" id="">
+            <select name="" id="" v-on:change="onCategoryChanged($event)">
                 <option value="all">All Category</option>
                 <option value="land">Land</option>
                 <option value="machinery">Machinery</option>
@@ -57,7 +57,7 @@ export default {
     },
 
     methods: {
-        getLands() {
+        getAssets() {
             this.loading = true
 
             const type = this.$route.query.type ? this.$route.query.type : 'all'
@@ -77,11 +77,27 @@ export default {
             }).catch((err) => {
                 this.alertMessage = "Cannot connect to our server"
             });
+        },
+
+        onCategoryChanged(event) {
+            const url = 'assets?type=' + event.target.value
+            this.$axios.get(url).then((response) => {
+                const data = response.data
+
+                if (data.status) {
+                    this.assets = data.data
+                } else {
+                    this.alertMessage = data.message
+                }
+
+            }).catch((err) => {
+                this.alertMessage = "Cannot connect to our server"
+            });
         }
     },
 
     created() {
-        this.getLands()
+        this.getAssets()
     }
 }
 </script>
@@ -128,7 +144,6 @@ section {
     color: #161704;
 }
 
-
 .more {
     margin-top: 40px;
     display: flex;
@@ -142,7 +157,6 @@ section {
     font-weight: 600;
     margin: 5px 0;
 }
-
 
 @media screen and (max-width: 700px) {
     .title {
