@@ -13,7 +13,7 @@
 
         <div class="steps">
             <p>Offer accepted</p>
-            <p>{{ offer.user.name }} has successfully pass verification and screening process</p>
+            <p>{{ offer.user.name }} has successfully pass verification process</p>
             <p>{{ offer.user.name }} now has access to utilize {{ offer.asset.type }} located at {{ offer.asset.location }}</p>
             <p>This offer will end at {{ offer.expires_at }}</p>
         </div>
