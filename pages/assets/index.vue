@@ -5,19 +5,19 @@
 
         <div class="toolbar">
             <select name="" id="" v-on:change="onStateChanged($event)">
-                <option value="all">All State</option>
-                <option value="lagos">Lagos</option>
-                <option value="enugu">Enugu</option>
-                <option value="oyo">Oyo</option>
-                <option value="sokoto">Sokoto</option>
+                <option value="all"  :selected="$route.query.state == '' || $route.query.state == 'all'">All State</option>
+                <option value="lagos" :selected="$route.query.state == 'lagos'">Lagos</option>
+                <option value="enugu" :selected="$route.query.state == 'enugu'">Enugu</option>
+                <option value="oyo" :selected="$route.query.state == 'oyo'">Oyo</option>
+                <option value="sokoto" :selected="$route.query.state == 'sokoto'">Sokoto</option>
             </select>
             <select name="" id="" v-on:change="onCategoryChanged($event)">
-                <option value="all">All Category</option>
-                <option value="land">Land</option>
-                <option value="machinery">Machinery</option>
-                <option value="iot">IoT</option>
-                <option value="truck">Truck</option>
-                <option value="others">Others</option>
+                <option value="all"  :selected="$route.query.type == '' || $route.query.type == 'all'">All Category</option>
+                <option value="land" :selected="$route.query.type == 'land'">Land</option>
+                <option value="machinery" :selected="$route.query.type == 'machinery'">Machinery</option>
+                <option value="iot" :selected="$route.query.type == 'iot'">IoT</option>
+                <option value="truck" :selected="$route.query.type == 'truck'">Truck</option>
+                <option value="others" :selected="$route.query.type == 'others'">Others</option>
             </select>
         </div>
 
