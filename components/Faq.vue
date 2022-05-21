@@ -9,27 +9,28 @@
                 </div>
                 <div class="body">
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, ab commodi? Nostrum, hic. Nesciunt itaque fugiat quibusdam saepe, aperiam dignissimos modi sunt libero facere. Quam dolores nulla modi cupiditate aspernatur?
+                        We are building a platform that helps farmers to have access to farm machines, IoTs, lands and other farm requirements in a very affordable way by renting for a certain period of time instead of buying them, and also creating an investment platform for investors or institutions.
                     </p>
                 </div>
             </div>
             <div class="faq">
                 <div class="head">
-                    <p>What is AgoraLease?</p> <i class="fi fi-rr-arrow-small-right"></i>
+                    <p>How safe am I?</p> <i class="fi fi-rr-arrow-small-right"></i>
                 </div>
                 <div class="body">
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, ab commodi? Nostrum, hic. Nesciunt itaque fugiat quibusdam saepe, aperiam dignissimos modi sunt libero facere. Quam dolores nulla modi cupiditate aspernatur?
+                        The AgoraLease Team verifies the land, to reduce fraudulent activities as possible on the platform.
                     </p>
                 </div>
             </div>
             <div class="faq">
                 <div class="head">
-                    <p>What is AgoraLease?</p> <i class="fi fi-rr-arrow-small-right"></i>
+                    <p>How to rent on AgoraLease</p> <i class="fi fi-rr-arrow-small-right"></i>
                 </div>
                 <div class="body">
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, ab commodi? Nostrum, hic. Nesciunt itaque fugiat quibusdam saepe, aperiam dignissimos modi sunt libero facere. Quam dolores nulla modi cupiditate aspernatur?
+                        An interested farmer would place an offer with price per unit(plot) per day, duration in days and unit (for land plots). So it's possible for farmers to rent a portion of the land (and other category items like IoT).
+
                     </p>
                 </div>
             </div>
