@@ -2,7 +2,7 @@
 <section>
     <div class="app-min-width">
         <div class="search">
-            <h3 class="title">{{ $route.params.state }}</h3>
+            <h3 class="title">Locations > {{ $route.params.state }}</h3>
             <p class="desc" v-if="loading">..finding relevant assets..</p>
             <p class="desc" v-else>{{ assets.length }} results found</p>
 
