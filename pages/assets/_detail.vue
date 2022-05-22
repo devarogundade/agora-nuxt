@@ -29,7 +29,10 @@
                     </div>
 
                     <div class="price">
-                        <div class="stock">
+                        <div class="stock" v-if="asset.type.toLowerCase() == 'land'">
+                            Available <span>{{ asset.unit - asset.occupied }} plots</span>
+                        </div>
+                        <div class="stock" v-else>
                             Available <span>{{ asset.unit - asset.occupied }} units</span>
                         </div>
                         <div class="amount">
@@ -55,7 +58,8 @@
                     <ul>
                         <li>
                             <i class="fi fi-rr-time-past"></i>
-                            <p>{{ asset.occupied }} units on lease</p>
+                            <p v-if="asset.type.toLowerCase() == 'land'">{{ asset.occupied }} plots on lease</p>
+                            <p v-else>{{ asset.occupied }} units on lease</p>
                             <div class="progress"></div>
                         </li>
 
