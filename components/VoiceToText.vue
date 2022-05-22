@@ -1,7 +1,7 @@
 <template>
 <section>
     <div class="voice-to-text">
-        <div class="title" v-if="!speaking">Click to speak mic!</div>
+        <div class="title" v-if="!speaking">Click the mic and speak!</div>
         <div class="title" v-if="speaking">I'm listening</div>
         <div class="input">
             <div :class="speaking ? 'button speaking' : 'button'" ref="search">
@@ -32,12 +32,15 @@ export default {
         const serviceRegion = "westus"
         const languageTargetOptions = "en"
         const languageSourceOptions = "en-US"
+
+        // context
         const _this = this
 
         startRecognizeOnceAsyncButton.addEventListener("click", function () {
             startRecognizeOnceAsyncButton.disabled = true;
             _this.speaking = true
 
+            // configure MS Speech to Text SDK
             const speechConfig = SpeechSDK.SpeechTranslationConfig.fromSubscription("8c857a412d4a4414945c7af7cfe90970", serviceRegion)
             speechConfig.speechRecognitionLanguage = languageSourceOptions;
             speechConfig.addTargetLanguage(languageTargetOptions)
@@ -60,10 +63,11 @@ export default {
                     recognizer.close()
                     recognizer = undefined
                 },
-                function (err) {
+
+                function () {
                     startRecognizeOnceAsyncButton.disabled = false
                     _this.speaking = false
-                    _this.alertMessage = "Something wrong with voice search"
+                    _this.alertMessage = "Something is wrong with voice search"
 
                     recognizer.close()
                     recognizer = undefined
@@ -101,7 +105,7 @@ section {
     height: 300px;
     width: 400px;
     border-radius: 20px;
-    max-width: 100%;
+    max-width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
