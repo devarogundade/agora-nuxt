@@ -3,7 +3,7 @@
     <div class="voice-to-text">
         <p class="title">I'm listening..</p>
         <div class="input">
-            <input type="text" placeholder="Text" disabled v-model="text" id="" />
+            <input type="file" accept="audio/*" capture />
             <div class="button" v-on:click="search()">Search</div>
         </div>
         <p class="sample">Try saying 'I need a land at enugu around 100 Naira per day'</p>
