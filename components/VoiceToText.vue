@@ -1,10 +1,9 @@
 <template>
 <section>
     <div class="voice-to-text">
-        <p class="title">I'm listening..</p>
+      <div class="title">I'm listening</div>
         <div class="input">
-            <input type="file" accept="audio/*" capture />
-            <div class="button" v-on:click="search()">Search</div>
+            <div class="button" ref="search" v-on:click="search()">Search</div>
         </div>
         <p class="sample">Try saying 'I need a land at enugu around 100 Naira per day'</p>
         <i class="fi fi-rr-cross" v-on:click="$emit('exit')"></i>
@@ -20,19 +19,55 @@ export default {
         return {
             text: '',
 
-            alertMessage: ''
+            alertMessage: '',
+            soundFile: '',
+            recording: false
         }
     },
 
     methods: {
         search() {
-            if (this.text == '') {
-                this.alertMessage = 'Say something to your mic'
-                return
-            }
+            // if (this.text == '') {
+            //     this.alertMessage = 'Say something to your mic'
+            //     return
+            // }
 
-            this.$emit('search', this.text)
+            // this.$emit('search', this.text)
         },
+
+        record() {
+            navigator.mediaDevices
+                .getUserMedia({
+                    audio: true,
+                    video: false
+                })
+                .then(this.handleSuccess)
+        },
+
+        handleSuccess(stream) {
+            const options = {
+                mimeType: 'audio/webm'
+            };
+            const stopButton = this.$refs['search']
+
+            const recordedChunks = [];
+            const mediaRecorder = new MediaRecorder(stream, options);
+
+            mediaRecorder.addEventListener('dataavailable', function (e) {
+                if (e.data.size > 0) recordedChunks.push(e.data)
+            });
+
+            mediaRecorder.addEventListener('stop', function () {
+                this.soundFile = URL.createObjectURL(new Blob(recordedChunks))
+                console.log(this.soundFile);
+            });
+
+            stopButton.addEventListener('click', function () {
+                mediaRecorder.stop()
+            });
+
+            mediaRecorder.start()
+        }
 
         // readFile() {
         //     const sdk = require("microsoft-cognitiveservices-speech-sdk");
@@ -71,6 +106,10 @@ export default {
         //         speechRecognizer.close();
         //     });
         // }
+    },
+
+    mounted() {
+        this.record()
     }
 }
 </script>
@@ -90,20 +129,17 @@ section {
 }
 
 .input {
-    display: grid;
-    grid-template-columns: 220px 80px;
     column-gap: 10px;
     align-items: center;
     margin-top: 10px;
-}
-
-input {
-    padding: 5px 15px;
-    border-radius: 10px;
-    border: none;
-    background: #ffffff;
-    outline: none;
-    font-size: 16px;
+    background: #00c675;
+    height: 300px;
+    width: 400px;
+    border-radius: 20px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .title {
@@ -119,12 +155,32 @@ input {
 }
 
 .button {
-    background: #00c675;
     color: #27272a;
+    background: #ffffffee;
     padding: 5px 15px;
     font-size: 16px;
-    border-radius: 10px;
     cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border-radius: 200px;
+    border: 10px #61e7af solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 4px #ccc;
+    animation: speaking 800ms ease-out infinite;
+}
+
+@keyframes speaking {
+
+    0%,
+    100% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.1, 1.1);
+    }
 }
 
 .voice-to-text i {
@@ -143,15 +199,15 @@ input {
 }
 
 .sample {
-  font-size: 12px;
-  margin-top: 10px;
-  background: rgba(245, 230, 230, 0.747);
-  border-radius: 10px;
-  padding: 3px 6px;
-  color: #27272a;
-  width: 300px;
-  max-width: 100%;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+    font-size: 12px;
+    margin-top: 10px;
+    background: rgba(245, 230, 230, 0.747);
+    border-radius: 10px;
+    padding: 3px 6px;
+    color: #27272a;
+    width: 300px;
+    max-width: 100%;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 </style>
