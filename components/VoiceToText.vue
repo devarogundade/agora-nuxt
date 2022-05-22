@@ -1,12 +1,15 @@
 <template>
 <section>
     <div class="voice-to-text">
-      <div class="title">I'm listening</div>
+        <div class="title" v-if="!speaking">Click to speak mic!</div>
+        <div class="title" v-if="speaking">I'm listening</div>
         <div class="input">
-            <div class="button" ref="search" v-on:click="search()">Search</div>
+            <div :class="speaking ? 'button speaking' : 'button'" ref="search">
+                <i class="fi fi-rr-microphone"></i>
+            </div>
         </div>
-        <p class="sample">Try saying 'I need a land at enugu around 100 Naira per day'</p>
-        <i class="fi fi-rr-cross" v-on:click="$emit('exit')"></i>
+        <p class="sample">{{ text != "" ? text : "Try saying 'I need a land at enugu around 100 Naira per day'" }}</p>
+        <i class="fi fi-rr-cross close" v-on:click="$emit('exit')"></i>
     </div>
 
     <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
@@ -20,97 +23,59 @@ export default {
             text: '',
 
             alertMessage: '',
-            soundFile: '',
-            recording: false
+            speaking: false
         }
-    },
-
-    methods: {
-        search() {
-            // if (this.text == '') {
-            //     this.alertMessage = 'Say something to your mic'
-            //     return
-            // }
-
-            // this.$emit('search', this.text)
-        },
-
-        record() {
-            navigator.mediaDevices
-                .getUserMedia({
-                    audio: true,
-                    video: false
-                })
-                .then(this.handleSuccess)
-        },
-
-        handleSuccess(stream) {
-            const options = {
-                mimeType: 'audio/webm'
-            };
-            const stopButton = this.$refs['search']
-
-            const recordedChunks = [];
-            const mediaRecorder = new MediaRecorder(stream, options);
-
-            mediaRecorder.addEventListener('dataavailable', function (e) {
-                if (e.data.size > 0) recordedChunks.push(e.data)
-            });
-
-            mediaRecorder.addEventListener('stop', function () {
-                this.soundFile = URL.createObjectURL(new Blob(recordedChunks))
-                console.log(this.soundFile);
-            });
-
-            stopButton.addEventListener('click', function () {
-                mediaRecorder.stop()
-            });
-
-            mediaRecorder.start()
-        }
-
-        // readFile() {
-        //     const sdk = require("microsoft-cognitiveservices-speech-sdk");
-        //     const speechConfig = sdk.SpeechConfig.fromSubscription("9a6e6f80-18ea-4c82-af12-782b237e84a3", "	en-US");
-        //     speechConfig.speechRecognitionLanguage = "en-US";
-
-        //     const reader = new FileReader()
-        //     reader.onload = (res) => {
-        //         console.log(res.target.result);
-        //     }
-        //     reader.onerror = (err) => console.log(err);
-        //     reader.readAsText(this.file);
-
-        //     let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("test.wav"));
-
-        //     const speechRecognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-        //     speechRecognizer.recognizeOnceAsync(result => {
-        //         switch (result.reason) {
-        //             case sdk.ResultReason.RecognizedSpeech:
-        //                 this.text = result.text
-        //                 break;
-        //             case sdk.ResultReason.NoMatch:
-        //                 alert("NOMATCH: Speech could not be recognized.");
-        //                 break;
-        //             case sdk.ResultReason.Canceled:
-        //                 const cancellation = sdk.CancellationDetails.fromResult(result);
-        //                 alert(`CANCELED: Reason=${cancellation.reason}`);
-
-        //                 if (cancellation.reason == sdk.CancellationReason.Error) {
-        //                     console.log(`CANCELED: ErrorCode=${cancellation.ErrorCode}`);
-        //                     console.log(`CANCELED: ErrorDetails=${cancellation.errorDetails}`);
-        //                     alert("CANCELED: Did you set the speech resource key and region values?");
-        //                 }
-        //                 break;
-        //         }
-        //         speechRecognizer.close();
-        //     });
-        // }
     },
 
     mounted() {
-        this.record()
-    }
+        const startRecognizeOnceAsyncButton = this.$refs['search']
+        const serviceRegion = "westus"
+        const languageTargetOptions = "en"
+        const languageSourceOptions = "en-US"
+        const _this = this
+
+        startRecognizeOnceAsyncButton.addEventListener("click", function () {
+            startRecognizeOnceAsyncButton.disabled = true;
+            _this.speaking = true
+
+            const speechConfig = SpeechSDK.SpeechTranslationConfig.fromSubscription("8c857a412d4a4414945c7af7cfe90970", serviceRegion)
+            speechConfig.speechRecognitionLanguage = languageSourceOptions;
+            speechConfig.addTargetLanguage(languageTargetOptions)
+
+            const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput()
+            let recognizer = new SpeechSDK.TranslationRecognizer(speechConfig, audioConfig)
+
+            _this.text = ""
+
+            recognizer.recognizeOnceAsync(
+                function (result) {
+                    startRecognizeOnceAsyncButton.disabled = false
+                    _this.speaking = false
+
+                    if (result.reason === SpeechSDK.ResultReason.TranslatedSpeech) {
+                        let translation = result.translations.get(languageTargetOptions)
+                        _this.text += translation
+                    }
+
+                    recognizer.close()
+                    recognizer = undefined
+                },
+                function (err) {
+                    startRecognizeOnceAsyncButton.disabled = false
+                    _this.speaking = false
+                    _this.alertMessage = "Something wrong with voice search"
+
+                    recognizer.close()
+                    recognizer = undefined
+                });
+        });
+
+        if (!!window.SpeechSDK) {
+            SpeechSDK = window.SpeechSDK;
+            startRecognizeOnceAsyncButton.disabled = false;
+            _this.speaking = false
+        }
+    },
 }
 </script>
 
@@ -158,16 +123,24 @@ section {
     color: #27272a;
     background: #ffffffee;
     padding: 5px 15px;
-    font-size: 16px;
+    font-size: 40px;
     cursor: pointer;
     width: 100px;
     height: 100px;
     border-radius: 200px;
     border: 10px #61e7af solid;
+    box-shadow: 0 0 4px #ccc;
+}
+
+.button i {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 4px #ccc;
+}
+
+.speaking {
     animation: speaking 800ms ease-out infinite;
 }
 
@@ -183,7 +156,7 @@ section {
     }
 }
 
-.voice-to-text i {
+.voice-to-text .close {
     cursor: pointer;
     display: flex;
     align-items: center;

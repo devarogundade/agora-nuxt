@@ -16,7 +16,11 @@ export default {
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 
-        ]
+        ],
+        script: [{
+            src: "https://aka.ms/csspeech/jsbrowserpackageraw",
+            defer: true
+        }]
     },
 
     css: [
