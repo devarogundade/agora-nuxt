@@ -10,6 +10,7 @@
 
         <p class="price">₦{{ asset.price }} / 24hr</p>
         <i v-if="trash" class="fi fi-rr-trash trash"></i>
+        <i v-if="trash" class="fi fi-rr-pencil edit"></i>
 
         <ul>
             <li>
@@ -125,10 +126,32 @@ export default {
     top: 10px;
     left: 10px;
     z-index: 10px;
-    background: rgba(231, 72, 72, 0.3);
+    background: rgba(231, 72, 72, 0.5);
+    border: 1px solid #fff;
     padding: 2px 10px;
     border-radius: 10px;
     font-size: 14px;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.edit {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    z-index: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #fff;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
 }
 </style>

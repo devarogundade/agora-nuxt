@@ -63,7 +63,7 @@
                                             <i class="fi fi-rr-strawberry"></i>
                                             <div class="text">
                                                 <h3>Assets</h3>
-                                                <p>Get started today. Rent and/or Lease.</p>
+                                                <p>Edit, Create or Modify your items.</p>
                                             </div>
                                         </router-link>
                                     </li>
@@ -73,7 +73,7 @@
                                             <i class="fi fi-rr-dollar"></i>
                                             <div class="text">
                                                 <h3>Offers</h3>
-                                                <p>Get started today. Rent and/or Lease.</p>
+                                                <p>See all offers sent or received.</p>
                                             </div>
                                         </router-link>
                                     </li>
