@@ -22,7 +22,7 @@
             </div>
             <div class="content">
                 <h3>Machineries</h3>
-                <p>Lease out tractors, tractor couples, processing machines and others to farmers. In a stress pattern design for you.</p>
+                <p>Lease out tractors, tractor couples, processing machines and others to farmers. In a stress free pattern design for you.</p>
                 <div class="actions">
                     <a href="/assets?type=machinery">
                         <div class="button">Explore <i class="fi fi-rr-arrow-right"></i></div>
