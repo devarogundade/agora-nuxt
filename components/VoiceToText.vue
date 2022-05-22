@@ -8,7 +8,7 @@
                 <i class="fi fi-rr-microphone"></i>
             </div>
         </div>
-        <p class="sample">{{ text != "" ? text : "Try saying 'I need a land at enugu around 100 Naira per day'" }}</p>
+        <p class="sample">{{ text != "" ? text : "Try saying 'I need a land at Enugu around 100 Naira per day'" }}</p>
         <i class="fi fi-rr-cross close" v-on:click="$emit('exit')"></i>
     </div>
 
