@@ -59,8 +59,8 @@
 
                 <div class="search">
                     <div class="input">
-                        <input type="text" placeholder="Search anything.." />
-                        <i class="fi fi-rr-microphone">
+                        <input type="search" placeholder="Search anything.." v-on:keyup.enter="search()" v-model="text" />
+                        <i class="fi fi-rr-microphone" v-on:click="voice = true">
                             <p>Use voice</p>
                         </i>
                     </div>
@@ -68,15 +68,37 @@
             </div>
         </div>
     </section>
+
+    <VoiceToText v-if="voice" v-on:exit="voice = false" v-on:search="searchFromVoice($event)" />
 </section>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            voice: false,
+            text: ''
+        }
+    },
+
     methods: {
         logout() {
             this.$auth.logout()
             this.$router.push('/login')
+        },
+
+        searchFromVoice(text) {
+            this.voice = false
+            this.text = text
+        },
+
+        search() {
+            if (this.text == '') {
+                return
+            }
+
+            window.open('/search?text=' + this.text, "_self")
         }
     }
 }

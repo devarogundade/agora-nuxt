@@ -9,6 +9,9 @@
             </div>
         </div>
         <p class="sample">{{ text != "" ? text : "Try saying 'I need a land at Enugu around 100 Naira per day'" }}</p>
+
+        <p v-if="text != ''" class="go" v-on:click="go()">Search</p>
+
         <i class="fi fi-rr-cross close" v-on:click="$emit('exit')"></i>
     </div>
 
@@ -24,6 +27,16 @@ export default {
 
             alertMessage: '',
             speaking: false
+        }
+    },
+
+    methods: {
+        go() {
+            if (this.text == '') {
+                return
+            }
+
+            window.open('/search?text=' + this.text.replaceAll('.', ''), "_self")
         }
     },
 
@@ -186,5 +199,16 @@ section {
     max-width: 100%;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+}
+
+.go {
+    margin-top: 10px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    user-select: none;
+    background: #00c675;
 }
 </style>
