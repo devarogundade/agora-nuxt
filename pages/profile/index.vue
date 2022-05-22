@@ -22,7 +22,6 @@
             </div>
             <div class="options">
                 <a href="/profile/edit"><i class="fi fi-rr-pencil"></i></a>
-                <a href="/withdraw"><i class="fi fi-rr-angle-circle-up"></i></a>
                 <a href="/deposit"><i class="fi fi-rr-bank"></i></a>
             </div>
         </div>
@@ -177,9 +176,9 @@ section {
 }
 
 .options {
-    width: 150px;
+    width: 100px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     border: 1px #ccc solid;
     border-radius: 10px;
     height: 50px;
