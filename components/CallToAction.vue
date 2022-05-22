@@ -5,7 +5,7 @@
             <div class="text">
                 <h3>The Largest Agriculture Lease Solution</h3>
                 <p>
-                    Rent and Lease your vacant lands and others to promote Agriculture. And start
+                    Lease out your vacant lands and others materials to promote Agriculture. And start
                     earning from it.
                 </p>
 
