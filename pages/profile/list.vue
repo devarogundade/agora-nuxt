@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="textbox">
-                    <label for="">Land location</label>
+                    <label for="">Asset location</label>
                     <textarea placeholder="Enter a full location address" v-model="location" cols="30" rows="3"></textarea>
                 </div>
 
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="textbox">
-                    <label for="">Unit (plot)</label>
+                    <label for="">Unit (or plot in land)</label>
                     <input class="price" type="number" v-model="unit" placeholder="100">
                 </div>
 
