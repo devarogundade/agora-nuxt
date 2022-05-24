@@ -48,7 +48,6 @@
                 <div class="body">
                     <p>
                         An interested farmer would place an offer with price per unit(plot) per day, duration in days and unit (for land plots). So it's possible for farmers to rent a portion of the land (and other category items like IoT).
-
                     </p>
                 </div>
             </div>
