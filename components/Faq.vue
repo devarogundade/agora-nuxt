@@ -30,6 +30,18 @@
             <div class="faq">
                 <a href="https://dev-arogundade.gitbook.io/agoralease/" target="_blank">
                     <div class="head">
+                        <p>Why AgoraLease?</p> <i class="fi fi-rr-arrow-small-right"></i>
+                    </div>
+                </a>
+                <div class="body">
+                    <p>
+                        Research has shown that Digital Agriculture is the solution to boost food production to about 70% in the next few years. <br> <br> At AgoraLease we are ensuring that any farmers are is left out by having access to this farm technologies in an affordable price for them. <br> <br> Join AgoraLease today and grow with us.
+                    </p>
+                </div>
+            </div>
+            <div class="faq">
+                <a href="https://dev-arogundade.gitbook.io/agoralease/" target="_blank">
+                    <div class="head">
                         <p>How to rent on AgoraLease</p> <i class="fi fi-rr-arrow-small-right"></i>
                     </div>
                 </a>
@@ -88,6 +100,6 @@ section {
 }
 
 a {
-  color: #000;
+    color: #000;
 }
 </style>
