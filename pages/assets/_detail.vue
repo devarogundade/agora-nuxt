@@ -178,7 +178,7 @@ export default {
     },
 
     methods: {
-        getLand() {
+        getAsset() {
             const url = 'asset?id=' + this.$route.params.detail
 
             this.$axios.get(url).then((response) => {
@@ -198,6 +198,17 @@ export default {
 
             }).catch((err) => {
                 this.alertMessage = 'Cannot connect to our server'
+            });
+        },
+
+        getWeather() {
+            console.log(this.geo);
+            const url = 'https://gate.eos.com/api/forecast/weather/forecast/?api_key=apk.672ed6b9ec961a3e136446209fed249074982f57719ad8cfa4e09e6a4fedc739&geometry=' + this.geo
+
+            this.$axios.post(url).then((response) => {
+                console.log(response);
+            }).catch((err) => {
+
             });
         },
 
@@ -296,12 +307,13 @@ export default {
 
             }).catch((err) => {
                 this.alertMessage = 'Cannot connect to our server'
-            });
+            })
         }
     },
 
     created() {
-        this.getLand()
+        this.getAsset()
+        // this.getWeather()
     }
 };
 </script>

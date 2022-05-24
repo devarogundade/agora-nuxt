@@ -5,8 +5,7 @@
             <div class="text">
                 <h3>The Largest Agriculture Lease Solution</h3>
                 <p>
-                    Lease out your vacant lands and other materials to promote Agriculture. And start
-                    earning from it.
+                    Digital Farming is the future of Agriculture. We are making it as cheap as possible for you.
                 </p>
 
                 <div class="actions">

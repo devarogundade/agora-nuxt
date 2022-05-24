@@ -104,7 +104,7 @@
 
                         <div class="item">
                             <p class="item-name">
-                                Support
+                                Farm Guide
                                 <i class="fi fi-rr-interrogation"></i>
                             </p>
                         </div>

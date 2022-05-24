@@ -101,6 +101,10 @@ export default {
                 this.readImages()
             },
             deep: true
+        },
+
+        location: function () {
+            this.getPlaces()
         }
     },
 
@@ -137,7 +141,8 @@ export default {
             ],
             selectedType: 0,
             selectedState: 0,
-            alertMessage: ''
+            alertMessage: '',
+            places: []
         }
     },
 
@@ -167,6 +172,19 @@ export default {
             } else {
                 this.list()
             }
+        },
+
+        getPlaces() {
+            if (this.location == '') {
+                this.places = []
+                return
+            }
+
+            const url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + this.location + '%20in%20Sydney&key=YOUR_API_KEY'
+
+            this.$axios.get(url).then((response) => {
+                console.log(response);
+            })
         },
 
         onImageSelected(event) {
