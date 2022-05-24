@@ -3,15 +3,36 @@
     <div class="app-min-width">
         <div class="bottom-bar">
             <div class="grid">
-              <div class="child">
-                <h3>Categories</h3>
+                <div class="child">
+                    <h3>Categories</h3>
 
-                <a href="">Lands</a>
-                <a href="">Machineries</a>
-                <a href="">Internet of Things</a>
-                <a href="">Trucks</a>
-                <a href="">Others</a>
-              </div>
+                    <ul>
+                        <li><a href="">Lands</a></li>
+                        <li><a href="">Machineries</a></li>
+                        <li><a href="">Internet of Things</a></li>
+                        <li><a href="">Trucks</a></li>
+                        <li><a href="">Others</a></li>
+                    </ul>
+                </div>
+
+                <div class="child">
+                    <h3>Products</h3>
+
+                    <ul>
+                        <li><a href="">Lands</a></li>
+                        <li><a href="">Farm Guide</a></li>
+                        <li><a href="">Developers API</a></li>
+                    </ul>
+                </div>
+
+                <div class="child">
+                    <h3>Contact</h3>
+
+                    <ul>
+                        <li><a href="tel: 08111755759">08111755759</a></li>
+                        <li><a href="mailto: devarogundade@gmail.com">devarogundade@gmail.com</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="trouble">
                 <p>Having trouble using this website?</p>
@@ -37,9 +58,34 @@ section {
     color: #fff;
 }
 
+.grid {
+    width: 800px;
+    max-width: 100%;
+    display: flex;
+    column-gap: 20px;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+ul {
+    margin-top: 20px;
+}
+
+ul a {
+    color: #fff;
+    opacity: 0.8;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 4px;
+}
+
+ul a:hover {
+    text-decoration: underline;
+}
+
 .trouble {
-  text-align: center;
-  margin: 20px 0;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .trouble p {
@@ -48,5 +94,13 @@ section {
 
 .trouble a {
     color: #00dc82;
+}
+
+@media screen and (max-width: 1000px) {
+  .grid {
+    row-gap: 20px;
+    flex-direction: column;
+}
+
 }
 </style>
