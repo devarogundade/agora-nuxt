@@ -5,6 +5,7 @@
     <LeaseAd />
     <TopItems />
     <Faq />
+    <Partners />
 </div>
 </template>
 
