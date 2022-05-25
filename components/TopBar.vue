@@ -7,9 +7,13 @@
                     <a href="/">
                         <img src="/images/logo.png" alt="">
                     </a>
+
+                    <div class="handburger" v-on:click="toggleMenu()">
+                        <i class="fi fi-rr-list"></i>
+                    </div>
                 </div>
 
-                <div class="menu">
+                <div class="menu" ref="menu">
                     <div class="items">
                         <div class="item">
                             <router-link to="/assets">
@@ -148,6 +152,10 @@ export default {
             }
 
             window.open('/search?text=' + this.text, "_self")
+        },
+
+        toggleMenu() {
+            this.$refs['menu'].classList.toggle('open-menu')
         }
     }
 }
@@ -174,15 +182,15 @@ section {
 }
 
 .header {
-    min-height: 80px;
     width: 100%;
+    min-height: 70px;
     display: flex;
     justify-content: center;
 }
 
 .header-grid {
     display: grid;
-    height: 100%;
+    min-height: 100%;
     grid-template-columns: 200px auto 200px;
     column-gap: 50px;
 }
@@ -365,9 +373,13 @@ input::placeholder {
     display: block !important;
 }
 
-@media screen and (max-width: 1000px) {
+.handburger {
+    display: none;
+}
+
+@media screen and (max-width: 1100px) {
     section {
-        top: -132px;
+        top: 0;
     }
 
     .header-grid {
@@ -375,16 +387,63 @@ input::placeholder {
         row-gap: 20px;
     }
 
-    .menu .item:last-child {
-        display: none;
+    .menu {
+        position: fixed;
+        top: 100vh;
+        left: 0;
+        width: 100%;
+        background: #002028;
+        z-index: 10;
+        padding: 20px;
+        height: 100vh;
+    }
+
+    .open-menu {
+        top: 70px !important;
+    }
+
+    .logo {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .items {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .item {
+        position: unset;
+        flex-direction: column;
+        margin: 10px 0;
+    }
+
+    .item-name {
+        color: #ffffff;
+    }
+
+    .handburger {
+        display: block !important;
+        cursor: pointer;
+    }
+
+    .handburger i {
+        font-size: 26px;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
 
     .dropdown {
-        position: fixed;
-        width: 80%;
+        position: unset;
+        width: 300px;
         left: 10%;
-        top: 120px;
+        top: 50px;
         background: #024e61;
+        display: block;
     }
 
     .search {
@@ -407,11 +466,6 @@ input::placeholder {
     .input p {
         top: 42px;
         padding: 2px 4px;
-    }
-
-    .logo {
-        margin-top: 20px;
-        justify-content: center;
     }
 }
 
