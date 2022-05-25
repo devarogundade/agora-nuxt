@@ -107,9 +107,14 @@
                         </div>
 
                         <div class="item">
-                            <p class="item-name">
+                            <p class="item-name" v-if="!$auth.loggedIn">
                                 Farm Guide
                                 <i class="fi fi-rr-interrogation"></i>
+                            </p>
+
+                            <p class="item-name" v-else v-on:click="logout()">
+                                Logout
+                                <i class="fi fi-rr-sign-out-alt"></i>
                             </p>
                         </div>
                     </div>
@@ -156,6 +161,11 @@ export default {
 
         toggleMenu() {
             this.$refs['menu'].classList.toggle('open-menu')
+        },
+
+        logout() {
+            this.$auth.logout()
+            window.open('/', "_self")
         }
     },
 

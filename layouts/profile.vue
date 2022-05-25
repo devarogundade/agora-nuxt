@@ -1,8 +1,8 @@
 <template>
 <div>
-    <TopBarProfile />
+    <TopBar />
     <Nuxt class="nuxt-app" />
-    <BottomBarProfile />
+    <BottomBar />
 </div>
 </template>
 
