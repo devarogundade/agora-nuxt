@@ -384,7 +384,6 @@ input::placeholder {
 
     .header-grid {
         grid-template-columns: 100%;
-        row-gap: 20px;
     }
 
     .menu {
@@ -399,7 +398,7 @@ input::placeholder {
     }
 
     .open-menu {
-        top: 70px !important;
+        top: 65px !important;
     }
 
     .logo {
