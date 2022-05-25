@@ -2,7 +2,7 @@
 <section>
     <div class="app-min2-width">
         <div class="ad">
-            <p>Do you have a land? Why not lease to farming and start earning today.</p>
+            <p>Invest in Digital Farming and earn massively with no stress for you.</p>
             <a href="/register">
                 <div class="button">Get Started</div>
             </a>
