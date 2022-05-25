@@ -3,7 +3,7 @@
     <CallToAction />
     <TopLocation />
     <LeaseAd />
-    <TopItems />
+    <Formal />
     <Faq />
     <Partners />
 </div>

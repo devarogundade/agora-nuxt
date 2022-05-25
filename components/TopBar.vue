@@ -81,6 +81,16 @@
                                             </div>
                                         </router-link>
                                     </li>
+
+                                    <li>
+                                        <router-link to="/profile/list">
+                                            <i class="fi fi-rr-plus"></i>
+                                            <div class="text">
+                                                <h3>List</h3>
+                                                <p>Set your items ready for lease.</p>
+                                            </div>
+                                        </router-link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -107,10 +117,12 @@
                         </div>
 
                         <div class="item">
-                            <p class="item-name" v-if="!$auth.loggedIn">
-                                Farm Guide
-                                <i class="fi fi-rr-interrogation"></i>
-                            </p>
+                            <router-link to="/farm-guide"  v-if="!$auth.loggedIn">
+                                <p class="item-name">
+                                    Farm Guide
+                                    <i class="fi fi-rr-interrogation"></i>
+                                </p>
+                            </router-link>
 
                             <p class="item-name" v-else v-on:click="logout()">
                                 Logout
