@@ -157,6 +157,16 @@ export default {
         toggleMenu() {
             this.$refs['menu'].classList.toggle('open-menu')
         }
+    },
+
+    mounted() {
+        const _this = this
+
+        document.querySelectorAll('.item-name, .dropdown li').forEach(element => {
+            element.addEventListener('click', function () {
+                _this.toggleMenu()
+            })
+        })
     }
 }
 </script>
