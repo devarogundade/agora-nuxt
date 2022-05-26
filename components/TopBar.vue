@@ -431,6 +431,8 @@ input::placeholder {
 
     .open-menu {
         top: 65px !important;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
     }
 
     .logo {
