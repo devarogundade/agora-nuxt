@@ -19,6 +19,11 @@
             </div>
 
             <div class="group">
+                <label for="">Phone Number</label>
+                <input type="text" placeholder="Enter" v-model="phone" />
+            </div>
+
+            <div class="group">
                 <label for="">Password</label>
                 <input type="password" placeholder="Enter" v-model="password" />
             </div>
@@ -60,6 +65,7 @@ export default {
 
             fullName: "",
             emailAddress: "",
+            phone: "",
             password: "",
             confirmPassword: "",
 
@@ -79,6 +85,8 @@ export default {
                 this.alertMessage = "FullName is required"
             } else if (this.emailAddress == "") {
                 this.alertMessage = "Email Address is required"
+            }  else if (this.phone == "") {
+                this.alertMessage = "Phone number is required"
             } else if (this.password == "") {
                 this.alertMessage = "Password is required"
             } else if (this.confirmPassword == "") {
@@ -100,8 +108,10 @@ export default {
                 this.emailAddress +
                 "&password=" +
                 this.password +
+                "&phone=" +
+                this.phone
                 "&purpose=" +
-                this.purpose;
+                this.purpose
 
             this.$axios.post(url).then((response) => {
                 this.loading = false

@@ -70,7 +70,7 @@ export default {
             } else if (this.unit == '') {
                 this.alertMessage = 'Unit is required'
             } else if (this.unit > this.data.unit) {
-                this.alertMessage = 'Owner do not have up to this amount of ' + this.data.quantityHint + '. Use max to be precise'
+                this.alertMessage = 'Owner do not have up to this amount of unit. Use max to be precise'
             } else if (this.price > this.data.price) {
                 if (prompt("You are offering more than owner's request. Type CONFIRM to continue") == 'CONFIRM') {
                     this.$emit('create', {
