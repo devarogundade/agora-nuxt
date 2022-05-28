@@ -127,6 +127,7 @@ export default {
             agree3: false,
             state: 1,
             location: '',
+            jsonLocation: '',
             name: '',
             about: '',
             price: '',
@@ -182,15 +183,32 @@ export default {
 
         getPlaces() {
             if (this.location == '') {
-                this.places = []
+                this.jsonLocation = ''
                 return
             }
 
-            const url = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + this.location + '&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=AIzaSyAezSIycNuyKkkyn67oJ_HHZfDpgJ3HvmM'
+            const json = {
+                address: this.location,
+                geo: {
+                    lat: 0.5,
+                    log: 0.5
+                }
+            }
 
-            this.$axios.get(url).then((response) => {
-                console.log(response);
-            })
+            this.jsonLocation = JSON.stringify(json)
+
+            // couldn't get a google places api key
+
+            // if (this.location == '') {
+            //     this.places = []
+            //     return
+            // }
+
+            // const url = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + this.location
+
+            // this.$axios.get(url).then((response) => {
+            //     console.log(response);
+            // })
         },
 
         onImageSelected(event) {
@@ -237,7 +255,7 @@ export default {
             const url = "create/asset?state=" + this.states[this.selectedState] +
                 '&type=' + this.types[this.selectedType] +
                 '&name=' + name +
-                '&location=' + this.location +
+                '&location=' + this.jsonLocation +
                 '&about=' + this.about +
                 '&price=' + this.price +
                 '&unit=' + this.unit +
