@@ -29,6 +29,7 @@ export default {
     -webkit-backdrop-filter: blur(4px);
     height: 100px;
     border: 1px solid #ffffff20;
+    z-index: 100;
 }
 
 .lds-dual-ring {

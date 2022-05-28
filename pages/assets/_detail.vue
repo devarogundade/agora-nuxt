@@ -53,7 +53,7 @@
 
                                 <a href="/login" v-if="!$auth.loggedIn">
                                     <div class="btn">
-                                        Make Offer
+                                        Login to Make Offer
                                     </div>
                                 </a>
                             </div>
@@ -77,7 +77,7 @@
                         <li>
                             <i class="fi fi-rr-shield-check"></i>
                             <p v-if="asset.verified_at">Verified asset</p>
-                            <p v-else>Not verified asset</p>
+                            <p v-else>Verified asset</p>
                             <div class="progress"></div>
                         </li>
                     </ul>
@@ -86,7 +86,6 @@
                 <div class="accordion">
                     <div class="head">
                         <p class="title">Attributes</p>
-                        <!-- <i class="fi fi-rr-duplicate"></i> -->
                     </div>
                     <div class="body">
                         <ul>
@@ -119,6 +118,19 @@
                         <div class="images">
                             <img v-for="image in asset.images" :key="image.id" :src="image.url" alt="">
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video" v-if="asset.video.length > 0">
+            <div class="app-min-width">
+                <div class="accordion">
+                    <div class="head">
+                        <p class="title">Video</p>
+                    </div>
+                    <div class="body">
+                        <iframe width="100%" height="400" :src="'https://www.youtube.com/embed/' + asset.video.replace('https://www.youtube.com/watch?v=', '')" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
