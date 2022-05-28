@@ -28,6 +28,7 @@
                         <p><b>Category :</b> {{ asset.type }}</p>
                         <p class="contact">
                             <a :href="'tel: ' + user.phone"><i class="fi fi-rr-phone-call"></i> Contact Owner</a>
+                            &nbsp;
                             <a :href="'mailto: ' + user.email"><i class="fi fi-rr-envelope"></i> Mail Owner</a>
                         </p>
                     </div>
