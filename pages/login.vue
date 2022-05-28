@@ -7,7 +7,7 @@
         <div class="form">
             <div class="group">
                 <label for="">Email Address</label>
-                <input type="text" placeholder="Enter" v-model="emailAddress" />
+                <input type="email" placeholder="Enter" v-model="emailAddress" />
             </div>
 
             <div class="group">

@@ -15,12 +15,12 @@
 
             <div class="group">
                 <label for="">Email Address</label>
-                <input type="text" placeholder="Enter" v-model="emailAddress" />
+                <input type="email" placeholder="Enter" v-model="emailAddress" />
             </div>
 
             <div class="group">
                 <label for="">Phone Number</label>
-                <input type="text" placeholder="Enter" v-model="phone" />
+                <input type="phone" placeholder="Enter" v-model="phone" />
             </div>
 
             <div class="group">
