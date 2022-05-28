@@ -5,7 +5,8 @@
         <img v-else src="/images/land.png" alt="">
     </div>
     <div class="content">
-        <h3 class="ellipsis">{{ JSON.parse(asset.location).address }}</h3>
+        <h3 class="ellipsis" v-if="asset.type.toLowerCase() == 'land'">{{ JSON.parse(asset.location).address }}</h3>
+        <h3 class="ellipsis" v-else>{{ asset.name }}</h3>
         <p class="state">{{ asset.type + ' in ' + asset.state }}</p>
 
         <p class="price">₦{{ asset.price }} / 24hr</p>
@@ -26,7 +27,7 @@
 
 <script>
 export default {
-    props: ['asset', 'trash']
+    props: ['asset', 'trash'],
 }
 </script>
 
@@ -136,6 +137,7 @@ export default {
     justify-content: center;
     align-items: center;
     height: 40px;
+    z-index: 1;
 }
 
 .edit {

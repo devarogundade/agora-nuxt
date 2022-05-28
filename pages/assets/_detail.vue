@@ -43,10 +43,15 @@
                                 <Loading :message="'Creating offer'" />
                             </div>
                             <div v-else>
-                                <div class="btn" v-if="$auth.loggedIn" v-on:click="promptCreateOffer()">
+                                <div class="btn delete" v-if="$auth.loggedIn && $auth.user.id == asset.user_id" v-on:click="deleteAsset()">
+                                    Delete Asset
+                                </div>
+
+                                <div class="btn" v-if="$auth.loggedIn && $auth.user.id != asset.user_id" v-on:click="promptCreateOffer()">
                                     Make Offer
                                 </div>
-                                <a href="/login" v-else>
+
+                                <a href="/login" v-if="!$auth.loggedIn">
                                     <div class="btn">
                                         Make Offer
                                     </div>
@@ -113,6 +118,39 @@
                     <div class="body">
                         <div class="images">
                             <img v-for="image in asset.images" :key="image.id" :src="image.url" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map">
+            <div class="app-min-width">
+                <div class="accordion">
+                    <div class="head">
+                        <p class="title">Map</p>
+                    </div>
+                    <div class="body">
+                        <div class="mapouter">
+                            <div class="gmap_canvas"><iframe width="100%" height="300" id="gmap_canvas" :src="'https://maps.google.com/maps?q=' + JSON.parse(asset.location).address + '&t=&z=17&ie=UTF8&iwloc=&output=embed'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+                                <style>
+                                    .mapouter {
+                                        position: relative;
+                                        text-align: right;
+                                        height: 300px;
+                                        width: 100%;
+                                    }
+                                </style>
+                                <style>
+                                    .gmap_canvas {
+                                        overflow: hidden;
+                                        background: none !important;
+                                        height: 300px;
+                                        width: 100%;
+                                    }
+                                </style>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -202,13 +240,29 @@ export default {
         },
 
         getWeather() {
-            console.log(this.geo);
-            const url = 'https://gate.eos.com/api/forecast/weather/forecast/?api_key=apk.672ed6b9ec961a3e136446209fed249074982f57719ad8cfa4e09e6a4fedc739&geometry=' + this.geo
+            // const url = 'https://gate.eos.com/api/forecast/weather/forecast/?api_key=apk.672ed6b9ec961a3e136446209fed249074982f57719ad8cfa4e09e6a4fedc739&geometry=' + this.geo
 
-            this.$axios.post(url).then((response) => {
-                console.log(response);
+            // this.$axios.post(url).then((response) => {
+            //     console.log(response);
+            // }).catch((err) => {
+
+            // });
+        },
+
+        deleteAsset() {
+            const url = '/delete/asset?id=' + this.asset.id
+
+            this.$axios.get(url).then((response) => {
+                const data = response.data
+
+                if (data.status) {
+                    this.$router.push('/profile')
+                } else {
+                    this.alertMessage = data.message
+                }
+
             }).catch((err) => {
-
+                this.alertMessage = "Cannot connect to our server"
             });
         },
 
@@ -433,6 +487,10 @@ section section {
     font-weight: 500;
     margin-top: 20px;
     justify-content: center;
+}
+
+.delete {
+  background: rgb(163, 10, 10);
 }
 
 .text ul {
