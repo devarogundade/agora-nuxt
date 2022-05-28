@@ -5,7 +5,7 @@
         <img v-else src="/images/land.png" alt="">
     </div>
     <div class="content">
-        <h3 class="ellipsis">{{ asset.location }}</h3>
+        <h3 class="ellipsis">{{ JSON.parse(asset.location).address }}</h3>
         <p class="state">{{ asset.type + ' in ' + asset.state }}</p>
 
         <p class="price">₦{{ asset.price }} / 24hr</p>

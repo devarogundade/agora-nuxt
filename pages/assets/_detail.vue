@@ -24,7 +24,7 @@
                         <h3 v-else>{{ asset.name }}</h3>
 
                         <p><b>State :</b> {{ asset.state }}</p>
-                        <p><b>Location :</b> {{ asset.location }}</p>
+                        <p><b>Location :</b> {{ JSON.parse(asset.location).address }}</p>
                         <p><b>Category :</b> {{ asset.type }}</p>
                     </div>
 
@@ -219,7 +219,7 @@ export default {
             }
 
             this.newOffer = {
-                name: this.asset.location,
+                name: JSON.parse(this.asset.location).address,
                 image: this.asset.images.length > 0 ? this.asset.images[0].url : '/land.png',
                 price: this.asset.price,
                 duration: '365',
