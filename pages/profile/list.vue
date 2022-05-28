@@ -6,9 +6,14 @@
             <div class="images">
                 <img v-for="(image, index) in images" :key="index" :id="'image' + index" src="" alt="">
                 <div class="input" v-if="images.length < 3">
-                    <input type="file" name="" id="" v-on:change="onImageSelected($event)">
+                    <input type="file" accept="image/*" v-on:change="onImageSelected($event)">
                     <i class="fi fi-rr-picture"></i>
                 </div>
+            </div>
+
+            <div class="textbox">
+                <label for="">Optional Preview video</label>
+                <input type="file" accept="video/*" v-on:change="onVideoSelected($event)" />
             </div>
 
             <div class="detail">
@@ -112,6 +117,7 @@ export default {
         return {
             showName: false,
             images: [],
+            videos: [],
             metadata: [{
                 name: 'PH',
                 value: '7'
@@ -180,7 +186,7 @@ export default {
                 return
             }
 
-            const url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + this.location + '%20in%20Sydney&key=YOUR_API_KEY'
+            const url = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + this.location + '&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=AIzaSyAezSIycNuyKkkyn67oJ_HHZfDpgJ3HvmM'
 
             this.$axios.get(url).then((response) => {
                 console.log(response);
@@ -189,6 +195,10 @@ export default {
 
         onImageSelected(event) {
             this.images.push(event.target.files[0])
+        },
+
+        onVideoSelected(event) {
+            this.videos.push(event.target.files[0])
         },
 
         onTypeChanged(event) {
@@ -216,6 +226,10 @@ export default {
             let formData = new FormData()
             for (let index = 0; index < this.images.length; index++) {
                 formData.append('image' + index, this.images[index])
+            }
+
+            for (let index = 0; index < this.videos.length; index++) {
+                formData.append('video', this.videos[index])
             }
 
             const name = this.name != '' ? this.name : 'No name'
