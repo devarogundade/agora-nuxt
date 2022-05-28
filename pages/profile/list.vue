@@ -12,8 +12,8 @@
             </div>
 
             <div class="textbox">
-                <label for="">Optional Preview video</label>
-                <input type="file" accept="video/*" v-on:change="onVideoSelected($event)" />
+                <label for="">Optional Youtube link</label>
+                <input placeholder="Youtube" v-model="video" />
             </div>
 
             <div class="detail">
@@ -117,7 +117,7 @@ export default {
         return {
             showName: false,
             images: [],
-            videos: [],
+            video: '',
             metadata: [{
                 name: 'PH',
                 value: '7'
@@ -215,10 +215,6 @@ export default {
             this.images.push(event.target.files[0])
         },
 
-        onVideoSelected(event) {
-            this.videos.push(event.target.files[0])
-        },
-
         onTypeChanged(event) {
             this.selectedType = event.target.value
             this.showName = this.selectedType != 0
@@ -246,10 +242,6 @@ export default {
                 formData.append('image' + index, this.images[index])
             }
 
-            for (let index = 0; index < this.videos.length; index++) {
-                formData.append('video', this.videos[index])
-            }
-
             const name = this.name != '' ? this.name : 'No name'
 
             const url = "create/asset?state=" + this.states[this.selectedState] +
@@ -259,7 +251,8 @@ export default {
                 '&about=' + this.about +
                 '&price=' + this.price +
                 '&unit=' + this.unit +
-                '&metadata=' + JSON.stringify(this.metadata);
+                '&video=' + this.video +
+                '&metadata=' + JSON.stringify(this.metadata)
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.setHeader('Content-Type', 'multipart/form-data')
