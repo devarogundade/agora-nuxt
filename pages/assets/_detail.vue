@@ -290,7 +290,7 @@ export default {
             }
 
             this.newOffer = {
-                name: JSON.parse(this.asset.location).address,
+                name: this.asset.type.toLowerCase() == 'land' ? JSON.parse(this.asset.location).address : this.asset.name,
                 image: this.asset.images.length > 0 ? this.asset.images[0].url : '/land.png',
                 price: this.asset.price,
                 duration: '365',

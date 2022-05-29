@@ -116,7 +116,7 @@ section {
     background: #003543;
     max-height: 80%;
     width: 500px;
-    max-width: 100%;
+    max-width: 90%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
