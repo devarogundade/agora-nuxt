@@ -100,7 +100,7 @@ section {
 }
 
 .model {
-  height: 100%;
+    height: 100%;
 }
 
 .actions {
@@ -112,9 +112,10 @@ section {
 }
 
 .actions .button {
-    background: #00c675;
-    padding: 10px;
+    padding: 10px 25px;
     border-radius: 10px;
+    background: #7be9bb;
+    font-weight: 600;
     color: #161704;
     font-size: 15px;
     font-weight: 600;
@@ -144,7 +145,7 @@ section {
     }
 
     section {
-      margin-top: 60px;
+        margin-top: 60px;
     }
 }
 </style>
