@@ -82,7 +82,7 @@
                                         </router-link>
                                     </li>
 
-                                    <li>
+                                    <li v-if="$auth.user.purpose == 1">
                                         <router-link to="/profile/list">
                                             <i class="fi fi-rr-plus"></i>
                                             <div class="text">
