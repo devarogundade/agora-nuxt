@@ -109,7 +109,7 @@ export default {
                 "&password=" +
                 this.password +
                 "&phone=" +
-                this.phone
+                this.phone +
                 "&purpose=" +
                 this.purpose
 

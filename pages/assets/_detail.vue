@@ -27,9 +27,9 @@
                         <p><b>Location :</b> {{ JSON.parse(asset.location).address }}</p>
                         <p><b>Category :</b> {{ asset.type }}</p>
                         <p class="contact">
-                            <a :href="'tel: ' + user.phone"><i class="fi fi-rr-phone-call"></i> Contact Owner</a>
+                            <a :href="'tel: ' + asset.user.phone"><i class="fi fi-rr-phone-call"></i> Contact Owner</a>
                             &nbsp;
-                            <a :href="'mailto: ' + user.email"><i class="fi fi-rr-envelope"></i> Mail Owner</a>
+                            <a :href="'mailto: ' + asset.user.email"><i class="fi fi-rr-envelope"></i> Mail Owner</a>
                         </p>
                     </div>
 
