@@ -191,7 +191,8 @@
                         </i>
 
                         <p class="message">{{ offer.user.name }} </p>
-                        <p class="quantity">{{ offer.unit }} plots</p>
+                        <p class="quantity" v-if="asset.type.toLowerCase() == 'land'">{{ offer.unit }} plots</p>
+                        <p class="quantity" v-else>{{ offer.unit }} units</p>
                         <p class="rate">₦{{ offer.price.toFixed(2) }} per day</p>
                         <p class="duration">{{ offer.duration }} days</p>
 
