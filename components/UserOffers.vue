@@ -45,6 +45,7 @@
                     <div class="button" v-on:click="accept(offer)">Accept</div>
                 </div>
                 <div class="accept" v-if="offer.status == 'accepted'">
+                    <a href="/invoice.docx" download><div class="button">Invoice</div></a>
                     <div class="button" v-on:click="showOffer = offer.id">View status</div>
                 </div>
             </div>
@@ -88,7 +89,7 @@ export default {
 
             }).catch((err) => {
                 this.alertMessage = "Cannot connect to our server"
-            });
+            })
         },
 
         accept(offer) {
@@ -117,7 +118,7 @@ export default {
 
             }).catch((err) => {
                 this.alertMessage = 'Cannot connect to our server'
-            });
+            })
         },
 
         cancel(offer) {
@@ -145,7 +146,7 @@ export default {
 
             }).catch((err) => {
                 this.alertMessage = 'Cannot connect to our server'
-            });
+            })
         },
 
         reject(offer) {
@@ -173,7 +174,7 @@ export default {
 
             }).catch((err) => {
                 this.alertMessage = 'Cannot connect to our server'
-            });
+            })
         }
     },
 
