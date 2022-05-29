@@ -21,7 +21,7 @@ section {
 }
 
 .ad {
-    background: #99aeb4;
+    background: #90aeb6;
     border-radius: 20px;
     min-height: 150px;
     width: 100%;
@@ -39,7 +39,7 @@ section {
 
 .ad p {
     font-size: 24px;
-    color: #161704;
+    color: #fff;
     font-weight: 500;
     margin-right: 20px;
 }
