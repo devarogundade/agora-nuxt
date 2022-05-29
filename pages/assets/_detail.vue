@@ -314,7 +314,7 @@ export default {
 
                 if (data.status) {
                     this.alertMessage = 'Offer created'
-                    this.getLand()
+                    this.getAsset()
                 } else {
                     this.alertMessage = data.message
                 }
@@ -362,7 +362,7 @@ export default {
 
             this.cancellingOffer = true
 
-            const url = 'cancel/user/offer?offer_id=' + offer.id;
+            const url = 'cancel/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {

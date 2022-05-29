@@ -21,7 +21,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>Size (plot)</td>
+                            <td>Unit (or plot in land)</td>
                             <td>Duration (day)</td>
                             <td>Rate (₦ per day)</td>
                         </tr>
@@ -156,7 +156,7 @@ export default {
 
             this.rejectingOffer = true
 
-            const url = 'cancel/offer?&offer_id=' + offer.id;
+            const url = 'cancel/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
