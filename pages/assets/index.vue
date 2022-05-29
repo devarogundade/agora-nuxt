@@ -30,7 +30,7 @@
 
         <div class="more">
             <div class="market">
-                Load more
+                That's all
             </div>
         </div>
     </div>
