@@ -50,6 +50,10 @@
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
                 <Asset :asset="asset" :trash="true" />
             </a>
+
+            <p v-if="!loading && assets.length == 0">
+              You do not own any asset.
+            </p>
         </div>
 
         <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
