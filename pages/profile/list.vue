@@ -167,7 +167,7 @@ export default {
             } else if (this.about == '' || this.about.length < 15) {
                 this.alertMessage = "Please enter a long text about this asset"
             } else if (this.price == '') {
-                this("Enter a price")
+                this.alertMessage = "Enter a price"
             } else if (this.unit == '') {
                 this.alertMessage = "Enter units"
             } else if (!this.agree1) {
