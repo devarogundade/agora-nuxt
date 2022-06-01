@@ -128,7 +128,7 @@
             </div>
         </section>
 
-        <section class="video" v-if="asset.video.length > 0">
+        <section class="video" v-if="asset.video && asset.video != ''">
             <div class="app-min-width">
                 <div class="accordion">
                     <div class="head">
