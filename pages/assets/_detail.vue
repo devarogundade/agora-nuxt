@@ -344,7 +344,7 @@ export default {
 
                 if (data.status) {
                     this.alertMessage = 'offer accepted'
-                    this.getLand()
+                    this.getAsset()
                 } else {
                     this.alertMessage = data.message
                 }
@@ -372,7 +372,7 @@ export default {
 
                 if (data.status) {
                     this.alertMessage = 'offer cancelled'
-                    this.getLand()
+                    this.getAsset()
                 } else {
                     this.alertMessage = data.message
                 }
