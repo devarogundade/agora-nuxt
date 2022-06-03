@@ -11,13 +11,17 @@
                 <h3>{{ user.name }}</h3>
                 <p>{{ user.email.toLowerCase() }}</p>
 
-                <div :class="user.verified_at != null ? 'verified yes' : 'verified no'">
+                <div v-if="user.verified_at == null" v-on:click="promptVerify = true" class="verified no">
                     <i class="fi fi-rr-shield-check"></i>
-                    {{ user.verified_at != null ? 'Verified' : 'Not Verified' }}
+                    Not Verified
+                </div>
+                <div v-else class="verified yes">
+                    <i class="fi fi-rr-shield-check"></i>
+                    Verified
                 </div>
 
                 <div class="balance">
-                    <b>Balance:</b> ₦ {{ user.balance.toFixed(2) }} <a href="/deposit">Deposit</a>  <a href="/withdraw">Withdraw</a>
+                    <b>Balance:</b> ₦ {{ user.balance.toFixed(2) }} <a href="/deposit">Deposit</a> <a href="/withdraw">Withdraw</a>
                 </div>
             </div>
             <div class="options">
@@ -52,12 +56,14 @@
             </a>
 
             <p v-if="!loading && assets.length == 0">
-              {{ user.purpose == 1 ? 'You do not own any asset.' : 'You haven\'t rent any asset.' }}
+                {{ user.purpose == 1 ? 'You do not own any asset.' : 'You haven\'t rent any asset.' }}
             </p>
         </div>
 
         <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
         <Loading v-if="loading" :message="'Loading your assets'" />
+
+        <Verify v-if="promptVerify" v-on:exit="promptVerify = false" v-on:verified="onVerified()" />
     </div>
 </section>
 </template>
@@ -73,6 +79,8 @@ export default {
 
             alertMessage: '',
             user: this.$auth.user,
+
+            promptVerify: false
         }
     },
 
@@ -97,6 +105,10 @@ export default {
                 this.alertMessage = 'Cannot connect to our server'
             });
         },
+
+        onVerified() {
+            location.reload()
+        }
     },
 
     created() {
@@ -161,6 +173,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    user-select: none;
 }
 
 .yes {
@@ -222,10 +236,10 @@ section {
 }
 
 .balance a {
-  font-size: 14px;
-  margin-left: 10px;
-  text-decoration: underline;
-  color: #003543;
+    font-size: 14px;
+    margin-left: 10px;
+    text-decoration: underline;
+    color: #003543;
 }
 
 @media screen and (max-width: 1000px) {
