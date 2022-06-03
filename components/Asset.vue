@@ -7,7 +7,8 @@
     <div class="content">
         <h3 class="ellipsis" v-if="asset.type.toLowerCase() == 'land'">{{ JSON.parse(asset.location).address }}</h3>
         <h3 class="ellipsis" v-else>{{ asset.name }}</h3>
-        <p class="state">{{ asset.type + ' in ' + asset.state }}</p>
+
+        <p class="state">{{ rented ? 'You have an active lease' : asset.type + ' in ' + asset.state }}</p>
 
         <p class="price">₦{{ asset.price }} / 24hr</p>
         <i v-if="trash" class="fi fi-rr-trash trash"></i>
@@ -27,7 +28,7 @@
 
 <script>
 export default {
-    props: ['asset', 'trash'],
+    props: ['asset', 'trash', 'rented'],
 }
 </script>
 

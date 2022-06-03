@@ -48,11 +48,11 @@
 
         <div class="asset-items">
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
-                <Asset :asset="asset" :trash="true" />
+                <Asset :asset="asset" :trash="true" :rented="true" />
             </a>
 
             <p v-if="!loading && assets.length == 0">
-              You do not own any asset.
+              {{ user.purpose == 1 ? 'You do not own any asset.' : 'You haven\'t rent any asset.' }}
             </p>
         </div>
 
