@@ -11,7 +11,7 @@
                 <h3>{{ user.name }}</h3>
                 <p>{{ user.email.toLowerCase() }}</p>
 
-                <div v-if="user.verified_at == null" v-on:click="promptVerify = true" class="verified no">
+                <div v-if="user.email_verified_at == null" v-on:click="promptVerify = true" class="verified no">
                     <i class="fi fi-rr-shield-check"></i>
                     Not Verified
                 </div>
