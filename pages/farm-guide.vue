@@ -55,7 +55,7 @@ export default {
             const url = 'https://agoralease.herokuapp.com/api/farm-guide?text=' + this.plant
 
             this.$axios.get(url).then((response) => {
-
+                this.loading = false
                 const data = response.data
 
                 if (data.status) {
