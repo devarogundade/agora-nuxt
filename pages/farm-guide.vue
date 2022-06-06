@@ -1,12 +1,15 @@
 <template>
 <section>
-    <div class="app-min2-width">
+    <div class="app-min-width">
         <h3 class="title">Farm Guide</h3>
-        <p class="desc">Let's help you find the right tools and best locations on our platform to start your farm.</p>
+        <p class="desc">
+            Let's help you find the right tools and best locations on our platform
+            to start your farm.
+        </p>
 
         <div class="farm-guide">
             <div class="what">
-                <select name="" id="" v-on:change="onPlantChanged($event)">
+                <select v-on:change="onPlantChanged($event)">
                     <option value="none">What do you want to plan?</option>
                     <option value="cassava">Cassava</option>
                     <option value="maize">Maize</option>
@@ -16,61 +19,106 @@
                 </select>
             </div>
 
-            <div class="result" v-for="state in states" :key="state">
+            <div class="result">
                 <div class="location">
-                    <h3>{{ Object.keys(state) }}</h3>
+                    <div v-if="result.Lagos">
+                        <h3>Lagos</h3>
 
-                    <div class="assets-items" v-for="asset in state.assets" :key="asset.id">
-                        <Asset :asset="asset" />
+                        <div class="asset-items">
+                            <a v-for="asset in result.Lagos" :key="asset.id" :href="'/assets/' + asset.id">
+                                <Asset :asset="asset" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location">
+                    <div v-if="result.Enugu">
+                        <h3>Enugu</h3>
+
+                        <div class="asset-items">
+                            <a v-for="asset in result.Enugu" :key="asset.id" :href="'/assets/' + asset.id">
+                                <Asset :asset="asset" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location">
+                    <div v-if="result.Sokoto">
+                        <h3>Sokoto</h3>
+
+                        <div class="asset-items">
+                            <a v-for="asset in result.Sokoto" :key="asset.id" :href="'/assets/' + asset.id">
+                                <Asset :asset="asset" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location">
+                    <div v-if="result.Oyo">
+                        <h3>Oyo</h3>
+
+                        <div class="asset-items">
+                            <a v-for="asset in result.Oyo" :key="asset.id" :href="'/assets/' + asset.id">
+                                <Asset :asset="asset" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <Alert v-if="alertMessage != ''" :message="alertMessage" />
+        <Loading v-if="loading" :message="'Fetching'" />
     </div>
 </section>
 </template>
 
 <script>
 export default {
-    layout: 'landing',
+    layout: "landing",
 
     data() {
         return {
-            loading: true,
-            plant: '',
+            loading: false,
+            plant: "",
 
-            states: [],
-            alertMessage: ''
-        }
+            result: [],
+            alertMessage: "",
+        };
     },
 
     methods: {
         onPlantChanged(event) {
-            this.plant = event.target.value
-            this.getFarmGuide()
+            this.plant = event.target.value;
+            this.getFarmGuide();
         },
 
         getFarmGuide() {
-            this.loading = true
-            const url = 'https://agoralease.herokuapp.com/api/farm-guide?text=' + this.plant
+            this.loading = true;
+            const url =
+                "https://agoralease.herokuapp.com/api/farm-guide?text=" + this.plant;
 
-            this.$axios.get(url).then((response) => {
-                this.loading = false
-                const data = response.data
+            this.$axios
+                .get(url)
+                .then((response) => {
+                    this.loading = false;
+                    const data = response.data;
 
-                if (data.status) {
-                    this.states = data.data
-                } else {
-                    this.alertMessage = data.message
-                }
-
-            }).catch(() => {
-                this.alertMessage = 'Can not connect to our server'
-            });
-
-        }
-    }
-}
+                    if (data.status) {
+                        this.result = data.data;
+                    } else {
+                        this.alertMessage = data.message;
+                    }
+                })
+                .catch(() => {
+                    this.alertMessage = "Can not connect to our server";
+                });
+        },
+    },
+};
 </script>
 
 <style scoped>
