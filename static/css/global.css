@@ -148,9 +148,6 @@ input[type=number] {
 }
 
 @media screen and (max-width: 700px) {
-    .single {
-        /* font-size: 12px !important; */
-    }
     .asset-items {
         grid-template-columns: repeat(1, minmax(0, 1fr));
         padding: 10px;
