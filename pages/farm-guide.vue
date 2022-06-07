@@ -97,7 +97,13 @@ export default {
         },
 
         getFarmGuide() {
+            if (this.plant == "none") {
+                this.result = [];
+                return;
+            }
+
             this.loading = true;
+
             const url =
                 "https://agoralease.herokuapp.com/api/farm-guide?text=" + this.plant;
 
