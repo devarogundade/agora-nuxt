@@ -20,7 +20,6 @@
 
                     <ul>
                         <li><a href="/farm-guide">Farm Guide</a></li>
-                        <li><a href="">Developers API</a></li>
                     </ul>
                 </div>
 
