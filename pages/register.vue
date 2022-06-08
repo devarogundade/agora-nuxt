@@ -1,7 +1,7 @@
 <template>
 <section>
     <div class="app-min2-width">
-        <h3 class="title">Join our community of investors and farmers</h3>
+        <h3 class="title">Join our community of leasors and farmers</h3>
         <p class="desc">
             You will be able to leased your Lands, Machinery and IoTs to farmers and
             also promoting agriculture in Nigeria.

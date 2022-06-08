@@ -26,6 +26,7 @@ h3 {
 
 .images {
     display: flex;
+    width: 100%;
     justify-content: space-between;
 }
 
