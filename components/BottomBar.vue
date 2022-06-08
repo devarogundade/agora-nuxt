@@ -7,20 +7,19 @@
                     <h3>Categories</h3>
 
                     <ul>
-                        <li><a href="">Lands</a></li>
-                        <li><a href="">Machineries</a></li>
-                        <li><a href="">Internet of Things</a></li>
-                        <li><a href="">Trucks</a></li>
-                        <li><a href="">Others</a></li>
+                        <li><a href="/assets?type=land">Lands</a></li>
+                        <li><a href="/assets?type=machinery">Machineries</a></li>
+                        <li><a href="/assets?type=iot">Internet of Things</a></li>
+                        <li><a href="/assets?type=truck">Trucks</a></li>
+                        <li><a href="/assets?type=others">Others</a></li>
                     </ul>
                 </div>
 
                 <div class="child">
-                    <h3>Products</h3>
+                    <h3>Others</h3>
 
                     <ul>
-                        <li><a href="">Lands</a></li>
-                        <li><a href="">Farm Guide</a></li>
+                        <li><a href="/farm-guide">Farm Guide</a></li>
                         <li><a href="">Developers API</a></li>
                     </ul>
                 </div>

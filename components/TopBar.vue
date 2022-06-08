@@ -420,7 +420,7 @@ input::placeholder {
 
     .menu {
         position: fixed;
-        top: 100vh;
+        top: calc(100vh + 80px);
         left: 0;
         width: 100%;
         background: #002028;
