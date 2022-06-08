@@ -28,7 +28,7 @@
 
                     <ul>
                         <li><a href="tel: 08111755759">08111755759</a></li>
-                        <li><a href="mailto: devarogundade@gmail.com">devarogundade@gmail.com</a></li>
+                        <li><a href="mailto: devarogundade@outlook.com">devarogundade@outlook.com</a></li>
                     </ul>
                 </div>
             </div>
