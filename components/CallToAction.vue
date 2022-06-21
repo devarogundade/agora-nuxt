@@ -5,7 +5,7 @@
             <div class="text">
                 <h3>The Largest Agriculture Lease Solution</h3>
                 <p>
-                    Digital Farming is the future of Agriculture. We are making it as cheap as possible for you.
+                    First Peer to Peer Agricultural Lease Platform. Increase your productivity with low cost in production.
                 </p>
 
                 <div class="actions">

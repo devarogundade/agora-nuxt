@@ -6,7 +6,7 @@
                 <img src="https://images.pexels.com/photos/259280/pexels-photo-259280.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
             </div>
             <div class="content">
-                <h3>Lands</h3>
+                <h3>Farmlands</h3>
                 <p>Let your unused spaces work for you. Lease out your land to farmers and earn passively on your used spaces.</p>
                 <div class="actions">
                     <a href="/assets?type=land">

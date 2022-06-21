@@ -35,6 +35,7 @@ export default {
 <style scoped>
 .item {
     border: 1px #ccc solid;
+    background: #FAFAFA;
     border-radius: 20px;
     cursor: pointer;
     overflow: hidden;

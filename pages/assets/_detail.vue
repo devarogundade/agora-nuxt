@@ -600,18 +600,21 @@ section section {
     margin: 0;
 }
 
-.activities {
+/* .activities {
     border-radius: 10px;
     overflow: hidden;
-}
+} */
 
 .activity {
-    background: #ccc;
+    background: #FAFAFA;
+    border: 1px solid #ccc;
     padding: 15px;
     display: grid;
     grid-template-columns: 40px auto 100px 160px 160px 100px;
     column-gap: 20px;
     align-items: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .activity .message {
@@ -679,10 +682,6 @@ section section {
     padding: 50px 0;
 }
 
-.activity:last-child {
-    border: none;
-}
-
 .activity-text {
     font-size: 24px;
     font-weight: 600;
@@ -698,6 +697,7 @@ section section {
     border: 1px #ccc solid;
     border-radius: 10px;
     height: fit-content;
+    overflow: hidden;
 }
 
 .accordion .head {
@@ -708,6 +708,7 @@ section section {
     padding: 0 20px;
     cursor: pointer;
     user-select: none;
+    background: #FAFAFA;
 }
 
 .accordion .body {

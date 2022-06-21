@@ -45,7 +45,7 @@
                     <div class="button" v-on:click="accept(offer)">Accept</div>
                 </div>
                 <div class="accept" v-if="offer.status == 'accepted'">
-                    <a href="/invoice.docx" download><div class="button">Invoice</div></a>
+                    <a href="/sample-agreement.docx" download><div class="button">Agreement</div></a>
                     <div class="button" v-on:click="showOffer = offer.id">View status</div>
                 </div>
             </div>
@@ -205,7 +205,8 @@ section {
 
 .item {
     border-radius: 20px;
-    background: #003543;
+    border: 1px solid #ccc;
+    background: #FAFAFA;
     padding: 10px 15px;
     margin-bottom: 20px;
     width: 100%;
@@ -265,7 +266,6 @@ section {
     width: fit-content;
     grid-template-columns: 22px auto;
     align-items: center;
-    color: #ffffff;
     column-gap: 10px;
 }
 
@@ -285,9 +285,8 @@ section {
 table {
     width: 100%;
     margin-top: 10px;
-    color: #ffffff;
     border-radius: 10px;
-    border: 1px solid #002028;
+    border: 1px solid #ccc;
     overflow: hidden;
 }
 

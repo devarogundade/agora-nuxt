@@ -35,7 +35,7 @@
                 </a>
                 <div class="body">
                     <p>
-                        Research has shown that Digital Agriculture is the solution to boost food production to about 70% in the next few years. <br> <br> At AgoraLease we are ensuring that any farmers are is left out by having access to this farm technologies in an affordable price for them. <br> <br> Join AgoraLease today and grow with us.
+                        Research has shown that Digital Agriculture is the solution to boost food production to about 70% in the next few years. <br> <br> At AgoraLease we are ensuring that local farmers are not left out by having access to these farm technologies in an affordable way. <br> <br> Join AgoraLease today and grow with us.
                     </p>
                 </div>
             </div>
@@ -48,6 +48,14 @@
                 <div class="body">
                     <p>
                         An interested farmer would place an offer with price per unit(plot) per day, duration in days and unit (for land plots). So it's possible for farmers to rent a portion of the land (and other category items like IoT).
+                        <br> <br>
+                        1. Locate the item you want to rent.
+                        <br>
+                        2. Place your offer on the item, and wait for the item owner to accept your request.
+                        <br>
+                        3. Generate your written agreement.
+                        <br>
+                        4. Show the agreement document to the item owner in the time of collecting the item.
                     </p>
                 </div>
             </div>
@@ -89,7 +97,7 @@ section {
 .body {
     font-size: 15px;
     padding: 20px;
-    background: #fafafa;
+    background: #FAFAFA;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
 }
