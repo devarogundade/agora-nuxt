@@ -2,7 +2,7 @@ export default {
     target: 'static',
 
     head: {
-        title: 'AgoraLease - Agricultural Assets Leasing Marketplace',
+        title: 'Peer to Peer Agricultural Leasing Marketplace',
         htmlAttrs: {
             lang: 'en'
         },
