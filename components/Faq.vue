@@ -11,7 +11,7 @@
                 </a>
                 <div class="body">
                     <p>
-                        We are building a platform that helps farmers to have access to farm machines, IoTs, lands and other farm requirements in a very affordable way by renting for a certain period of time instead of buying them, and also creating an investment platform for leasors or institutions.
+                        We are building a platform that helps farmers to have access to farm machines, IoTs, lands and other farm requirements in a very affordable way by renting for a certain period of time instead of buying them, and also creating an investment platform for lessors.
                     </p>
                 </div>
             </div>
