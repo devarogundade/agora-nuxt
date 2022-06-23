@@ -50,14 +50,18 @@
             </div>
         </div>
 
+        <p class="empty-assets" v-if="!loading && assets.length == 0 && user.purpose == 2">
+            You haven't rent any asset. <br> <a href="/assets">Rent your first item</a>
+        </p>
+
+        <p class="empty-assets" v-if="!loading && assets.length == 0 && user.purpose == 1">
+            You do not own any asset. <br> <a href="/profile/list">List your first item</a>
+        </p>
+
         <div class="asset-items">
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
                 <Asset :asset="asset" :trash="true" :rented="true" />
             </a>
-
-            <p v-if="!loading && assets.length == 0">
-                {{ user.purpose == 1 ? 'You do not own any asset.' : 'You haven\'t rent any asset.' }}
-            </p>
         </div>
 
         <Alert :message="alertMessage" v-if="alertMessage != ''" v-on:exit="alertMessage = ''" />
@@ -240,6 +244,27 @@ section {
     margin-left: 10px;
     text-decoration: underline;
     color: #003543;
+}
+
+.empty-assets {
+    padding: 20px;
+    background: #FAFAFA;
+    border: 1px #ccc solid;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #003543;
+    margin-top: 50px;
+}
+
+.empty-assets a {
+    font-size: 16px;
+    margin-top: 30px;
+    background: #00c675;
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: #ffffff;
 }
 
 @media screen and (max-width: 1000px) {
