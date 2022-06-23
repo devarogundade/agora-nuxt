@@ -161,7 +161,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.alertMessage = 'offer accepted'
+                    this.alertMessage = 'You have confirmed you received the item'
                     this.getOffers()
                 } else {
                     this.alertMessage = data.message
