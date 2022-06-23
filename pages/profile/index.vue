@@ -26,7 +26,7 @@
             </div>
             <div class="options">
                 <a href="/profile/edit"><i class="fi fi-rr-pencil"></i></a>
-                <a href="/deposit"><i class="fi fi-rr-bank"></i></a>
+                <a href="/profile"><i class="fi fi-rr-refresh"></i></a>
             </div>
         </div>
 

@@ -186,7 +186,10 @@
                         <i class="fi fi-rr-check accepted" v-if="offer.status == 'accepted'">
                             <span>Accepted</span>
                         </i>
-                        <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
+                        <i class="fi fi-rr-ban rejected" v-if="offer.status == 'cancelled'">
+                            <span>Cancelled</span>
+                        </i>
+                         <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
                             <span>Rejected</span>
                         </i>
 
@@ -198,7 +201,9 @@
 
                         <p class="date" v-if="author && offer.status == 'pending'" v-on:click="accept(offer)">Accept</p>
                         <p class="date" v-if="author && offer.status == 'accepted'">Ends at {{ offer.expires_at }}</p>
+
                         <p class="date" v-if="!author && $auth.loggedIn && $auth.user.id == offer.user_id && offer.status == 'pending'" v-on:click="cancel(offer)">Cancel</p>
+                        <p class="date" v-if="author && $auth.loggedIn && offer.status == 'pending'" v-on:click="reject(offer)">Cancel</p>
                     </div>
                 </div>
                 <div class="empty" v-else>No offers</div>
@@ -372,6 +377,34 @@ export default {
 
                 if (data.status) {
                     this.alertMessage = 'offer cancelled'
+                    this.getAsset()
+                } else {
+                    this.alertMessage = data.message
+                }
+
+            }).catch((err) => {
+                this.alertMessage = 'Cannot connect to our server'
+            })
+        },
+
+        reject(offer) {
+            if (prompt("Type REJECT to confirm") != "REJECT") {
+                this.alertMessage = "Wrong confirmation"
+                return
+            }
+
+            this.cancellingOffer = true
+
+            const url = 'reject/offer?offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.cancellingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    this.alertMessage = 'offer rejected'
                     this.getAsset()
                 } else {
                     this.alertMessage = data.message

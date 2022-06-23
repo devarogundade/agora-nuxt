@@ -10,6 +10,12 @@
                     <i class="fi fi-rr-check accepted" v-if="offer.status == 'accepted'">
                         <span>Accepted</span>
                     </i>
+                    <i class="fi fi-rr-check accepted" v-if="offer.status == 'received'">
+                        <span>Received</span>
+                    </i>
+                    <i class="fi fi-rr-ban rejected" v-if="offer.status == 'cancelled'">
+                        <span>Cancelled</span>
+                    </i>
                     <i class="fi fi-rr-ban rejected" v-if="offer.status == 'rejected'">
                         <span>Rejected</span>
                     </i>
@@ -40,12 +46,22 @@
                 <div class="accept" v-if="$auth.user.id == offer.user_id && offer.status == 'pending'">
                     <div class="button cancel" v-on:click="cancel(offer)">Cancel Offer</div>
                 </div>
-                <div class="accept" v-if="offer.asset.user_id == $auth.user.id  && offer.status == 'pending'">
+                <div class="accept" v-if="offer.asset.user_id == $auth.user.id && offer.status == 'pending'">
                     <div class="button" v-on:click="reject(offer)">Reject</div>
                     <div class="button" v-on:click="accept(offer)">Accept</div>
                 </div>
-                <div class="accept" v-if="offer.status == 'accepted'">
-                    <a href="/sample-agreement.docx" download><div class="button">Agreement</div></a>
+
+                <div class="accept" v-if="$auth.user.id == offer.user_id && offer.status == 'accepted'">
+                    <div class="button" v-on:click="received(offer)">Confirm received</div>
+                </div>
+                <div class="accept" v-if="offer.asset.user_id == $auth.user.id && offer.status == 'accepted'">
+                    <div class="button">Wait for farmer to confirm received</div>
+                </div>
+
+                <div class="accept" v-if="offer.status == 'received'">
+                    <a href="/sample-agreement.docx" download>
+                        <div class="button">Agreement</div>
+                    </a>
                     <div class="button" v-on:click="showOffer = offer.id">View status</div>
                 </div>
             </div>
@@ -54,6 +70,7 @@
         <Loading :message="'Accepting offer'" v-if="acceptingOffer" />
         <Loading :message="'Cancelling offer'" v-if="cancellingOffer" />
         <Loading :message="'Rejecting offer'" v-if="rejectingOffer" />
+        <Loading :message="'Confirming receive'" v-if="receivingOffer" />
     </div>
 
     <Loading :message="'Loading offers'" v-else />
@@ -68,7 +85,12 @@ export default {
             offers: [],
             loading: true,
             alertMessage: '',
-            showOffer: -1
+            showOffer: -1,
+
+            acceptingOffer: false,
+            cancellingOffer: false,
+            rejectingOffer: false,
+            rejectingOffer: false
         }
     },
 
@@ -121,6 +143,35 @@ export default {
             })
         },
 
+        received(offer) {
+            if (prompt("Type RECEIVED to confirm") != "RECEIVED") {
+                this.alertMessage = "Wrong confirmation"
+                return
+            }
+
+            this.rejectingOffer = true
+
+            const url = 'received/offer?id=' + offer.asset.id +
+                '&offer_id=' + offer.id;
+
+            this.$axios.setToken(this.$auth.token)
+            this.$axios.get(url).then((response) => {
+
+                this.rejectingOffer = false
+                const data = response.data
+
+                if (data.status) {
+                    this.alertMessage = 'offer accepted'
+                    this.getOffers()
+                } else {
+                    this.alertMessage = data.message
+                }
+
+            }).catch((err) => {
+                this.alertMessage = 'Cannot connect to our server'
+            })
+        },
+
         cancel(offer) {
             if (prompt("Type CANCEL to confirm") != "CANCEL") {
                 this.alertMessage = "Wrong confirmation"
@@ -157,7 +208,7 @@ export default {
 
             this.rejectingOffer = true
 
-            const url = 'cancel/offer?offer_id=' + offer.id;
+            const url = 'reject/offer?offer_id=' + offer.id;
 
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
@@ -166,7 +217,7 @@ export default {
                 const data = response.data
 
                 if (data.status) {
-                    this.alertMessage = 'offer cancelled'
+                    this.alertMessage = 'offer rejected'
                     this.getOffers()
                 } else {
                     this.alertMessage = data.message
