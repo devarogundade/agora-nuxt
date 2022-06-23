@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="balance">
-                    <b>Balance:</b> ₦ {{ user.balance.toFixed(2) }} <a href="/deposit">Deposit</a> <a href="/withdraw">Withdraw</a>
+                    <b>Balance:</b> ₦ {{ user.balance.toFixed(2) }} &nbsp; <b>Locked:</b> ₦ {{ user.locked.toFixed(2) }} <a href="/deposit">Deposit</a> <a href="/withdraw">Withdraw</a>
                 </div>
             </div>
             <div class="options">

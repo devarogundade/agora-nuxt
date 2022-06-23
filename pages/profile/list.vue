@@ -3,6 +3,8 @@
     <div class="app-min3-width">
         <div class="list">
             <h3 class="title">Lease your asset</h3>
+            <div class="generate-fake-data" v-on:click="generateFakeData()"><span class="label">Test</span> Insert fake data</div>
+
             <div class="images">
                 <img v-for="(image, index) in images" :key="index" :id="'image' + index" src="" alt="">
                 <div class="input" v-if="images.length < 3">
@@ -161,6 +163,32 @@ export default {
             })
         },
 
+        generateFakeData() {
+            this.name = 'DJI Mavic Mini 2 – Ultralight & Foldable Drone Quadcopter'
+            this.location = 'No. 1 Microsoft Africa Transformation Office, Kings Tower, Ikoyi'
+            this.video = 'https://www.youtube.com/watch?v=-psAtUQY7mE'
+            this.selectedType = this.types[2] // iot
+            this.metadata = [{
+                name: 'Engine',
+                value: 'Petrol'
+            }, {
+                name: 'Weight',
+                value: '5kg'
+            }, {
+                name: 'Capacity',
+                value: '10litres'
+            }, {
+                name: 'Cameras',
+                value: '2 fore, 2 rear'
+            }],
+            this.about = "Fly farther to capture stunning 4K aerial videos with the Mini 2 from DJI. Utilizing DJI's OcuSync 2.0 2.4/5.8 GHz wireless transmission technology, the Mini 2 can be operated from up to 6.2 miles away while still providing you with video of what the drone sees. The Mini 2 can also be flown as high as 2.5 miles and withstand 19 to 24 mph winds, all while maintaining a compact, foldable design that weighs only 8.8 oz. It's small and light enough to take with you almost anywhere."
+            this.price = '1000'
+            this.unit = '10'
+            this.agree1 = true
+            this.agree2 = true
+            this.agree3 = true
+        },
+
         attempt() {
             if (this.location == '' || this.location.length < 15) {
                 this.alertMessage = "Please enter a long location"
@@ -287,6 +315,24 @@ section {
     font-size: 40px;
     color: #27272a;
     text-align: center;
+}
+
+.generate-fake-data .label {
+    background: #ff7e7e;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.generate-fake-data {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #00c675;
+    user-select: none;
+    cursor: pointer;
+    padding: 10px;
 }
 
 .images {
