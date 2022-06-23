@@ -20,8 +20,8 @@
                         <span>Rejected</span>
                     </i>
 
-                    <p v-if="$auth.user.id == offer.user_id">Sent offer to {{ offer.asset.type }} at {{ JSON.parse(offer.asset.location).address }}</p>
-                    <p v-else>Received offer from {{ offer.asset.type }} at {{ JSON.parse(offer.asset.location).address }}</p>
+                    <p v-if="$auth.user.id == offer.user_id">Sent offer to a/an {{ offer.asset.type }} at {{ JSON.parse(offer.asset.location).address }}</p>
+                    <p v-else>Received offer for your {{ offer.asset.type }} at {{ JSON.parse(offer.asset.location).address }}</p>
                 </div>
 
                 <table>
