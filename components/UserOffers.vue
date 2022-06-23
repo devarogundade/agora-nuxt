@@ -90,7 +90,7 @@ export default {
             acceptingOffer: false,
             cancellingOffer: false,
             rejectingOffer: false,
-            rejectingOffer: false
+            receivingOffer: false
         }
     },
 
@@ -149,7 +149,7 @@ export default {
                 return
             }
 
-            this.rejectingOffer = true
+            this.receivingOffer = true
 
             const url = 'received/offer?id=' + offer.asset.id +
                 '&offer_id=' + offer.id;
@@ -157,7 +157,7 @@ export default {
             this.$axios.setToken(this.$auth.token)
             this.$axios.get(url).then((response) => {
 
-                this.rejectingOffer = false
+                this.receivingOffer = false
                 const data = response.data
 
                 if (data.status) {
