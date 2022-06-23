@@ -60,7 +60,7 @@
 
         <div class="asset-items">
             <a v-for="asset in assets" :key="asset.id" :href="'/assets/' + asset.id">
-                <Asset :asset="asset" :trash="true" :rented="true" />
+                <Asset :asset="asset" :trash="true" :rented="!author(asset)" :owned="author(asset)" />
             </a>
         </div>
 
@@ -89,6 +89,10 @@ export default {
     },
 
     methods: {
+        author(asset) {
+            return asset.user.id == this.user.id
+        },
+
         getAssets() {
             this.loading = true
             const url = 'user/assets'
