@@ -140,6 +140,24 @@ input[type=number] {
     height: 100%;
 }
 
+.generate-fake-data .label {
+    background: #ff7e7e;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.generate-fake-data {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #00c675;
+    user-select: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
 @media screen and (max-width: 1000px) {
     .asset-items {
         grid-template-columns: repeat(2, minmax(0, 1fr));

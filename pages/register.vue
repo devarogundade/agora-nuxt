@@ -8,6 +8,9 @@
         </p>
 
         <div class="form">
+            <div class="generate-fake-data" v-on:click="generateFakeLessorData()"><span class="label">Test</span> Insert lessor details</div>
+            <div class="generate-fake-data" v-on:click="generateFakeFarmerData()"><span class="label">Test</span> Insert farmer details</div>
+
             <div class="group">
                 <label for="">FullName</label>
                 <input type="text" placeholder="Enter" v-model="fullName" />
@@ -32,8 +35,6 @@
                 <label for="">Confirm Password</label>
                 <input type="password" placeholder="Enter" v-model="confirmPassword" />
             </div>
-
-            <!-- just for survey -->
 
             <p :class="purpose == 1 ? 'purpose checked' : 'purpose'" v-on:click="purpose = 1">
                 <i class="fi fi-rr-check"></i>
@@ -85,7 +86,7 @@ export default {
                 this.alertMessage = "FullName is required"
             } else if (this.emailAddress == "") {
                 this.alertMessage = "Email Address is required"
-            }  else if (this.phone == "") {
+            } else if (this.phone == "") {
                 this.alertMessage = "Phone number is required"
             } else if (this.password == "") {
                 this.alertMessage = "Password is required"
@@ -96,6 +97,24 @@ export default {
             } else {
                 this.register();
             }
+        },
+
+        generateFakeLessorData() {
+            this.fullName = "Investor TedPrime"
+            this.emailAddress = "investor@tedprime.test"
+            this.phone = "08111755759"
+            this.password = "password"
+            this.confirmPassword = "password"
+            this.purpose = 1
+        },
+
+        generateFakeFarmerData() {
+            this.fullName = "Farmer TedPrime"
+            this.emailAddress = "farmer@tedprime.test"
+            this.phone = "08111755759"
+            this.password = "password"
+            this.confirmPassword = "password"
+            this.purpose = 2
         },
 
         register() {

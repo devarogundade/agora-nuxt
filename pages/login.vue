@@ -5,6 +5,9 @@
         <p class="desc">Keep your password safe.</p>
 
         <div class="form">
+            <div class="generate-fake-data" v-on:click="generateFakeLessorData()"><span class="label">Test</span> Insert lessor login</div>
+            <div class="generate-fake-data" v-on:click="generateFakeFarmerData()"><span class="label">Test</span> Insert farmer login</div>
+
             <div class="group">
                 <label for="">Email Address</label>
                 <input type="email" placeholder="Enter" v-model="emailAddress" />
@@ -60,6 +63,18 @@ export default {
             } else {
                 this.login();
             }
+        },
+
+        generateFakeLessorData() {
+            this.emailAddress = "investor@tedprime.test"
+            this.password = "password"
+            this.remember = true
+        },
+
+        generateFakeFarmerData() {
+            this.emailAddress = "farmer@tedprime.test"
+            this.password = "password"
+            this.remember = true
         },
 
         async login() {
