@@ -11,11 +11,11 @@
             <div class="what">
                 <select v-on:change="onPlantChanged($event)">
                     <option value="none">What do you want to plan?</option>
-                    <option value="cassava">Cassava</option>
-                    <option value="maize">Maize</option>
-                    <option value="yam">Yam</option>
-                    <option value="cocoa">Cocoa</option>
-                    <option value="cashew">Cashew</option>
+                    <option value="Cassava">Cassava</option>
+                    <option value="Maize">Maize</option>
+                    <option value="Yam">Yam</option>
+                    <option value="Cocoa">Cocoa</option>
+                    <option value="Cashew">Cashew</option>
                 </select>
             </div>
 
