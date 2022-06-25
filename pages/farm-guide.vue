@@ -3,8 +3,7 @@
     <div class="app-min-width">
         <h3 class="title">Farm Guide</h3>
         <p class="desc">
-            Let's help you find the right tools and best locations from our platform
-            to start your farm.
+            Let's guide you on best location for your next farm.
         </p>
 
         <div class="farm-guide">
