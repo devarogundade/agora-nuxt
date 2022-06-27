@@ -119,7 +119,7 @@ export default {
     top: 10px;
     right: 10px;
     z-index: 10px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     padding: 2px 10px;
     border-radius: 10px;
     font-size: 14px;
